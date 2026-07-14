@@ -15,7 +15,7 @@
     --color-border: #e6e6e6;
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Outfit', system-ui, sans-serif;
-    --header-height: 72px;
+    --header-height: 64px;
     --container-px: 1rem;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     --fab-stack-space: 0rem;
@@ -25,14 +25,14 @@
 
   @media (min-width: 375px) {
     :root {
-      --header-height: 80px;
+      --header-height: 68px;
       --container-px: 1.25rem;
     }
   }
 
   @media (min-width: 768px) {
     :root {
-      --header-height: 96px;
+      --header-height: 72px;
       --container-px: 2rem;
       --fab-stack-space: 0rem;
       --mobile-bottom-bar: 0rem;

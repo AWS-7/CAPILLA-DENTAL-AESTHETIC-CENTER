@@ -48,17 +48,17 @@ function HeroCTAs({ className = '' }) {
   );
 }
 
-function TrustBadges({ mobile = false }) {
-  if (mobile) {
+function TrustBadges({ variant = 'desktop' }) {
+  if (variant === 'grid') {
     return (
-      <div className="grid grid-cols-2 gap-2.5 w-full max-w-md mx-auto lg:hidden">
+      <div className="grid grid-cols-2 gap-2.5 w-full max-w-md mx-auto lg:hidden md:max-w-lg md:gap-3">
         <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] backdrop-blur-sm px-3 py-3 text-center shadow-soft">
           <div className="flex items-center justify-center gap-0.5 text-gold">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} size={10} className="fill-gold text-gold" />
             ))}
           </div>
-          <p className="mt-1.5 text-xs font-medium text-primary-white">Google Rating</p>
+          <p className="mt-1.5 text-xs font-medium text-primary-white">Google Rated</p>
         </div>
         <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] backdrop-blur-sm px-3 py-3 text-center shadow-soft">
           <AnimatedCounter
@@ -85,7 +85,7 @@ function TrustBadges({ mobile = false }) {
   }
 
   return (
-    <div className="mt-10 hidden grid-cols-2 gap-4 border-t border-primary-white/10 pt-8 sm:grid-cols-4 sm:gap-6 lg:grid">
+    <div className="mt-6 hidden grid-cols-4 gap-4 border-t border-primary-white/10 pt-5 lg:grid xl:gap-6">
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-0.5 text-gold">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -108,7 +108,7 @@ function TrustBadges({ mobile = false }) {
       />
       <div>
         <p className="font-display text-2xl text-primary-white md:text-3xl">Modern</p>
-        <p className="mt-2 text-sm font-light text-primary-white/50">Equipment</p>
+        <p className="mt-1.5 text-sm font-light text-primary-white/50">Equipment</p>
       </div>
     </div>
   );
@@ -126,7 +126,7 @@ export default function HeroBanner() {
   return (
     <section
       ref={ref}
-      className="relative w-full max-w-[100vw] overflow-hidden bg-dark-bg min-h-0 lg:min-h-screen"
+      className="relative w-full max-w-[100vw] overflow-hidden bg-dark-bg min-h-0 lg:min-h-[88vh]"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#151515] to-[#1a160f]" />
@@ -158,17 +158,17 @@ export default function HeroBanner() {
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 container-premium flex items-start lg:min-h-screen lg:items-center pt-[calc(var(--header-height)+0.35rem)] pb-8 sm:pb-10 md:pb-14 lg:pb-16 sm:pt-[calc(var(--header-height)+0.75rem)]"
+        className="relative z-10 container-premium flex items-start lg:min-h-[88vh] lg:items-center pt-[calc(var(--header-height)+0.25rem)] pb-7 sm:pb-9 md:pb-12 lg:py-6 sm:pt-[calc(var(--header-height)+0.5rem)] lg:pt-[calc(var(--header-height)+0.25rem)]"
       >
-        <div className="grid w-full grid-cols-1 items-center gap-4 sm:gap-6 md:gap-10 lg:grid-cols-12 lg:gap-10">
+        <div className="grid w-full grid-cols-1 items-center gap-4 sm:gap-5 md:gap-8 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:gap-8 xl:gap-10">
           {/* Copy — mobile: subtitle → heading → description */}
           <motion.div
             variants={slideInLeft}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center text-center lg:col-span-7 lg:items-start lg:text-left"
+            className="flex flex-col items-center text-center lg:items-start lg:text-left lg:justify-center"
           >
-            <p className="mb-2 inline-flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-gold sm:mb-5 sm:text-xs sm:tracking-[0.22em] lg:justify-start">
+            <p className="mb-1.5 inline-flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-gold sm:mb-3 sm:text-xs sm:tracking-[0.22em] lg:justify-start">
               <Sparkles size={12} className="sm:hidden" />
               <Sparkles size={14} className="hidden sm:inline" />
               Premium Dental, Skin & Hair Care in Perumbakkam
@@ -183,42 +183,42 @@ export default function HeroBanner() {
               </span>
             </h1>
 
-            <div className="mt-3 space-y-0 font-display text-base text-primary-white/90 sm:mt-6 sm:space-y-1 sm:text-3xl md:text-[2.35rem]">
+            <div className="mt-2.5 space-y-0 font-display text-base text-primary-white/90 sm:mt-4 sm:space-y-1 sm:text-3xl md:text-[2.35rem]">
               <p>Smile Brighter.</p>
               <p>Glow Naturally.</p>
               <p className="text-gold-light">Restore Your Confidence.</p>
             </div>
 
-            <p className="mt-3 max-w-xl text-[0.95rem] font-light leading-relaxed text-primary-white/65 sm:mt-6 sm:text-base md:text-lg">
+            <p className="mt-2.5 max-w-xl text-[0.95rem] font-light leading-relaxed text-primary-white/65 sm:mt-4 sm:text-base md:text-lg">
               A luxury multi-specialty clinic in Perumbakkam offering advanced
               dentistry, medical-grade skin therapies, and hair restoration —
               delivered with clinical precision and refined care.
             </p>
 
             {/* Desktop CTAs + trust */}
-            <HeroCTAs className="mt-8 hidden flex-wrap items-center gap-3 sm:gap-4 lg:flex" />
-            <TrustBadges mobile={false} />
+            <HeroCTAs className="mt-5 hidden flex-wrap items-center gap-3 sm:gap-4 lg:flex xl:mt-6" />
+            <TrustBadges variant="desktop" />
           </motion.div>
 
-          {/* Doctor image */}
+          {/* Doctor image — vertically aligned with copy */}
           <motion.div
             variants={slideInRight}
             initial="hidden"
             animate="visible"
-            className="relative mx-auto w-full max-w-[260px] sm:max-w-sm lg:col-span-5 lg:max-w-none"
+            className="relative mx-auto flex w-full max-w-[260px] items-center justify-center sm:max-w-sm lg:max-w-[min(100%,420px)] xl:max-w-[460px]"
           >
-            <div className="relative mx-auto">
-              <div className="absolute -inset-2 rounded-[1.5rem] bg-gold-gradient opacity-20 blur-xl lg:-inset-4 lg:rounded-[2rem] lg:blur-2xl" />
-              <div className="relative mx-auto overflow-hidden rounded-[1.35rem] border border-primary-white/10 shadow-premium h-[32vh] max-h-[240px] min-h-[200px] w-full sm:h-[40vh] sm:max-h-[360px] sm:min-h-0 lg:aspect-[3/4] lg:h-auto lg:max-h-[70vh] lg:rounded-[1.75rem]">
+            <div className="relative mx-auto w-full">
+              <div className="absolute -inset-2 rounded-[1.5rem] bg-gold-gradient opacity-20 blur-xl lg:-inset-3 lg:rounded-[2rem] lg:blur-2xl" />
+              <div className="relative mx-auto overflow-hidden rounded-[1.35rem] border border-primary-white/10 shadow-premium h-[32vh] max-h-[240px] min-h-[200px] w-full sm:h-[40vh] sm:max-h-[340px] sm:min-h-0 lg:aspect-[3/4] lg:h-auto lg:max-h-[520px] xl:max-h-[560px] lg:rounded-[1.75rem]">
                 <LazyLoadImage
                   src={placeholders.doctor}
                   alt="Capilla Dental specialist — premium care in Perumbakkam"
                   effect="blur"
-                  className="h-full w-full object-cover object-[center_15%]"
+                  className="h-full w-full object-cover object-[center_18%]"
                   wrapperClassName="h-full w-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-black/55 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 text-center sm:p-6 md:p-8 lg:text-left">
+                <div className="absolute bottom-0 left-0 right-0 p-3 text-center sm:p-5 md:p-6 lg:text-left">
                   <p className="text-[9px] uppercase tracking-[0.18em] text-gold-light sm:text-xs">
                     Clinical Excellence
                   </p>
@@ -230,13 +230,13 @@ export default function HeroBanner() {
             </div>
           </motion.div>
 
-          {/* Mobile: CTAs then trust */}
-          <HeroCTAs className="flex w-full max-w-md mx-auto flex-col gap-2.5 lg:hidden" />
-          <TrustBadges mobile />
+          {/* Mobile / tablet: CTAs then 2×2 trust */}
+          <HeroCTAs className="flex w-full max-w-md mx-auto flex-col gap-2.5 lg:hidden md:max-w-lg md:flex-row md:flex-wrap md:justify-center" />
+          <TrustBadges variant="grid" />
         </div>
       </motion.div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-primary-white to-transparent lg:h-24" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent lg:h-16" />
     </section>
   );
 }
