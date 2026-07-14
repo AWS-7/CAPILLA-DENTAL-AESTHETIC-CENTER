@@ -9,6 +9,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   Card,
+  MobileSwiper,
 } from '../../common';
 import {
   reviewsStats,
@@ -55,6 +56,37 @@ export function ReviewsRatingBoard() {
 }
 
 export function ReviewsCards() {
+  const ReviewItem = ({ review }) => (
+    <Card className="h-full min-h-[240px] flex flex-col">
+      <div className="flex items-center gap-1 mb-4">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            size={14}
+            className={i < review.rating ? 'fill-gold text-gold' : 'text-border'}
+          />
+        ))}
+      </div>
+      <p className="font-display text-lg italic leading-relaxed text-dark-bg/80 flex-1">
+        &ldquo;{review.text}&rdquo;
+      </p>
+      <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border">
+        <LazyLoadImage
+          src={review.avatar}
+          alt={review.name}
+          effect="blur"
+          className="h-11 w-11 rounded-full object-cover"
+          wrapperClassName="h-11 w-11 rounded-full overflow-hidden shrink-0"
+        />
+        <div>
+          <p className="text-sm font-medium text-primary-black">{review.name}</p>
+          <p className="text-xs text-gold mt-0.5">{review.treatment}</p>
+          <p className="text-xs text-dark-bg/40 mt-0.5">{review.date}</p>
+        </div>
+      </div>
+    </Card>
+  );
+
   return (
     <section className="section-padding bg-light-bg">
       <Container>
@@ -64,41 +96,22 @@ export function ReviewsCards() {
           description="Stories from patients across Perumbakkam who trust Capilla for lasting results."
         />
 
-        <div className="md:hidden -mx-5 px-5" role="region" aria-label="Patient reviews carousel">
-          <div className="snap-x-carousel pb-2">
+        <div className="md:hidden -mx-1">
+          <MobileSwiper
+            slidesPerView={1.15}
+            spaceBetween={14}
+            freeMode
+            loop
+            ariaLabel="Patient reviews"
+            breakpoints={{
+              360: { slidesPerView: 1.15 },
+              430: { slidesPerView: 1.2 },
+            }}
+          >
             {googleReviewsList.map((review) => (
-              <div key={review.id} className="snap-start shrink-0 w-[82%]">
-                <Card className="h-full min-h-[240px] flex flex-col">
-                  <div className="flex items-center gap-1 mb-4">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        className={i < review.rating ? 'fill-gold text-gold' : 'text-border'}
-                      />
-                    ))}
-                  </div>
-                  <p className="font-display text-lg italic leading-relaxed text-dark-bg/80 flex-1">
-                    &ldquo;{review.text}&rdquo;
-                  </p>
-                  <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border">
-                    <LazyLoadImage
-                      src={review.avatar}
-                      alt={review.name}
-                      effect="blur"
-                      className="h-11 w-11 rounded-full object-cover"
-                      wrapperClassName="h-11 w-11 rounded-full overflow-hidden shrink-0"
-                    />
-                    <div>
-                      <p className="text-sm font-medium text-primary-black">{review.name}</p>
-                      <p className="text-xs text-gold mt-0.5">{review.treatment}</p>
-                      <p className="text-xs text-dark-bg/40 mt-0.5">{review.date}</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
+              <ReviewItem key={review.id} review={review} />
             ))}
-          </div>
+          </MobileSwiper>
         </div>
 
         <motion.div
@@ -110,34 +123,7 @@ export function ReviewsCards() {
         >
           {googleReviewsList.map((review) => (
             <motion.div key={review.id} variants={staggerItem}>
-              <Card className="h-full flex flex-col">
-                <div className="flex items-center gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={14}
-                      className={i < review.rating ? 'fill-gold text-gold' : 'text-border'}
-                    />
-                  ))}
-                </div>
-                <p className="font-display text-lg italic leading-relaxed text-dark-bg/80 flex-1">
-                  &ldquo;{review.text}&rdquo;
-                </p>
-                <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border">
-                  <LazyLoadImage
-                    src={review.avatar}
-                    alt={review.name}
-                    effect="blur"
-                    className="h-11 w-11 rounded-full object-cover"
-                    wrapperClassName="h-11 w-11 rounded-full overflow-hidden shrink-0"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-primary-black">{review.name}</p>
-                    <p className="text-xs text-gold mt-0.5">{review.treatment}</p>
-                    <p className="text-xs text-dark-bg/40 mt-0.5">{review.date}</p>
-                  </div>
-                </div>
-              </Card>
+              <ReviewItem review={review} />
             </motion.div>
           ))}
         </motion.div>

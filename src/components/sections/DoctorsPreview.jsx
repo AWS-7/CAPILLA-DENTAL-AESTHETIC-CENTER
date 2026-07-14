@@ -6,6 +6,7 @@ import {
   SectionTitle,
   PrimaryButton,
   SecondaryButton,
+  MobileSwiper,
 } from '../common';
 import { homeDoctors } from '../../data/home';
 import { staggerContainer, staggerItem } from '../../utils/animations';
@@ -61,25 +62,24 @@ export default function DoctorsPreview() {
           description="Board-certified clinicians dedicated to exceptional outcomes across dental, skin, and hair care."
         />
 
-        {/* Mobile / tablet: horizontal snap carousel */}
-        <div
-          className="md:hidden -mx-5 px-5"
-          role="region"
-          aria-label="Doctors carousel"
-        >
-          <div className="snap-x-carousel pb-2">
+        <div className="md:hidden -mx-1">
+          <MobileSwiper
+            slidesPerView={1.15}
+            spaceBetween={14}
+            freeMode
+            loop
+            ariaLabel="Meet our doctors"
+            breakpoints={{
+              360: { slidesPerView: 1.15 },
+              430: { slidesPerView: 1.2 },
+            }}
+          >
             {homeDoctors.map((doctor) => (
-              <div
-                key={doctor.id}
-                className="snap-center shrink-0 w-[78%] max-w-[300px] first:ml-0"
-              >
-                <DoctorCard doctor={doctor} />
-              </div>
+              <DoctorCard key={doctor.id} doctor={doctor} />
             ))}
-          </div>
+          </MobileSwiper>
         </div>
 
-        {/* Desktop: original grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"

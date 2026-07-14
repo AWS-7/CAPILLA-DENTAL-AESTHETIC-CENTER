@@ -113,35 +113,36 @@ export function OffersCountdownBanner() {
   return (
     <section className="section-padding bg-dark-bg">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl md:rounded-4xl border border-primary-white/10 px-8 py-12 md:px-14 md:py-16 text-center">
+        <div className="relative overflow-hidden rounded-3xl md:rounded-4xl border border-primary-white/10 px-4 py-10 sm:px-8 sm:py-12 md:px-14 md:py-16 text-center">
           <div className="absolute inset-0 bg-gold-gradient opacity-10 pointer-events-none" />
           <p className="relative text-xs uppercase tracking-[0.22em] text-gold mb-3">Limited Time</p>
-          <h2 className="relative font-display text-3xl md:text-5xl text-primary-white">
+          <h2 className="relative font-display text-[1.65rem] leading-tight sm:text-3xl md:text-5xl text-primary-white break-safe">
             Festival Offer Window Closing Soon
           </h2>
-          <p className="relative mt-4 text-primary-white/55 font-light max-w-xl mx-auto">
+          <p className="relative mt-4 text-primary-white/55 font-light max-w-xl mx-auto text-sm sm:text-base">
             Countdown placeholder for seasonal campaigns — replace target date in production.
           </p>
-          <div className="relative mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-5">
+          <div className="relative mt-8 sm:mt-10 grid grid-cols-4 gap-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 md:gap-5">
             {cells.map((c) => (
               <div
                 key={c.label}
-                className="min-w-[72px] rounded-2xl border border-primary-white/15 bg-primary-white/5 px-4 py-4"
+                className="min-w-0 rounded-2xl border border-primary-white/15 bg-primary-white/5 px-2 py-3 sm:min-w-[72px] sm:px-4 sm:py-4"
               >
-                <p className="font-display text-3xl md:text-4xl text-gold">
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-gold">
                   {String(c.value).padStart(2, '0')}
                 </p>
-                <p className="mt-1 text-[10px] uppercase tracking-widest text-primary-white/45">
+                <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-widest text-primary-white/45">
                   {c.label}
                 </p>
               </div>
             ))}
           </div>
-          <div className="relative mt-10">
+          <div className="relative mt-8 sm:mt-10 flex justify-center">
             <PrimaryButton
               to="/contact"
               variant="gold"
               size="lg"
+              className="w-full sm:w-auto"
               onClick={() => trackingEvents.offerClaim('Festival Offer Window')}
             >
               Claim Offer Now

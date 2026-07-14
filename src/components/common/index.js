@@ -17,3 +17,4 @@ export { default as Container } from './Container';
 export { default as ScrollReveal } from './ScrollReveal';
 export { default as AnimatedCounter } from './AnimatedCounter';
 export { default as PagePlaceholder } from './PagePlaceholder';
+export { default as MobileSwiper } from './MobileSwiper';

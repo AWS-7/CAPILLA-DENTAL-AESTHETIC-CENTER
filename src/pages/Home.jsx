@@ -43,9 +43,10 @@ export default function Home() {
       <FeaturedTreatments
         eyebrow="Dental Care"
         title="Featured Dental Treatments"
-        description="Advanced dentistry in Perumbakkam — implants, smile design, whitening, and orthodontics with lasting precision."
+        description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."
         items={featuredDental}
         viewAllTo="/dental"
+        viewAllLabel="View All Dental Treatments"
       />
       <FeaturedTreatments
         eyebrow="Skin Care"
@@ -53,14 +54,16 @@ export default function Home() {
         description="Medical-grade facials and peels for luminous, refined skin — including Hydrafacial in Chennai."
         items={featuredSkin}
         viewAllTo="/skin"
+        viewAllLabel="View All Skin Treatments"
         tone="dark"
       />
       <FeaturedTreatments
         eyebrow="Hair Care"
         title="Featured Hair Treatments"
-        description="PRP, GFC, transplant, and regrowth therapies for denser, healthier hair."
+        description="PRP, GFC, and transplant therapies for denser, healthier hair."
         items={featuredHair}
         viewAllTo="/hair"
+        viewAllLabel="View All Hair Treatments"
         tone="light"
       />
       <DoctorsPreview />

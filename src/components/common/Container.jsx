@@ -9,8 +9,9 @@ export default function Container({
   return (
     <Component
       className={cn(
-        'mx-auto w-full px-5 md:px-8',
+        'mx-auto w-full',
         narrow ? 'max-w-narrow' : 'max-w-container',
+        'px-4 sm:px-5 md:px-8',
         className
       )}
     >

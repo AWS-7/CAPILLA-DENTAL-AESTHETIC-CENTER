@@ -5,7 +5,7 @@ import { fadeUp } from '../../utils/animations';
 
 export default function FooterCTA() {
   return (
-    <section className="relative overflow-hidden bg-dark-bg py-20 md:py-28">
+    <section className="relative overflow-hidden bg-dark-bg py-14 sm:py-20 md:py-28 max-w-[100vw]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,164,93,0.18),transparent_60%)]" />
       <Container className="relative z-10 text-center">
         <motion.div
@@ -17,15 +17,15 @@ export default function FooterCTA() {
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-5">
             Capilla Dental & Aesthetic Center
           </p>
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] text-primary-white max-w-4xl mx-auto leading-[1.05]">
+          <h2 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-6xl lg:text-[4.5rem] text-primary-white max-w-4xl mx-auto break-safe">
             Book Your Appointment Today
           </h2>
-          <p className="mt-6 text-base md:text-lg font-light text-primary-white/55 max-w-xl mx-auto">
+          <p className="mt-5 sm:mt-6 text-base md:text-lg font-light text-primary-white/55 max-w-xl mx-auto">
             Your smile, skin, and confidence deserve a clinical experience designed
             around luxury, trust, and lasting results.
           </p>
-          <div className="mt-10">
-            <PrimaryButton to="/contact" variant="gold" size="lg">
+          <div className="mt-8 sm:mt-10 flex justify-center">
+            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
               Book Appointment
               <ArrowRight size={18} />
             </PrimaryButton>

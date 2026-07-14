@@ -99,7 +99,7 @@ export const featuredDental = [
   },
   {
     id: 'root-canal',
-    title: 'Root Canal',
+    title: 'Root Canal Treatment',
     description: 'Comfort-focused RCT with microscopic precision and lasting relief.',
     image: placeholders.treatment,
     path: '/treatments/root-canal-treatment',
@@ -112,22 +112,6 @@ export const featuredDental = [
     image: placeholders.smile,
     path: '/treatments/teeth-whitening',
     benefits: ['Visible in one visit', 'Safe enamel care', 'Custom shade matching'],
-  },
-  {
-    id: 'smile-design',
-    title: 'Smile Design',
-    description: 'Bespoke digital makeovers tailored to your facial aesthetics.',
-    image: placeholders.smile,
-    path: '/treatments/smile-design',
-    benefits: ['Digital preview', 'Facial harmony', 'Premium materials'],
-  },
-  {
-    id: 'braces-aligners',
-    title: 'Braces & Aligners',
-    description: 'Discreet orthodontics for confident, aligned smiles.',
-    image: placeholders.dental,
-    path: '/treatments/braces-aligners',
-    benefits: ['Clear aligner options', 'Faster timelines', 'Comfort-first fit'],
   },
 ];
 
@@ -149,28 +133,12 @@ export const featuredSkin = [
     benefits: ['Even skin tone', 'Smoother texture', 'Clinical protocols'],
   },
   {
-    id: 'acne-treatment',
-    title: 'Acne Treatment',
-    description: 'Targeted acne care for clearer, calmer, healthier skin.',
-    image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80',
-    path: '/skin',
-    benefits: ['Root-cause approach', 'Scar reduction focus', 'Gentle actives'],
-  },
-  {
-    id: 'glass-skin',
-    title: 'Glass Skin Facial',
-    description: 'Layered hydration ritual for translucent, glass-like radiance.',
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc2362?w=1200&q=80',
-    path: '/skin',
-    benefits: ['Dewy finish', 'Pore refinement', 'Barrier support'],
-  },
-  {
-    id: 'skin-brightening',
-    title: 'Skin Brightening',
-    description: 'Clinical brightening for an even, luminous complexion.',
+    id: 'anti-ageing',
+    title: 'Anti Ageing Treatment',
+    description: 'Clinical protocols to refine firmness, fine lines, and skin vitality.',
     image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80',
-    path: '/skin',
-    benefits: ['Dullness correction', 'Spot reduction', 'Radiant finish'],
+    path: '/treatments/anti-ageing-treatment',
+    benefits: ['Firms & smooths', 'Doctor-led plans', 'Natural results'],
   },
 ];
 
@@ -198,22 +166,6 @@ export const featuredHair = [
     image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=1200&q=80',
     path: '/treatments/hair-transplant',
     benefits: ['Natural hairline', 'Scar-minimal FUE', 'Permanent results'],
-  },
-  {
-    id: 'regrowth',
-    title: 'Hair Regrowth',
-    description: 'Medical regimens designed to revive thinning areas.',
-    image: placeholders.hair,
-    path: '/hair',
-    benefits: ['Early thinning rescue', 'Customized plans', 'Tracked progress'],
-  },
-  {
-    id: 'hair-loss',
-    title: 'Hair Loss Treatment',
-    description: 'Diagnostic-led care for pattern baldness and shedding.',
-    image: 'https://images.unsplash.com/photo-1595476108010-b4d1f7300194?w=1200&q=80',
-    path: '/hair',
-    benefits: ['Root-cause diagnosis', 'Medical therapies', 'Long-term plans'],
   },
 ];
 

@@ -126,7 +126,7 @@ export default function HeroBanner() {
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-hidden bg-dark-bg min-h-0 lg:min-h-screen"
+      className="relative w-full max-w-[100vw] overflow-hidden bg-dark-bg min-h-0 lg:min-h-screen"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#151515] to-[#1a160f]" />

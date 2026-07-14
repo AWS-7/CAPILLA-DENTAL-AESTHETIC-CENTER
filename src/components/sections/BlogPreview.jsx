@@ -8,6 +8,7 @@ import {
   SectionTitle,
   BlogCard,
   SecondaryButton,
+  MobileSwiper,
 } from '../common';
 import { blogPosts } from '../../data/content';
 import { staggerContainer, staggerItem } from '../../utils/animations';
@@ -24,7 +25,26 @@ export default function BlogPreview() {
           description="Expert guidance on dental health, skin rejuvenation, and hair restoration from our specialists."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
+        {/* Mobile: Swiper ~1.2 cards */}
+        <div className="lg:hidden -mx-1">
+          <MobileSwiper
+            slidesPerView={1.2}
+            spaceBetween={14}
+            freeMode
+            ariaLabel="Latest blog posts"
+            breakpoints={{
+              360: { slidesPerView: 1.15 },
+              430: { slidesPerView: 1.25 },
+            }}
+          >
+            {blogPosts.map((post) => (
+              <BlogCard key={post.id} {...post} />
+            ))}
+          </MobileSwiper>
+        </div>
+
+        {/* Desktop: featured + sidebar (unchanged) */}
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
           {featured && (
             <motion.article
               initial={{ opacity: 0, y: 24 }}
@@ -88,7 +108,7 @@ export default function BlogPreview() {
         </div>
 
         <div className="mt-12 text-center">
-          <SecondaryButton to="/blog" size="lg">
+          <SecondaryButton to="/blog" size="lg" className="w-full sm:w-auto">
             View All Articles
           </SecondaryButton>
         </div>

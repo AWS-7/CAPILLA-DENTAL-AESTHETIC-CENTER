@@ -51,12 +51,12 @@ export default function DentalFAQ({
                 <button
                   type="button"
                   onClick={() => setOpenId(isOpen ? null : faq.id)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-5 md:px-6 text-left"
+                  className="flex w-full min-h-12 items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-5 sm:py-5 md:px-6 text-left"
                   aria-expanded={isOpen}
                 >
                   <span
                     className={cn(
-                      'font-display text-lg md:text-xl',
+                      'font-display text-base sm:text-lg md:text-xl break-safe pr-1',
                       dark ? 'text-primary-white' : 'text-primary-black'
                     )}
                   >

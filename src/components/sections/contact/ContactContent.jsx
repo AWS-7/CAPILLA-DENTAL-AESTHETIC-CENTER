@@ -23,7 +23,7 @@ import { fadeUp, slideInLeft, slideInRight } from '../../../utils/animations';
 import { trackingEvents } from '../../../utils/analytics';
 
 const inputClass =
-  'w-full rounded-2xl border border-border bg-light-bg px-4 py-3.5 text-sm outline-none transition-colors focus:border-gold focus:bg-primary-white';
+  'w-full min-h-12 rounded-2xl border border-border bg-light-bg px-4 py-3.5 text-base outline-none transition-colors focus:border-gold focus:bg-primary-white';
 
 export default function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
@@ -126,12 +126,17 @@ export default function ContactContent() {
                 </li>
               </ul>
 
-              <div className="flex flex-wrap gap-3">
-                <PrimaryButton href={clinicInfo.whatsappHref} external variant="gold">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                <PrimaryButton
+                  href={clinicInfo.whatsappHref}
+                  external
+                  variant="gold"
+                  className="w-full sm:w-auto"
+                >
                   <MessageCircle size={16} />
                   WhatsApp Now
                 </PrimaryButton>
-                <SecondaryButton href={clinicInfo.phoneHref}>
+                <SecondaryButton href={clinicInfo.phoneHref} className="w-full sm:w-auto">
                   <Phone size={16} />
                   Call Now
                 </SecondaryButton>
@@ -185,8 +190,8 @@ export default function ContactContent() {
               viewport={{ once: true }}
               className="lg:col-span-7"
             >
-              <div className="rounded-3xl border border-border bg-primary-white p-6 md:p-9 shadow-premium">
-                <h2 className="font-display text-2xl md:text-3xl text-primary-black">
+              <div className="rounded-3xl border border-border bg-primary-white p-5 sm:p-6 md:p-9 shadow-premium">
+                <h2 className="font-display text-[1.65rem] sm:text-2xl md:text-3xl text-primary-black break-safe">
                   Appointment Form
                 </h2>
                 <p className="mt-2 text-sm font-light text-dark-bg/55">

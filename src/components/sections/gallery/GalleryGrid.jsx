@@ -187,14 +187,14 @@ export default function GalleryGrid() {
           description="Drag each comparison slider or expand for a larger view of patient transformations."
         />
 
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-2 md:gap-3">
+        <div className="mb-8 sm:mb-10 chip-scroll sm:flex-wrap sm:justify-center">
           {galleryFilters.map((f) => (
             <button
               key={f}
               type="button"
               onClick={() => setFilter(f)}
               className={cn(
-                'rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300',
+                'shrink-0 rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium transition-all duration-300 min-h-11',
                 filter === f
                   ? 'bg-primary-black text-primary-white shadow-soft'
                   : 'bg-light-gray text-dark-bg/70 hover:bg-gold hover:text-primary-white'

@@ -17,6 +17,7 @@ export default function FeaturedTreatments({
   description,
   items = [],
   viewAllTo,
+  viewAllLabel = 'View All Treatments',
   className = '',
   dark = false,
   tone,
@@ -44,7 +45,7 @@ export default function FeaturedTreatments({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3"
         >
           {items.map((item) => (
             <motion.div key={item.id} variants={staggerItem} className="h-full">
@@ -56,7 +57,7 @@ export default function FeaturedTreatments({
                     : 'border-border bg-primary-white shadow-soft'
                 )}
               >
-                <div className="relative aspect-[16/10] overflow-hidden shrink-0">
+                <div className="relative h-[120px] sm:h-auto sm:aspect-[16/10] overflow-hidden shrink-0">
                   <motion.div
                     className="h-full w-full"
                     whileHover={{ scale: 1.06 }}
@@ -71,10 +72,10 @@ export default function FeaturedTreatments({
                     />
                   </motion.div>
                 </div>
-                <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-7">
+                <div className="flex flex-1 flex-col p-4 sm:p-6 md:p-7">
                   <h3
                     className={cn(
-                      'font-display text-xl md:text-2xl transition-colors group-hover:text-gold',
+                      'font-display text-lg sm:text-xl md:text-2xl transition-colors group-hover:text-gold',
                       isDark ? 'text-primary-white' : 'text-primary-black'
                     )}
                   >
@@ -82,15 +83,15 @@ export default function FeaturedTreatments({
                   </h3>
                   <p
                     className={cn(
-                      'mt-2 text-base font-light leading-relaxed flex-1',
+                      'mt-1.5 sm:mt-2 text-sm sm:text-base font-light leading-relaxed line-clamp-2 sm:line-clamp-none flex-1',
                       isDark ? 'text-primary-white/55' : 'text-dark-bg/55'
                     )}
                   >
                     {item.description}
                   </p>
                   {item.benefits?.length > 0 && (
-                    <ul className="mt-4 space-y-2">
-                      {item.benefits.map((b) => (
+                    <ul className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+                      {item.benefits.slice(0, 2).map((b) => (
                         <li
                           key={b}
                           className={cn(
@@ -102,9 +103,22 @@ export default function FeaturedTreatments({
                           {b}
                         </li>
                       ))}
+                      {/* Keep third benefit on tablet+ only */}
+                      {item.benefits.slice(2, 3).map((b) => (
+                        <li
+                          key={b}
+                          className={cn(
+                            'hidden sm:flex items-start gap-2 text-sm font-light',
+                            isDark ? 'text-primary-white/70' : 'text-dark-bg/70'
+                          )}
+                        >
+                          <Check size={14} className="mt-0.5 shrink-0 text-gold" />
+                          {b}
+                        </li>
+                      ))}
                     </ul>
                   )}
-                  <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap">
+                  <div className="mt-auto flex flex-col gap-2.5 sm:gap-3 pt-4 sm:pt-6 sm:flex-row sm:flex-wrap">
                     <SecondaryButton
                       to={item.path}
                       size="sm"
@@ -130,9 +144,13 @@ export default function FeaturedTreatments({
         </motion.div>
 
         {viewAllTo && (
-          <div className="mt-12 text-center">
-            <SecondaryButton to={viewAllTo} variant={isDark ? 'light' : 'default'}>
-              View All Treatments
+          <div className="mt-8 sm:mt-12 flex justify-center">
+            <SecondaryButton to={viewAllTo} variant="gold" className="group">
+              {viewAllLabel}
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
             </SecondaryButton>
           </div>
         )}

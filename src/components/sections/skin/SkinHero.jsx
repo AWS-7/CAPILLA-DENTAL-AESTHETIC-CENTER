@@ -29,10 +29,10 @@ export default function SkinHero() {
             <Sparkles size={14} />
             Skin Clinic in Perumbakkam
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-display-md lg:text-display-lg text-primary-white">
+          <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe">
             {skinHero.title}
           </h1>
-          <div className="mt-5 space-y-1 font-display text-2xl sm:text-3xl text-primary-white/90">
+          <div className="mt-4 sm:mt-5 space-y-1 font-display text-xl sm:text-2xl md:text-3xl text-primary-white/90">
             {skinHero.lines.map((line) => (
               <p key={line} className={line.includes('Timeless') ? 'text-gold-light' : undefined}>
                 {line}
@@ -47,15 +47,26 @@ export default function SkinHero() {
           >
             {skinHero.subtitle}
           </motion.p>
-          <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-            <PrimaryButton to="/contact" variant="gold" size="lg">
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
               Book Appointment
             </PrimaryButton>
-            <SecondaryButton href={clinicInfo.whatsappHref} external variant="light" size="lg">
+            <SecondaryButton
+              href={clinicInfo.whatsappHref}
+              external
+              variant="light"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               <MessageCircle size={18} />
               WhatsApp Consultation
             </SecondaryButton>
-            <SecondaryButton href={clinicInfo.phoneHref} variant="light" size="md">
+            <SecondaryButton
+              href={clinicInfo.phoneHref}
+              variant="light"
+              size="md"
+              className="w-full sm:w-auto"
+            >
               <Phone size={16} />
               Call Now
             </SecondaryButton>

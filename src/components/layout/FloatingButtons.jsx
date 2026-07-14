@@ -36,7 +36,7 @@ const buttons = [
 export default function FloatingButtons() {
   return (
     <div
-      className="fixed bottom-6 right-5 z-40 flex flex-col items-end gap-3 md:bottom-8 md:right-8"
+      className="fixed z-40 flex flex-col items-end gap-2.5 right-3 bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:right-5 sm:bottom-6 sm:gap-3 md:bottom-8 md:right-8"
       role="complementary"
       aria-label="Quick contact actions"
     >
@@ -51,10 +51,11 @@ export default function FloatingButtons() {
             whileTap={{ scale: 0.95 }}
             className={`group flex items-center gap-2 rounded-full shadow-premium transition-all duration-300 ${btn.className}`}
           >
-            <span className="flex h-12 w-12 items-center justify-center" aria-hidden="true">
-              <Icon size={20} />
+            <span className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center" aria-hidden="true">
+              <Icon size={18} className="sm:hidden" />
+              <Icon size={20} className="hidden sm:block" />
             </span>
-            <span className="hidden sm:block max-w-0 overflow-hidden whitespace-nowrap pr-0 text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-[120px] group-hover:pr-4 group-hover:opacity-100">
+            <span className="hidden md:block max-w-0 overflow-hidden whitespace-nowrap pr-0 text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-[120px] group-hover:pr-4 group-hover:opacity-100">
               {btn.label.split(' ')[0]}
             </span>
           </motion.span>

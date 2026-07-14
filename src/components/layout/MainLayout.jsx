@@ -14,7 +14,7 @@ export default function MainLayout() {
   useScrollToTop();
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-hidden max-w-[100vw]">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
@@ -30,7 +30,7 @@ export default function MainLayout() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="flex-1"
+          className="flex-1 overflow-x-hidden pb-[calc(var(--fab-stack-space)+var(--safe-bottom))] md:pb-0"
           tabIndex={-1}
         >
           <Outlet />

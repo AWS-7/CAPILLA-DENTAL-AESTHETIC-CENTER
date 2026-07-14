@@ -20,8 +20,8 @@ export default function PageHero({
   return (
     <section
       className={cn(
-        'relative w-full overflow-hidden bg-dark-bg',
-        compact ? 'min-h-[40vh] md:min-h-[45vh]' : 'min-h-[50vh] md:min-h-[60vh]',
+        'relative w-full overflow-hidden bg-dark-bg max-w-[100vw]',
+        compact ? 'min-h-[36vh] sm:min-h-[40vh] md:min-h-[45vh]' : 'min-h-[42vh] sm:min-h-[50vh] md:min-h-[60vh]',
         className
       )}
     >
@@ -32,7 +32,7 @@ export default function PageHero({
             alt={title ? `${title} — Capilla Dental & Aesthetic Center` : 'Capilla clinic'}
             effect="blur"
             className="h-full w-full object-cover"
-            wrapperClassName="h-full w-full"
+            wrapperClassName="h-full w-full !block"
           />
           {overlay && <div className="absolute inset-0 bg-hero-overlay" />}
         </div>
@@ -40,18 +40,22 @@ export default function PageHero({
 
       <div
         className={cn(
-          'relative z-10 container-premium flex flex-col justify-end pb-12 md:pb-16 pt-32 md:pt-40',
-          compact ? 'min-h-[40vh] md:min-h-[45vh]' : 'min-h-[50vh] md:min-h-[60vh]',
+          'relative z-10 container-premium flex flex-col justify-end pb-10 sm:pb-12 md:pb-16 pt-[calc(var(--header-height)+1.5rem)] sm:pt-32 md:pt-40',
+          compact ? 'min-h-[36vh] sm:min-h-[40vh] md:min-h-[45vh]' : 'min-h-[42vh] sm:min-h-[50vh] md:min-h-[60vh]',
           alignClass
         )}
       >
-        {breadcrumb && <div className="mb-6 [&_*]:text-primary-white/60">{breadcrumb}</div>}
+        {breadcrumb && (
+          <div className="mb-4 sm:mb-6 max-w-full overflow-hidden [&_*]:text-primary-white/60">
+            {breadcrumb}
+          </div>
+        )}
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-4xl sm:text-5xl md:text-display-md lg:text-display-lg text-primary-white max-w-4xl"
+          className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white max-w-4xl break-safe"
         >
           {title}
         </motion.h1>
@@ -61,13 +65,17 @@ export default function PageHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-4 md:mt-6 text-base md:text-lg font-sans font-light text-primary-white/75 max-w-2xl"
+            className="mt-3 sm:mt-4 md:mt-6 text-base md:text-lg font-sans font-light text-primary-white/75 max-w-2xl break-safe"
           >
             {subtitle}
           </motion.p>
         )}
 
-        {children && <div className="mt-8">{children}</div>}
+        {children && (
+          <div className="mt-6 sm:mt-8 w-full max-w-full flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:justify-center">
+            {children}
+          </div>
+        )}
       </div>
     </section>
   );

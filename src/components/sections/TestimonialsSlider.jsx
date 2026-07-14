@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, FreeMode, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/free-mode';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Star } from 'lucide-react';
@@ -20,21 +21,46 @@ export default function TestimonialsSlider() {
         />
 
         <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={24}
-          slidesPerView={1}
-          loop
-          autoplay={{ delay: 4500, disableOnInteraction: false }}
+          modules={[Autoplay, Pagination, FreeMode, A11y]}
+          spaceBetween={16}
+          slidesPerView={1.15}
+          grabCursor
+          speed={450}
+          watchOverflow
+          resistanceRatio={0.65}
+          threshold={10}
+          touchAngle={30}
+          touchReleaseOnEdges
+          touchStartPreventDefault={false}
+          nested
+          autoHeight
+          loop={testimonials.length > 2}
+          freeMode={{
+            enabled: true,
+            sticky: true,
+            momentum: true,
+            momentumRatio: 0.85,
+          }}
+          autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
           pagination={{ clickable: true }}
           breakpoints={{
-            640: { slidesPerView: 1.15 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 2.4 },
+            360: { slidesPerView: 1.15, spaceBetween: 14 },
+            430: { slidesPerView: 1.2, spaceBetween: 16 },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 24,
+              freeMode: false,
+            },
+            1024: {
+              slidesPerView: 2.4,
+              spaceBetween: 24,
+              freeMode: false,
+            },
           }}
-          className="testimonials-swiper !pb-14"
+          className="testimonials-swiper mobile-swiper mobile-swiper--light !pb-14"
         >
           {testimonials.map((item) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item.id} className="!h-auto">
               <article className="h-full rounded-3xl border border-primary-white/10 bg-primary-white/5 p-7 md:p-8 backdrop-blur-sm">
                 <div className="flex items-center gap-0.5 mb-5">
                   {Array.from({ length: item.rating }).map((_, i) => (
@@ -53,9 +79,7 @@ export default function TestimonialsSlider() {
                     wrapperClassName="h-12 w-12 shrink-0 overflow-hidden rounded-full"
                   />
                   <div>
-                    <p className="font-medium text-primary-white text-sm">
-                      {item.name}
-                    </p>
+                    <p className="font-medium text-primary-white text-sm">{item.name}</p>
                     <p className="mt-0.5 text-xs text-gold-light">{item.treatment}</p>
                   </div>
                 </div>
@@ -64,16 +88,6 @@ export default function TestimonialsSlider() {
           ))}
         </Swiper>
       </Container>
-
-      <style>{`
-        .testimonials-swiper .swiper-pagination-bullet {
-          background: rgba(255,255,255,0.35);
-          opacity: 1;
-        }
-        .testimonials-swiper .swiper-pagination-bullet-active {
-          background: #C8A45D;
-        }
-      `}</style>
     </section>
   );
 }

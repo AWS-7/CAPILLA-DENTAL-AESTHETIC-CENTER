@@ -147,7 +147,7 @@ export default function Footer() {
                 <Mail size={16} className="mt-0.5 shrink-0 text-gold" />
                 <a
                   href={clinicInfo.emailHref}
-                  className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors"
+                  className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors break-safe"
                 >
                   {clinicInfo.email}
                 </a>
@@ -177,11 +177,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-primary-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-primary-white/40">
+        <div className="mt-14 pt-8 border-t border-primary-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <p className="text-xs text-primary-white/40 break-safe px-2">
             © {year} {clinicInfo.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             {legalLinks.map((link) => (
               <Link
                 key={link.path}

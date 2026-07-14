@@ -7,6 +7,7 @@ import {
   AnimatedCounter,
   PrimaryButton,
   SecondaryButton,
+  MobileSwiper,
 } from '../common';
 import { reviews } from '../../data/content';
 import { reviewStats } from '../../data/home';
@@ -62,25 +63,24 @@ export default function GoogleReviewsSection() {
           </div>
         </motion.div>
 
-        {/* Mobile: ~1.2 cards swipe carousel */}
-        <div
-          className="md:hidden -mx-5 px-5"
-          role="region"
-          aria-label="Patient reviews carousel"
-        >
-          <div className="snap-x-carousel pb-2">
+        <div className="md:hidden -mx-1">
+          <MobileSwiper
+            slidesPerView={1.15}
+            spaceBetween={14}
+            freeMode
+            loop
+            ariaLabel="Google reviews"
+            breakpoints={{
+              360: { slidesPerView: 1.15 },
+              430: { slidesPerView: 1.2 },
+            }}
+          >
             {reviews.map((review) => (
-              <div
-                key={review.id}
-                className="snap-start shrink-0 w-[82%] sm:w-[75%]"
-              >
-                <ReviewCard {...review} className="h-full min-h-[220px]" />
-              </div>
+              <ReviewCard key={review.id} {...review} className="h-full min-h-[220px]" />
             ))}
-          </div>
+          </MobileSwiper>
         </div>
 
-        {/* Desktop grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
