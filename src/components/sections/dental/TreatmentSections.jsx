@@ -31,7 +31,9 @@ export function TreatmentOverview({ title = 'Overview', paragraphs = [], image }
             >
               <motion.img
                 src={image}
-                alt=""
+                alt={title}
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}

@@ -29,7 +29,7 @@ export default function PageHero({
         <div className="absolute inset-0">
           <LazyLoadImage
             src={backgroundImage}
-            alt=""
+            alt={title ? `${title} — Capilla Dental & Aesthetic Center` : 'Capilla clinic'}
             effect="blur"
             className="h-full w-full object-cover"
             wrapperClassName="h-full w-full"

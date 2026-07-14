@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import JsonLd from './JsonLd';
-import { getSchemasForPath, aeoShortAnswers } from '../../data/schema';
+import { getSchemasForPath, aeoShortAnswers, gbpRecommendations } from '../../data/schema';
 import { seoDefaults } from '../../data/seo';
 import { clinicInfo } from '../../data/clinic';
 
@@ -51,8 +51,15 @@ export default function SiteWideSeo() {
         </p>
         <p>
           Service areas: Perumbakkam, Medavakkam, Sholinganallur, Chennai. Keywords: best dental
-          clinic in Perumbakkam, dentist near me, Hydrafacial Chennai, hair transplant Chennai.
+          clinic in Perumbakkam, dentist near me, Hydrafacial Chennai, hair transplant Chennai,
+          skin clinic Perumbakkam, hair clinic Perumbakkam.
         </p>
+        <h2>Google Business Profile recommendations</h2>
+        <ul>
+          {gbpRecommendations.map((tip) => (
+            <li key={tip.slice(0, 48)}>{tip}</li>
+          ))}
+        </ul>
       </section>
     </>
   );

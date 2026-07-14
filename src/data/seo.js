@@ -1,6 +1,6 @@
 export const seoDefaults = {
   siteName: 'Capilla Dental & Aesthetic Center',
-  siteUrl: 'https://capillaclinic.com',
+  siteUrl: (import.meta.env.VITE_SITE_URL || 'https://capillaclinic.com').replace(/\/$/, ''),
   defaultTitle:
     'Best Dental Clinic in Perumbakkam | Skin & Hair Care | Capilla Dental & Aesthetic Center',
   titleTemplate: '%s | Capilla Dental & Aesthetic Center',

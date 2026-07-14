@@ -83,7 +83,9 @@ export default function BlogArticleBody({ article }) {
                   <div className="mt-10 overflow-hidden rounded-3xl">
                     <img
                       src={article.image}
-                      alt=""
+                      alt={article.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full aspect-[16/9] object-cover"
                     />
                   </div>

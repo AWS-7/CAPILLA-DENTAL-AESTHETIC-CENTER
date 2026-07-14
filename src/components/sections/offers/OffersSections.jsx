@@ -10,6 +10,7 @@ import {
 } from '../../common';
 import { offersList } from '../../../data/offersPage';
 import { staggerContainer, staggerItem } from '../../../utils/animations';
+import { trackingEvents } from '../../../utils/analytics';
 
 export function OffersGrid() {
   return (
@@ -56,7 +57,12 @@ export function OffersGrid() {
                   </p>
                   <p className="mt-4 text-xs text-dark-bg/40">Valid until {offer.validUntil}</p>
                   <div className="mt-5">
-                    <PrimaryButton to={offer.path} variant="gold" size="sm">
+                    <PrimaryButton
+                      to={offer.path}
+                      variant="gold"
+                      size="sm"
+                      onClick={() => trackingEvents.offerClaim(offer.title)}
+                    >
                       Book Now
                       <ArrowRight size={14} />
                     </PrimaryButton>
@@ -132,7 +138,12 @@ export function OffersCountdownBanner() {
             ))}
           </div>
           <div className="relative mt-10">
-            <PrimaryButton to="/contact" variant="gold" size="lg">
+            <PrimaryButton
+              to="/contact"
+              variant="gold"
+              size="lg"
+              onClick={() => trackingEvents.offerClaim('Festival Offer Window')}
+            >
               Claim Offer Now
             </PrimaryButton>
           </div>

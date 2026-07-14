@@ -1,0 +1,23 @@
+{
+  "name": "Capilla Dental & Aesthetic Center",
+  "short_name": "Capilla",
+  "description": "Premium dental, skin, and hair clinic in Perumbakkam, Chennai.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#000000",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -15,7 +15,12 @@ export default function PageCtaHero({
     <section className="relative min-h-[52vh] md:min-h-[58vh] w-full overflow-hidden bg-dark-bg">
       {image && (
         <div className="absolute inset-0">
-          <img src={image} alt="" className="h-full w-full object-cover opacity-40" />
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover opacity-40"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-black via-primary-black/80 to-primary-black/50" />
         </div>
       )}

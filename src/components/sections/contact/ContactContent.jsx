@@ -20,6 +20,7 @@ import {
 import { clinicInfo } from '../../../data/clinic';
 import { contactTreatments } from '../../../data/contactPage';
 import { fadeUp, slideInLeft, slideInRight } from '../../../utils/animations';
+import { trackingEvents } from '../../../utils/analytics';
 
 const inputClass =
   'w-full rounded-2xl border border-border bg-light-bg px-4 py-3.5 text-sm outline-none transition-colors focus:border-gold focus:bg-primary-white';
@@ -42,6 +43,7 @@ export default function ContactContent() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    trackingEvents.formSubmit(form.treatment || 'general');
     setSubmitted(true);
   };
 
