@@ -19,7 +19,8 @@
     --container-px: 1rem;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     --fab-stack-space: 0rem;
-    --mobile-bottom-bar: 5.25rem;
+    /* Clears fixed mobile action bar (~72px chrome + padding) */
+    --mobile-bottom-bar: 5.5rem;
   }
 
   @media (min-width: 375px) {
