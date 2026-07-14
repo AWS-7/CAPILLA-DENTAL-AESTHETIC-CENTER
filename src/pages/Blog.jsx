@@ -1,13 +1,36 @@
-import PagePlaceholder from '../components/common/PagePlaceholder';
-import { placeholders } from '../data/content';
+import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/common';
+import PageCtaHero from '../components/sections/shared/PageCtaHero';
+import { BlogFeatured, BlogListing } from '../components/sections/blog/BlogSections';
+import PageConsultCTA from '../components/sections/shared/PageConsultCTA';
+import { blogSeo, blogHero } from '../data/blogPage';
 
 export default function Blog() {
   return (
-    <PagePlaceholder
-      title="Blog & Insights"
-      subtitle="Expert guidance on dental health, skin rejuvenation, and hair restoration."
-      path="/blog"
-      backgroundImage={placeholders.blog}
-    />
+    <>
+      <SEO
+        title={blogSeo.title}
+        description={blogSeo.description}
+        canonical={blogSeo.canonical}
+        image={blogHero.image}
+      />
+      <Helmet>
+        <meta name="keywords" content={blogSeo.keywords} />
+        <meta property="og:locale" content="en_IN" />
+      </Helmet>
+
+      <PageCtaHero
+        title={blogHero.title}
+        subtitle={blogHero.subtitle}
+        image={blogHero.image}
+        eyebrow="Insights"
+      />
+      <BlogFeatured />
+      <BlogListing />
+      <PageConsultCTA
+        title="Have Questions About a Treatment?"
+        description="Speak with Capilla specialists in Perumbakkam — book a consultation for personalised guidance."
+      />
+    </>
   );
 }
