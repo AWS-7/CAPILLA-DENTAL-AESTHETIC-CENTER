@@ -11,13 +11,13 @@ export const clinicInfo = {
   email: 'hello@capillaclinic.com',
   emailHref: 'mailto:hello@capillaclinic.com',
   address: {
-    line1: '12, Prestige Avenue, Koramangala',
-    line2: 'Bengaluru, Karnataka 560034',
-    full: '12, Prestige Avenue, Koramangala, Bengaluru, Karnataka 560034',
+    line1: 'No. 42, OMR Road, Perumbakkam',
+    line2: 'Chennai, Tamil Nadu 600100',
+    full: 'No. 42, OMR Road, Perumbakkam, Chennai, Tamil Nadu 600100',
   },
   mapsEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.6!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3N8KwMzYnMDAuMCJF!5e0!3m2!1sen!2sin!4v1',
-  mapsLink: 'https://maps.google.com/?q=Koramangala+Bengaluru',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5!2d80.2!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA4MMKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1',
+  mapsLink: 'https://maps.google.com/?q=Perumbakkam+Chennai',
   workingHours: [
     { day: 'Monday – Saturday', hours: '10:00 AM – 8:00 PM' },
     { day: 'Sunday', hours: '10:00 AM – 2:00 PM' },

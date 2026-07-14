@@ -1,4 +1,13 @@
-/**
- * Page section compositions.
- * Build sections here; keep pages as thin composers.
- */
+export { default as HeroBanner } from './HeroBanner';
+export { default as WhyChoose } from './WhyChoose';
+export { default as TreatmentCategories } from './TreatmentCategories';
+export { default as FeaturedTreatments } from './FeaturedTreatments';
+export { default as DoctorsPreview } from './DoctorsPreview';
+export { default as BeforeAfterPreview } from './BeforeAfterPreview';
+export { default as GoogleReviewsSection } from './GoogleReviewsSection';
+export { default as TestimonialsSlider } from './TestimonialsSlider';
+export { default as LatestOffers } from './LatestOffers';
+export { default as BlogPreview } from './BlogPreview';
+export { default as AppointmentCTA } from './AppointmentCTA';
+export { default as LocationSection } from './LocationSection';
+export { default as FooterCTA } from './FooterCTA';
