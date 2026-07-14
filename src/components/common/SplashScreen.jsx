@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const SESSION_KEY = 'capilla-splash-seen';
+const SESSION_KEY = 'capilla-splash-v2';
 const SPLASH_MS = 1900;
 const MOBILE_MQ = '(max-width: 767px)';
 
 /**
- * Premium mobile splash — original Capilla logo only.
+ * Premium mobile splash — new Capilla brand logo.
  * Once per browser session · mobile only · desktop bypass.
  */
 export default function SplashScreen() {
@@ -40,8 +40,8 @@ export default function SplashScreen() {
     <AnimatePresence>
       {show && (
         <motion.div
-          key="capilla-splash"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-primary-white md:hidden"
+          key="capilla-splash-v2"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FFFFFF] md:hidden"
           role="dialog"
           aria-label="Capilla Dental & Aesthetic Center"
           aria-live="polite"
@@ -50,13 +50,13 @@ export default function SplashScreen() {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.img
-            src="/logo.png"
+            src="/splash-logo.png"
             alt="Capilla Dental & Aesthetic Center"
-            width={120}
-            height={120}
+            width={160}
+            height={160}
             decoding="async"
             fetchPriority="high"
-            className="h-[110px] w-[110px] max-h-[120px] max-w-[120px] object-contain object-center"
+            className="h-[120px] w-auto max-h-[140px] max-w-[160px] object-contain object-center"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
