@@ -88,6 +88,31 @@ export const treatmentCategories = [
   },
 ];
 
+/** Premium hero carousel — 3 slides (Mobile) */
+export const heroCarouselSlides = [
+  {
+    id: 'clinic',
+    label: 'Capilla Clinic',
+    title: 'Premium Clinic',
+    image: placeholders.clinic,
+    path: '/about',
+  },
+  {
+    id: 'dental',
+    label: 'Dental Care',
+    title: 'Dental',
+    image: placeholders.dental,
+    path: '/dental',
+  },
+  {
+    id: 'skin-hair',
+    label: 'Aesthetic Care',
+    title: 'Skin & Hair',
+    image: placeholders.skin,
+    path: '/skin',
+  },
+];
+
 export const featuredDental = [
   {
     id: 'dental-implants',

@@ -30,8 +30,8 @@ export default function Footer() {
                 src="/logo.png"
                 alt="Capilla Dental & Aesthetic Center"
                 width={200}
-                height={72}
-                className="h-12 sm:h-14 w-auto object-contain object-left"
+                height={96}
+                className="h-16 sm:h-20 w-auto object-contain object-left"
                 decoding="async"
               />
             </Link>

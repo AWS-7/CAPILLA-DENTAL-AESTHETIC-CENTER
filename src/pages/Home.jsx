@@ -38,9 +38,19 @@ export default function Home() {
       </Helmet>
 
       <HeroBanner />
-      <WhyChoose />
-      <TreatmentCategories />
       <FeaturedTreatments
+        className="md:hidden"
+        eyebrow="Dental Care"
+        title="Featured Dental Treatments"
+        description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."
+        items={featuredDental}
+        viewAllTo="/dental"
+        viewAllLabel="View All Dental Treatments"
+      />
+      <TreatmentCategories />
+      <WhyChoose />
+      <FeaturedTreatments
+        className="hidden md:block"
         eyebrow="Dental Care"
         title="Featured Dental Treatments"
         description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."

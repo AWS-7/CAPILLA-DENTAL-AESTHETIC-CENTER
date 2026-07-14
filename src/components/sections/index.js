@@ -1,4 +1,5 @@
-export { default as HeroBanner } from './HeroBanner';
+export { default as HeroBanner } from './Hero';
+export { default as Hero } from './Hero';
 export { default as WhyChoose } from './WhyChoose';
 export { default as TreatmentCategories } from './TreatmentCategories';
 export { default as FeaturedTreatments } from './FeaturedTreatments';
