@@ -23,6 +23,8 @@ export default function BlogPreview() {
           eyebrow="Insights"
           title="Latest Articles"
           description="Expert guidance on dental health, skin rejuvenation, and hair restoration from our specialists."
+          align="center"
+          className="mx-auto w-full max-w-3xl"
         />
 
         {/* Mobile: Swiper ~1.2 cards */}
@@ -107,7 +109,7 @@ export default function BlogPreview() {
           </motion.div>
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 flex w-full justify-center text-center">
           <SecondaryButton to="/blog" size="lg" className="w-full sm:w-auto">
             View All Articles
           </SecondaryButton>

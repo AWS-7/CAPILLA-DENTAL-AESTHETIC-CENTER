@@ -5,26 +5,27 @@ import { fadeUp } from '../../utils/animations';
 
 export default function FooterCTA() {
   return (
-    <section className="relative overflow-hidden bg-dark-bg py-14 sm:py-20 md:py-28 max-w-[100vw]">
+    <section className="section-padding relative overflow-hidden bg-dark-bg max-w-[100vw]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,164,93,0.18),transparent_60%)]" />
-      <Container className="relative z-10 text-center">
+      <Container className="relative z-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
+          className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-5">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-gold md:text-sm">
             Capilla Dental & Aesthetic Center
           </p>
-          <h2 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-6xl lg:text-[4.5rem] text-primary-white max-w-4xl mx-auto break-safe">
+          <h2 className="font-display text-[1.75rem] leading-tight text-primary-white sm:text-4xl md:text-display-md lg:text-[3.25rem] break-safe">
             Book Your Appointment Today
           </h2>
-          <p className="mt-5 sm:mt-6 text-base md:text-lg font-light text-primary-white/55 max-w-xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-base font-light leading-relaxed text-primary-white/55 sm:mt-5 md:text-lg">
             Your smile, skin, and confidence deserve a clinical experience designed
             around luxury, trust, and lasting results.
           </p>
-          <div className="mt-8 sm:mt-10 flex justify-center">
+          <div className="mt-8 flex w-full justify-center sm:mt-9">
             <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
               Book Appointment
               <ArrowRight size={18} />
