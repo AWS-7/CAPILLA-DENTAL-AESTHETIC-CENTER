@@ -63,12 +63,50 @@ export function ReviewsCards() {
           title="Patient Reviews"
           description="Stories from patients across Perumbakkam who trust Capilla for lasting results."
         />
+
+        <div className="md:hidden -mx-5 px-5" role="region" aria-label="Patient reviews carousel">
+          <div className="snap-x-carousel pb-2">
+            {googleReviewsList.map((review) => (
+              <div key={review.id} className="snap-start shrink-0 w-[82%]">
+                <Card className="h-full min-h-[240px] flex flex-col">
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        size={14}
+                        className={i < review.rating ? 'fill-gold text-gold' : 'text-border'}
+                      />
+                    ))}
+                  </div>
+                  <p className="font-display text-lg italic leading-relaxed text-dark-bg/80 flex-1">
+                    &ldquo;{review.text}&rdquo;
+                  </p>
+                  <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border">
+                    <LazyLoadImage
+                      src={review.avatar}
+                      alt={review.name}
+                      effect="blur"
+                      className="h-11 w-11 rounded-full object-cover"
+                      wrapperClassName="h-11 w-11 rounded-full overflow-hidden shrink-0"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-primary-black">{review.name}</p>
+                      <p className="text-xs text-gold mt-0.5">{review.treatment}</p>
+                      <p className="text-xs text-dark-bg/40 mt-0.5">{review.date}</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
         >
           {googleReviewsList.map((review) => (
             <motion.div key={review.id} variants={staggerItem}>

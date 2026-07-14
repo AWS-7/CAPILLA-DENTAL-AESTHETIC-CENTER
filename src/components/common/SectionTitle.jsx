@@ -33,7 +33,7 @@ export default function SectionTitle({
       )}
       <h2
         className={cn(
-          'font-display text-display-sm md:text-display-md lg:text-[3.25rem] leading-tight',
+          'font-display text-[1.625rem] leading-tight sm:text-[1.875rem] md:text-display-md lg:text-[3.25rem]',
           light ? 'text-primary-white' : 'text-primary-black'
         )}
       >
@@ -42,7 +42,7 @@ export default function SectionTitle({
       {description && (
         <p
           className={cn(
-            'mt-5 text-base md:text-lg font-sans font-light leading-relaxed max-w-2xl',
+            'mt-4 sm:mt-5 text-base font-sans font-light leading-relaxed max-w-2xl md:text-lg',
             light ? 'text-primary-white/70' : 'text-dark-bg/60',
             align === 'center' && 'mx-auto'
           )}

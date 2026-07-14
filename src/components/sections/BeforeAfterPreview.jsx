@@ -20,7 +20,7 @@ export default function BeforeAfterPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-8"
         >
           {beforeAfterItems.map((item) => (
             <motion.div key={item.id} variants={staggerItem}>

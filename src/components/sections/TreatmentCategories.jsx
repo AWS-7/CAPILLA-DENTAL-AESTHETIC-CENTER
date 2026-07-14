@@ -53,11 +53,16 @@ export default function TreatmentCategories() {
                   <p className="text-sm font-light leading-relaxed text-dark-bg/60">
                     {cat.description}
                   </p>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <SecondaryButton to={cat.path} size="sm">
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <SecondaryButton to={cat.path} size="sm" className="w-full sm:w-auto">
                       Learn More
                     </SecondaryButton>
-                    <PrimaryButton to="/contact" size="sm" variant="gold">
+                    <PrimaryButton
+                      to="/contact"
+                      size="sm"
+                      variant="gold"
+                      className="w-full sm:w-auto"
+                    >
                       Book Appointment
                     </PrimaryButton>
                   </div>

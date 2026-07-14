@@ -26,7 +26,7 @@ function ComparisonCard({ item, onOpen }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96 }}
       className={cn(
-        'group relative overflow-hidden rounded-3xl border border-border bg-primary-white shadow-soft',
+        'group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-primary-white shadow-soft',
         item.span === 'tall' && 'md:row-span-2',
         item.span === 'wide' && 'md:col-span-2'
       )}
@@ -35,7 +35,9 @@ function ComparisonCard({ item, onOpen }) {
         ref={ref}
         className={cn(
           'relative w-full overflow-hidden cursor-ew-resize select-none',
-          item.span === 'tall' ? 'aspect-[3/4] md:h-full md:aspect-auto md:min-h-[480px]' : 'aspect-[4/3]'
+          item.span === 'tall'
+            ? 'aspect-[3/4] md:h-full md:aspect-auto md:min-h-[480px]'
+            : 'aspect-square sm:aspect-[4/3]'
         )}
         onMouseDown={() => {
           dragging.current = true;
@@ -82,10 +84,12 @@ function ComparisonCard({ item, onOpen }) {
           After
         </span>
       </div>
-      <div className="p-4 md:p-5 flex items-center justify-between gap-3">
-        <div>
-          <p className="text-xs uppercase tracking-[0.16em] text-gold">{item.category}</p>
-          <h3 className="mt-1 font-display text-lg md:text-xl text-primary-black">{item.title}</h3>
+      <div className="p-3 sm:p-4 md:p-5 flex items-center justify-between gap-2 sm:gap-3">
+        <div className="min-w-0">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gold">{item.category}</p>
+          <h3 className="mt-1 font-display text-sm sm:text-lg md:text-xl text-primary-black truncate sm:whitespace-normal">
+            {item.title}
+          </h3>
         </div>
         <button
           type="button"
@@ -201,7 +205,10 @@ export default function GalleryGrid() {
           ))}
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6 auto-rows-auto">
+        <motion.div
+          layout
+          className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5 md:gap-6 auto-rows-auto"
+        >
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (
               <ComparisonCard key={item.id} item={item} onOpen={setActive} />

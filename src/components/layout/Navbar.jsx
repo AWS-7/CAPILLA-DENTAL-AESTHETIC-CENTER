@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, MessageCircle } from 'lucide-react';
 import { clinicInfo, navLinks } from '../../data/clinic';
 import useScrolled from '../../hooks/useScrolled';
 import PrimaryButton from '../common/PrimaryButton';
+import SecondaryButton from '../common/SecondaryButton';
 import { cn } from '../../utils/helpers';
 
-function Logo({ light = false }) {
+function Logo({ light = false, onNavigate, compact = false }) {
   return (
-    <Link to="/" className="group flex items-center gap-3 shrink-0">
+    <Link
+      to="/"
+      onClick={onNavigate}
+      className="group flex items-center gap-3 shrink-0"
+    >
       <span
         className={cn(
           'flex h-10 w-10 items-center justify-center rounded-xl transition-colors',
@@ -18,7 +23,12 @@ function Logo({ light = false }) {
       >
         <span className="font-display text-lg text-primary-white font-semibold">C</span>
       </span>
-      <span className="hidden sm:flex flex-col leading-tight">
+      <span
+        className={cn(
+          'flex flex-col leading-tight',
+          compact && 'hidden sm:flex'
+        )}
+      >
         <span
           className={cn(
             'font-display text-lg md:text-xl font-semibold tracking-tight',
@@ -106,9 +116,14 @@ export default function Navbar() {
   const isHome = location.pathname === '/';
   const transparent = isHome && !scrolled && !mobileOpen;
 
-  useEffect(() => {
+  const closeMobile = () => {
     setMobileOpen(false);
     setOpenAccordion(null);
+  };
+
+  useEffect(() => {
+    closeMobile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   useEffect(() => {
@@ -128,7 +143,7 @@ export default function Navbar() {
       )}
     >
       <div className="container-premium flex h-[var(--header-height)] items-center justify-between gap-4">
-        <Logo light={transparent} />
+        <Logo light={transparent} compact />
 
         <nav className="hidden xl:flex items-center gap-0.5">
           {navLinks.map((link) =>
@@ -170,18 +185,20 @@ export default function Navbar() {
             {clinicInfo.phone}
           </a>
 
-          <PrimaryButton
-            to="/contact"
-            size="sm"
-            variant={transparent ? 'gold' : 'primary'}
-            className="hidden md:inline-flex"
-          >
-            Book Appointment
-          </PrimaryButton>
+          <div className="hidden md:block">
+            <PrimaryButton
+              to="/contact"
+              size="sm"
+              variant={transparent ? 'gold' : 'primary'}
+            >
+              Book Appointment
+            </PrimaryButton>
+          </div>
 
           <button
             type="button"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
             className={cn(
               'xl:hidden flex h-11 w-11 items-center justify-center rounded-full border transition-colors',
@@ -195,89 +212,136 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile left slide-in sidebar */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35 }}
-            className="xl:hidden overflow-hidden border-t border-border bg-primary-white"
-          >
-            <nav className="container-premium max-h-[calc(100dvh-var(--header-height))] overflow-y-auto py-6 space-y-1">
-              {navLinks.map((link) => (
-                <div key={link.path}>
-                  {link.children ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setOpenAccordion((prev) =>
-                            prev === link.path ? null : link.path
+          <>
+            <motion.button
+              type="button"
+              aria-label="Close menu overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="xl:hidden fixed inset-0 z-[60] bg-primary-black/55 backdrop-blur-[2px]"
+              onClick={closeMobile}
+            />
+
+            <motion.aside
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="xl:hidden fixed top-0 left-0 z-[70] flex h-[100dvh] w-[min(88vw,340px)] flex-col bg-primary-white shadow-premium"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
+            >
+              <div className="flex items-center justify-between border-b border-border px-5 py-4">
+                <Logo onNavigate={closeMobile} />
+                <button
+                  type="button"
+                  aria-label="Close menu"
+                  onClick={closeMobile}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary-black hover:border-gold hover:text-gold transition-colors"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <nav className="flex-1 overflow-y-auto overscroll-contain px-5 py-4 space-y-1">
+                {navLinks.map((link) => (
+                  <div key={link.path}>
+                    {link.children ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setOpenAccordion((prev) =>
+                              prev === link.path ? null : link.path
+                            )
+                          }
+                          className="flex w-full min-h-12 items-center justify-between py-3 text-base font-medium text-primary-black"
+                        >
+                          {link.label}
+                          <ChevronDown
+                            size={18}
+                            className={cn(
+                              'transition-transform',
+                              openAccordion === link.path && 'rotate-180'
+                            )}
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {openAccordion === link.path && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden pl-3 pb-2"
+                            >
+                              <Link
+                                to={link.path}
+                                onClick={closeMobile}
+                                className="block py-2.5 text-sm text-gold font-medium"
+                              >
+                                View All
+                              </Link>
+                              {link.children.map((child) => (
+                                <Link
+                                  key={child.path}
+                                  to={child.path}
+                                  onClick={closeMobile}
+                                  className="block py-2.5 text-sm text-dark-bg/65 hover:text-gold"
+                                >
+                                  {child.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <NavLink
+                        to={link.path}
+                        end={link.path === '/'}
+                        onClick={closeMobile}
+                        className={({ isActive }) =>
+                          cn(
+                            'flex min-h-12 items-center py-3 text-base font-medium transition-colors',
+                            isActive ? 'text-gold' : 'text-primary-black'
                           )
                         }
-                        className="flex w-full items-center justify-between py-3 text-base font-medium text-primary-black"
                       >
                         {link.label}
-                        <ChevronDown
-                          size={18}
-                          className={cn(
-                            'transition-transform',
-                            openAccordion === link.path && 'rotate-180'
-                          )}
-                        />
-                      </button>
-                      <AnimatePresence>
-                        {openAccordion === link.path && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden pl-4 pb-2"
-                          >
-                            <Link
-                              to={link.path}
-                              className="block py-2 text-sm text-gold font-medium"
-                            >
-                              View All
-                            </Link>
-                            {link.children.map((child) => (
-                              <Link
-                                key={child.path}
-                                to={child.path}
-                                className="block py-2 text-sm text-dark-bg/65 hover:text-gold"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <NavLink
-                      to={link.path}
-                      end={link.path === '/'}
-                      className={({ isActive }) =>
-                        cn(
-                          'block py-3 text-base font-medium transition-colors',
-                          isActive ? 'text-gold' : 'text-primary-black'
-                        )
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  )}
-                </div>
-              ))}
+                      </NavLink>
+                    )}
+                  </div>
+                ))}
+              </nav>
 
-              <div className="pt-4">
-                <PrimaryButton to="/contact" className="w-full" variant="gold">
+              <div className="border-t border-border px-5 py-5 space-y-3">
+                <PrimaryButton
+                  to="/contact"
+                  className="w-full"
+                  variant="gold"
+                  onClick={closeMobile}
+                >
                   Book Appointment
                 </PrimaryButton>
+                <SecondaryButton
+                  href={clinicInfo.whatsappHref}
+                  external
+                  className="w-full"
+                  variant="gold"
+                  onClick={closeMobile}
+                >
+                  <MessageCircle size={18} />
+                  WhatsApp
+                </SecondaryButton>
               </div>
-            </nav>
-          </motion.div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </header>

@@ -33,7 +33,7 @@
   }
 
   body {
-    @apply font-sans text-dark-bg bg-primary-white antialiased;
+    @apply font-sans text-base text-dark-bg bg-primary-white antialiased;
     overflow-x: hidden;
   }
 
@@ -73,11 +73,30 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-30;
+    @apply py-12 md:py-24 lg:py-30;
   }
 
   .link-underline {
     @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* Touch-friendly horizontal snap carousels (mobile) */
+  .snap-x-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+    touch-action: pan-x pan-y;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .snap-x-carousel::-webkit-scrollbar {
+    display: none;
   }
 }
 

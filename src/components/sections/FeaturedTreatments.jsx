@@ -44,10 +44,10 @@ export default function FeaturedTreatments({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3"
         >
           {items.map((item) => (
-            <motion.div key={item.id} variants={staggerItem}>
+            <motion.div key={item.id} variants={staggerItem} className="h-full">
               <article
                 className={cn(
                   'group flex h-full flex-col overflow-hidden rounded-3xl border transition-shadow duration-300 hover:shadow-premium',
@@ -56,7 +56,7 @@ export default function FeaturedTreatments({
                     : 'border-border bg-primary-white shadow-soft'
                 )}
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden shrink-0">
                   <motion.div
                     className="h-full w-full"
                     whileHover={{ scale: 1.06 }}
@@ -71,7 +71,7 @@ export default function FeaturedTreatments({
                     />
                   </motion.div>
                 </div>
-                <div className="flex flex-1 flex-col p-6 md:p-7">
+                <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-7">
                   <h3
                     className={cn(
                       'font-display text-xl md:text-2xl transition-colors group-hover:text-gold',
@@ -82,7 +82,7 @@ export default function FeaturedTreatments({
                   </h3>
                   <p
                     className={cn(
-                      'mt-2 text-sm font-light leading-relaxed',
+                      'mt-2 text-base font-light leading-relaxed flex-1',
                       isDark ? 'text-primary-white/55' : 'text-dark-bg/55'
                     )}
                   >
@@ -104,15 +104,21 @@ export default function FeaturedTreatments({
                       ))}
                     </ul>
                   )}
-                  <div className="mt-6 flex flex-wrap gap-3 pt-2">
+                  <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap">
                     <SecondaryButton
                       to={item.path}
                       size="sm"
                       variant={isDark ? 'light' : 'default'}
+                      className="w-full sm:w-auto"
                     >
                       Learn More
                     </SecondaryButton>
-                    <PrimaryButton to="/contact" size="sm" variant="gold">
+                    <PrimaryButton
+                      to="/contact"
+                      size="sm"
+                      variant="gold"
+                      className="w-full sm:w-auto"
+                    >
                       Book Now
                       <ArrowRight size={14} />
                     </PrimaryButton>

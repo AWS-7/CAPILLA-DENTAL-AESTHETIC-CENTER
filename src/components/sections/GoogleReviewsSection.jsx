@@ -28,10 +28,10 @@ export default function GoogleReviewsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="mb-10 md:mb-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
         >
-          <div className="rounded-3xl border border-border bg-primary-white p-6 text-center shadow-soft">
-            <p className="font-display text-4xl md:text-5xl text-primary-black">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 text-center shadow-soft">
+            <p className="font-display text-3xl md:text-5xl text-primary-black">
               {reviewStats.rating}
             </p>
             <div className="mt-2 flex items-center justify-center gap-0.5">
@@ -41,33 +41,52 @@ export default function GoogleReviewsSection() {
             </div>
             <p className="mt-2 text-sm font-light text-dark-bg/50">Google Rating</p>
           </div>
-          <div className="rounded-3xl border border-border bg-primary-white p-6 shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 shadow-soft">
             <AnimatedCounter
               end={reviewStats.totalReviews}
               suffix="+"
               label="Patient Reviews"
             />
           </div>
-          <div className="rounded-3xl border border-border bg-primary-white p-6 shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 shadow-soft">
             <AnimatedCounter
               end={reviewStats.fiveStarPercent}
               suffix="%"
               label="Five-Star Ratings"
             />
           </div>
-          <div className="rounded-3xl border border-border bg-primary-white p-6 text-center shadow-soft">
-            <p className="font-display text-4xl md:text-5xl text-gold">★</p>
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 text-center shadow-soft">
+            <p className="font-display text-3xl md:text-5xl text-gold">★</p>
             <p className="mt-2 text-sm font-medium text-primary-black">Verified</p>
             <p className="mt-1 text-sm font-light text-dark-bg/50">Google Business</p>
           </div>
         </motion.div>
 
+        {/* Mobile: ~1.2 cards swipe carousel */}
+        <div
+          className="md:hidden -mx-5 px-5"
+          role="region"
+          aria-label="Patient reviews carousel"
+        >
+          <div className="snap-x-carousel pb-2">
+            {reviews.map((review) => (
+              <div
+                key={review.id}
+                className="snap-start shrink-0 w-[82%] sm:w-[75%]"
+              >
+                <ReviewCard {...review} className="h-full min-h-[220px]" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {reviews.map((review) => (
             <motion.div key={review.id} variants={staggerItem}>
@@ -76,14 +95,15 @@ export default function GoogleReviewsSection() {
           ))}
         </motion.div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <PrimaryButton to="/reviews" variant="primary">
+        <div className="mt-10 md:mt-12 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+          <PrimaryButton to="/reviews" variant="primary" className="w-full sm:w-auto">
             View All Reviews
           </PrimaryButton>
           <SecondaryButton
             href={clinicInfo.social.google}
             external
             variant="gold"
+            className="w-full sm:w-auto"
           >
             Write a Review
             <ExternalLink size={14} />
