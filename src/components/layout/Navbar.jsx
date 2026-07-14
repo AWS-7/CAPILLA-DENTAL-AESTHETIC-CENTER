@@ -9,44 +9,25 @@ import PrimaryButton from '../common/PrimaryButton';
 import SecondaryButton from '../common/SecondaryButton';
 import { cn } from '../../utils/helpers';
 
-function Logo({ light = false, onNavigate, compact = false }) {
+function Logo({ onNavigate, compact = false }) {
   return (
     <Link
       to="/"
       onClick={onNavigate}
-      className="group flex items-center gap-3 shrink-0"
+      className="group flex items-center shrink-0"
+      aria-label="Capilla Dental & Aesthetic Center"
     >
-      <span
+      <img
+        src="/logo.png"
+        alt="Capilla Dental & Aesthetic Center"
+        width={180}
+        height={64}
         className={cn(
-          'flex h-10 w-10 items-center justify-center rounded-xl transition-colors',
-          light ? 'bg-gold' : 'bg-primary-black group-hover:bg-gold'
+          'w-auto object-contain object-left',
+          compact ? 'h-9 sm:h-10 md:h-11' : 'h-10 sm:h-11'
         )}
-      >
-        <span className="font-display text-lg text-primary-white font-semibold">C</span>
-      </span>
-      <span
-        className={cn(
-          'flex flex-col leading-tight',
-          compact && 'hidden sm:flex'
-        )}
-      >
-        <span
-          className={cn(
-            'font-display text-lg md:text-xl font-semibold tracking-tight',
-            light ? 'text-primary-white' : 'text-primary-black'
-          )}
-        >
-          Capilla
-        </span>
-        <span
-          className={cn(
-            'text-[10px] uppercase tracking-[0.18em] font-medium',
-            light ? 'text-gold-light' : 'text-gold'
-          )}
-        >
-          Dental & Aesthetic
-        </span>
-      </span>
+        decoding="async"
+      />
     </Link>
   );
 }
@@ -305,7 +286,7 @@ export default function Navbar() {
         )}
       >
         <div className="container-premium flex h-[var(--header-height)] items-center justify-between gap-3 sm:gap-4">
-          <Logo light={transparent} compact />
+          <Logo compact />
 
           <nav className="hidden xl:flex items-center gap-0.5">
             {navLinks.map((link) =>

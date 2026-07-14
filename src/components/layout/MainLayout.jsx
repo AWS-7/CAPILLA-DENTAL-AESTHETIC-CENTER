@@ -5,6 +5,7 @@ import Footer from './Footer';
 import ScrollProgress from './ScrollProgress';
 import BackToTop from './BackToTop';
 import FloatingButtons from './FloatingButtons';
+import MobileBottomBar from './MobileBottomBar';
 import SiteWideSeo from '../seo/SiteWideSeo';
 import useScrollToTop from '../../hooks/useScrollToTop';
 import { pageTransition } from '../../utils/animations';
@@ -14,7 +15,7 @@ export default function MainLayout() {
   useScrollToTop();
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden max-w-[100vw]">
+    <div className="flex min-h-screen flex-col overflow-x-hidden max-w-[100vw] pb-[calc(var(--mobile-bottom-bar)+var(--safe-bottom))] md:pb-0">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
@@ -30,7 +31,7 @@ export default function MainLayout() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="flex-1 overflow-x-hidden pb-[calc(var(--fab-stack-space)+var(--safe-bottom))] md:pb-0"
+          className="flex-1 overflow-x-hidden"
           tabIndex={-1}
         >
           <Outlet />
@@ -39,6 +40,7 @@ export default function MainLayout() {
 
       <Footer />
       <FloatingButtons />
+      <MobileBottomBar />
       <BackToTop />
     </div>
   );

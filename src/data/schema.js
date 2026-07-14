@@ -20,7 +20,7 @@ export function buildOrganizationSchema() {
     '@id': orgId,
     name: clinicInfo.name,
     url: seoDefaults.siteUrl,
-    logo: absoluteUrl('/favicon.svg'),
+    logo: absoluteUrl('/logo.png'),
     image: absoluteUrl(seoDefaults.defaultImage),
     description: clinicInfo.description,
     email: clinicInfo.email,
@@ -51,7 +51,7 @@ export function buildMedicalClinicSchema() {
     alternateName: 'Capilla Dental Clinic Perumbakkam',
     url: seoDefaults.siteUrl,
     image: absoluteUrl(seoDefaults.defaultImage),
-    logo: absoluteUrl('/favicon.svg'),
+    logo: absoluteUrl('/logo.png'),
     description:
       'Best dental clinic in Perumbakkam offering dental implants, root canal, teeth whitening, Hydrafacial, PRP hair treatment and more. Serving Medavakkam and Sholinganallur, Chennai.',
     telephone: clinicInfo.phone,
@@ -302,7 +302,7 @@ export function buildArticleSchema(article) {
       name: clinicInfo.name,
       logo: {
         '@type': 'ImageObject',
-        url: absoluteUrl('/favicon.svg'),
+        url: absoluteUrl('/logo.png'),
       },
     },
     mainEntityOfPage: absoluteUrl(`/blog/${article.slug}`),

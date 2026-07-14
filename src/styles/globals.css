@@ -18,7 +18,8 @@
     --header-height: 72px;
     --container-px: 1rem;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
-    --fab-stack-space: 5.5rem;
+    --fab-stack-space: 0rem;
+    --mobile-bottom-bar: 5.25rem;
   }
 
   @media (min-width: 375px) {
@@ -33,6 +34,7 @@
       --header-height: 96px;
       --container-px: 2rem;
       --fab-stack-space: 0rem;
+      --mobile-bottom-bar: 0rem;
     }
   }
 
@@ -212,6 +214,35 @@
 
   .mobile-swiper--light .swiper-pagination-bullet-active {
     background: #c8a45d;
+  }
+
+  /* Premium mobile bottom action bar */
+  .mobile-bottom-bar {
+    min-height: 72px;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .mobile-bottom-bar__btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-bottom-bar__btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--ripple-x, 50%) var(--ripple-y, 50%),
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 55%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .mobile-bottom-bar__btn:active::after {
+    opacity: 1;
   }
 }
 

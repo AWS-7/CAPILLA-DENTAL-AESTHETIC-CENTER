@@ -25,16 +25,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Link to="/" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold">
-                <span className="font-display text-lg text-primary-white font-semibold">C</span>
-              </span>
-              <span className="flex flex-col leading-tight">
-                <span className="font-display text-xl font-semibold">Capilla</span>
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gold-light">
-                  Dental & Aesthetic Center
-                </span>
-              </span>
+            <Link to="/" className="inline-flex items-center shrink-0" aria-label="Capilla Dental & Aesthetic Center">
+              <img
+                src="/logo.png"
+                alt="Capilla Dental & Aesthetic Center"
+                width={200}
+                height={72}
+                className="h-12 sm:h-14 w-auto object-contain object-left"
+                decoding="async"
+              />
             </Link>
             <p className="mt-5 text-sm font-light leading-relaxed text-primary-white/55 max-w-sm">
               {clinicInfo.description}
