@@ -29,9 +29,9 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Capilla Dental & Aesthetic Center"
-                width={200}
-                height={96}
-                className="h-16 sm:h-20 w-auto object-contain object-left"
+                width={220}
+                height={110}
+                className="h-20 sm:h-24 w-auto object-contain object-left"
                 decoding="async"
               />
             </Link>

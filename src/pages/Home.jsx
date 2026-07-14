@@ -38,6 +38,8 @@ export default function Home() {
       </Helmet>
 
       <HeroBanner />
+      <WhyChoose />
+      <TreatmentCategories />
       <FeaturedTreatments
         className="md:hidden"
         eyebrow="Dental Care"
@@ -47,8 +49,7 @@ export default function Home() {
         viewAllTo="/dental"
         viewAllLabel="View All Dental Treatments"
       />
-      <TreatmentCategories />
-      <WhyChoose />
+      
       <FeaturedTreatments
         className="hidden md:block"
         eyebrow="Dental Care"

@@ -4,9 +4,8 @@ import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { Star, Phone, MessageCircle } from 'lucide-react';
-import { PrimaryButton, SecondaryButton, AnimatedCounter } from '../../common';
-import { clinicInfo } from '../../../data/clinic';
+import { Star } from 'lucide-react';
+import { AnimatedCounter } from '../../common';
 import { heroCarouselSlides } from '../../../data/home';
 
 /**
@@ -20,6 +19,12 @@ export default function HeroMobile() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_12%,rgba(200,164,93,0.14),transparent_55%)]" />
 
       <div className="relative z-10 w-full pt-[calc(var(--header-height)+32px)] pb-12">
+        {/* Heading — above carousel */}
+        <h1 className="mx-auto mb-8 w-full max-w-[360px] px-3 font-display text-center text-[22px] font-bold leading-none tracking-tight whitespace-nowrap min-[360px]:text-[24px] min-[390px]:text-[26px]">
+          <span className="text-primary-white">Capilla Dental </span>
+          <span className="text-gold">& Aesthetic Center</span>
+        </h1>
+
         {/* Full-width carousel */}
         <div className="w-full px-4" role="region" aria-label="Clinic highlights">
           <div className="overflow-hidden rounded-[24px] border border-primary-white/10 shadow-premium">
@@ -62,54 +67,19 @@ export default function HeroMobile() {
           </div>
         </div>
 
-        {/* Content column — max 340px, centered */}
-        <div className="mx-auto mt-8 flex w-full max-w-[340px] flex-col items-center px-4 text-center">
-          <h1 className="w-full font-display text-center text-[20px] font-bold leading-none tracking-tight whitespace-nowrap min-[360px]:text-[22px] min-[390px]:text-[24px]">
-            <span className="text-primary-white">Capilla Dental </span>
-            <span className="text-gold">& Aesthetic Center</span>
-          </h1>
-
-          <div className="mt-6 font-display text-[28px] leading-[1.3] text-primary-white/90">
+        {/* Content — full-width, light side padding only */}
+        <div className="mt-8 flex w-full flex-col items-center px-4 text-center">
+          <div className="w-full font-display text-[28px] leading-[1.3] text-primary-white/90">
             <p className="mb-3">Smile Brighter.</p>
             <p className="mb-3">Glow Naturally.</p>
             <p className="text-gold-light">Restore Your Confidence.</p>
           </div>
 
-          <p className="mt-6 max-w-[320px] text-center text-[18px] font-light leading-[1.7] text-primary-white/65">
-            A luxury multi-specialty clinic in Perumbakka. offering advanced dentistry, medical-grade skin therapies,
+          <p className="mt-6 w-full text-center text-[14px] font-light leading-[1.5] text-primary-white/65">
+            Luxury multi-specialty clinic in Perumbakkam —
             <br />
-            and hair restoration — clinical precision & refined care.
+            advanced dentistry, medical-grade skin therapies & hair restoration.
           </p>
-
-          <div className="mt-7 flex w-full flex-col gap-[14px]">
-            <PrimaryButton
-              to="/contact"
-              variant="gold"
-              size="lg"
-              className="!h-14 !min-h-14 w-full !text-lg"
-            >
-              Book Appointment
-            </PrimaryButton>
-            <SecondaryButton
-              href={clinicInfo.whatsappHref}
-              external
-              variant="light"
-              size="lg"
-              className="!h-14 !min-h-14 w-full !text-lg"
-            >
-              <MessageCircle size={20} />
-              WhatsApp
-            </SecondaryButton>
-            <SecondaryButton
-              href={clinicInfo.phoneHref}
-              variant="light"
-              size="lg"
-              className="!h-14 !min-h-14 w-full !text-lg border-primary-white/25"
-            >
-              <Phone size={18} />
-              Call
-            </SecondaryButton>
-          </div>
 
           <div className="mt-6 grid w-full grid-cols-2 gap-3">
             <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3.5 text-center backdrop-blur-sm">
@@ -148,9 +118,7 @@ export default function HeroMobile() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent" />
+      </div>      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent" />
     </section>
   );
 }

@@ -20,11 +20,11 @@ function Logo({ onNavigate, compact = false }) {
       <img
         src="/logo.png"
         alt="Capilla Dental & Aesthetic Center"
-        width={160}
-        height={72}
+        width={180}
+        height={80}
         className={cn(
           'w-auto object-contain object-left',
-          compact ? 'h-10 sm:h-11' : 'h-11 sm:h-12'
+          compact ? 'h-12 sm:h-14' : 'h-14 sm:h-16'
         )}
         decoding="async"
       />
