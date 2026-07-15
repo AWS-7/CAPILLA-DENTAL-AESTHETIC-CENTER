@@ -26,7 +26,12 @@ export default function FooterCTA() {
             around luxury, trust, and lasting results.
           </p>
           <div className="mt-8 flex w-full justify-center sm:mt-9">
-            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
+            <PrimaryButton
+              to="/contact"
+              variant="gold"
+              size="lg"
+              className="w-full max-w-[320px] sm:w-auto"
+            >
               Book Appointment
               <ArrowRight size={18} />
             </PrimaryButton>
