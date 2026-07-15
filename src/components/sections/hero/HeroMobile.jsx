@@ -1,42 +1,77 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { Star } from 'lucide-react';
-import { AnimatedCounter } from '../../common';
+import { Star, Phone, MessageCircle, ArrowRight, Calendar } from 'lucide-react';
+import { clinicInfo } from '../../../data/clinic';
 import { heroCarouselSlides } from '../../../data/home';
 
+const GOLD = '#D4AF5A';
+const EASE = [0.25, 0.46, 0.45, 0.94];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+};
+
+const blurReveal = {
+  hidden: { opacity: 0, filter: 'blur(10px)', y: 12 },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px)',
+    y: 0,
+    transition: { duration: 0.6, ease: EASE },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: EASE } },
+};
+
+const stagger = (delay = 0) => ({
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: delay },
+  },
+});
+
+const glassCard =
+  'flex h-24 flex-col items-center justify-center rounded-[20px] border border-white/[0.12] bg-white/[0.06] backdrop-blur-md shadow-soft';
+
 /**
- * HeroMobile — brand-new mobile-only Hero.
- * Production layout. No Desktop / Tablet JSX reuse.
+ * HeroMobile — premium iOS-style luxury healthcare hero.
+ * Mobile only (320–767px). Independent from Desktop / Tablet.
  */
 export default function HeroMobile() {
   return (
-    <section className="relative w-full overflow-hidden bg-dark-bg">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#151515] to-[#1a160f]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_12%,rgba(200,164,93,0.14),transparent_55%)]" />
+    <section className="relative w-full overflow-hidden bg-[#0B0B0B]">
+      {/* Ambient gold glow */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,90,0.14),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_75%,rgba(212,175,90,0.07),transparent_45%)]" />
 
-      <div className="relative z-10 w-full pt-[calc(var(--header-height)+32px)] pb-12">
-        {/* Heading — above carousel */}
-        <h1 className="mx-auto mb-8 w-full max-w-[360px] px-3 font-display text-center text-[22px] font-bold leading-none tracking-tight whitespace-nowrap min-[360px]:text-[24px] min-[390px]:text-[26px]">
-          <span className="text-primary-white">Capilla Dental </span>
-          <span className="text-gold">& Aesthetic Center</span>
-        </h1>
-
-        {/* Full-width carousel */}
-        <div className="w-full px-4" role="region" aria-label="Clinic highlights">
-          <div className="overflow-hidden rounded-[24px] border border-primary-white/10 shadow-premium">
+      <div className="relative z-10 w-full px-5 pt-[calc(var(--header-height)+24px)] pb-12">
+        {/* ── Carousel · fade up ── */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          role="region"
+          aria-label="Clinic highlights"
+        >
+          <div className="overflow-hidden rounded-[28px] border border-white/10 shadow-premium">
             <Swiper
               modules={[Autoplay, Pagination, A11y, EffectFade]}
               effect="fade"
               fadeEffect={{ crossFade: true }}
               loop
-              speed={650}
+              speed={700}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               pagination={{ clickable: true }}
-              className="mobile-swiper mobile-swiper--light !pb-8"
+              className="mobile-swiper hero-mobile-swiper"
             >
               {heroCarouselSlides.map((slide) => (
                 <SwiperSlide key={slide.id}>
@@ -51,74 +86,196 @@ export default function HeroMobile() {
                       loading="eager"
                       decoding="async"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary-black/75 via-primary-black/25 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                      <p className="text-[10px] uppercase tracking-[0.16em] text-gold-light">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B]/85 via-[#0B0B0B]/25 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 text-left">
+                      <p
+                        className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#D4AF5A]"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
                         {slide.label}
                       </p>
-                      <p className="mt-0.5 font-display text-[22px] text-primary-white">
+                      <p
+                        className="mt-1 text-[22px] font-semibold leading-tight text-white"
+                        style={{ fontFamily: "'Playfair Display', serif" }}
+                      >
                         {slide.title}
                       </p>
+                      <span
+                        className="mt-2 inline-flex items-center gap-1.5 text-[12px] font-medium text-white/80"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        Explore
+                        <ArrowRight size={13} className="text-[#D4AF5A]" />
+                      </span>
                     </div>
                   </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Content — full-width, light side padding only */}
-        <div className="mt-8 flex w-full flex-col items-center px-4 text-center">
-          <div className="w-full font-display text-[28px] leading-[1.3] text-primary-white/90">
-            <p className="mb-3">Smile Brighter.</p>
-            <p className="mb-3">Glow Naturally.</p>
-            <p className="text-gold-light">Restore Your Confidence.</p>
-          </div>
+        {/* ── Heading · fade + blur reveal ── */}
+        <motion.div
+          variants={blurReveal}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.15 }}
+          className="mt-9 text-center"
+        >
+          <h1
+            className="whitespace-nowrap text-[clamp(15px,4.8vw,22px)] font-bold leading-[1.2] tracking-[-0.3px] text-white"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Capilla Dental{' '}
+            <span className="text-[#D4AF5A]">&amp; Aesthetic Center</span>
+          </h1>
+        </motion.div>
 
-          <p className="mt-6 w-full text-center text-[14px] font-light leading-[1.5] text-primary-white/65">
-            Luxury multi-specialty clinic in Perumbakkam —
-            <br />
-            advanced dentistry, medical-grade skin therapies & hair restoration.
-          </p>
+        {/* ── Tagline · stagger ── */}
+        <motion.div
+          variants={stagger(0.3)}
+          initial="hidden"
+          animate="visible"
+          className="mt-7 flex flex-col items-center gap-3 text-center"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          <motion.p
+            variants={fadeUp}
+            className="text-[28px] font-medium leading-[1.35] text-white"
+          >
+            Smile Brighter.
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="text-[28px] font-medium leading-[1.35] text-white"
+          >
+            Glow Naturally.
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="text-[28px] font-medium leading-[1.35] text-[#D4AF5A]"
+          >
+            Restore Your Confidence.
+          </motion.p>
+        </motion.div>
 
-          <div className="mt-6 grid w-full grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3.5 text-center backdrop-blur-sm">
-              <div className="flex items-center justify-center gap-0.5 text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={12} className="fill-gold text-gold" />
-                ))}
-              </div>
-              <p className="mt-1.5 text-xs font-medium text-primary-white">
-                Google Rated
-              </p>
+        {/* ── Description ── */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.5 }}
+          className="mx-auto mt-7 max-w-[330px] text-center text-[17px] font-normal leading-[1.8] text-[#BDBDBD]"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          Luxury multi-specialty clinic in Perumbakkam offering advanced
+          dentistry, medical-grade skin therapies and hair restoration.
+        </motion.p>
+
+        {/* ── Primary CTA · scale in ── */}
+        <motion.div
+          variants={scaleIn}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.6 }}
+          className="mt-8"
+        >
+          <Link
+            to="/contact"
+            className="flex h-[58px] w-full items-center justify-center gap-2.5 rounded-[18px] text-[18px] font-semibold text-[#0B0B0B] shadow-gold transition-transform duration-200 active:scale-[0.97]"
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              background: `linear-gradient(135deg, ${GOLD} 0%, #E2C27B 50%, #C09A45 100%)`,
+            }}
+          >
+            <Calendar size={19} />
+            Book Appointment
+          </Link>
+        </motion.div>
+
+        {/* ── Secondary CTA row · scale in ── */}
+        <motion.div
+          variants={scaleIn}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.7 }}
+          className="mt-3 flex w-full gap-3"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          <a
+            href={clinicInfo.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-[18px] border border-white/20 text-[17px] font-semibold text-white transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
+          >
+            <MessageCircle size={18} className="text-[#25D366]" />
+            WhatsApp
+          </a>
+          <a
+            href={clinicInfo.phoneHref}
+            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-[18px] border border-white/20 text-[17px] font-semibold text-white transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
+          >
+            <Phone size={17} className="text-[#D4AF5A]" />
+            Call Now
+          </a>
+        </motion.div>
+
+        {/* ── Trust cards · 2×2 stagger fade up ── */}
+        <motion.div
+          variants={stagger(0.8)}
+          initial="hidden"
+          animate="visible"
+          className="mt-9 grid grid-cols-2 gap-3.5"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          <motion.div variants={fadeUp} className={glassCard}>
+            <div className="flex items-center gap-1 text-[#D4AF5A]">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={14} className="fill-[#D4AF5A]" />
+              ))}
             </div>
-            <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3.5 text-center backdrop-blur-sm">
-              <AnimatedCounter
-                end={5000}
-                suffix="+"
-                label="Happy Patients"
-                className="[&>p:first-child]:text-2xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-xs [&>p:last-child]:text-primary-white/50"
-              />
-            </div>
-            <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3.5 text-center backdrop-blur-sm">
-              <AnimatedCounter
-                end={10}
-                suffix="+"
-                label="Years Experience"
-                className="[&>p:first-child]:text-2xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-xs [&>p:last-child]:text-primary-white/50"
-              />
-            </div>
-            <div className="rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3.5 text-center backdrop-blur-sm">
-              <p className="font-display text-2xl leading-none text-primary-white">
-                Modern
-              </p>
-              <p className="mt-1 text-xs font-light text-primary-white/50">
-                Equipment
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent" />
+            <p className="mt-2 text-[15px] font-medium text-white">
+              Google Rated
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className={glassCard}>
+            <p
+              className="text-[32px] font-semibold leading-none text-white"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              5000+
+            </p>
+            <p className="mt-1.5 text-[15px] text-[#BDBDBD]">Happy Patients</p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className={glassCard}>
+            <p
+              className="text-[32px] font-semibold leading-none text-white"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              10+
+            </p>
+            <p className="mt-1.5 text-[15px] text-[#BDBDBD]">
+              Years Experience
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className={glassCard}>
+            <p
+              className="text-[32px] font-semibold leading-none text-white"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Modern
+            </p>
+            <p className="mt-1.5 text-[15px] text-[#BDBDBD]">Equipment</p>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Seam into next section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent" />
     </section>
   );
 }

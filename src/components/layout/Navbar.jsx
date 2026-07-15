@@ -24,7 +24,7 @@ function Logo({ onNavigate, compact = false }) {
         height={80}
         className={cn(
           'w-auto object-contain object-left',
-          compact ? 'h-12 sm:h-14' : 'h-14 sm:h-16'
+          compact ? 'h-11 sm:h-14' : 'h-14 sm:h-16'
         )}
         decoding="async"
       />
@@ -344,9 +344,9 @@ export default function Navbar() {
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                'xl:hidden flex h-11 w-11 items-center justify-center rounded-full border transition-colors',
+                'xl:hidden flex h-[52px] w-[52px] md:h-11 md:w-11 items-center justify-center rounded-full border transition-colors',
                 transparent
-                  ? 'border-primary-white/30 text-primary-white'
+                  ? 'border-white/[0.12] bg-white/[0.08] text-primary-white backdrop-blur-md md:border-primary-white/30 md:bg-transparent md:backdrop-blur-none'
                   : 'border-border text-primary-black'
               )}
             >
