@@ -134,7 +134,7 @@ export const treatments = [
     title: 'PRP Hair Treatment',
     description:
       'Platelet-rich plasma therapy to stimulate natural hair regrowth.',
-    image: placeholders.hair,
+    image: '/treatments/hair/prp-hair-treatment.jpg',
     path: '/treatments/prp-hair-treatment',
   },
   {
@@ -144,7 +144,7 @@ export const treatments = [
     title: 'GFC Hair Treatment',
     description:
       'Advanced growth factor concentrate therapy for denser, healthier hair.',
-    image: placeholders.hair,
+    image: '/treatments/hair/gfc-hair-treatment.jpg',
     path: '/treatments/gfc-hair-treatment',
   },
   {
@@ -154,7 +154,7 @@ export const treatments = [
     title: 'Hair Transplant',
     description:
       'Precision FUE hair restoration for natural density and lifelong results.',
-    image: placeholders.hair,
+    image: '/treatments/hair/hair-transplant.jpg',
     path: '/treatments/hair-transplant',
   },
 ];
