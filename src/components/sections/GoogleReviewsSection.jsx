@@ -16,9 +16,12 @@ import { staggerContainer, staggerItem } from '../../utils/animations';
 
 export default function GoogleReviewsSection() {
   return (
-    <section className="section-padding bg-light-bg">
-      <Container>
+    <section className="section-padding relative overflow-hidden bg-[#0B0B0B]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,164,93,0.12),transparent_55%)]" />
+
+      <Container className="relative z-10">
         <SectionTitle
+          light
           eyebrow="Social Proof"
           title="Google Reviews"
           description="Trusted by patients across Perumbakkam and Chennai who value discretion, comfort, and measurable results."
@@ -95,15 +98,19 @@ export default function GoogleReviewsSection() {
           ))}
         </motion.div>
 
-        <div className="mt-10 md:mt-12 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-          <PrimaryButton to="/reviews" variant="primary" className="w-full sm:w-auto">
+        <div className="mt-10 md:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <PrimaryButton
+            to="/reviews"
+            variant="gold"
+            className="w-full max-w-[320px] sm:w-auto"
+          >
             View All Reviews
           </PrimaryButton>
           <SecondaryButton
             href={clinicInfo.social.google}
             external
             variant="gold"
-            className="w-full sm:w-auto"
+            className="w-full max-w-[320px] sm:w-auto"
           >
             Write a Review
             <ExternalLink size={14} />

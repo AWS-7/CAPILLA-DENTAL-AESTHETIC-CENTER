@@ -8,7 +8,6 @@ import {
   DoctorsPreview,
   BeforeAfterPreview,
   GoogleReviewsSection,
-  TestimonialsSlider,
   LatestOffers,
   BlogPreview,
   AppointmentCTA,
@@ -80,7 +79,6 @@ export default function Home() {
       <DoctorsPreview />
       <BeforeAfterPreview />
       <GoogleReviewsSection />
-      <TestimonialsSlider />
       <LatestOffers />
       <BlogPreview />
       <AppointmentCTA />

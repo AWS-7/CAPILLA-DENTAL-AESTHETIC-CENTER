@@ -33,8 +33,13 @@ export default function AppointmentCTA() {
               Begin your transformation with a specialist consultation at Capilla —
               the premium dental, skin & hair clinic in Perumbakkam.
             </p>
-            <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
+            <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
+              <PrimaryButton
+                to="/contact"
+                variant="gold"
+                size="lg"
+                className="w-full max-w-[320px] sm:w-auto"
+              >
                 <Calendar size={18} />
                 Book Appointment
               </PrimaryButton>
@@ -43,7 +48,7 @@ export default function AppointmentCTA() {
                 external
                 variant="light"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full max-w-[320px] sm:w-auto"
               >
                 <MessageCircle size={18} />
                 WhatsApp
@@ -52,7 +57,7 @@ export default function AppointmentCTA() {
                 href={clinicInfo.phoneHref}
                 variant="light"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full max-w-[320px] sm:w-auto"
               >
                 <Phone size={18} />
                 Call Now

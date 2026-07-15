@@ -13,7 +13,7 @@ import { whyChooseItems } from '../../data/home';
 import { placeholders } from '../../data/content';
 
 const tileBase =
-  'group relative overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm transition-all duration-500 hover:border-gold/40 hover:bg-white/[0.06]';
+  'group relative overflow-hidden rounded-[1.75rem] border border-border bg-light-bg transition-all duration-500 hover:border-gold/40 hover:bg-primary-white hover:shadow-premium';
 
 const tileMotion = {
   hidden: { opacity: 0, y: 32 },
@@ -28,15 +28,13 @@ function GlowCorner() {
 
 export default function WhyChoose() {
   return (
-    <section className="section-padding relative overflow-hidden bg-[#0B0B0B]">
+    <section className="section-padding relative overflow-hidden bg-primary-white">
       {/* Ambient glows */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(200,164,93,0.12),transparent_50%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_90%_100%,rgba(200,164,93,0.08),transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(200,164,93,0.08),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_90%_100%,rgba(200,164,93,0.06),transparent_45%)]" />
 
       <Container className="relative z-10">
         <SectionTitle
-          light
-          eyebrowClassName="!text-primary-white"
           eyebrow="Why Capilla"
           title="The Capilla Standard"
           description="Not just a clinic — a destination. Every detail engineered for people who expect the exceptional."
@@ -94,14 +92,14 @@ export default function WhyChoose() {
             className={`${tileBase} flex flex-col justify-between p-5 md:p-6`}
           >
             <GlowCorner />
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-primary-white/40">
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-dark-bg/40">
               Since 2014
             </span>
             <div>
               <p className="font-display text-5xl leading-none text-gold md:text-6xl">
                 10+
               </p>
-              <p className="mt-2 text-xs font-light text-primary-white/60 md:text-sm">
+              <p className="mt-2 text-xs font-light text-dark-bg/55 md:text-sm">
                 Years of clinical excellence
               </p>
             </div>
@@ -122,7 +120,7 @@ export default function WhyChoose() {
               <p className="font-display text-5xl leading-none text-gold md:text-6xl">
                 5000+
               </p>
-              <p className="mt-2 text-xs font-light text-primary-white/60 md:text-sm">
+              <p className="mt-2 text-xs font-light text-dark-bg/55 md:text-sm">
                 Happy patients &amp; counting
               </p>
             </div>
@@ -138,10 +136,10 @@ export default function WhyChoose() {
               <Cpu size={20} strokeWidth={1.8} />
             </span>
             <div className="mt-4">
-              <h3 className="font-display text-xl text-primary-white md:text-2xl">
+              <h3 className="font-display text-xl text-primary-black md:text-2xl">
                 Advanced Technology
               </h3>
-              <p className="mt-1.5 text-xs font-light leading-relaxed text-primary-white/55 md:text-sm">
+              <p className="mt-1.5 text-xs font-light leading-relaxed text-dark-bg/55 md:text-sm">
                 Digital diagnostics and precision-guided treatment systems for
                 safer, faster, more predictable outcomes.
               </p>
@@ -158,10 +156,10 @@ export default function WhyChoose() {
               <ShieldCheck size={20} strokeWidth={1.8} />
             </span>
             <div className="mt-4">
-              <h3 className="font-display text-lg leading-snug text-primary-white md:text-xl">
+              <h3 className="font-display text-lg leading-snug text-primary-black md:text-xl">
                 Sterile Environment
               </h3>
-              <p className="mt-1.5 text-xs font-light leading-relaxed text-primary-white/55">
+              <p className="mt-1.5 text-xs font-light leading-relaxed text-dark-bg/55">
                 Hospital-grade sterilization for complete peace of mind.
               </p>
             </div>
@@ -177,10 +175,10 @@ export default function WhyChoose() {
               <Clock size={20} strokeWidth={1.8} />
             </span>
             <div className="mt-4">
-              <h3 className="font-display text-lg leading-snug text-primary-white md:text-xl">
+              <h3 className="font-display text-lg leading-snug text-primary-black md:text-xl">
                 Same-Day Consultation
               </h3>
-              <p className="mt-1.5 text-xs font-light leading-relaxed text-primary-white/55">
+              <p className="mt-1.5 text-xs font-light leading-relaxed text-dark-bg/55">
                 Prompt evaluations when you need clarity fast.
               </p>
             </div>
@@ -192,7 +190,7 @@ export default function WhyChoose() {
             className={`${tileBase} col-span-2 flex flex-col justify-center p-6 md:p-8`}
           >
             <GlowCorner />
-            <p className="font-display text-2xl leading-snug text-primary-white md:text-3xl">
+            <p className="font-display text-2xl leading-snug text-primary-black md:text-3xl">
               <span className="text-gold">3 specialties.</span> One refined
               roof.
             </p>
@@ -205,7 +203,7 @@ export default function WhyChoose() {
                 <Link
                   key={label}
                   to={path}
-                  className="rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-primary-white/75 transition-all duration-300 hover:border-gold hover:text-gold"
+                  className="rounded-full border border-dark-bg/15 px-4 py-1.5 text-xs font-medium text-dark-bg/70 transition-all duration-300 hover:border-gold hover:text-gold"
                 >
                   {label}
                 </Link>
@@ -221,7 +219,7 @@ export default function WhyChoose() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 mt-12 border-y border-white/[0.07] py-5 md:mt-16"
+        className="relative z-10 mt-12 border-y border-white/10 bg-[#0B0B0B] py-5 md:mt-16"
       >
         <div className="marquee-track flex w-max items-center gap-8">
           {[...whyChooseItems, ...whyChooseItems].map((item, i) => (
@@ -229,7 +227,7 @@ export default function WhyChoose() {
               key={`${item.id}-${i}`}
               className="flex shrink-0 items-center gap-8 whitespace-nowrap"
             >
-              <span className="font-display text-lg text-primary-white/45 md:text-xl">
+              <span className="font-display text-lg text-primary-white md:text-xl">
                 {item.title}
               </span>
               <span className="text-[8px] text-gold">◆</span>
