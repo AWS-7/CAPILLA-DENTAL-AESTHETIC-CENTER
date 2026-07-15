@@ -20,6 +20,7 @@ export default function MobileSwiper({
   loop = false,
   lightPagination = false,
   autoplay = 0,
+  centered = false,
   breakpoints,
   ariaLabel = 'Carousel',
 }) {
@@ -44,6 +45,7 @@ export default function MobileSwiper({
         autoHeight
         loop={canLoop}
         loopAdditionalSlides={canLoop ? 1 : 0}
+        centeredSlides={centered}
         autoplay={
           autoplay > 0
             ? {

@@ -1,114 +1,59 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Expand } from 'lucide-react';
 import { Container, SectionTitle } from '../../common';
-import { galleryFilters, galleryTransformations } from '../../../data/gallery';
-import { cn } from '../../../utils/helpers';
+import { galleryPhotos } from '../../../data/gallery';
 
-function ComparisonCard({ item, onOpen }) {
-  const [pos, setPos] = useState(50);
-  const ref = useRef(null);
-  const dragging = useRef(false);
-
-  const update = (clientX) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
-    setPos((x / rect.width) * 100);
-  };
-
+function PhotoCard({ photo, onOpen }) {
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.96 }}
-      className={cn(
-        'group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-primary-white shadow-soft',
-        item.span === 'tall' && 'md:row-span-2',
-        item.span === 'wide' && 'md:col-span-2'
-      )}
+    <motion.figure
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group relative mb-3 break-inside-avoid overflow-hidden rounded-2xl border border-border bg-light-bg shadow-soft sm:mb-5 sm:rounded-3xl"
     >
-      <div
-        ref={ref}
-        className={cn(
-          'relative w-full overflow-hidden cursor-ew-resize select-none',
-          item.span === 'tall'
-            ? 'aspect-[3/4] md:h-full md:aspect-auto md:min-h-[480px]'
-            : 'aspect-square sm:aspect-[4/3]'
-        )}
-        onMouseDown={() => {
-          dragging.current = true;
-        }}
-        onMouseUp={() => {
-          dragging.current = false;
-        }}
-        onMouseLeave={() => {
-          dragging.current = false;
-        }}
-        onMouseMove={(e) => dragging.current && update(e.clientX)}
-        onTouchMove={(e) => update(e.touches[0].clientX)}
-        onClick={() => onOpen(item)}
+      <button
+        type="button"
+        onClick={() => onOpen(photo)}
+        className="block w-full text-left"
+        aria-label={`View ${photo.title}`}
       >
         <LazyLoadImage
-          src={item.after}
-          alt={`${item.title} after`}
+          src={photo.src}
+          alt={photo.title}
           effect="blur"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          wrapperClassName="absolute inset-0 h-full w-full"
+          className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          wrapperClassName="block w-full"
         />
-        <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-          <LazyLoadImage
-            src={item.before}
-            alt={`${item.title} before`}
-            effect="blur"
-            className="absolute inset-0 h-full max-w-none object-cover"
-            wrapperClassName="absolute inset-0 h-full w-full"
-            style={{ width: ref.current ? `${ref.current.offsetWidth}px` : '100%' }}
-          />
-        </div>
-        <div
-          className="absolute top-0 bottom-0 w-0.5 bg-gold shadow-gold z-10"
-          style={{ left: `${pos}%` }}
-        >
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-gold text-primary-white text-[10px] font-semibold">
-            ↔
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 opacity-0 transition-all duration-300 group-hover:opacity-100 sm:p-5">
+          <div className="min-w-0">
+            <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-gold">
+              {photo.category}
+            </p>
+            <p className="mt-1 truncate font-display text-lg text-primary-white sm:text-xl">
+              {photo.title}
+            </p>
+          </div>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-white/15 text-primary-white backdrop-blur-sm">
+            <Expand size={15} />
           </span>
-        </div>
-        <span className="absolute left-3 top-3 rounded-full bg-primary-black/70 px-2.5 py-1 text-[10px] uppercase tracking-wider text-primary-white">
-          Before
-        </span>
-        <span className="absolute right-3 top-3 rounded-full bg-gold px-2.5 py-1 text-[10px] uppercase tracking-wider text-primary-white">
-          After
-        </span>
-      </div>
-      <div className="p-3 sm:p-4 md:p-5 flex items-center justify-between gap-2 sm:gap-3">
-        <div className="min-w-0">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.16em] text-gold">{item.category}</p>
-          <h3 className="mt-1 font-display text-sm sm:text-lg md:text-xl text-primary-black truncate sm:whitespace-normal">
-            {item.title}
-          </h3>
-        </div>
-        <button
-          type="button"
-          onClick={() => onOpen(item)}
-          className="text-xs font-medium text-dark-bg/50 hover:text-gold transition-colors"
-        >
-          Expand
-        </button>
-      </div>
-    </motion.article>
+        </figcaption>
+      </button>
+    </motion.figure>
   );
 }
 
-function Lightbox({ item, onClose, onPrev, onNext }) {
-  if (!item) return null;
+function Lightbox({ photo, onClose, onPrev, onNext }) {
+  if (!photo) return null;
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[80] flex items-center justify-center bg-primary-black/90 p-4 md:p-8"
+        className="fixed inset-0 z-[80] flex items-center justify-center bg-primary-black/95 p-4 md:p-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -117,15 +62,15 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
         <button
           type="button"
           aria-label="Close"
-          className="absolute top-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white hover:bg-gold"
+          className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white transition-colors hover:bg-gold"
           onClick={onClose}
         >
           <X size={20} />
         </button>
         <button
           type="button"
-          aria-label="Previous"
-          className="absolute left-4 md:left-8 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white hover:bg-gold"
+          aria-label="Previous photo"
+          className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white transition-colors hover:bg-gold md:left-8"
           onClick={(e) => {
             e.stopPropagation();
             onPrev();
@@ -135,8 +80,8 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
         </button>
         <button
           type="button"
-          aria-label="Next"
-          className="absolute right-4 md:right-8 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white hover:bg-gold"
+          aria-label="Next photo"
+          className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-primary-white/10 text-primary-white transition-colors hover:bg-gold md:right-8"
           onClick={(e) => {
             e.stopPropagation();
             onNext();
@@ -144,22 +89,23 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
         >
           <ChevronRight size={22} />
         </button>
+
         <motion.div
           initial={{ scale: 0.94, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="grid w-full max-w-5xl grid-cols-2 gap-2 md:gap-4"
+          className="flex max-h-full w-full max-w-4xl flex-col items-center"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="overflow-hidden rounded-2xl">
-            <img src={item.before} alt="Before" className="h-full w-full object-cover max-h-[70vh]" />
-            <p className="mt-2 text-center text-xs uppercase tracking-widest text-primary-white/60">Before</p>
-          </div>
-          <div className="overflow-hidden rounded-2xl">
-            <img src={item.after} alt="After" className="h-full w-full object-cover max-h-[70vh]" />
-            <p className="mt-2 text-center text-xs uppercase tracking-widest text-gold">After</p>
-          </div>
-          <p className="col-span-2 text-center font-display text-2xl text-primary-white mt-2">
-            {item.title}
+          <img
+            src={photo.src}
+            alt={photo.title}
+            className="max-h-[78vh] w-auto max-w-full rounded-2xl object-contain shadow-premium"
+          />
+          <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
+            {photo.category}
+          </p>
+          <p className="mt-1 text-center font-display text-2xl text-primary-white">
+            {photo.title}
           </p>
         </motion.div>
       </motion.div>
@@ -168,67 +114,40 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
 }
 
 export default function GalleryGrid() {
-  const [filter, setFilter] = useState('All');
   const [active, setActive] = useState(null);
 
-  const filtered =
-    filter === 'All'
-      ? galleryTransformations
-      : galleryTransformations.filter((i) => i.category === filter);
-
-  const openIndex = filtered.findIndex((i) => i.id === active?.id);
+  const openIndex = galleryPhotos.findIndex((p) => p.id === active?.id);
 
   return (
     <section className="section-padding bg-primary-white">
       <Container>
         <SectionTitle
           eyebrow="Gallery"
-          title="Before & After Gallery"
-          description="Drag each comparison slider or expand for a larger view of patient transformations."
+          title="Inside Our Clinic"
+          description="A look at the spaces, technology, and details that shape the Capilla experience in Perumbakkam."
         />
 
-        <div className="mb-8 sm:mb-10 chip-scroll sm:flex-wrap sm:justify-center">
-          {galleryFilters.map((f) => (
-            <button
-              key={f}
-              type="button"
-              onClick={() => setFilter(f)}
-              className={cn(
-                'shrink-0 rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium transition-all duration-300 min-h-11',
-                filter === f
-                  ? 'bg-primary-black text-primary-white shadow-soft'
-                  : 'bg-light-gray text-dark-bg/70 hover:bg-gold hover:text-primary-white'
-              )}
-            >
-              {f}
-            </button>
+        <div className="columns-2 gap-3 sm:gap-5 lg:columns-3">
+          {galleryPhotos.map((photo) => (
+            <PhotoCard key={photo.id} photo={photo} onOpen={setActive} />
           ))}
         </div>
-
-        <motion.div
-          layout
-          className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5 md:gap-6 auto-rows-auto"
-        >
-          <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
-              <ComparisonCard key={item.id} item={item} onOpen={setActive} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
       </Container>
 
       {active && (
         <Lightbox
-          item={active}
+          photo={active}
           onClose={() => setActive(null)}
-          onPrev={() => {
-            const prev = filtered[(openIndex - 1 + filtered.length) % filtered.length];
-            setActive(prev);
-          }}
-          onNext={() => {
-            const next = filtered[(openIndex + 1) % filtered.length];
-            setActive(next);
-          }}
+          onPrev={() =>
+            setActive(
+              galleryPhotos[
+                (openIndex - 1 + galleryPhotos.length) % galleryPhotos.length
+              ]
+            )
+          }
+          onNext={() =>
+            setActive(galleryPhotos[(openIndex + 1) % galleryPhotos.length])
+          }
         />
       )}
     </section>

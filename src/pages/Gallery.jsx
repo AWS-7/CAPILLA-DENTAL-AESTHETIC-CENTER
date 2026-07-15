@@ -24,7 +24,7 @@ export default function Gallery() {
         title={galleryHero.title}
         subtitle={galleryHero.subtitle}
         image={galleryHero.image}
-        eyebrow="Before & After"
+        eyebrow="Our Clinic"
       />
       <GalleryGrid />
       <GallerySuccessStories />

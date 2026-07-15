@@ -85,6 +85,7 @@ export default function DoctorsPreview() {
             freeMode={false}
             loop
             autoplay={3200}
+            centered
             ariaLabel="Meet our doctors"
             breakpoints={{
               360: { slidesPerView: 1.15 },

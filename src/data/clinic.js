@@ -26,7 +26,7 @@ export const clinicInfo = {
     instagram: 'https://instagram.com',
     facebook: 'https://facebook.com',
     youtube: 'https://youtube.com',
-    google: 'https://g.page',
+    google: 'https://share.google/cloWlLP2FwPMI5Ypv',
   },
 };
 

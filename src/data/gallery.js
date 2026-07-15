@@ -1,95 +1,75 @@
 import { placeholders } from './content';
 
 export const gallerySeo = {
-  title: 'Before & After Gallery | Real Patient Transformations | Capilla Perumbakkam',
+  title: 'Clinic Gallery | Inside Capilla Dental & Aesthetic Center | Perumbakkam',
   description:
-    'View dental, skin, and hair before & after transformations at Capilla Dental & Aesthetic Center in Perumbakkam. Real results from Chennai’s premium clinic.',
+    'Take a look inside Capilla Dental & Aesthetic Center in Perumbakkam — premium treatment suites, advanced aesthetic technology, and a luxury patient experience.',
   keywords:
     'Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Smile Makeover Chennai, Hydrafacial Chennai, Hair Transplant Chennai',
   canonical: 'https://capillaclinic.com/gallery',
 };
 
 export const galleryHero = {
-  title: 'Real Patient Transformations',
+  title: 'Inside Capilla',
   subtitle:
-    'See the remarkable results achieved through our advanced Dental, Skin & Hair treatments at Capilla Perumbakkam.',
-  image: placeholders.clinicInterior,
+    'Step into our Perumbakkam clinic — refined interiors, advanced aesthetic technology, and treatment suites designed around your comfort.',
+  image: '/gallery/clinic-lounge.png',
 };
 
-export const galleryFilters = ['All', 'Dental', 'Skin', 'Hair'];
-
-export const galleryTransformations = [
+export const galleryPhotos = [
   {
     id: 1,
-    category: 'Dental',
-    title: 'Smile Makeover',
-    before: placeholders.dental,
-    after: placeholders.smile,
-    span: 'tall',
+    src: '/gallery/clinic-brand-wall.png',
+    title: 'The Capilla Welcome Wall',
+    category: 'Interiors',
   },
   {
     id: 2,
-    category: 'Skin',
-    title: 'Hydrafacial Glow',
-    before: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80',
-    after: placeholders.skin,
-    span: 'wide',
+    src: '/gallery/clinic-treatment-suite.png',
+    title: 'Skin Treatment Suite',
+    category: 'Treatment Rooms',
   },
   {
     id: 3,
-    category: 'Hair',
-    title: 'PRP Density Restore',
-    before: 'https://images.unsplash.com/photo-1595476108010-b4d1f7300194?w=800&q=80',
-    after: placeholders.hair,
-    span: 'normal',
+    src: '/gallery/clinic-equipment.png',
+    title: 'Advanced Aesthetic Technology',
+    category: 'Technology',
   },
   {
     id: 4,
-    category: 'Dental',
-    title: 'Teeth Whitening',
-    before: placeholders.treatment,
-    after: placeholders.smile,
-    span: 'normal',
+    src: '/gallery/clinic-reception-desk.png',
+    title: 'Reception & Front Desk',
+    category: 'Interiors',
   },
   {
     id: 5,
-    category: 'Skin',
-    title: 'Chemical Peel Clarity',
-    before: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80',
-    after: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
-    span: 'tall',
+    src: '/gallery/clinic-therapy-room.png',
+    title: 'Aesthetic Therapy Room',
+    category: 'Treatment Rooms',
   },
   {
     id: 6,
-    category: 'Hair',
-    title: 'FUE Hairline Design',
-    before: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80',
-    after: placeholders.hair,
-    span: 'wide',
+    src: '/gallery/clinic-lounge.png',
+    title: 'Patient Waiting Lounge',
+    category: 'Interiors',
   },
   {
     id: 7,
-    category: 'Dental',
-    title: 'Implant Restoration',
-    before: placeholders.dental,
-    after: placeholders.smile,
-    span: 'normal',
+    src: '/gallery/clinic-laser-room.png',
+    title: 'Laser & Facial Therapy Room',
+    category: 'Treatment Rooms',
   },
   {
     id: 8,
-    category: 'Skin',
-    title: 'Glass Skin Facial',
-    before: placeholders.skin,
-    after: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc2362?w=800&q=80',
-    span: 'normal',
+    src: '/gallery/clinic-consultation-room.png',
+    title: 'Doctor Consultation Room',
+    category: 'Treatment Rooms',
   },
   {
     id: 9,
-    category: 'Hair',
-    title: 'Regrowth Journey',
-    before: 'https://images.unsplash.com/photo-1595476108010-b4d1f7300194?w=800&q=70',
-    after: placeholders.hair,
-    span: 'tall',
+    src: '/gallery/clinic-wash-area.png',
+    title: 'Sterile Wash Area',
+    category: 'Treatment Rooms',
   },
 ];
 
