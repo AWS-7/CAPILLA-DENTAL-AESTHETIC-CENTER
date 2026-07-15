@@ -64,7 +64,7 @@ export const treatments = [
     title: 'Dental Implants',
     description:
       'Permanent, natural-looking tooth replacement with precision-guided implantology.',
-    image: placeholders.dental,
+    image: '/treatments/dental/dental-implants.jpg',
     path: '/treatments/dental-implants',
   },
   {
@@ -74,7 +74,7 @@ export const treatments = [
     title: 'Root Canal Treatment',
     description:
       'Pain-free, single-sitting RCT with microscopic precision and lasting comfort.',
-    image: placeholders.treatment,
+    image: '/treatments/dental/root-canal-treatment.jpg',
     path: '/treatments/root-canal-treatment',
   },
   {
@@ -84,7 +84,7 @@ export const treatments = [
     title: 'Teeth Whitening',
     description:
       'Clinical whitening for a brighter, camera-ready smile in a single visit.',
-    image: placeholders.smile,
+    image: '/treatments/dental/teeth-whitening.jpg',
     path: '/treatments/teeth-whitening',
   },
   {
@@ -94,7 +94,7 @@ export const treatments = [
     title: 'Smile Design',
     description:
       'Bespoke digital smile makeovers tailored to your facial aesthetics.',
-    image: placeholders.smile,
+    image: '/treatments/dental/smile-design.jpg',
     path: '/treatments/smile-design',
   },
   {
@@ -104,7 +104,7 @@ export const treatments = [
     title: 'Braces & Aligners',
     description:
       'Discreet clear aligners and orthodontic solutions for confident alignment.',
-    image: placeholders.dental,
+    image: '/treatments/dental/braces-aligners.jpg',
     path: '/treatments/braces-aligners',
   },
   {
