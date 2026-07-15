@@ -1,6 +1,6 @@
 import { Children } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, FreeMode, A11y } from 'swiper/modules';
+import { Pagination, FreeMode, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
@@ -19,6 +19,7 @@ export default function MobileSwiper({
   freeMode = true,
   loop = false,
   lightPagination = false,
+  autoplay = 0,
   breakpoints,
   ariaLabel = 'Carousel',
 }) {
@@ -28,7 +29,7 @@ export default function MobileSwiper({
   return (
     <div className={cn('mobile-swiper-wrap relative', className)} role="region" aria-label={ariaLabel}>
       <Swiper
-        modules={[Pagination, FreeMode, A11y]}
+        modules={[Pagination, FreeMode, A11y, Autoplay]}
         slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
         grabCursor
@@ -43,6 +44,15 @@ export default function MobileSwiper({
         autoHeight
         loop={canLoop}
         loopAdditionalSlides={canLoop ? 1 : 0}
+        autoplay={
+          autoplay > 0
+            ? {
+                delay: autoplay,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }
+            : false
+        }
         freeMode={
           freeMode
             ? {

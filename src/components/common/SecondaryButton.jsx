@@ -39,7 +39,7 @@ export default function SecondaryButton({
     whileTap: { scale: 0.98 },
   };
   const wrapperClass = cn(
-    'inline-flex max-sm:w-full',
+    'inline-flex justify-center max-sm:w-full',
     className.includes('w-full') && 'w-full'
   );
 

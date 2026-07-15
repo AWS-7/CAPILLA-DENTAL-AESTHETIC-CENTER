@@ -12,7 +12,6 @@ import {
   BlogPreview,
   AppointmentCTA,
   LocationSection,
-  FooterCTA,
 } from '../components/sections';
 import {
   homeSeo,
@@ -83,7 +82,6 @@ export default function Home() {
       <BlogPreview />
       <AppointmentCTA />
       <LocationSection />
-      <FooterCTA />
     </>
   );
 }
