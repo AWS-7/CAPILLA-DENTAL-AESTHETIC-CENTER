@@ -114,7 +114,7 @@ export const treatments = [
     title: 'HydraFacial',
     description:
       'Deep cleansing, extraction, and hydration for luminous, refined skin.',
-    image: placeholders.skin,
+    image: '/treatments/skin/hydrafacial.jpg',
     path: '/treatments/hydrafacial',
   },
   {
