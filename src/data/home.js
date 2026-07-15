@@ -196,33 +196,6 @@ export const featuredHair = [
 
 export const homeDoctors = [
   {
-    id: 'dr-ananya-mehta',
-    name: 'Dr. Ananya Mehta',
-    role: 'Chief Dental Surgeon',
-    qualification: 'MDS — Prosthodontics & Implantology',
-    specialty: 'Implantology & Smile Design',
-    experience: '14+ Years',
-    image: placeholders.doctor,
-  },
-  {
-    id: 'dr-rohan-kapoor',
-    name: 'Dr. Rohan Kapoor',
-    role: 'Aesthetic Physician',
-    qualification: 'MD — Dermatology & Aesthetic Medicine',
-    specialty: 'Skin & Anti-Aging',
-    experience: '11+ Years',
-    image: placeholders.doctorMale,
-  },
-  {
-    id: 'dr-priya-nair',
-    name: 'Dr. Priya Nair',
-    role: 'Trichologist',
-    qualification: 'MD — Trichology & Hair Restoration',
-    specialty: 'Hair Restoration',
-    experience: '9+ Years',
-    image: placeholders.doctor,
-  },
-  {
     id: 'dr-shakthi-chandran',
     name: 'Dr. Shakthi Chandran',
     role: 'Celebrity Cosmetologist',

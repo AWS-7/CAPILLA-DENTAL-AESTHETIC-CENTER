@@ -7,7 +7,6 @@ import {
   Container,
   SectionTitle,
   SecondaryButton,
-  MobileSwiper,
 } from '../common';
 import { homeDoctors } from '../../data/home';
 import { staggerContainer, staggerItem } from '../../utils/animations';
@@ -72,41 +71,23 @@ export default function DoctorsPreview() {
 
       <Container className="relative z-10">
         <SectionTitle
-          eyebrow="Our Specialists"
-          title="Meet Our Doctors"
-          description="Board-certified clinicians dedicated to exceptional outcomes across dental, skin, and hair care."
+          eyebrow="Our Specialist"
+          title="Meet Our Doctor"
+          description="Meet Dr. Shakthi Chandran, our celebrity cosmetologist dedicated to refined clinical cosmetology and aesthetic care."
         />
 
-        {/* Mobile: swiper */}
-        <div className="md:hidden -mx-1 pb-2">
-          <MobileSwiper
-            slidesPerView={1.15}
-            spaceBetween={20}
-            freeMode={false}
-            loop
-            autoplay={3200}
-            centered
-            ariaLabel="Meet our doctors"
-            breakpoints={{
-              360: { slidesPerView: 1.15 },
-              430: { slidesPerView: 1.2 },
-            }}
-          >
-            {homeDoctors.map((doctor) => (
-              <div key={doctor.id} className="px-1 pb-4 pt-1">
-                <DoctorCard doctor={doctor} />
-              </div>
-            ))}
-          </MobileSwiper>
+        <div className="mx-auto max-w-[320px] pb-2 md:hidden">
+          {homeDoctors.map((doctor) => (
+            <DoctorCard key={doctor.id} doctor={doctor} />
+          ))}
         </div>
 
-        {/* Desktop: 3-up grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="hidden md:grid grid-cols-3 gap-8 lg:gap-12"
+          className="mx-auto hidden max-w-[320px] md:grid md:grid-cols-1"
         >
           {homeDoctors.map((doctor) => (
             <motion.div key={doctor.id} variants={staggerItem}>

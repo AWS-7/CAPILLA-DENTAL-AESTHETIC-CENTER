@@ -29,7 +29,7 @@ export const blogArticles = [
     category: 'Dental',
     date: 'June 12, 2026',
     readTime: '6 min read',
-    author: 'Dr. Ananya Mehta',
+    author: 'Dr. Shakthi Chandran',
     featured: true,
     content: {
       intro:
@@ -87,7 +87,7 @@ export const blogArticles = [
     category: 'Skin',
     date: 'May 28, 2026',
     readTime: '5 min read',
-    author: 'Dr. Rohan Kapoor',
+    author: 'Dr. Shakthi Chandran',
     featured: false,
     content: {
       intro:
@@ -138,7 +138,7 @@ export const blogArticles = [
     category: 'Hair',
     date: 'May 10, 2026',
     readTime: '7 min read',
-    author: 'Dr. Priya Nair',
+    author: 'Dr. Shakthi Chandran',
     featured: false,
     content: {
       intro:
@@ -220,7 +220,7 @@ export const blogArticles = [
     category: 'Skin',
     date: 'April 8, 2026',
     readTime: '5 min read',
-    author: 'Dr. Rohan Kapoor',
+    author: 'Dr. Shakthi Chandran',
     featured: false,
     content: {
       intro:
@@ -246,7 +246,7 @@ export const blogArticles = [
     category: 'Hair',
     date: 'March 18, 2026',
     readTime: '6 min read',
-    author: 'Dr. Priya Nair',
+    author: 'Dr. Shakthi Chandran',
     featured: false,
     content: {
       intro:

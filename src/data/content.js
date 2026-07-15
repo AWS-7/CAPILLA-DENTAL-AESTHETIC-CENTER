@@ -28,33 +28,6 @@ export const placeholders = {
 
 export const doctors = [
   {
-    id: 'dr-ananya-mehta',
-    name: 'Dr. Ananya Mehta',
-    role: 'Chief Dental Surgeon',
-    specialty: 'Implantology & Smile Design',
-    experience: '14+ Years',
-    image: placeholders.doctor,
-    slug: 'dr-ananya-mehta',
-  },
-  {
-    id: 'dr-rohan-kapoor',
-    name: 'Dr. Rohan Kapoor',
-    role: 'Aesthetic Physician',
-    specialty: 'Skin & Anti-Aging',
-    experience: '11+ Years',
-    image: placeholders.doctorMale,
-    slug: 'dr-rohan-kapoor',
-  },
-  {
-    id: 'dr-priya-nair',
-    name: 'Dr. Priya Nair',
-    role: 'Trichologist',
-    specialty: 'Hair Restoration',
-    experience: '9+ Years',
-    image: placeholders.doctor,
-    slug: 'dr-priya-nair',
-  },
-  {
     id: 'dr-shakthi-chandran',
     name: 'Dr. Shakthi Chandran',
     role: 'Celebrity Cosmetologist',
