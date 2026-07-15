@@ -36,6 +36,7 @@ export default function WhyChoose() {
       <Container className="relative z-10">
         <SectionTitle
           light
+          eyebrowClassName="!text-primary-white"
           eyebrow="Why Capilla"
           title="The Capilla Standard"
           description="Not just a clinic — a destination. Every detail engineered for people who expect the exceptional."

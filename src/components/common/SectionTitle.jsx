@@ -9,6 +9,7 @@ export default function SectionTitle({
   align = 'center',
   light = false,
   className = '',
+  eyebrowClassName = '',
 }) {
   const alignClass =
     align === 'left' ? 'text-left items-start' : 'text-center items-center mx-auto';
@@ -25,7 +26,8 @@ export default function SectionTitle({
         <span
           className={cn(
             'mb-4 text-xs md:text-sm font-sans font-medium uppercase tracking-[0.2em]',
-            light ? 'text-gold-light' : 'text-gold'
+            light ? 'text-gold-light' : 'text-gold',
+            eyebrowClassName
           )}
         >
           {eyebrow}
