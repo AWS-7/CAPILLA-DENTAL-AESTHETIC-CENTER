@@ -222,6 +222,15 @@ export const homeDoctors = [
     experience: '9+ Years',
     image: placeholders.doctor,
   },
+  {
+    id: 'dr-shakthi-chandran',
+    name: 'Dr. Shakthi Chandran',
+    role: 'Celebrity Cosmetologist',
+    qualification: 'Fellowship in Medical Cosmetology',
+    specialty: 'Clinical Cosmetology & Facial Aesthetics',
+    experience: '8+ Years',
+    image: '/doctors/dr-shakthi-chandran.png',
+  },
 ];
 
 export const beforeAfterItems = [

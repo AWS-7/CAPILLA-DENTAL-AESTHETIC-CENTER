@@ -54,6 +54,15 @@ export const doctors = [
     image: placeholders.doctor,
     slug: 'dr-priya-nair',
   },
+  {
+    id: 'dr-shakthi-chandran',
+    name: 'Dr. Shakthi Chandran',
+    role: 'Celebrity Cosmetologist',
+    specialty: 'Clinical Cosmetology & Facial Aesthetics',
+    experience: '8+ Years',
+    image: '/doctors/dr-shakthi-chandran.png',
+    slug: 'dr-shakthi-chandran',
+  },
 ];
 
 export const treatments = [

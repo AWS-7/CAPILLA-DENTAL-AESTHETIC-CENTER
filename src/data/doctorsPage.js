@@ -145,6 +145,51 @@ export const doctorProfiles = [
       { day: 'Evening slots', hours: 'By Prior Booking' },
     ],
   },
+  {
+    id: 'dr-shakthi-chandran',
+    name: 'Dr. Shakthi Chandran',
+    qualification: 'Fellowship in Medical Cosmetology',
+    specialization: 'Clinical Cosmetology & Facial Aesthetics',
+    experience: '8+ Years',
+    languages: ['English', 'Tamil'],
+    shortDescription:
+      'Celebrity cosmetologist and founder of Capilla Cosmetology Centre for Aesthetics and Academy, known for refined clinical cosmetology and aesthetic care.',
+    image: '/doctors/dr-shakthi-chandran.png',
+    education: [
+      'Undergraduate — Dr MGR Medical University, Chennai',
+      'Fellowship in Medical Cosmetology — ILAMED, Germany',
+      'PG Diploma in Clinical Facial Aesthetics — Face Academy, Chennai',
+      'Masters in Clinical Nutrition — Medversity',
+      'Fellowship in Trichology and Hair Transplantation',
+      'Master Course in Semi-Permanent Makeup — Chennai',
+      'Certificate Course in Botox and Fillers — Goa',
+    ],
+    experienceList: [
+      '8+ years of clinical cosmetology experience',
+      'Founder of Capilla Cosmetology Centre for Aesthetics and Academy',
+      'Experience with V Care T-Nagar, Kolors Health Care Salem, Face Center Virugambakkam, Pearl Aesthetics Valasaravakkam, and Deepam Specialty Hospital',
+    ],
+    expertise: [
+      'Clinical Cosmetology',
+      'Facial Aesthetics',
+      'Botox & Fillers',
+      'Semi-Permanent Makeup',
+      'Trichology',
+      'Skin & Hair Aesthetics',
+    ],
+    memberships: ['Capilla Cosmetology Centre for Aesthetics and Academy'],
+    certifications: [
+      'Medical Cosmetology Fellowship',
+      'Clinical Facial Aesthetics Training',
+      'Botox and Fillers Certification',
+      'Semi-Permanent Makeup Master Course',
+    ],
+    interests: ['Refined skin aesthetics', 'Clinical cosmetology', 'Hair and facial rejuvenation'],
+    timings: [
+      { day: 'Mon – Sat', hours: 'By Appointment' },
+      { day: 'Sunday', hours: 'By Prior Booking' },
+    ],
+  },
 ];
 
 export const whyChooseDoctors = [
