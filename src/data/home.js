@@ -273,8 +273,8 @@ export const testimonials = [
 
 export const trustBadges = [
   { label: 'Google Rated', value: '5.0★' },
-  { label: 'Happy Patients', value: '5000+', end: 5000, suffix: '+' },
-  { label: 'Years Experience', value: '10+', end: 10, suffix: '+' },
+  { label: 'Happy Customers', value: '200+', end: 200, suffix: '+' },
+  { label: 'Years Experience', value: '3+', end: 3, suffix: '+' },
   { label: 'Modern Equipment', value: '100%' },
 ];
 

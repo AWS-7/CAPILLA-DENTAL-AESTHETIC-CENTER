@@ -1,5 +1,6 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -8,6 +9,7 @@ import 'swiper/css/effect-fade';
 import { Star, Phone, MessageCircle, ArrowRight, Calendar } from 'lucide-react';
 import { clinicInfo } from '../../../data/clinic';
 import { heroCarouselSlides } from '../../../data/home';
+import HeroBackground from './HeroBackground';
 
 const GOLD = '#D4AF5A';
 const EASE = [0.25, 0.46, 0.45, 0.94];
@@ -47,29 +49,63 @@ const glassCard =
  * Mobile only (320–767px). Independent from Desktop / Tablet.
  */
 export default function HeroMobile() {
+  const sectionRef = useRef(null);
+
+  // Scroll-linked 3D depth: content recedes/tilts back as you scroll away
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.4,
+  });
+
+  const contentRotateX = useTransform(progress, [0, 1], [0, 14]);
+  const contentScale = useTransform(progress, [0, 1], [1, 0.9]);
+  const contentY = useTransform(progress, [0, 1], [0, -36]);
+  const contentOpacity = useTransform(progress, [0, 0.55, 1], [1, 1, 0.25]);
+
+  // Carousel parallax — drifts + lifts on a different plane for depth
+  const carouselY = useTransform(progress, [0, 1], [0, 70]);
+  const carouselScale = useTransform(progress, [0, 1], [1, 1.08]);
+  const bgY = useTransform(progress, [0, 1], [0, 40]);
+
   return (
-    <section id="hero" data-hero className="relative w-full overflow-hidden">
-      {/* Clinic photo background */}
-      <img
-        src="/gallery/clinic-lounge.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="eager"
-        decoding="async"
-      />
+    <section
+      ref={sectionRef}
+      id="hero"
+      data-hero
+      className="relative w-full overflow-hidden [perspective:1000px]"
+    >
+      {/* Rotating clinic photo background · slow parallax */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0">
+        <HeroBackground />
+      </motion.div>
       {/* Readability overlays */}
       <div className="pointer-events-none absolute inset-0 bg-black/60" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,90,0.1),transparent_55%)]" />
 
-      <div className="relative z-10 w-full px-5 pt-[calc(var(--header-height)+24px)] pb-12">
-        {/* ── Carousel · fade up ── */}
+      <motion.div
+        style={{
+          rotateX: contentRotateX,
+          scale: contentScale,
+          y: contentY,
+          opacity: contentOpacity,
+          transformStyle: 'preserve-3d',
+          transformOrigin: 'center top',
+        }}
+        className="relative z-10 w-full px-5 pt-[calc(var(--header-height)+24px)] pb-12"
+      >
+        {/* ── Carousel · fade up + scroll parallax ── */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           role="region"
           aria-label="Clinic highlights"
+          style={{ y: carouselY, scale: carouselScale }}
         >
           <div className="overflow-hidden rounded-[28px] border border-white/10 shadow-premium">
             <Swiper
@@ -248,9 +284,9 @@ export default function HeroMobile() {
               className="text-[32px] font-semibold leading-none text-white"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              5000+
+              200+
             </p>
-            <p className="mt-1.5 text-[15px] text-[#BDBDBD]">Happy Patients</p>
+            <p className="mt-1.5 text-[15px] text-[#BDBDBD]">Happy Customers</p>
           </motion.div>
 
           <motion.div variants={fadeUp} className={glassCard}>
@@ -258,7 +294,7 @@ export default function HeroMobile() {
               className="text-[32px] font-semibold leading-none text-white"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              10+
+              3+
             </p>
             <p className="mt-1.5 text-[15px] text-[#BDBDBD]">
               Years Experience

@@ -1,12 +1,34 @@
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Calendar } from 'lucide-react';
 import {
-  Container,
-  PrimaryButton,
-  SecondaryButton,
-} from '../common';
+  Phone,
+  MessageCircle,
+  Calendar,
+  Sparkles,
+  ShieldCheck,
+  Clock,
+  Stethoscope,
+} from 'lucide-react';
+import { Container, PrimaryButton, SecondaryButton } from '../common';
 import { clinicInfo } from '../../data/clinic';
 import { fadeUp } from '../../utils/animations';
+
+const highlights = [
+  {
+    icon: Stethoscope,
+    title: 'Expert Specialists',
+    text: 'Consult experienced dental, skin & hair doctors.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Personalised Plan',
+    text: 'A transparent treatment roadmap made for you.',
+  },
+  {
+    icon: Clock,
+    title: 'Same-Day Slots',
+    text: 'Flexible appointments when availability allows.',
+  },
+];
 
 export default function AppointmentCTA() {
   return (
@@ -16,24 +38,54 @@ export default function AppointmentCTA() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative overflow-hidden rounded-3xl md:rounded-4xl bg-dark-bg px-5 py-12 sm:px-8 sm:py-16 md:px-16 md:py-20"
+          viewport={{ once: true, amount: 0.25 }}
+          className="relative overflow-hidden rounded-3xl border border-gold/20 bg-[#0B0B0B] px-5 py-14 sm:px-8 md:rounded-[2.5rem] md:px-16 md:py-20"
         >
-          <div className="absolute inset-0 bg-gold-gradient opacity-[0.12] pointer-events-none" />
-          <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl pointer-events-none" />
+          {/* Ambient gold glows */}
+          <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-gold/[0.12] blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-gold/[0.08] blur-3xl" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,90,0.1),transparent_55%)]" />
 
           <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-gold md:text-sm">
+            <span
+              className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <Sparkles size={14} />
               Private Consultation
-            </p>
-            <h2 className="font-display text-[1.75rem] leading-tight text-primary-white sm:text-4xl md:text-display-md lg:text-[3.25rem] break-safe">
+            </span>
+
+            <h2 className="mt-6 font-display text-[clamp(1.9rem,5vw,3.25rem)] font-bold leading-[1.12] text-primary-white">
               Book Your Consultation Today
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base font-light leading-relaxed text-primary-white/60 sm:mt-5 md:text-lg">
+
+            <p className="mx-auto mt-4 max-w-2xl text-base font-light leading-relaxed text-primary-white/60 md:text-lg">
               Begin your transformation with a specialist consultation at Capilla —
-              the premium dental, skin & hair clinic in Perumbakkam.
+              the premium dental, skin &amp; hair clinic in Perumbakkam and Salem.
             </p>
-            <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
+
+            {/* Highlights */}
+            <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
+              {highlights.map(({ icon: Icon, title, text }) => (
+                <div
+                  key={title}
+                  className="rounded-2xl border border-primary-white/[0.1] bg-primary-white/[0.04] p-5 text-left backdrop-blur-sm"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/15 text-gold">
+                    <Icon size={18} />
+                  </span>
+                  <p className="mt-3 font-display text-lg text-primary-white">
+                    {title}
+                  </p>
+                  <p className="mt-1 text-sm font-light leading-relaxed text-primary-white/55">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="mt-10 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <PrimaryButton
                 to="/contact"
                 variant="gold"
@@ -62,6 +114,23 @@ export default function AppointmentCTA() {
                 <Phone size={18} />
                 Call Now
               </SecondaryButton>
+            </div>
+
+            {/* Branch phone numbers */}
+            <div className="mt-8 flex flex-col items-center gap-2 text-sm text-primary-white/55 sm:flex-row sm:gap-6">
+              {clinicInfo.locations.map((loc) => (
+                <a
+                  key={loc.id}
+                  href={loc.phoneHref}
+                  className="inline-flex items-center gap-2 transition-colors hover:text-gold"
+                >
+                  <Phone size={14} className="text-gold" />
+                  <span className="font-medium text-primary-white/80">
+                    {loc.label}:
+                  </span>
+                  {loc.phone}
+                </a>
+              ))}
             </div>
           </div>
         </motion.div>

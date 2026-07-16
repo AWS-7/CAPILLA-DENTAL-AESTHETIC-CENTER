@@ -122,26 +122,34 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4">
-              <li className="flex gap-3">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-gold" />
-                <a
-                  href={clinicInfo.mapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors"
-                >
-                  {clinicInfo.address.full}
-                </a>
-              </li>
-              <li className="flex gap-3">
-                <Phone size={16} className="mt-0.5 shrink-0 text-gold" />
-                <a
-                  href={clinicInfo.phoneHref}
-                  className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors"
-                >
-                  {clinicInfo.phone}
-                </a>
-              </li>
+              {clinicInfo.locations.map((loc) => (
+                <li key={loc.id} className="flex gap-3">
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-gold" />
+                  <a
+                    href={loc.mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors"
+                  >
+                    <span className="block font-medium text-primary-white/80">
+                      {loc.label}
+                    </span>
+                    {loc.full}
+                  </a>
+                </li>
+              ))}
+              {clinicInfo.locations.map((loc) => (
+                <li key={loc.id} className="flex gap-3">
+                  <Phone size={16} className="mt-0.5 shrink-0 text-gold" />
+                  <a
+                    href={loc.phoneHref}
+                    className="text-sm font-light text-primary-white/55 hover:text-gold transition-colors"
+                  >
+                    <span className="text-primary-white/80">{loc.label}:</span>{' '}
+                    {loc.phone}
+                  </a>
+                </li>
+              ))}
               <li className="flex gap-3">
                 <Mail size={16} className="mt-0.5 shrink-0 text-gold" />
                 <a

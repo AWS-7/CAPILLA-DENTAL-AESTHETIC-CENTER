@@ -4,26 +4,56 @@ export const clinicInfo = {
   tagline: 'Where Science Meets Aesthetic Excellence',
   description:
     'A premium multi-specialty clinic offering advanced dental, skin, and hair treatments with a focus on precision, comfort, and lasting results.',
-  phone: '+91 98765 43210',
-  phoneHref: 'tel:+919876543210',
-  whatsapp: '+919876543210',
-  whatsappHref: 'https://wa.me/919876543210',
+  phone: '+91 98942 99017',
+  phoneHref: 'tel:+919894299017',
+  whatsapp: '+919894299017',
+  whatsappHref: 'https://wa.me/919894299017',
   email: 'hello@capillaclinic.com',
   emailHref: 'mailto:hello@capillaclinic.com',
   address: {
-    line1: 'No. 42, OMR Road, Perumbakkam',
-    line2: 'Chennai, Tamil Nadu 600100',
-    full: 'No. 42, OMR Road, Perumbakkam, Chennai, Tamil Nadu 600100',
+    line1: 'First Floor, 359, Hospital Rd, Indra Priyadarshini Nagar',
+    line2: 'Perumbakkam, Chennai, Tamil Nadu 600100',
+    full: 'First Floor, 359, Hospital Rd, Indra Priyadarshini Nagar, Perumbakkam, Chennai, Tamil Nadu 600100',
   },
   mapsEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5!2d80.2!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA4MMKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1',
-  mapsLink: 'https://maps.google.com/?q=Perumbakkam+Chennai',
+    'https://www.google.com/maps?q=359+Hospital+Road+Indra+Priyadarshini+Nagar+Perumbakkam+Chennai+Tamil+Nadu+600100&output=embed',
+  mapsLink:
+    'https://www.google.com/maps/search/?api=1&query=359+Hospital+Road+Indra+Priyadarshini+Nagar+Perumbakkam+Chennai+Tamil+Nadu+600100',
+  locations: [
+    {
+      id: 'perumbakkam',
+      label: 'Perumbakkam · Chennai',
+      line1: 'First Floor, 359, Hospital Rd, Indra Priyadarshini Nagar',
+      line2: 'Perumbakkam, Chennai, Tamil Nadu 600100',
+      full: 'First Floor, 359, Hospital Rd, Indra Priyadarshini Nagar, Perumbakkam, Chennai, Tamil Nadu 600100',
+      phone: '+91 98942 99017',
+      phoneHref: 'tel:+919894299017',
+      mapsLink:
+        'https://www.google.com/maps/search/?api=1&query=359+Hospital+Road+Indra+Priyadarshini+Nagar+Perumbakkam+Chennai+Tamil+Nadu+600100',
+      mapsEmbedUrl:
+        'https://www.google.com/maps?q=359+Hospital+Road+Indra+Priyadarshini+Nagar+Perumbakkam+Chennai+Tamil+Nadu+600100&output=embed',
+    },
+    {
+      id: 'salem',
+      label: 'Salem',
+      line1: '224, First Floor, SB Colony, Opp Meccanos Marble Paradise',
+      line2: 'Junction Main Rd, Near Chennai Silks, Salem, Tamil Nadu 636004',
+      full: '224, First Floor, SB Colony, Opp Meccanos Marble Paradise, Junction Main Rd, Near Chennai Silks, Salem, Tamil Nadu 636004',
+      phone: '+91 99940 38889',
+      phoneHref: 'tel:+919994038889',
+      mapsLink:
+        'https://www.google.com/maps/search/?api=1&query=224+SB+Colony+Junction+Main+Road+Near+Chennai+Silks+Salem+Tamil+Nadu+636004',
+      mapsEmbedUrl:
+        'https://www.google.com/maps?q=224+SB+Colony+Junction+Main+Road+Near+Chennai+Silks+Salem+Tamil+Nadu+636004&output=embed',
+    },
+  ],
   workingHours: [
     { day: 'Monday – Saturday', hours: '10:00 AM – 8:00 PM' },
     { day: 'Sunday', hours: '10:00 AM – 2:00 PM' },
   ],
   social: {
-    instagram: 'https://instagram.com',
+    instagram:
+      'https://www.instagram.com/capillaaestheticcentre?utm_source=qr&igsh=MWlvZXFyaTUyNTY2dg==',
     facebook: 'https://facebook.com',
     youtube: 'https://youtube.com',
     google: 'https://share.google/cloWlLP2FwPMI5Ypv',

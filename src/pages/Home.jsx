@@ -8,7 +8,6 @@ import {
   DoctorsPreview,
   BeforeAfterPreview,
   GoogleReviewsSection,
-  LatestOffers,
   BlogPreview,
   AppointmentCTA,
   LocationSection,
@@ -66,7 +65,6 @@ export default function Home() {
       />
       <DoctorsPreview />
       <BeforeAfterPreview />
-      <LatestOffers />
       <GoogleReviewsSection />
       <BlogPreview />
       <AppointmentCTA />

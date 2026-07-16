@@ -1,138 +1,222 @@
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 import { Star, Phone, MessageCircle, Sparkles } from 'lucide-react';
 import { PrimaryButton, SecondaryButton, AnimatedCounter } from '../../common';
 import { clinicInfo } from '../../../data/clinic';
-import { placeholders } from '../../../data/content';
+import HeroBackground from './HeroBackground';
 
 const DESCRIPTION =
   'A luxury multi-specialty clinic in Perumbakkam offering advanced dentistry, medical-grade skin therapies, and hair restoration — delivered with clinical precision and refined care.';
 
+const SPRING = { stiffness: 120, damping: 18, mass: 0.4 };
+
+const container3d = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const pop3d = {
+  hidden: { opacity: 0, y: 40, rotateX: -35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 /**
- * HeroDesktop (≥1024px) — dedicated premium two-column layout.
- * Own JSX — not shared with Mobile or Tablet.
+ * HeroDesktop (≥1024px) — premium centered layout with interactive 3D motion.
+ * Mouse-driven perspective tilt + parallax depth orbs + 3D pop-in entrance.
  */
 export default function HeroDesktop() {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [7, -7]), SPRING);
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), SPRING);
+
+  // Parallax depth for floating orbs
+  const orbAX = useSpring(useTransform(mx, [-0.5, 0.5], [-40, 40]), SPRING);
+  const orbAY = useSpring(useTransform(my, [-0.5, 0.5], [-30, 30]), SPRING);
+  const orbBX = useSpring(useTransform(mx, [-0.5, 0.5], [55, -55]), SPRING);
+  const orbBY = useSpring(useTransform(my, [-0.5, 0.5], [40, -40]), SPRING);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
   return (
-    <section id="hero" data-hero className="relative w-full min-h-[96vh] overflow-hidden xl:min-h-screen">
-      {/* Clinic photo background */}
-      <img
-        src="/gallery/clinic-lounge.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="eager"
-        decoding="async"
-      />
+    <section
+      id="hero"
+      data-hero
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative w-full min-h-[96vh] overflow-hidden [perspective:1200px] xl:min-h-screen"
+    >
+      {/* Rotating clinic photo background */}
+      <HeroBackground />
       {/* Readability overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
+      <div className="absolute inset-0 bg-black/70" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(200,164,93,0.12),transparent_55%)]" />
 
-      <div
-        className="relative z-10 mx-auto grid min-h-[96vh] w-full max-w-[1400px] items-center gap-20 px-12 pb-16 pt-[calc(var(--header-height)+1.75rem)] xl:min-h-screen xl:pb-20"
-        style={{ gridTemplateColumns: 'minmax(520px, 620px) 1fr' }}
+      {/* Floating 3D depth orbs */}
+      <motion.div
+        aria-hidden="true"
+        style={{ x: orbAX, y: orbAY }}
+        className="pointer-events-none absolute left-[8%] top-[22%] z-[5]"
       >
-        <div className="flex h-full w-full max-w-[620px] flex-col items-start justify-center text-left">
-          <p className="mb-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold">
-            <Sparkles size={14} />
-            Premium Dental, Skin & Hair Care in Perumbakkam
-          </p>
+        <motion.div
+          animate={{ y: [0, -22, 0], rotate: [0, 8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          className="h-28 w-28 rounded-full border border-gold/30 bg-gold/[0.08] shadow-[0_0_60px_rgba(212,175,90,0.35)] backdrop-blur-sm"
+        />
+      </motion.div>
+      <motion.div
+        aria-hidden="true"
+        style={{ x: orbBX, y: orbBY }}
+        className="pointer-events-none absolute right-[10%] top-[30%] z-[5]"
+      >
+        <motion.div
+          animate={{ y: [0, 26, 0], rotate: [0, -10, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          className="h-40 w-40 rounded-[2rem] border border-gold/25 bg-gold/[0.06] shadow-[0_0_70px_rgba(212,175,90,0.28)] backdrop-blur-sm"
+        />
+      </motion.div>
+      <motion.div
+        aria-hidden="true"
+        style={{ x: orbBX, y: orbAY }}
+        className="pointer-events-none absolute bottom-[16%] left-[16%] z-[5]"
+      >
+        <motion.div
+          animate={{ y: [0, 18, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          className="h-16 w-16 rounded-full border border-gold/40 bg-gold/[0.1] shadow-[0_0_40px_rgba(212,175,90,0.4)]"
+        />
+      </motion.div>
 
-          <h1 className="font-display text-primary-white">
-            <span className="block text-[4rem] font-bold leading-[1.06] xl:text-[4.25rem]">
-              Capilla Dental
-            </span>
-            <span className="mt-1 block text-[3.25rem] font-bold leading-[1.1] text-gold xl:text-[3.5rem]">
-              & Aesthetic Center
-            </span>
-          </h1>
+      <motion.div
+        variants={container3d}
+        initial="hidden"
+        animate="visible"
+        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+        className="relative z-10 mx-auto flex min-h-[96vh] w-full max-w-[1200px] flex-col items-center justify-center px-6 pb-16 pt-[calc(var(--header-height)+2rem)] text-center xl:min-h-screen xl:pb-20"
+      >
+        <motion.p
+          variants={pop3d}
+          className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold"
+        >
+          <Sparkles size={14} />
+          Premium Dental, Skin & Hair Care in Perumbakkam
+        </motion.p>
 
-          <div className="mt-5 space-y-2 font-display text-[2.15rem] leading-[1.2] text-primary-white/90 xl:space-y-2.5 xl:text-[2.35rem] xl:leading-[1.25]">
-            <p>Smile Brighter.</p>
-            <p>Glow Naturally.</p>
-            <p className="text-gold-light">Restore Your Confidence.</p>
+        <motion.h1
+          variants={pop3d}
+          style={{ z: 60 }}
+          className="whitespace-nowrap font-display text-[clamp(2.5rem,4.6vw,4rem)] font-bold leading-[1.1] text-primary-white [text-shadow:0_10px_40px_rgba(0,0,0,0.5)]"
+        >
+          Capilla Dental <span className="text-gold">&amp; Aesthetic Center</span>
+        </motion.h1>
+
+        <motion.p
+          variants={pop3d}
+          style={{ z: 40 }}
+          className="mt-6 whitespace-nowrap font-display text-[clamp(1.4rem,2.6vw,2.2rem)] leading-[1.2] text-primary-white/90"
+        >
+          Smile Brighter. Glow Naturally.{' '}
+          <span className="text-gold-light">Restore Your Confidence.</span>
+        </motion.p>
+
+        <motion.p
+          variants={pop3d}
+          className="mx-auto mt-6 max-w-[640px] text-lg font-light leading-relaxed text-primary-white/65"
+        >
+          {DESCRIPTION}
+        </motion.p>
+
+        <motion.div
+          variants={pop3d}
+          style={{ z: 50 }}
+          className="mt-8 flex flex-row flex-wrap items-stretch justify-center gap-3"
+        >
+          <PrimaryButton to="/contact" variant="gold" size="lg" className="min-h-12">
+            Book Appointment
+          </PrimaryButton>
+          <SecondaryButton
+            href={clinicInfo.whatsappHref}
+            external
+            variant="light"
+            size="lg"
+            className="min-h-12"
+          >
+            <MessageCircle size={18} />
+            WhatsApp
+          </SecondaryButton>
+          <SecondaryButton
+            href={clinicInfo.phoneHref}
+            variant="light"
+            size="lg"
+            className="min-h-12 border-primary-white/25"
+          >
+            <Phone size={16} />
+            Call
+          </SecondaryButton>
+        </motion.div>
+
+        <motion.div
+          variants={pop3d}
+          style={{ z: 30 }}
+          className="mx-auto mt-10 grid w-full max-w-[720px] grid-cols-2 gap-3 sm:grid-cols-4"
+        >
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+            <div className="flex items-center justify-center gap-0.5 text-gold">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={11} className="fill-gold text-gold" />
+              ))}
+            </div>
+            <p className="mt-1.5 text-xs font-medium text-primary-white">
+              Google Rated
+            </p>
           </div>
-
-          <p className="mt-5 max-w-[620px] text-lg font-light leading-relaxed text-primary-white/65">
-            {DESCRIPTION}
-          </p>
-
-          <div className="mt-7 flex flex-row flex-wrap items-stretch gap-3">
-            <PrimaryButton to="/contact" variant="gold" size="lg" className="min-h-12">
-              Book Appointment
-            </PrimaryButton>
-            <SecondaryButton
-              href={clinicInfo.whatsappHref}
-              external
-              variant="light"
-              size="lg"
-              className="min-h-12"
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </SecondaryButton>
-            <SecondaryButton
-              href={clinicInfo.phoneHref}
-              variant="light"
-              size="lg"
-              className="min-h-12 border-primary-white/25"
-            >
-              <Phone size={16} />
-              Call
-            </SecondaryButton>
-          </div>
-
-          <div className="mt-8 flex w-full max-w-[620px] flex-row gap-3">
-            <div className="min-w-0 flex-1 rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3 text-left shadow-soft backdrop-blur-sm">
-              <div className="flex items-center gap-0.5 text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={11} className="fill-gold text-gold" />
-                ))}
-              </div>
-              <p className="mt-1.5 text-xs font-medium text-primary-white">
-                Google Rated
-              </p>
-            </div>
-            <div className="min-w-0 flex-1 rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3 text-left shadow-soft backdrop-blur-sm">
-              <AnimatedCounter
-                end={5000}
-                suffix="+"
-                label="Happy Patients"
-                className="text-left [&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
-              />
-            </div>
-            <div className="min-w-0 flex-1 rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3 text-left shadow-soft backdrop-blur-sm">
-              <AnimatedCounter
-                end={10}
-                suffix="+"
-                label="Years Experience"
-                className="text-left [&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
-              />
-            </div>
-            <div className="min-w-0 flex-1 rounded-2xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-3 text-left shadow-soft backdrop-blur-sm">
-              <p className="font-display text-xl leading-none text-primary-white">
-                Modern
-              </p>
-              <p className="mt-1 text-[10px] font-light text-primary-white/50">
-                Equipment
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex h-full w-full items-center justify-end justify-self-end">
-          <div className="relative w-full max-w-[560px]">
-            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-gold-gradient opacity-20 blur-2xl" />
-            <img
-              src={placeholders.doctor}
-              alt="Capilla Dental specialist — premium care in Perumbakkam"
-              className="relative max-h-[620px] w-full rounded-3xl border border-primary-white/10 object-cover object-[center_18%] shadow-premium"
-              loading="eager"
-              decoding="async"
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+            <AnimatedCounter
+              end={200}
+              suffix="+"
+              label="Happy Customers"
+              className="[&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
             />
           </div>
-        </div>
-      </div>
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+            <AnimatedCounter
+              end={3}
+              suffix="+"
+              label="Years Experience"
+              className="[&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
+            />
+          </div>
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+            <p className="font-display text-xl leading-none text-primary-white">
+              Modern
+            </p>
+            <p className="mt-1 text-[10px] font-light text-primary-white/50">
+              Equipment
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-primary-white to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[8] h-14 bg-gradient-to-t from-primary-white to-transparent" />
     </section>
   );
 }

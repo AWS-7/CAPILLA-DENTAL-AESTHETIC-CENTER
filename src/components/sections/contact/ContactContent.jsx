@@ -67,27 +67,38 @@ export default function ContactContent() {
               </div>
 
               <ul className="space-y-5">
-                <li className="flex gap-4">
-                  <MapPin className="mt-1 shrink-0 text-gold" size={18} />
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-dark-bg/40 mb-1">Address</p>
-                    <a
-                      href={clinicInfo.mapsLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-light text-dark-bg/75 hover:text-gold"
-                    >
-                      {clinicInfo.address.full}
-                    </a>
-                  </div>
-                </li>
+                {clinicInfo.locations.map((loc) => (
+                  <li key={loc.id} className="flex gap-4">
+                    <MapPin className="mt-1 shrink-0 text-gold" size={18} />
+                    <div>
+                      <p className="text-xs uppercase tracking-wider text-dark-bg/40 mb-1">
+                        Address · {loc.label}
+                      </p>
+                      <a
+                        href={loc.mapsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-light text-dark-bg/75 hover:text-gold"
+                      >
+                        {loc.full}
+                      </a>
+                    </div>
+                  </li>
+                ))}
                 <li className="flex gap-4">
                   <Phone className="mt-1 shrink-0 text-gold" size={18} />
                   <div>
                     <p className="text-xs uppercase tracking-wider text-dark-bg/40 mb-1">Phone</p>
-                    <a href={clinicInfo.phoneHref} className="text-sm font-light text-dark-bg/75 hover:text-gold">
-                      {clinicInfo.phone}
-                    </a>
+                    {clinicInfo.locations.map((loc) => (
+                      <a
+                        key={loc.id}
+                        href={loc.phoneHref}
+                        className="block text-sm font-light text-dark-bg/75 hover:text-gold"
+                      >
+                        <span className="font-medium text-dark-bg/90">{loc.label}:</span>{' '}
+                        {loc.phone}
+                      </a>
+                    ))}
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -351,17 +362,27 @@ export default function ContactContent() {
           <SectionTitle
             eyebrow="Location"
             title="Find Us on the Map"
-            description="Capilla Dental & Aesthetic Center — OMR Road, Perumbakkam, Chennai."
+            description="Capilla Dental & Aesthetic Center — Perumbakkam (Chennai) and Salem branches."
           />
-          <div className="overflow-hidden rounded-3xl border border-border shadow-soft aspect-[16/9] md:aspect-[21/9]">
-            <iframe
-              title="Capilla clinic map"
-              src={clinicInfo.mapsEmbedUrl}
-              className="h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {clinicInfo.locations.map((loc) => (
+              <div key={loc.id} className="flex flex-col">
+                <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-gold">
+                  <MapPin size={15} />
+                  {loc.label}
+                </p>
+                <div className="overflow-hidden rounded-3xl border border-border shadow-soft aspect-[16/10]">
+                  <iframe
+                    title={`Capilla clinic map — ${loc.label}`}
+                    src={loc.mapsEmbedUrl}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

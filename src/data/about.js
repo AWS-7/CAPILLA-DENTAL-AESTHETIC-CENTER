@@ -118,10 +118,10 @@ export const philosophy = {
 };
 
 export const achievements = [
-  { id: 1, end: 5000, suffix: '+', label: 'Happy Patients' },
-  { id: 2, end: 12000, suffix: '+', label: 'Successful Treatments' },
-  { id: 3, end: 10, suffix: '+', label: 'Years of Experience' },
-  { id: 4, end: 1280, suffix: '+', label: 'Positive Reviews' },
+  { id: 1, end: 200, suffix: '+', label: 'Happy Customers' },
+  { id: 2, end: 500, suffix: '+', label: 'Successful Treatments' },
+  { id: 3, end: 3, suffix: '+', label: 'Years of Experience' },
+  { id: 4, end: 150, suffix: '+', label: 'Positive Reviews' },
 ];
 
 export const aboutGallery = [

@@ -2,6 +2,7 @@ import { Star, Phone, MessageCircle, Sparkles } from 'lucide-react';
 import { PrimaryButton, SecondaryButton, AnimatedCounter } from '../../common';
 import { clinicInfo } from '../../../data/clinic';
 import { placeholders } from '../../../data/content';
+import HeroBackground from './HeroBackground';
 
 const DESCRIPTION =
   'A luxury multi-specialty clinic in Perumbakkam offering advanced dentistry, medical-grade skin therapies, and hair restoration — delivered with clinical precision and refined care.';
@@ -13,15 +14,8 @@ const DESCRIPTION =
 export default function HeroTablet() {
   return (
     <section id="hero" data-hero className="relative w-full overflow-hidden">
-      {/* Clinic photo background */}
-      <img
-        src="/gallery/clinic-lounge.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="eager"
-        decoding="async"
-      />
+      {/* Rotating clinic photo background */}
+      <HeroBackground />
       {/* Readability overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(200,164,93,0.1),transparent_50%)]" />
@@ -90,15 +84,15 @@ export default function HeroTablet() {
             </div>
             <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
               <AnimatedCounter
-                end={5000}
+                end={200}
                 suffix="+"
-                label="Happy Patients"
+                label="Happy Customers"
                 className="text-left [&>p:first-child]:text-lg [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
               />
             </div>
             <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
               <AnimatedCounter
-                end={10}
+                end={3}
                 suffix="+"
                 label="Years Experience"
                 className="text-left [&>p:first-child]:text-lg [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"

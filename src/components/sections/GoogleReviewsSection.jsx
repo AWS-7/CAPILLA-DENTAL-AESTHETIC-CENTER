@@ -12,7 +12,6 @@ import {
 import { reviews } from '../../data/content';
 import { reviewStats } from '../../data/home';
 import { clinicInfo } from '../../data/clinic';
-import { staggerContainer, staggerItem } from '../../utils/animations';
 
 export default function GoogleReviewsSection() {
   return (
@@ -65,16 +64,19 @@ export default function GoogleReviewsSection() {
           </div>
         </motion.div>
 
-        <div className="md:hidden -mx-1">
+        <div className="-mx-1">
           <MobileSwiper
             slidesPerView={1.15}
-            spaceBetween={14}
+            spaceBetween={16}
             freeMode
             loop
+            autoplay={4000}
             ariaLabel="Google reviews"
             breakpoints={{
               360: { slidesPerView: 1.15 },
               430: { slidesPerView: 1.2 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
             }}
           >
             {reviews.map((review) => (
@@ -82,20 +84,6 @@ export default function GoogleReviewsSection() {
             ))}
           </MobileSwiper>
         </div>
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          {reviews.map((review) => (
-            <motion.div key={review.id} variants={staggerItem}>
-              <ReviewCard {...review} />
-            </motion.div>
-          ))}
-        </motion.div>
 
         <div className="mt-10 md:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
           <PrimaryButton

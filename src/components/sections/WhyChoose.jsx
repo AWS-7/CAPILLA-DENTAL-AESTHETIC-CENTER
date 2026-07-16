@@ -97,7 +97,7 @@ export default function WhyChoose() {
             </span>
             <div>
               <p className="font-display text-5xl leading-none text-gold md:text-6xl">
-                10+
+                3+
               </p>
               <p className="mt-2 text-xs font-light text-dark-bg/55 md:text-sm">
                 Years of clinical excellence
@@ -118,10 +118,10 @@ export default function WhyChoose() {
             </div>
             <div>
               <p className="font-display text-5xl leading-none text-gold md:text-6xl">
-                5000+
+                200+
               </p>
               <p className="mt-2 text-xs font-light text-dark-bg/55 md:text-sm">
-                Happy patients &amp; counting
+                Happy customers &amp; counting
               </p>
             </div>
           </motion.div>
