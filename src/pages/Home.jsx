@@ -9,6 +9,7 @@ import {
   BeforeAfterPreview,
   GoogleReviewsSection,
   BlogPreview,
+  InstagramFeed,
   AppointmentCTA,
   LocationSection,
 } from '../components/sections';
@@ -67,6 +68,7 @@ export default function Home() {
       <BeforeAfterPreview />
       <GoogleReviewsSection />
       <BlogPreview />
+      <InstagramFeed />
       <AppointmentCTA />
       <LocationSection />
     </>

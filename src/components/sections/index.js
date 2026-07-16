@@ -8,6 +8,7 @@ export { default as BeforeAfterPreview } from './BeforeAfterPreview';
 export { default as GoogleReviewsSection } from './GoogleReviewsSection';
 export { default as TestimonialsSlider } from './TestimonialsSlider';
 export { default as BlogPreview } from './BlogPreview';
+export { default as InstagramFeed } from './InstagramFeed';
 export { default as AppointmentCTA } from './AppointmentCTA';
 export { default as LocationSection } from './LocationSection';
 export { default as FooterCTA } from './FooterCTA';

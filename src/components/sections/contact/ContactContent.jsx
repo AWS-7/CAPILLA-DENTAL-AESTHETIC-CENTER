@@ -10,6 +10,8 @@ import {
   Facebook,
   Youtube,
   Siren,
+  CheckCircle2,
+  AlertCircle,
 } from 'lucide-react';
 import {
   Container,
@@ -21,31 +23,116 @@ import { clinicInfo } from '../../../data/clinic';
 import { contactTreatments } from '../../../data/contactPage';
 import { fadeUp, slideInLeft, slideInRight } from '../../../utils/animations';
 import { trackingEvents } from '../../../utils/analytics';
+import { cn } from '../../../utils/helpers';
 
-const inputClass =
-  'w-full min-h-12 rounded-2xl border border-border bg-light-bg px-4 py-3.5 text-base outline-none transition-colors focus:border-gold focus:bg-primary-white';
+const baseInputClass =
+  'w-full min-h-12 rounded-2xl border bg-light-bg px-4 py-3.5 text-base outline-none transition-colors focus:bg-primary-white';
+
+const EMPTY_FORM = {
+  name: '',
+  phone: '',
+  email: '',
+  treatment: '',
+  date: '',
+  time: '',
+  message: '',
+};
+
+const TODAY = new Date().toISOString().split('T')[0];
+const WA_NUMBER = clinicInfo.whatsapp.replace(/\D/g, '');
+
+function validate(form) {
+  const errors = {};
+  if (form.name.trim().length < 2) {
+    errors.name = 'Please enter your full name.';
+  }
+  const digits = form.phone.replace(/\D/g, '');
+  if (digits.length < 10) {
+    errors.phone = 'Enter a valid phone number (min 10 digits).';
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+    errors.email = 'Enter a valid email address.';
+  }
+  if (!form.treatment) {
+    errors.treatment = 'Please select a treatment.';
+  }
+  if (!form.date) {
+    errors.date = 'Please choose a preferred date.';
+  } else if (form.date < TODAY) {
+    errors.date = 'Date cannot be in the past.';
+  }
+  if (!form.time) {
+    errors.time = 'Please choose a preferred time.';
+  }
+  return errors;
+}
+
+function buildWhatsAppLink(form) {
+  const lines = [
+    '*New Appointment Request*',
+    `Name: ${form.name}`,
+    `Phone: ${form.phone}`,
+    `Email: ${form.email}`,
+    `Treatment: ${form.treatment}`,
+    `Preferred Date: ${form.date}`,
+    `Preferred Time: ${form.time}`,
+    form.message ? `Message: ${form.message}` : null,
+  ]
+    .filter(Boolean)
+    .join('\n');
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines)}`;
+}
 
 export default function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    treatment: '',
-    date: '',
-    time: '',
-    message: '',
-  });
+  const [waLink, setWaLink] = useState(clinicInfo.whatsappHref);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [errors, setErrors] = useState({});
 
   const onChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    setErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const nextErrors = validate(form);
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      const first = document.querySelector('[aria-invalid="true"]');
+      if (first) first.focus();
+      return;
+    }
+
+    const link = buildWhatsAppLink(form);
+    setWaLink(link);
     trackingEvents.formSubmit(form.treatment || 'general');
+    trackingEvents.whatsappClick();
+    window.open(link, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
   };
+
+  const fieldClass = (name) =>
+    cn(
+      baseInputClass,
+      errors[name]
+        ? 'border-red-400 focus:border-red-500'
+        : 'border-border focus:border-gold'
+    );
+
+  const ErrorText = ({ name }) =>
+    errors[name] ? (
+      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-red-500">
+        <AlertCircle size={13} />
+        {errors[name]}
+      </p>
+    ) : null;
 
   return (
     <>
@@ -206,7 +293,8 @@ export default function ContactContent() {
                   Appointment Form
                 </h2>
                 <p className="mt-2 text-sm font-light text-dark-bg/55">
-                  Frontend form UI only — connect to your booking backend later.
+                  Fill in your details and we&apos;ll open WhatsApp with your request
+                  ready to send — our team confirms within working hours.
                 </p>
 
                 {submitted ? (
@@ -216,27 +304,24 @@ export default function ContactContent() {
                     animate="visible"
                     className="mt-8 rounded-2xl bg-light-bg border border-border p-8 text-center"
                   >
-                    <p className="font-display text-2xl text-primary-black">Request Received</p>
+                    <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
+                      <CheckCircle2 size={30} />
+                    </span>
+                    <p className="mt-4 font-display text-2xl text-primary-black">Request Ready</p>
                     <p className="mt-3 text-sm font-light text-dark-bg/55">
-                      Thank you, {form.name || 'there'}. Our team will confirm your consultation shortly.
-                      Prefer faster confirmation? Message us on WhatsApp.
+                      Thank you, {form.name || 'there'}. If WhatsApp didn&apos;t open
+                      automatically, tap below to send your appointment request.
                     </p>
                     <div className="mt-6 flex flex-wrap justify-center gap-3">
-                      <PrimaryButton href={clinicInfo.whatsappHref} external variant="gold">
-                        WhatsApp Us
+                      <PrimaryButton href={waLink} external variant="gold">
+                        <MessageCircle size={16} />
+                        Send on WhatsApp
                       </PrimaryButton>
                       <SecondaryButton
                         onClick={() => {
                           setSubmitted(false);
-                          setForm({
-                            name: '',
-                            phone: '',
-                            email: '',
-                            treatment: '',
-                            date: '',
-                            time: '',
-                            message: '',
-                          });
+                          setForm(EMPTY_FORM);
+                          setErrors({});
                         }}
                       >
                         Submit Another
@@ -244,58 +329,65 @@ export default function ContactContent() {
                     </div>
                   </motion.div>
                 ) : (
-                  <form onSubmit={onSubmit} className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <form onSubmit={onSubmit} noValidate className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="sm:col-span-2">
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="name" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Full Name
                       </label>
                       <input
-                        required
+                        id="name"
                         name="name"
                         value={form.name}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.name)}
+                        className={fieldClass('name')}
                         placeholder="Your full name"
                       />
+                      <ErrorText name="name" />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="phone" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Phone Number
                       </label>
                       <input
-                        required
+                        id="phone"
                         name="phone"
                         type="tel"
                         value={form.phone}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.phone)}
+                        className={fieldClass('phone')}
                         placeholder="+91"
                       />
+                      <ErrorText name="phone" />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="email" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Email
                       </label>
                       <input
-                        required
+                        id="email"
                         name="email"
                         type="email"
                         value={form.email}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.email)}
+                        className={fieldClass('email')}
                         placeholder="you@email.com"
                       />
+                      <ErrorText name="email" />
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="treatment" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Treatment Selection
                       </label>
                       <select
-                        required
+                        id="treatment"
                         name="treatment"
                         value={form.treatment}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.treatment)}
+                        className={fieldClass('treatment')}
                       >
                         <option value="">Select a treatment</option>
                         {contactTreatments.map((t) => (
@@ -304,49 +396,57 @@ export default function ContactContent() {
                           </option>
                         ))}
                       </select>
+                      <ErrorText name="treatment" />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="date" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Preferred Date
                       </label>
                       <input
-                        required
+                        id="date"
                         name="date"
                         type="date"
+                        min={TODAY}
                         value={form.date}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.date)}
+                        className={fieldClass('date')}
                       />
+                      <ErrorText name="date" />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="time" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Preferred Time
                       </label>
                       <input
-                        required
+                        id="time"
                         name="time"
                         type="time"
                         value={form.time}
                         onChange={onChange}
-                        className={inputClass}
+                        aria-invalid={Boolean(errors.time)}
+                        className={fieldClass('time')}
                       />
+                      <ErrorText name="time" />
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                      <label htmlFor="message" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Message
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         rows={4}
                         value={form.message}
                         onChange={onChange}
-                        className={inputClass}
+                        className={cn(baseInputClass, 'border-border focus:border-gold')}
                         placeholder="Tell us about your concerns or goals"
                       />
                     </div>
                     <div className="sm:col-span-2">
                       <PrimaryButton type="submit" variant="gold" className="w-full sm:w-auto" size="lg">
-                        Book Appointment
+                        <MessageCircle size={18} />
+                        Book via WhatsApp
                       </PrimaryButton>
                     </div>
                   </form>
