@@ -24,7 +24,7 @@ function Logo({ onNavigate, compact = false }) {
         height={80}
         className={cn(
           'w-auto object-contain object-left',
-          compact ? 'h-11 sm:h-14' : 'h-14 sm:h-16'
+          compact ? 'h-14 sm:h-16 lg:h-[72px]' : 'h-16 sm:h-20'
         )}
         decoding="async"
       />
