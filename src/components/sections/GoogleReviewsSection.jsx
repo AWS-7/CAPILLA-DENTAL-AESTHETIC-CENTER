@@ -16,12 +16,11 @@ import { staggerContainer, staggerItem } from '../../utils/animations';
 
 export default function GoogleReviewsSection() {
   return (
-    <section className="section-padding relative overflow-hidden bg-[#0B0B0B]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,164,93,0.12),transparent_55%)]" />
+    <section className="section-padding relative overflow-hidden bg-primary-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,164,93,0.08),transparent_55%)]" />
 
       <Container className="relative z-10">
         <SectionTitle
-          light
           eyebrow="Social Proof"
           title="Google Reviews"
           description="Trusted by patients across Perumbakkam and Chennai who value discretion, comfort, and measurable results."
@@ -34,7 +33,7 @@ export default function GoogleReviewsSection() {
           transition={{ duration: 0.6 }}
           className="mb-10 md:mb-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
         >
-          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 text-center shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-light-bg p-4 md:p-6 text-center shadow-soft">
             <p className="font-display text-3xl md:text-5xl text-primary-black">
               {reviewStats.rating}
             </p>
@@ -45,21 +44,21 @@ export default function GoogleReviewsSection() {
             </div>
             <p className="mt-2 text-sm font-light text-dark-bg/50">Google Rating</p>
           </div>
-          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-light-bg p-4 md:p-6 shadow-soft">
             <AnimatedCounter
               end={reviewStats.totalReviews}
               suffix="+"
               label="Patient Reviews"
             />
           </div>
-          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-light-bg p-4 md:p-6 shadow-soft">
             <AnimatedCounter
               end={reviewStats.fiveStarPercent}
               suffix="%"
               label="Five-Star Ratings"
             />
           </div>
-          <div className="rounded-2xl md:rounded-3xl border border-border bg-primary-white p-4 md:p-6 text-center shadow-soft">
+          <div className="rounded-2xl md:rounded-3xl border border-border bg-light-bg p-4 md:p-6 text-center shadow-soft">
             <p className="font-display text-3xl md:text-5xl text-gold">★</p>
             <p className="mt-2 text-sm font-medium text-primary-black">Verified</p>
             <p className="mt-1 text-sm font-light text-dark-bg/50">Google Business</p>

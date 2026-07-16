@@ -12,9 +12,19 @@ const DESCRIPTION =
  */
 export default function HeroTablet() {
   return (
-    <section className="relative w-full overflow-hidden bg-dark-bg">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#151515] to-[#1a160f]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(200,164,93,0.14),transparent_50%)]" />
+    <section id="hero" data-hero className="relative w-full overflow-hidden">
+      {/* Clinic photo background */}
+      <img
+        src="/gallery/clinic-lounge.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+      {/* Readability overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(200,164,93,0.1),transparent_50%)]" />
 
       <div className="relative z-10 mx-auto grid min-h-[80vh] w-full max-w-[960px] grid-cols-2 items-center gap-8 px-8 pb-12 pt-[calc(var(--header-height)+24px)]">
         <div className="flex max-w-[400px] flex-col items-start text-left">

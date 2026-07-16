@@ -1,6 +1,6 @@
 import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Phone, Calendar } from 'lucide-react';
 import { clinicInfo } from '../../data/clinic';
 import { trackingEvents } from '../../utils/analytics';
@@ -56,9 +56,10 @@ const actions = [
 
 /**
  * Premium glassmorphic mobile bottom action bar.
- * Visible only below md (768px). Fixed, always on while scrolling.
+ * Visible only below md (768px). Slides up once the Hero scrolls out of view
+ * and slides back down when the Hero returns; controlled via the `visible` prop.
  */
-export default function MobileBottomBar() {
+export default function MobileBottomBar({ visible = false }) {
   const lastTap = useRef(0);
 
   const guardTap = useCallback((handler) => (e) => {
@@ -82,25 +83,28 @@ export default function MobileBottomBar() {
   }, []);
 
   return (
-    <motion.nav
-      className="md:hidden fixed inset-x-0 bottom-0 z-[45] overflow-x-hidden"
-      aria-label="Quick booking actions"
-      initial={{ y: 80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div
-        className={cn(
-          'mobile-bottom-bar',
-          'border-t border-primary-white/10',
-          'bg-primary-black/75 backdrop-blur-2xl',
-          'supports-[backdrop-filter]:bg-primary-black/65',
-          'shadow-[0_-12px_40px_rgba(0,0,0,0.4)]',
-          'rounded-t-[24px]',
-          'px-2.5 min-[360px]:px-3 pt-3',
-          'pb-[max(0.65rem,env(safe-area-inset-bottom))]'
-        )}
-      >
+    <AnimatePresence>
+      {visible && (
+        <motion.nav
+          className="md:hidden fixed inset-x-0 bottom-0 z-[45] overflow-x-hidden"
+          aria-label="Quick booking actions"
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: '100%', opacity: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+        >
+          <div
+            className={cn(
+              'mobile-bottom-bar',
+              'border-t border-primary-white/10',
+              'bg-primary-black/75 backdrop-blur-2xl',
+              'supports-[backdrop-filter]:bg-primary-black/65',
+              'shadow-[0_-12px_40px_rgba(0,0,0,0.4)]',
+              'rounded-t-[24px]',
+              'px-2.5 min-[360px]:px-3 pt-3',
+              'pb-[max(0.65rem,env(safe-area-inset-bottom))]'
+            )}
+          >
         <div className="mx-auto flex max-w-lg items-stretch gap-2 min-[360px]:gap-2.5">
           {actions.map((action, index) => {
             const Icon = action.icon;
@@ -167,8 +171,10 @@ export default function MobileBottomBar() {
               </a>
             );
           })}
-        </div>
-      </div>
-    </motion.nav>
+            </div>
+          </div>
+        </motion.nav>
+      )}
+    </AnimatePresence>
   );
 }

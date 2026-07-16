@@ -48,10 +48,19 @@ const glassCard =
  */
 export default function HeroMobile() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#0B0B0B]">
-      {/* Ambient gold glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,90,0.14),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_75%,rgba(212,175,90,0.07),transparent_45%)]" />
+    <section id="hero" data-hero className="relative w-full overflow-hidden">
+      {/* Clinic photo background */}
+      <img
+        src="/gallery/clinic-lounge.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+      {/* Readability overlays */}
+      <div className="pointer-events-none absolute inset-0 bg-black/60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,90,0.1),transparent_55%)]" />
 
       <div className="relative z-10 w-full px-5 pt-[calc(var(--header-height)+24px)] pb-12">
         {/* ── Carousel · fade up ── */}
@@ -124,7 +133,7 @@ export default function HeroMobile() {
           className="mt-9 text-center"
         >
           <h1
-            className="whitespace-nowrap text-[clamp(15px,4.8vw,22px)] font-bold leading-[1.2] tracking-[-0.3px] text-white"
+            className="whitespace-nowrap text-[clamp(19px,6.4vw,30px)] font-bold leading-[1.2] tracking-[-0.3px] text-white"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Capilla Dental{' '}
@@ -142,19 +151,13 @@ export default function HeroMobile() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[28px] font-medium leading-[1.35] text-white"
+            className="whitespace-nowrap text-[clamp(22px,6.8vw,30px)] font-medium leading-[1.3] text-white"
           >
-            Smile Brighter.
+            Smile Brighter. Glow Naturally.
           </motion.p>
           <motion.p
             variants={fadeUp}
-            className="text-[28px] font-medium leading-[1.35] text-white"
-          >
-            Glow Naturally.
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            className="text-[28px] font-medium leading-[1.35] text-[#D4AF5A]"
+            className="text-[clamp(24px,7.5vw,32px)] font-medium leading-[1.3] text-[#D4AF5A]"
           >
             Restore Your Confidence.
           </motion.p>
@@ -166,7 +169,7 @@ export default function HeroMobile() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.5 }}
-          className="mx-auto mt-7 max-w-[330px] text-center text-[17px] font-normal leading-[1.8] text-[#BDBDBD]"
+          className="mx-auto mt-7 max-w-[350px] text-center text-[clamp(17px,4.8vw,19px)] font-normal leading-[1.75] text-[#E4E4E4]"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           Luxury multi-specialty clinic in Perumbakkam offering advanced

@@ -12,10 +12,19 @@ const DESCRIPTION =
  */
 export default function HeroDesktop() {
   return (
-    <section className="relative w-full min-h-[96vh] overflow-hidden bg-dark-bg xl:min-h-screen">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#151515] to-[#1a160f]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(200,164,93,0.16),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(200,164,93,0.14),transparent_50%)]" />
+    <section id="hero" data-hero className="relative w-full min-h-[96vh] overflow-hidden xl:min-h-screen">
+      {/* Clinic photo background */}
+      <img
+        src="/gallery/clinic-lounge.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+      {/* Readability overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(200,164,93,0.12),transparent_55%)]" />
 
       <div
         className="relative z-10 mx-auto grid min-h-[96vh] w-full max-w-[1400px] items-center gap-20 px-12 pb-16 pt-[calc(var(--header-height)+1.75rem)] xl:min-h-screen xl:pb-20"

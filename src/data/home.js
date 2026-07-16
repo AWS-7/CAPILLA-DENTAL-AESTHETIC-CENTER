@@ -277,3 +277,60 @@ export const trustBadges = [
   { label: 'Years Experience', value: '10+', end: 10, suffix: '+' },
   { label: 'Modern Equipment', value: '100%' },
 ];
+
+export const homeOffers = [
+  {
+    id: 'dental-implant-offer',
+    category: 'Dental',
+    title: 'Dental Implant Consultation',
+    description:
+      'Precision-guided implant planning with a digital scan and a personalised treatment roadmap for a permanent, natural smile.',
+    image: '/treatments/dental/dental-implants.jpg',
+    oldPrice: '₹4,999',
+    offerPrice: '₹2,999',
+    savings: 'Save 40%',
+    features: [
+      'Free Consultation',
+      'Experienced Doctors',
+      'Latest Technology',
+      'Same Day Appointment',
+    ],
+    path: '/contact',
+  },
+  {
+    id: 'hydrafacial-offer',
+    category: 'Skin',
+    title: 'Hydrafacial Glow Package',
+    description:
+      'Deep-cleanse, extract, and hydrate for instant luminosity — includes a complimentary medical-grade skin analysis.',
+    image: '/treatments/skin/hydrafacial.jpg',
+    oldPrice: '₹5,999',
+    offerPrice: '₹3,499',
+    savings: 'Save 42%',
+    features: [
+      'Free Consultation',
+      'Experienced Doctors',
+      'Latest Technology',
+      'Same Day Appointment',
+    ],
+    path: '/contact',
+  },
+  {
+    id: 'prp-hair-offer',
+    category: 'Hair',
+    title: 'PRP Hair Regrowth Package',
+    description:
+      'Platelet-rich plasma therapy to stimulate natural regrowth and strengthen thinning hair with a doctor-led protocol.',
+    image: '/treatments/hair/prp-hair-treatment.jpg',
+    oldPrice: '₹7,999',
+    offerPrice: '₹4,999',
+    savings: 'Save 38%',
+    features: [
+      'Free Consultation',
+      'Experienced Doctors',
+      'Latest Technology',
+      'Same Day Appointment',
+    ],
+    path: '/contact',
+  },
+];

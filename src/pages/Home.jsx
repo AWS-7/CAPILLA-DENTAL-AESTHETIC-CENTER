@@ -39,31 +39,20 @@ export default function Home() {
       <WhyChoose />
       <TreatmentCategories />
       <FeaturedTreatments
-        className="md:hidden"
-        eyebrow="Dental Care"
-        title="Featured Dental Treatments"
-        description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."
-        items={featuredDental}
-        viewAllTo="/dental"
-        viewAllLabel="View All Dental Treatments"
-      />
-      
-      <FeaturedTreatments
-        className="hidden md:block"
-        eyebrow="Dental Care"
-        title="Featured Dental Treatments"
-        description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."
-        items={featuredDental}
-        viewAllTo="/dental"
-        viewAllLabel="View All Dental Treatments"
-      />
-      <FeaturedTreatments
         eyebrow="Skin Care"
         title="Featured Skin Treatments"
         description="Medical-grade facials and peels for luminous, refined skin — including Hydrafacial in Chennai."
         items={featuredSkin}
         viewAllTo="/skin"
         viewAllLabel="View All Skin Treatments"
+      />
+      <FeaturedTreatments
+        eyebrow="Dental Care"
+        title="Featured Dental Treatments"
+        description="Advanced dentistry in Perumbakkam — implants, root canal, and whitening with lasting precision."
+        items={featuredDental}
+        viewAllTo="/dental"
+        viewAllLabel="View All Dental Treatments"
         tone="dark"
       />
       <FeaturedTreatments
@@ -77,8 +66,8 @@ export default function Home() {
       />
       <DoctorsPreview />
       <BeforeAfterPreview />
-      <GoogleReviewsSection />
       <LatestOffers />
+      <GoogleReviewsSection />
       <BlogPreview />
       <AppointmentCTA />
       <LocationSection />
