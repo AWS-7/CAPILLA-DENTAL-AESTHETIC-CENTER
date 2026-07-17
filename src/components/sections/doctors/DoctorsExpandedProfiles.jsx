@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Clock } from 'lucide-react';
+import { Clock, Instagram } from 'lucide-react';
 import { Container, SectionTitle, PrimaryButton } from '../../common';
 import { doctorProfiles } from '../../../data/doctorsPage';
 import { fadeUp } from '../../../utils/animations';
@@ -64,6 +64,17 @@ export default function DoctorsExpandedProfiles() {
                   {doctor.qualification}
                 </p>
                 <p className="mt-1 text-sm text-dark-bg/55">{doctor.specialization}</p>
+                {doctor.instagram && (
+                  <a
+                    href={doctor.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-dark-bg/70 transition-colors hover:border-gold hover:text-gold"
+                  >
+                    <Instagram size={16} className="text-gold" />
+                    @dr.shakthi_chandran
+                  </a>
+                )}
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <DetailBlock title="Education">

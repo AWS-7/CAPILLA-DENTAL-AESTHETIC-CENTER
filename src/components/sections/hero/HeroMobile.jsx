@@ -1,6 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useReducedMotion,
+} from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -54,10 +61,12 @@ const trustStats = [
 
 /**
  * HeroMobile — premium, compact iOS-style hero (320–767px).
- * Cleaner overlay, tighter spacing, subtle scroll-linked depth.
+ * Cinematic drifting background loop + tactile 3D interactions
+ * (gyroscope + touch parallax) with scroll-linked depth.
  */
 export default function HeroMobile() {
   const sectionRef = useRef(null);
+  const reduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -76,11 +85,44 @@ export default function HeroMobile() {
   const cardY = useTransform(progress, [0, 1], [0, 40]);
   const bgY = useTransform(progress, [0, 1], [0, 30]);
 
+  // ── 3D interaction: gyroscope + touch parallax tilt on the hero card ──
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const rotX = useSpring(tiltX, { stiffness: 60, damping: 14, mass: 0.3 });
+  const rotY = useSpring(tiltY, { stiffness: 60, damping: 14, mass: 0.3 });
+
+  useEffect(() => {
+    if (reduceMotion) return undefined;
+    const onOrient = (e) => {
+      const g = Math.max(-22, Math.min(22, e.gamma || 0));
+      const b = Math.max(-22, Math.min(22, (e.beta || 0) - 45));
+      tiltY.set((g / 22) * 7);
+      tiltX.set((-b / 22) * 7);
+    };
+    window.addEventListener('deviceorientation', onOrient, true);
+    return () => window.removeEventListener('deviceorientation', onOrient, true);
+  }, [reduceMotion, tiltX, tiltY]);
+
+  const handleTouchMove = (e) => {
+    if (reduceMotion) return;
+    const t = e.touches?.[0];
+    if (!t) return;
+    const nx = (t.clientX / window.innerWidth) * 2 - 1;
+    const ny = (t.clientY / window.innerHeight) * 2 - 1;
+    tiltY.set(nx * 7);
+    tiltX.set(-ny * 7);
+  };
+
+  const cardStyle = reduceMotion
+    ? { y: cardY }
+    : { y: cardY, rotateX: rotX, rotateY: rotY, transformPerspective: 900 };
+
   return (
     <section
       ref={sectionRef}
       id="hero"
       data-hero
+      onTouchMove={handleTouchMove}
       className="relative w-full overflow-hidden"
     >
       {/* Rotating clinic photo background · slow parallax */}
@@ -90,6 +132,24 @@ export default function HeroMobile() {
       {/* Lighter, cleaner readability scrim */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/55 via-[#0B0B0B]/42 to-[#0B0B0B]/80" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_8%,rgba(212,175,90,0.12),transparent_60%)]" />
+
+      {/* Floating cinematic gold orbs (depth ambiance) */}
+      {!reduceMotion && (
+        <>
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-[-48px] top-[16%] h-40 w-40 rounded-full bg-[#D4AF5A]/[0.18] blur-3xl"
+            animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[-40px] top-[42%] h-44 w-44 rounded-full bg-[#D4AF5A]/[0.12] blur-3xl"
+            animate={{ y: [0, 24, 0], x: [0, -14, 0] }}
+            transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+          />
+        </>
+      )}
 
       <motion.div
         style={{ scale: contentScale, y: contentY, opacity: contentOpacity }}
@@ -142,7 +202,7 @@ export default function HeroMobile() {
           </motion.p>
         </motion.div>
 
-        {/* ── Hero image card · floating rating badge ── */}
+        {/* ── Hero image card · floating rating badge · 3D tilt ── */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -150,10 +210,10 @@ export default function HeroMobile() {
           transition={{ delay: 0.28 }}
           role="region"
           aria-label="Clinic highlights"
-          style={{ y: cardY }}
-          className="relative mt-6 w-full"
+          style={cardStyle}
+          className="relative mt-6 w-full [transform-style:preserve-3d]"
         >
-          <div className="overflow-hidden rounded-[24px] border border-white/[0.14] shadow-premium">
+          <div className="relative overflow-hidden rounded-[24px] border border-white/[0.14] shadow-premium">
             <Swiper
               modules={[Autoplay, Pagination, A11y, EffectFade]}
               effect="fade"
@@ -203,11 +263,14 @@ export default function HeroMobile() {
                 </SwiperSlide>
               ))}
             </Swiper>
+
+            {/* Cinematic sheen sweep */}
+            {!reduceMotion && <span className="hero-sheen z-20 rounded-[24px]" />}
           </div>
 
           {/* Floating Google rating badge */}
           <div
-            className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0B0B0B]/75 px-2.5 py-1.5 shadow-soft backdrop-blur-md"
+            className="absolute right-3 top-3 z-30 flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0B0B0B]/75 px-2.5 py-1.5 shadow-soft backdrop-blur-md"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             <div className="flex items-center gap-0.5 text-[#D4AF5A]">

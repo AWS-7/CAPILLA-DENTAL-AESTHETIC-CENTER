@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { ArrowRight, GraduationCap } from 'lucide-react';
+import { ArrowRight, GraduationCap, Instagram } from 'lucide-react';
 import {
   Container,
   SectionTitle,
@@ -49,16 +49,37 @@ function DoctorCard({ doctor }) {
           {doctor.qualification}
         </p>
 
-        <Link
-          to="/contact"
-          className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary-black/15 px-6 py-2.5 text-sm font-medium text-primary-black transition-all duration-300 hover:border-gold hover:bg-gold hover:text-primary-white"
-        >
-          Book Consultation
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-0.5"
-          />
-        </Link>
+        <div className="mt-5 flex items-center gap-3">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full border border-primary-black/15 px-6 py-2.5 text-sm font-medium text-primary-black transition-all duration-300 hover:border-gold hover:bg-gold hover:text-primary-white"
+          >
+            Book Consultation
+            <ArrowRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            />
+          </Link>
+          {doctor.instagram && (
+            <a
+              href={doctor.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Follow ${doctor.name} on Instagram`}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-black/15 text-primary-black transition-all duration-300 hover:border-transparent hover:text-primary-white"
+              style={{
+                backgroundImage:
+                  'linear-gradient(135deg, #F58529 0%, #DD2A7B 45%, #8134AF 75%, #515BD4 100%)',
+                backgroundSize: '0% 100%',
+                backgroundRepeat: 'no-repeat',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundSize = '100% 100%')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundSize = '0% 100%')}
+            >
+              <Instagram size={17} />
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

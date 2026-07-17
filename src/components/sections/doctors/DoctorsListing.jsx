@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Instagram } from 'lucide-react';
 import { Container, SectionTitle, PrimaryButton } from '../../common';
 import { doctorProfiles } from '../../../data/doctorsPage';
 import { staggerContainer, staggerItem } from '../../../utils/animations';
@@ -62,6 +63,17 @@ export default function DoctorsListing() {
                   <p className="mt-4 text-sm font-light leading-relaxed text-dark-bg/55 flex-1">
                     {doctor.shortDescription}
                   </p>
+                  {doctor.instagram && (
+                    <a
+                      href={doctor.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-dark-bg/70 transition-colors hover:text-gold"
+                    >
+                      <Instagram size={16} className="text-gold" />
+                      Follow on Instagram
+                    </a>
+                  )}
                   <div className="mt-6">
                     <PrimaryButton to="/contact" variant="gold" className="w-full" size="sm">
                       Book Appointment

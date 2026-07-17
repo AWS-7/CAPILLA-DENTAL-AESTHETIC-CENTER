@@ -203,6 +203,8 @@ export const homeDoctors = [
     specialty: 'Clinical Cosmetology & Facial Aesthetics',
     experience: '8+ Years',
     image: '/doctors/dr-shakthi-chandran.webp',
+    instagram:
+      'https://www.instagram.com/dr.shakthi_chandran?igsh=MWRuOHR6MXI1anhwMQ==',
   },
 ];
 

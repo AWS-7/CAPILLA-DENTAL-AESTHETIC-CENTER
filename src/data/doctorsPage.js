@@ -22,6 +22,8 @@ export const doctorProfiles = [
     specialization: 'Clinical Cosmetology & Facial Aesthetics',
     experience: '8+ Years',
     languages: ['English', 'Tamil'],
+    instagram:
+      'https://www.instagram.com/dr.shakthi_chandran?igsh=MWRuOHR6MXI1anhwMQ==',
     shortDescription:
       'Celebrity cosmetologist and founder of Capilla Cosmetology Centre for Aesthetics and Academy, known for refined clinical cosmetology and aesthetic care.',
     image: '/doctors/dr-shakthi-chandran.webp',
