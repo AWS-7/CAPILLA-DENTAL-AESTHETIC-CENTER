@@ -5,6 +5,7 @@ import { Phone, Calendar } from 'lucide-react';
 import { clinicInfo } from '../../data/clinic';
 import { trackingEvents } from '../../utils/analytics';
 import { cn } from '../../utils/helpers';
+import { useBookingModal } from '../../context/BookingModalProvider';
 
 const TAP_LOCK_MS = 700;
 
@@ -45,7 +46,7 @@ const actions = [
   {
     id: 'book',
     label: 'Book Appointment',
-    to: '/contact',
+    isBooking: true,
     icon: Calendar,
     onTrack: trackingEvents.bookAppointmentClick,
     primary: true,
@@ -61,6 +62,7 @@ const actions = [
  */
 export default function MobileBottomBar({ visible = false }) {
   const lastTap = useRef(0);
+  const { openBooking } = useBookingModal();
 
   const guardTap = useCallback((handler) => (e) => {
     const now = Date.now();
@@ -144,6 +146,22 @@ export default function MobileBottomBar({ visible = false }) {
               'aria-label': action.label,
               onPointerDown: setRipple,
             };
+
+            if (action.isBooking) {
+              return (
+                <button
+                  key={action.id}
+                  type="button"
+                  onClick={guardTap(() => {
+                    action.onTrack?.();
+                    openBooking();
+                  })}
+                  {...sharedProps}
+                >
+                  {content}
+                </button>
+              );
+            }
 
             if (action.to) {
               return (

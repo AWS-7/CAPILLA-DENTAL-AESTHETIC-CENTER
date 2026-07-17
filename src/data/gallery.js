@@ -13,61 +13,61 @@ export const galleryHero = {
   title: 'Inside Capilla',
   subtitle:
     'Step into our Perumbakkam clinic — refined interiors, advanced aesthetic technology, and treatment suites designed around your comfort.',
-  image: '/gallery/clinic-lounge.png',
+  image: '/gallery/clinic-lounge.webp',
 };
 
 export const galleryPhotos = [
   {
     id: 1,
-    src: '/gallery/clinic-brand-wall.png',
+    src: '/gallery/clinic-brand-wall.webp',
     title: 'The Capilla Welcome Wall',
     category: 'Interiors',
   },
   {
     id: 2,
-    src: '/gallery/clinic-treatment-suite.png',
+    src: '/gallery/clinic-treatment-suite.webp',
     title: 'Skin Treatment Suite',
     category: 'Treatment Rooms',
   },
   {
     id: 3,
-    src: '/gallery/clinic-equipment.png',
+    src: '/gallery/clinic-equipment.webp',
     title: 'Advanced Aesthetic Technology',
     category: 'Technology',
   },
   {
     id: 4,
-    src: '/gallery/clinic-reception-desk.png',
+    src: '/gallery/clinic-reception-desk.webp',
     title: 'Reception & Front Desk',
     category: 'Interiors',
   },
   {
     id: 5,
-    src: '/gallery/clinic-therapy-room.png',
+    src: '/gallery/clinic-therapy-room.webp',
     title: 'Aesthetic Therapy Room',
     category: 'Treatment Rooms',
   },
   {
     id: 6,
-    src: '/gallery/clinic-lounge.png',
+    src: '/gallery/clinic-lounge.webp',
     title: 'Patient Waiting Lounge',
     category: 'Interiors',
   },
   {
     id: 7,
-    src: '/gallery/clinic-laser-room.png',
+    src: '/gallery/clinic-laser-room.webp',
     title: 'Laser & Facial Therapy Room',
     category: 'Treatment Rooms',
   },
   {
     id: 8,
-    src: '/gallery/clinic-consultation-room.png',
+    src: '/gallery/clinic-consultation-room.webp',
     title: 'Doctor Consultation Room',
     category: 'Treatment Rooms',
   },
   {
     id: 9,
-    src: '/gallery/clinic-wash-area.png',
+    src: '/gallery/clinic-wash-area.webp',
     title: 'Sterile Wash Area',
     category: 'Treatment Rooms',
   },

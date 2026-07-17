@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { cn } from '../../../utils/helpers';
 
 const HERO_BG_IMAGES = [
-  '/gallery/clinic-lounge.png',
-  '/gallery/clinic-reception-desk.png',
-  '/gallery/clinic-treatment-suite.png',
-  '/gallery/clinic-consultation-room.png',
-  '/gallery/clinic-therapy-room.png',
-  '/gallery/clinic-laser-room.png',
+  '/gallery/clinic-lounge.webp',
+  '/gallery/clinic-reception-desk.webp',
+  '/gallery/clinic-treatment-suite.webp',
+  '/gallery/clinic-consultation-room.webp',
+  '/gallery/clinic-therapy-room.webp',
+  '/gallery/clinic-laser-room.webp',
 ];
 
 /**

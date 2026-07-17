@@ -5,8 +5,9 @@ import { analyticsConfig } from '../../utils/analytics';
  * Injects GA4 / GTM / Meta Pixel / Ads placeholders when enabled.
  * Safe no-op while enableInProduction is false.
  */
-export default function AnalyticsPlaceholders() {
-  if (!analyticsConfig.enableInProduction) {
+export default function AnalyticsPlaceholders({ consent = false }) {
+  // Load tracking scripts only after the visitor grants cookie consent.
+  if (!analyticsConfig.enableInProduction || !consent) {
     return (
       <Helmet>
         {/* Google Search Console verification placeholder */}

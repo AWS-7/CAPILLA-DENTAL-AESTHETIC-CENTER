@@ -33,7 +33,7 @@ export const hairTreatmentsList = [
     id: 'prp-hair-treatment',
     title: 'PRP Hair Treatment',
     description: 'Platelet-rich plasma therapy to stimulate natural regrowth and strengthen thinning hair.',
-    image: '/treatments/hair/prp-hair-treatment.jpg',
+    image: '/treatments/hair/prp-hair-treatment.webp',
     path: '/treatments/prp-hair-treatment',
     benefits: ['Natural stimulation', 'Minimal downtime', 'Progressive density'],
   },
@@ -41,7 +41,7 @@ export const hairTreatmentsList = [
     id: 'gfc-hair-treatment',
     title: 'GFC Hair Treatment',
     description: 'Growth factor concentrate therapy for denser, healthier hair with advanced precision.',
-    image: '/treatments/hair/gfc-hair-treatment.jpg',
+    image: '/treatments/hair/gfc-hair-treatment.webp',
     path: '/treatments/gfc-hair-treatment',
     benefits: ['Concentrated growth factors', 'Targeted delivery', 'Visible thickening'],
   },
@@ -49,7 +49,7 @@ export const hairTreatmentsList = [
     id: 'qr678-hair-therapy',
     title: 'QR678 Hair Therapy',
     description: 'Advanced growth-factor injections clinically designed to revive dormant follicles and reduce hair fall.',
-    image: '/treatments/hair/hair-loss-treatment.jpg',
+    image: '/treatments/hair/hair-loss-treatment.webp',
     path: '/contact',
     benefits: ['Follicle activation', 'Reduced hair fall', 'Doctor-supervised'],
   },
@@ -57,7 +57,7 @@ export const hairTreatmentsList = [
     id: 'exosomes-treatment',
     title: 'Exosomes Treatment',
     description: 'Next-generation regenerative therapy using exosomes to support scalp renewal and hair density.',
-    image: '/treatments/hair/hair-strengthening-therapy.jpg',
+    image: '/treatments/hair/hair-strengthening-therapy.webp',
     path: '/contact',
     benefits: ['Regenerative signalling', 'Improved density', 'Scalp rejuvenation'],
   },
@@ -65,7 +65,7 @@ export const hairTreatmentsList = [
     id: 'hair-transplantation',
     title: 'Hair Transplantation',
     description: 'Precision FUE restoration for natural hairlines and lifelong density results.',
-    image: '/treatments/hair/hair-transplant.jpg',
+    image: '/treatments/hair/hair-transplant.webp',
     path: '/treatments/hair-transplant',
     benefits: ['Natural hairline', 'Scar-minimal FUE', 'Permanent grafts'],
   },
@@ -73,7 +73,7 @@ export const hairTreatmentsList = [
     id: 'hair-re-growth-therapy',
     title: 'Hair Re-Growth Therapy',
     description: 'Medical regimens designed to revive early thinning and support healthier growth cycles.',
-    image: '/treatments/hair/hair-regrowth-treatment.jpg',
+    image: '/treatments/hair/hair-regrowth-treatment.webp',
     path: '/treatments/hair-regrowth-treatment',
     benefits: ['Early thinning rescue', 'Customised plans', 'Tracked progress'],
   },
@@ -81,7 +81,7 @@ export const hairTreatmentsList = [
     id: 'hair-extension',
     title: 'Hair Extension',
     description: 'Premium hair extensions for instant length, volume, and a fuller, natural-looking finish.',
-    image: '/treatments/hair/post-hair-transplant-care.jpg',
+    image: '/treatments/hair/post-hair-transplant-care.webp',
     path: '/contact',
     benefits: ['Instant volume', 'Natural blend', 'Style flexibility'],
   },
@@ -89,7 +89,7 @@ export const hairTreatmentsList = [
     id: 'scalp-micropigmentation',
     title: 'Scalp Micropigmentation',
     description: 'Non-surgical cosmetic technique that recreates the look of natural hair follicles for denser coverage.',
-    image: '/treatments/hair/scalp-analysis.jpg',
+    image: '/treatments/hair/scalp-analysis.webp',
     path: '/contact',
     benefits: ['Fuller appearance', 'Non-surgical', 'Long-lasting'],
   },
@@ -97,7 +97,7 @@ export const hairTreatmentsList = [
     id: 'micro-needling-hair',
     title: 'Micro Needling (Hair)',
     description: 'Controlled micro-needling to stimulate scalp collagen and enhance absorption of hair actives.',
-    image: '/treatments/hair/dandruff-scalp-care.jpg',
+    image: '/treatments/hair/dandruff-scalp-care.webp',
     path: '/contact',
     benefits: ['Stimulates follicles', 'Boosts actives', 'Minimal downtime'],
   },
@@ -105,7 +105,7 @@ export const hairTreatmentsList = [
     id: 'meso-therapy-hair',
     title: 'Meso Therapy (Hair)',
     description: 'Micro-delivery of vitamins and nutrients to nourish the scalp and support hair vitality.',
-    image: '/treatments/hair/mesotherapy.jpg',
+    image: '/treatments/hair/mesotherapy.webp',
     path: '/contact',
     benefits: ['Targeted nourishment', 'Improved scalp health', 'Clinic supervised'],
   },
@@ -215,7 +215,7 @@ export const hairTreatmentPages = {
     heroTitle: 'PRP Hair Treatment in Chennai',
     heroSubtitle:
       'Platelet-rich plasma therapy to stimulate natural regrowth — advanced hair care at Capilla Hair Clinic Perumbakkam.',
-    image: '/treatments/hair/prp-hair-treatment.jpg',
+    image: '/treatments/hair/prp-hair-treatment.webp',
     breadcrumb: 'PRP Hair Treatment',
     seo: {
       title: 'PRP Hair Treatment Chennai | PRP Hair Clinic Perumbakkam | Capilla',
@@ -307,7 +307,7 @@ export const hairTreatmentPages = {
     heroTitle: 'GFC Hair Treatment in Chennai',
     heroSubtitle:
       'Growth Factor Concentrate therapy for denser, healthier hair — advanced restoration at Capilla Perumbakkam.',
-    image: '/treatments/hair/gfc-hair-treatment.jpg',
+    image: '/treatments/hair/gfc-hair-treatment.webp',
     breadcrumb: 'GFC Hair Treatment',
     seo: {
       title: 'GFC Hair Treatment Chennai | GFC Hair Clinic Perumbakkam | Capilla',
@@ -396,7 +396,7 @@ export const hairTreatmentPages = {
     heroTitle: 'Hair Transplant in Chennai',
     heroSubtitle:
       'Precision FUE hair restoration for natural hairlines and lifelong density — Capilla Hair Clinic Perumbakkam.',
-    image: '/treatments/hair/hair-transplant.jpg',
+    image: '/treatments/hair/hair-transplant.webp',
     breadcrumb: 'Hair Transplant',
     seo: {
       title: 'Hair Transplant Chennai | FUE Hair Transplant Perumbakkam | Capilla',
@@ -495,7 +495,7 @@ export const hairTreatmentPages = {
     heroTitle: 'Hair Regrowth Treatment in Chennai',
     heroSubtitle:
       'Medical regimens to revive early thinning and support healthier growth cycles at Capilla Perumbakkam.',
-    image: '/treatments/hair/hair-regrowth-treatment.jpg',
+    image: '/treatments/hair/hair-regrowth-treatment.webp',
     breadcrumb: 'Hair Regrowth Treatment',
     seo: {
       title: 'Hair Regrowth Treatment Chennai | Hair Clinic Perumbakkam | Capilla',
@@ -595,7 +595,7 @@ export const hairTreatmentPages = {
     heroTitle: 'Hair Loss Treatment in Chennai',
     heroSubtitle:
       'Diagnostic-led care for pattern baldness and shedding — expert hair specialist plans at Capilla Perumbakkam.',
-    image: '/treatments/hair/hair-loss-treatment.jpg',
+    image: '/treatments/hair/hair-loss-treatment.webp',
     breadcrumb: 'Hair Loss Treatment',
     seo: {
       title: 'Hair Loss Treatment Chennai | Hair Specialist Perumbakkam | Capilla',
@@ -707,7 +707,7 @@ export const hairTreatmentPages = {
     heroTitle: 'Scalp Analysis & Hair Consultation',
     heroSubtitle:
       'Digital hair analysis and specialist consultation to recommend the right restoration pathway at Capilla Perumbakkam.',
-    image: '/treatments/hair/scalp-analysis.jpg',
+    image: '/treatments/hair/scalp-analysis.webp',
     breadcrumb: 'Scalp Analysis & Consultation',
     seo: {
       title: 'Scalp Analysis & Hair Consultation Perumbakkam | Capilla Hair Clinic',

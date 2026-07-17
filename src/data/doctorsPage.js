@@ -24,7 +24,7 @@ export const doctorProfiles = [
     languages: ['English', 'Tamil'],
     shortDescription:
       'Celebrity cosmetologist and founder of Capilla Cosmetology Centre for Aesthetics and Academy, known for refined clinical cosmetology and aesthetic care.',
-    image: '/doctors/dr-shakthi-chandran.png',
+    image: '/doctors/dr-shakthi-chandran.webp',
     education: [
       'Undergraduate — Dr MGR Medical University, Chennai',
       'Fellowship in Medical Cosmetology — ILAMED, Germany',

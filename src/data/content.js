@@ -33,7 +33,7 @@ export const doctors = [
     role: 'Celebrity Cosmetologist',
     specialty: 'Clinical Cosmetology & Facial Aesthetics',
     experience: '8+ Years',
-    image: '/doctors/dr-shakthi-chandran.png',
+    image: '/doctors/dr-shakthi-chandran.webp',
     slug: 'dr-shakthi-chandran',
   },
 ];
@@ -46,7 +46,7 @@ export const treatments = [
     title: 'Dental Implants',
     description:
       'Permanent, natural-looking tooth replacement with precision-guided implantology.',
-    image: '/treatments/dental/dental-implants.jpg',
+    image: '/treatments/dental/dental-implants.webp',
     path: '/treatments/dental-implants',
   },
   {
@@ -56,7 +56,7 @@ export const treatments = [
     title: 'Root Canal Treatment',
     description:
       'Pain-free, single-sitting RCT with microscopic precision and lasting comfort.',
-    image: '/treatments/dental/root-canal-treatment.jpg',
+    image: '/treatments/dental/root-canal-treatment.webp',
     path: '/treatments/root-canal-treatment',
   },
   {
@@ -66,7 +66,7 @@ export const treatments = [
     title: 'Teeth Whitening',
     description:
       'Clinical whitening for a brighter, camera-ready smile in a single visit.',
-    image: '/treatments/dental/teeth-whitening.jpg',
+    image: '/treatments/dental/teeth-whitening.webp',
     path: '/treatments/teeth-whitening',
   },
   {
@@ -76,7 +76,7 @@ export const treatments = [
     title: 'Smile Design',
     description:
       'Bespoke digital smile makeovers tailored to your facial aesthetics.',
-    image: '/treatments/dental/smile-design.jpg',
+    image: '/treatments/dental/smile-design.webp',
     path: '/treatments/smile-design',
   },
   {
@@ -86,7 +86,7 @@ export const treatments = [
     title: 'Braces & Aligners',
     description:
       'Discreet clear aligners and orthodontic solutions for confident alignment.',
-    image: '/treatments/dental/braces-aligners.jpg',
+    image: '/treatments/dental/braces-aligners.webp',
     path: '/treatments/braces-aligners',
   },
   {
@@ -96,7 +96,7 @@ export const treatments = [
     title: 'HydraFacial',
     description:
       'Deep cleansing, extraction, and hydration for luminous, refined skin.',
-    image: '/treatments/skin/hydrafacial.jpg',
+    image: '/treatments/skin/hydrafacial.webp',
     path: '/treatments/hydrafacial',
   },
   {
@@ -116,7 +116,7 @@ export const treatments = [
     title: 'PRP Hair Treatment',
     description:
       'Platelet-rich plasma therapy to stimulate natural hair regrowth.',
-    image: '/treatments/hair/prp-hair-treatment.jpg',
+    image: '/treatments/hair/prp-hair-treatment.webp',
     path: '/treatments/prp-hair-treatment',
   },
   {
@@ -126,7 +126,7 @@ export const treatments = [
     title: 'GFC Hair Treatment',
     description:
       'Advanced growth factor concentrate therapy for denser, healthier hair.',
-    image: '/treatments/hair/gfc-hair-treatment.jpg',
+    image: '/treatments/hair/gfc-hair-treatment.webp',
     path: '/treatments/gfc-hair-treatment',
   },
   {
@@ -136,7 +136,7 @@ export const treatments = [
     title: 'Hair Transplant',
     description:
       'Precision FUE hair restoration for natural density and lifelong results.',
-    image: '/treatments/hair/hair-transplant.jpg',
+    image: '/treatments/hair/hair-transplant.webp',
     path: '/treatments/hair-transplant',
   },
 ];

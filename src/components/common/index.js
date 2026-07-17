@@ -19,3 +19,4 @@ export { default as AnimatedCounter } from './AnimatedCounter';
 export { default as PagePlaceholder } from './PagePlaceholder';
 export { default as MobileSwiper } from './MobileSwiper';
 export { default as SplashScreen } from './SplashScreen';
+export { default as CookieConsent } from './CookieConsent';
