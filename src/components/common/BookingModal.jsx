@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  X,
-  Calendar,
-  MessageCircle,
-  AlertCircle,
-  CheckCircle2,
-} from 'lucide-react';
-import { clinicInfo } from '../../data/clinic';
+import { X, Calendar, AlertCircle } from 'lucide-react';
 import { contactTreatments } from '../../data/contactPage';
 import { buildAppointmentWhatsAppLink } from '../../utils/whatsapp';
 import { trackingEvents } from '../../utils/analytics';
@@ -36,8 +29,6 @@ function validate(form) {
 export default function BookingModal({ open, onClose }) {
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
-  const [waLink, setWaLink] = useState(clinicInfo.whatsappHref);
 
   useEffect(() => {
     if (open) {
@@ -48,7 +39,6 @@ export default function BookingModal({ open, onClose }) {
       const t = setTimeout(() => {
         setForm(EMPTY);
         setErrors({});
-        setSent(false);
       }, 300);
       return () => clearTimeout(t);
     }
@@ -82,11 +72,11 @@ export default function BookingModal({ open, onClose }) {
       return;
     }
     const link = buildAppointmentWhatsAppLink(form);
-    setWaLink(link);
     trackingEvents.formSubmit(form.treatment || 'quick-booking');
     trackingEvents.whatsappClick();
     window.open(link, '_blank', 'noopener,noreferrer');
-    setSent(true);
+    // Message sent to WhatsApp — close the form automatically.
+    onClose?.();
   };
 
   const fieldClass = (name) =>
@@ -142,29 +132,7 @@ export default function BookingModal({ open, onClose }) {
               </h3>
             </div>
 
-            {sent ? (
-              <div className="px-6 py-10 text-center">
-                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
-                  <CheckCircle2 size={30} />
-                </span>
-                <p className="mt-4 font-display text-xl text-primary-black">
-                  Request Ready
-                </p>
-                <p className="mt-2 text-sm font-light text-dark-bg/60">
-                  If WhatsApp didn&apos;t open, tap below to send your request.
-                </p>
-                <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary-black"
-                >
-                  <MessageCircle size={16} />
-                  Send on WhatsApp
-                </a>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate className="space-y-3.5 px-6 py-6">
+            <form onSubmit={onSubmit} noValidate className="space-y-3.5 px-6 py-6">
                 <div>
                   <input
                     name="name"
@@ -264,7 +232,6 @@ export default function BookingModal({ open, onClose }) {
                   We&apos;ll open WhatsApp with your details ready to send.
                 </p>
               </form>
-            )}
           </motion.div>
         </motion.div>
       )}

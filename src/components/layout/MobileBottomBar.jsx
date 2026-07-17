@@ -1,11 +1,10 @@
-import { useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef, useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Phone, Calendar } from 'lucide-react';
-import { clinicInfo } from '../../data/clinic';
 import { trackingEvents } from '../../utils/analytics';
 import { cn } from '../../utils/helpers';
 import { useBookingModal } from '../../context/BookingModalProvider';
+import BranchActionSheet from '../common/BranchActionSheet';
 
 const TAP_LOCK_MS = 700;
 
@@ -27,19 +26,16 @@ const actions = [
   {
     id: 'call',
     label: 'Call Now',
-    href: clinicInfo.phoneHref,
+    branchMode: 'call',
     icon: Phone,
-    onTrack: trackingEvents.phoneClick,
     className:
       'bg-primary-white text-primary-black shadow-soft hover:bg-primary-white/95',
   },
   {
     id: 'whatsapp',
     label: 'WhatsApp',
-    href: clinicInfo.whatsappHref,
-    external: true,
+    branchMode: 'whatsapp',
     icon: WhatsAppIcon,
-    onTrack: trackingEvents.whatsappClick,
     className:
       'bg-[#25D366] text-primary-white shadow-[0_4px_16px_rgba(37,211,102,0.35)] hover:brightness-105',
   },
@@ -63,6 +59,7 @@ const actions = [
 export default function MobileBottomBar({ visible = false }) {
   const lastTap = useRef(0);
   const { openBooking } = useBookingModal();
+  const [branchMode, setBranchMode] = useState(null);
 
   const guardTap = useCallback((handler) => (e) => {
     const now = Date.now();
@@ -85,6 +82,7 @@ export default function MobileBottomBar({ visible = false }) {
   }, []);
 
   return (
+    <>
     <AnimatePresence>
       {visible && (
         <motion.nav
@@ -147,46 +145,22 @@ export default function MobileBottomBar({ visible = false }) {
               onPointerDown: setRipple,
             };
 
-            if (action.isBooking) {
-              return (
-                <button
-                  key={action.id}
-                  type="button"
-                  onClick={guardTap(() => {
-                    action.onTrack?.();
-                    openBooking();
-                  })}
-                  {...sharedProps}
-                >
-                  {content}
-                </button>
-              );
-            }
-
-            if (action.to) {
-              return (
-                <Link
-                  key={action.id}
-                  to={action.to}
-                  onClick={guardTap(action.onTrack)}
-                  {...sharedProps}
-                >
-                  {content}
-                </Link>
-              );
-            }
+            const handleClick = action.isBooking
+              ? () => {
+                  action.onTrack?.();
+                  openBooking();
+                }
+              : () => setBranchMode(action.branchMode);
 
             return (
-              <a
+              <button
                 key={action.id}
-                href={action.href}
-                onClick={guardTap(action.onTrack)}
-                target={action.external ? '_blank' : undefined}
-                rel={action.external ? 'noopener noreferrer' : undefined}
+                type="button"
+                onClick={guardTap(handleClick)}
                 {...sharedProps}
               >
                 {content}
-              </a>
+              </button>
             );
           })}
             </div>
@@ -194,5 +168,8 @@ export default function MobileBottomBar({ visible = false }) {
         </motion.nav>
       )}
     </AnimatePresence>
+
+    <BranchActionSheet mode={branchMode} onClose={() => setBranchMode(null)} />
+    </>
   );
 }
