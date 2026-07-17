@@ -22,7 +22,10 @@ export default function BranchActionSheet({ mode, onClose }) {
   const hrefFor = (loc) => {
     if (isCall) return loc.phoneHref;
     const digits = loc.phone.replace(/\D/g, '');
-    return `https://wa.me/${digits}`;
+    const message =
+      `Hello Capilla Dental & Aesthetic Center (${loc.label} branch), ` +
+      `I would like to know more about your treatments and book an appointment.`;
+    return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
   };
 
   const handleSelect = () => {
