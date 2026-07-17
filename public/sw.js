@@ -1,5 +1,5 @@
 /* Capilla PWA service worker — offline shell + smart runtime caching */
-const VERSION = 'capilla-v1';
+const VERSION = 'capilla-v2';
 const APP_SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const OFFLINE_URL = '/';

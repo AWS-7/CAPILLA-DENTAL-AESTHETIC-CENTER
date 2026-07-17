@@ -14,7 +14,6 @@ const HERO_BG_IMAGES = [
 /**
  * Rotating clinic-photo background for the Hero section.
  * - Crossfades to the next image on a fixed interval (default 1.5s).
- * - Cinematic slow zoom/drift loop layered over the crossfade.
  * - Performance: rotation pauses when the hero is off-screen or the tab is
  *   hidden, and is disabled entirely when the user prefers reduced motion.
  */
@@ -69,21 +68,19 @@ export default function HeroBackground({ interval = 1500 }) {
 
   return (
     <div ref={containerRef} className="absolute inset-0" aria-hidden="true">
-      <div className={cn('absolute inset-0', !reduceMotion && 'hero-bg-drift')}>
-        {HERO_BG_IMAGES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className={cn(
-              'absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out',
-              i === active ? 'opacity-100' : 'opacity-0'
-            )}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-          />
-        ))}
-      </div>
+      {HERO_BG_IMAGES.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          className={cn(
+            'absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out',
+            i === active ? 'opacity-100' : 'opacity-0'
+          )}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      ))}
     </div>
   );
 }

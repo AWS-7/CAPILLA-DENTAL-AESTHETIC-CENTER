@@ -1,13 +1,5 @@
-import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  useMotionValue,
-  useReducedMotion,
-} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -34,18 +26,17 @@ const fadeUp = {
 };
 
 const blurReveal = {
-  hidden: { opacity: 0, filter: 'blur(8px)', y: 10 },
+  hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
-    filter: 'blur(0px)',
     y: 0,
-    transition: { duration: 0.6, ease: EASE },
+    transition: { duration: 0.55, ease: EASE },
   },
 };
 
 const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.55, ease: EASE } },
+  hidden: { opacity: 0, scale: 0.97 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: EASE } },
 };
 
 const stagger = (delay = 0) => ({
@@ -61,100 +52,25 @@ const trustStats = [
 
 /**
  * HeroMobile — premium, compact iOS-style hero (320–767px).
- * Cinematic drifting background loop + tactile 3D interactions
- * (gyroscope + touch parallax) with scroll-linked depth.
+ * Lightweight: entrance animations only (run once). No scroll-linked or
+ * tilt effects, for smooth performance on lower-end phones.
  */
 export default function HeroMobile() {
-  const sectionRef = useRef(null);
-  const reduceMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 26,
-    mass: 0.4,
-  });
-
-  // Subtle scroll-linked depth (gentle, not distracting)
-  const contentScale = useTransform(progress, [0, 1], [1, 0.96]);
-  const contentY = useTransform(progress, [0, 1], [0, -22]);
-  const contentOpacity = useTransform(progress, [0, 0.6, 1], [1, 1, 0.4]);
-  const cardY = useTransform(progress, [0, 1], [0, 40]);
-  const bgY = useTransform(progress, [0, 1], [0, 30]);
-
-  // ── 3D interaction: gyroscope + touch parallax tilt on the hero card ──
-  const tiltX = useMotionValue(0);
-  const tiltY = useMotionValue(0);
-  const rotX = useSpring(tiltX, { stiffness: 60, damping: 14, mass: 0.3 });
-  const rotY = useSpring(tiltY, { stiffness: 60, damping: 14, mass: 0.3 });
-
-  useEffect(() => {
-    if (reduceMotion) return undefined;
-    const onOrient = (e) => {
-      const g = Math.max(-22, Math.min(22, e.gamma || 0));
-      const b = Math.max(-22, Math.min(22, (e.beta || 0) - 45));
-      tiltY.set((g / 22) * 7);
-      tiltX.set((-b / 22) * 7);
-    };
-    window.addEventListener('deviceorientation', onOrient, true);
-    return () => window.removeEventListener('deviceorientation', onOrient, true);
-  }, [reduceMotion, tiltX, tiltY]);
-
-  const handleTouchMove = (e) => {
-    if (reduceMotion) return;
-    const t = e.touches?.[0];
-    if (!t) return;
-    const nx = (t.clientX / window.innerWidth) * 2 - 1;
-    const ny = (t.clientY / window.innerHeight) * 2 - 1;
-    tiltY.set(nx * 7);
-    tiltX.set(-ny * 7);
-  };
-
-  const cardStyle = reduceMotion
-    ? { y: cardY }
-    : { y: cardY, rotateX: rotX, rotateY: rotY, transformPerspective: 900 };
-
   return (
     <section
-      ref={sectionRef}
       id="hero"
       data-hero
-      onTouchMove={handleTouchMove}
       className="relative w-full overflow-hidden"
     >
-      {/* Rotating clinic photo background · slow parallax */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0">
+      {/* Rotating clinic photo background */}
+      <div className="absolute inset-0">
         <HeroBackground />
-      </motion.div>
-      {/* Lighter, cleaner readability scrim */}
+      </div>
+      {/* Readability scrim */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/55 via-[#0B0B0B]/42 to-[#0B0B0B]/80" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_8%,rgba(212,175,90,0.12),transparent_60%)]" />
 
-      {/* Floating cinematic gold orbs (depth ambiance) */}
-      {!reduceMotion && (
-        <>
-          <motion.div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-[-48px] top-[16%] h-40 w-40 rounded-full bg-[#D4AF5A]/[0.18] blur-3xl"
-            animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
-            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[-40px] top-[42%] h-44 w-44 rounded-full bg-[#D4AF5A]/[0.12] blur-3xl"
-            animate={{ y: [0, 24, 0], x: [0, -14, 0] }}
-            transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-          />
-        </>
-      )}
-
-      <motion.div
-        style={{ scale: contentScale, y: contentY, opacity: contentOpacity }}
-        className="relative z-10 flex w-full flex-col items-center px-5 pt-[calc(var(--header-height)+16px)] pb-10 text-center"
-      >
+      <div className="relative z-10 flex w-full flex-col items-center px-5 pt-[calc(var(--header-height)+16px)] pb-10 text-center">
         {/* ── Eyebrow pill ── */}
         <motion.span
           variants={fadeUp}
@@ -202,7 +118,7 @@ export default function HeroMobile() {
           </motion.p>
         </motion.div>
 
-        {/* ── Hero image card · floating rating badge · 3D tilt ── */}
+        {/* ── Hero image card · floating rating badge ── */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -210,8 +126,7 @@ export default function HeroMobile() {
           transition={{ delay: 0.28 }}
           role="region"
           aria-label="Clinic highlights"
-          style={cardStyle}
-          className="relative mt-6 w-full [transform-style:preserve-3d]"
+          className="relative mt-6 w-full"
         >
           <div className="relative overflow-hidden rounded-[24px] border border-white/[0.14] shadow-premium">
             <Swiper
@@ -263,9 +178,6 @@ export default function HeroMobile() {
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            {/* Cinematic sheen sweep */}
-            {!reduceMotion && <span className="hero-sheen z-20 rounded-[24px]" />}
           </div>
 
           {/* Floating Google rating badge */}
@@ -366,7 +278,7 @@ export default function HeroMobile() {
             </div>
           ))}
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Seam into next section */}
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary-white to-transparent" />
