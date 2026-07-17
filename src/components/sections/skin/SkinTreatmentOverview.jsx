@@ -9,7 +9,7 @@ import {
   SecondaryButton,
 } from '../../common';
 import { skinTreatmentsList } from '../../../data/skin';
-import { staggerContainer, staggerItem } from '../../../utils/animations';
+import { staggerItem } from '../../../utils/animations';
 
 export default function SkinTreatmentOverview() {
   return (
@@ -20,15 +20,15 @@ export default function SkinTreatmentOverview() {
           title="Skin Treatment Overview"
           description="Medical-grade aesthetics for glow, texture, and timeless skin — serving Perumbakkam, Medavakkam, and Sholinganallur."
         />
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.08 }}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {skinTreatmentsList.map((item) => (
-            <motion.div key={item.id} variants={staggerItem}>
+            <motion.div
+              key={item.id}
+              variants={staggerItem}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+            >
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-primary-white shadow-soft hover:shadow-premium transition-shadow">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <motion.div className="h-full w-full" whileHover={{ scale: 1.06 }} transition={{ duration: 0.6 }}>
@@ -69,7 +69,7 @@ export default function SkinTreatmentOverview() {
               </article>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </Container>
     </section>
   );
