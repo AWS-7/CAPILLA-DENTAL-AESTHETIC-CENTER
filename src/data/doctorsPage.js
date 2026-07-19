@@ -5,7 +5,7 @@ export const doctorsSeo = {
     'Meet Capilla’s expert doctors in Perumbakkam — experienced cosmetic dentists, skin specialists, and trichologists in Chennai. Book a consultation with certified professionals near you.',
   keywords:
     'Dentist Near Me, Cosmetic Dentist Chennai, Best Dental Clinic in Perumbakkam, Skin Clinic Perumbakkam, Hair Clinic Perumbakkam, Dental Clinic in Perumbakkam',
-  canonical: 'https://capillaclinic.com/doctors',
+  canonical: 'https://capillaaesthetic.com/doctors',
 };
 
 export const doctorsPageIntro = {

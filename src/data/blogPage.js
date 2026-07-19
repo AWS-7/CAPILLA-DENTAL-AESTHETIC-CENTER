@@ -6,7 +6,7 @@ export const blogSeo = {
     'Expert dental, skin, and hair care guides from Capilla specialists in Perumbakkam. Read the dental blog, skin care blog, and hair care blog for Chennai patients.',
   keywords:
     'Dental Blog Chennai, Skin Care Blog Chennai, Hair Care Blog Chennai, Dental Clinic in Perumbakkam',
-  canonical: 'https://capillaclinic.com/blog',
+  canonical: 'https://capillaaesthetic.com/blog',
 };
 
 export const blogHero = {

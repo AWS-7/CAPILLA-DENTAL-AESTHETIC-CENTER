@@ -19,7 +19,7 @@ export const skinSeo = {
     'Skin clinic in Perumbakkam offering Hydrafacial, chemical peel, acne scar, glass skin & anti-ageing treatments. Serving Medavakkam & Sholinganallur. Book your consultation.',
   keywords:
     'Skin Clinic Perumbakkam, Hydrafacial in Perumbakkam, Hydrafacial in Chennai, Chemical Peel Chennai, Skin Clinic Medavakkam, Skin Clinic Sholinganallur',
-  canonical: 'https://capillaclinic.com/skin',
+  canonical: 'https://capillaaesthetic.com/skin',
 };
 
 export const skinHero = {
@@ -402,7 +402,7 @@ export const skinTreatmentPages = {
         'Hydrafacial in Perumbakkam & Chennai at Capilla. Instant glow, no downtime. Best Hydrafacial clinic near Medavakkam & Sholinganallur. Book today.',
       keywords:
         'Hydrafacial in Chennai, Hydrafacial in Perumbakkam, Best Hydrafacial Clinic Chennai, Skin Clinic Perumbakkam',
-      canonical: 'https://capillaclinic.com/treatments/hydrafacial',
+      canonical: 'https://capillaaesthetic.com/treatments/hydrafacial',
     },
     overview: [
       'Hydrafacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts impurities, and infuses hydrating serums in one luxurious session.',
@@ -491,7 +491,7 @@ export const skinTreatmentPages = {
         'Chemical peel in Chennai at Capilla Perumbakkam. Improve texture, pigmentation and glow with doctor-led peels near Medavakkam & Sholinganallur.',
       keywords:
         'Chemical Peel Chennai, Skin Clinic Perumbakkam, Skin Clinic Medavakkam, Skin Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/chemical-peel',
+      canonical: 'https://capillaaesthetic.com/treatments/chemical-peel',
     },
     overview: [
       'Chemical peels use controlled exfoliating solutions to accelerate cell turnover, improve texture, and refine uneven tone.',
@@ -583,7 +583,7 @@ export const skinTreatmentPages = {
         'Acne scar treatment in Chennai at Capilla. Improve texture and acne marks with personalised plans in Perumbakkam near Medavakkam & Sholinganallur.',
       keywords:
         'Acne Scar Treatment Chennai, Skin Clinic Perumbakkam, Skin Clinic Medavakkam, Skin Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/acne-scar-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/acne-scar-treatment',
     },
     overview: [
       'Acne scars form when inflamed acne damages collagen. Treatments aim to remodel texture, soften edges, and improve overall skin evenness.',
@@ -681,7 +681,7 @@ export const skinTreatmentPages = {
         'Skin whitening treatment in Chennai at Capilla. Doctor-led brightening for even tone near Perumbakkam, Medavakkam & Sholinganallur.',
       keywords:
         'Skin Whitening Treatment Chennai, Skin Clinic Perumbakkam, Skin Clinic Medavakkam, Skin Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/skin-whitening-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/skin-whitening-treatment',
     },
     overview: [
       'Clinical skin brightening focuses on evening tone, reducing dullness, and enhancing radiance using supervised actives and facial protocols — not unsafe bleaching.',
@@ -761,7 +761,7 @@ export const skinTreatmentPages = {
         'Korean glass skin facial in Chennai at Capilla. Dewy, pore-refined glow with luxury hydration protocols in Perumbakkam.',
       keywords:
         'Korean Glass Skin Facial Chennai, Hydrafacial in Perumbakkam, Skin Clinic Perumbakkam, Skin Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/korean-glass-skin-facial',
+      canonical: 'https://capillaaesthetic.com/treatments/korean-glass-skin-facial',
     },
     overview: [
       'The “glass skin” look emphasises deep hydration, refined pores, and a translucent, light-reflecting finish popularised by Korean beauty philosophy.',
@@ -846,7 +846,7 @@ export const skinTreatmentPages = {
         'Anti ageing treatment in Chennai at Capilla. Soften lines and revive skin quality with specialist plans in Perumbakkam near Medavakkam & Sholinganallur.',
       keywords:
         'Anti Ageing Treatment Chennai, Skin Clinic Perumbakkam, Skin Clinic Medavakkam, Skin Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/anti-ageing-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/anti-ageing-treatment',
     },
     overview: [
       'Anti-ageing care addresses fine lines, loss of firmness, dullness, and texture changes using facials, peels, and regenerative approaches tailored to your stage of ageing.',

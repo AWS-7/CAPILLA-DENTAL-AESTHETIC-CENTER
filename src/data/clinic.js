@@ -8,8 +8,8 @@ export const clinicInfo = {
   phoneHref: 'tel:+919894299017',
   whatsapp: '+919894299017',
   whatsappHref: 'https://wa.me/919894299017',
-  email: 'hello@capillaclinic.com',
-  emailHref: 'mailto:hello@capillaclinic.com',
+  email: 'hello@capillaaesthetic.com',
+  emailHref: 'mailto:hello@capillaaesthetic.com',
   address: {
     line1: 'First Floor, 359, Hospital Rd, Indra Priyadarshini Nagar',
     line2: 'Perumbakkam, Chennai, Tamil Nadu 600100',

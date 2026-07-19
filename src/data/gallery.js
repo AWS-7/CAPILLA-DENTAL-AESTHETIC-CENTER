@@ -6,7 +6,7 @@ export const gallerySeo = {
     'Take a look inside Capilla Dental & Aesthetic Center in Perumbakkam — premium treatment suites, advanced aesthetic technology, and a luxury patient experience.',
   keywords:
     'Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Smile Makeover Chennai, Hydrafacial Chennai, Hair Transplant Chennai',
-  canonical: 'https://capillaclinic.com/gallery',
+  canonical: 'https://capillaaesthetic.com/gallery',
 };
 
 export const galleryHero = {

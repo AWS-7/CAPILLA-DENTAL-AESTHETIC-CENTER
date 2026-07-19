@@ -16,7 +16,7 @@ export default function PagePlaceholder({
 }) {
   return (
     <>
-      <SEO title={title} description={subtitle} canonical={`https://capillaclinic.com${path}`} />
+      <SEO title={title} description={subtitle} canonical={`https://capillaaesthetic.com${path}`} />
       <PageHero
         title={title}
         subtitle={subtitle}

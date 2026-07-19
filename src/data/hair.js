@@ -17,7 +17,7 @@ export const hairSeo = {
     'Best hair clinic in Perumbakkam for PRP, GFC, hair transplant, regrowth and hair loss treatment. Serving Medavakkam & Sholinganallur. Book your hair specialist consultation.',
   keywords:
     'Hair Clinic Perumbakkam, PRP Hair Treatment Chennai, Hair Transplant Chennai, Hair Loss Treatment Chennai, Best Hair Clinic Chennai, Hair Clinic Medavakkam, Hair Clinic Sholinganallur',
-  canonical: 'https://capillaclinic.com/hair',
+  canonical: 'https://capillaaesthetic.com/hair',
 };
 
 export const hairHero = {
@@ -216,7 +216,7 @@ export const hairTreatmentPages = {
         'PRP hair treatment in Chennai at Capilla Perumbakkam. Stimulate natural regrowth with specialist protocols near Medavakkam & Sholinganallur.',
       keywords:
         'PRP Hair Treatment Chennai, Hair Clinic Perumbakkam, Best Hair Clinic Chennai, Hair Specialist Chennai',
-      canonical: 'https://capillaclinic.com/treatments/prp-hair-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/prp-hair-treatment',
     },
     overview: [
       'PRP (Platelet-Rich Plasma) uses concentrated growth factors from your own blood to support hair follicle activity and improve thinning areas.',
@@ -308,7 +308,7 @@ export const hairTreatmentPages = {
         'GFC hair treatment in Chennai at Capilla. Advanced growth factor therapy for hair density near Perumbakkam, Medavakkam & Sholinganallur.',
       keywords:
         'GFC Hair Treatment Chennai, Hair Clinic Perumbakkam, Best Hair Clinic Chennai, Hair Specialist Chennai',
-      canonical: 'https://capillaclinic.com/treatments/gfc-hair-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/gfc-hair-treatment',
     },
     overview: [
       'GFC (Growth Factor Concentrate) is an advanced autologous therapy that concentrates growth factors to support follicle health and hair quality.',
@@ -397,7 +397,7 @@ export const hairTreatmentPages = {
         'Hair transplant in Chennai at Capilla. Natural FUE restoration near Perumbakkam, Medavakkam & Sholinganallur. Consult a hair specialist today.',
       keywords:
         'Hair Transplant Chennai, Best Hair Clinic Chennai, Hair Clinic Perumbakkam, Hair Specialist Chennai',
-      canonical: 'https://capillaclinic.com/treatments/hair-transplant',
+      canonical: 'https://capillaaesthetic.com/treatments/hair-transplant',
     },
     overview: [
       'Hair transplant relocates healthy donor follicles to thinning or bald areas to restore density with a natural aesthetic.',
@@ -496,7 +496,7 @@ export const hairTreatmentPages = {
         'Hair regrowth treatment in Chennai at Capilla. Personalised plans for thinning hair near Perumbakkam, Medavakkam & Sholinganallur.',
       keywords:
         'Hair Regrowth Treatment Chennai, Hair Clinic Perumbakkam, Hair Loss Treatment Chennai, Best Hair Clinic Chennai',
-      canonical: 'https://capillaclinic.com/treatments/hair-regrowth-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/hair-regrowth-treatment',
     },
     overview: [
       'Hair regrowth treatment focuses on supporting follicles through medical therapies, regenerative options, and lifestyle corrections tailored to your diagnosis.',
@@ -596,7 +596,7 @@ export const hairTreatmentPages = {
         'Hair loss treatment in Chennai at Capilla. Diagnose causes and start personalised care near Perumbakkam, Medavakkam & Sholinganallur.',
       keywords:
         'Hair Loss Treatment Chennai, Hair Specialist Chennai, Hair Clinic Perumbakkam, Best Hair Clinic Chennai',
-      canonical: 'https://capillaclinic.com/treatments/hair-loss-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/hair-loss-treatment',
     },
     overview: [
       'Effective hair loss treatment starts with understanding why shedding or thinning is happening — genetics, scalp health, nutrition, stress, or hormonal factors.',
@@ -708,7 +708,7 @@ export const hairTreatmentPages = {
         'Digital scalp analysis and hair specialist consultation in Perumbakkam. Get personalised PRP, GFC, regrowth or transplant recommendations near Medavakkam & Sholinganallur.',
       keywords:
         'Hair Specialist Chennai, Hair Clinic Perumbakkam, Best Hair Clinic Chennai, Hair Clinic Medavakkam, Hair Clinic Sholinganallur',
-      canonical: 'https://capillaclinic.com/treatments/scalp-analysis-consultation',
+      canonical: 'https://capillaaesthetic.com/treatments/scalp-analysis-consultation',
     },
     overview: [
       'A scalp analysis consultation is the foundation of effective hair care — understanding density, pattern, scalp condition, and realistic goals before choosing therapy.',

@@ -4,7 +4,7 @@ export const contactSeo = {
     'Contact Capilla Dental & Aesthetic Center in Perumbakkam. Book a consultation via form, WhatsApp, or phone. Best dental clinic near Medavakkam & Sholinganallur.',
   keywords:
     'Contact Dental Clinic Perumbakkam, Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Dentist Near Me',
-  canonical: 'https://capillaclinic.com/contact',
+  canonical: 'https://capillaaesthetic.com/contact',
 };
 
 export const contactHero = {

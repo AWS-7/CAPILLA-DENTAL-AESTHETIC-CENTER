@@ -7,7 +7,7 @@ export const dentalSeo = {
     'Capilla Dental Clinic in Perumbakkam offers dental implants, root canal, teeth whitening, smile design & braces. Best dental clinic in Perumbakkam, Medavakkam & Sholinganallur. Book today.',
   keywords:
     'Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Dentist Near Me, Cosmetic Dentist Chennai, Dental Clinic Medavakkam, Dental Clinic Sholinganallur',
-  canonical: 'https://capillaclinic.com/dental',
+  canonical: 'https://capillaaesthetic.com/dental',
 };
 
 export const dentalHero = {
@@ -263,7 +263,7 @@ export const dentalTreatmentPages = {
         'Dental implants in Chennai at Capilla Perumbakkam. Permanent tooth replacement with advanced implantology. Serving Medavakkam & Sholinganallur. Book your consult.',
       keywords:
         'Dental Implants Chennai, Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Dentist Near Me, Cosmetic Dentist Chennai',
-      canonical: 'https://capillaclinic.com/treatments/dental-implants',
+      canonical: 'https://capillaaesthetic.com/treatments/dental-implants',
     },
     overview: [
       'Dental implants are the gold standard for replacing missing teeth — restoring bite strength, speech comfort, and a seamless natural appearance.',
@@ -350,7 +350,7 @@ export const dentalTreatmentPages = {
         'Root canal treatment in Chennai at Capilla Perumbakkam. Painless RCT with modern diagnosis. Best dental clinic near Medavakkam & Sholinganallur.',
       keywords:
         'Root Canal Treatment Chennai, Dental Clinic in Perumbakkam, Dentist Near Me, Best Dental Clinic in Perumbakkam',
-      canonical: 'https://capillaclinic.com/treatments/root-canal-treatment',
+      canonical: 'https://capillaaesthetic.com/treatments/root-canal-treatment',
     },
     overview: [
       'Root canal treatment removes infected or inflamed pulp inside a tooth, eliminates pain, and restores the tooth with a durable filling or crown.',
@@ -437,7 +437,7 @@ export const dentalTreatmentPages = {
         'Professional teeth whitening in Chennai at Capilla. Safe clinical whitening near Perumbakkam, Medavakkam & Sholinganallur. Book your smile brightening session.',
       keywords:
         'Teeth Whitening Chennai, Cosmetic Dentist Chennai, Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam',
-      canonical: 'https://capillaclinic.com/treatments/teeth-whitening',
+      canonical: 'https://capillaaesthetic.com/treatments/teeth-whitening',
     },
     overview: [
       'Professional teeth whitening lifts surface and deeper stains for a noticeably brighter smile under clinical supervision.',
@@ -522,7 +522,7 @@ export const dentalTreatmentPages = {
         'Smile design and smile makeover in Chennai at Capilla. Cosmetic dentist care in Perumbakkam for veneers, harmony & confidence. Serving Medavakkam & Sholinganallur.',
       keywords:
         'Smile Makeover Chennai, Cosmetic Dentist Chennai, Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam',
-      canonical: 'https://capillaclinic.com/treatments/smile-design',
+      canonical: 'https://capillaaesthetic.com/treatments/smile-design',
     },
     overview: [
       'Smile design blends aesthetics and function — analysing teeth, gums, lips, and facial proportions to create a smile that looks natural and feels right.',
@@ -609,7 +609,7 @@ export const dentalTreatmentPages = {
         'Braces and clear aligners in Chennai at Capilla Perumbakkam. Metal, ceramic & invisible orthodontics near Medavakkam & Sholinganallur. Book a smile alignment consult.',
       keywords:
         'Braces Chennai, Dental Clinic in Perumbakkam, Dentist Near Me, Best Dental Clinic in Perumbakkam, Cosmetic Dentist Chennai',
-      canonical: 'https://capillaclinic.com/treatments/braces-aligners',
+      canonical: 'https://capillaaesthetic.com/treatments/braces-aligners',
     },
     overview: [
       'Orthodontic treatment straightens teeth, improves bite function, and enhances smile aesthetics using braces or clear aligners.',

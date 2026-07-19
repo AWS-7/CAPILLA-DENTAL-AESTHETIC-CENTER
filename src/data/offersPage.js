@@ -6,7 +6,7 @@ export const offersSeo = {
     'Explore Hydrafacial offers, dental implant packages, teeth whitening and hair treatment offers in Chennai at Capilla Perumbakkam. Limited-time luxury packages.',
   keywords:
     'Dental Offers Chennai, Hydrafacial Offers Chennai, Hair Treatment Offers Chennai, Best Dental Clinic in Perumbakkam',
-  canonical: 'https://capillaclinic.com/offers',
+  canonical: 'https://capillaaesthetic.com/offers',
 };
 
 export const offersHero = {

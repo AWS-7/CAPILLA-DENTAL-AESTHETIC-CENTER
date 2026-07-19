@@ -4,7 +4,7 @@ Allow: /
 # Disallow thin utility paths if added later
 Disallow: /api/
 
-Sitemap: https://capillaclinic.com/sitemap.xml
+Sitemap: https://capillaaesthetic.com/sitemap.xml
 
 # Google
 User-agent: Googlebot

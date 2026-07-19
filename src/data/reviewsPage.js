@@ -6,7 +6,7 @@ export const reviewsSeo = {
     'Read Google reviews for Capilla Dental & Aesthetic Center — trusted by thousands of happy patients in Perumbakkam, Chennai for dental, skin, and hair care.',
   keywords:
     'Google Reviews Dental Clinic Chennai, Best Dental Clinic in Perumbakkam, Dental Clinic in Perumbakkam, Hair Clinic Perumbakkam',
-  canonical: 'https://capillaclinic.com/reviews',
+  canonical: 'https://capillaaesthetic.com/reviews',
 };
 
 export const reviewsHero = {

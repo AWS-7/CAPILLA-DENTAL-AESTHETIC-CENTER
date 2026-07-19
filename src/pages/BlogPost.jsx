@@ -18,7 +18,7 @@ export default function BlogPost() {
       <SEO
         title={`${article.title} | Capilla Dental Blog`}
         description={article.excerpt}
-        canonical={`https://capillaclinic.com/blog/${article.slug}`}
+        canonical={`https://capillaaesthetic.com/blog/${article.slug}`}
         image={article.image}
         type="article"
       />

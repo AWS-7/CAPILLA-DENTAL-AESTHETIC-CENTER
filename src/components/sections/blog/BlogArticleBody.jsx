@@ -23,7 +23,7 @@ import { fadeUp } from '../../../utils/animations';
 export default function BlogArticleBody({ article }) {
   const related = getRelatedArticles(article.slug, article.category);
   const { prev, next } = getAdjacentArticles(article.slug);
-  const shareUrl = `https://capillaclinic.com/blog/${article.slug}`;
+  const shareUrl = `https://capillaaesthetic.com/blog/${article.slug}`;
 
   const copyLink = async () => {
     try {

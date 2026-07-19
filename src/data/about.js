@@ -7,7 +7,7 @@ export const aboutSeo = {
     'Discover Capilla Dental & Aesthetic Center in Perumbakkam — a premium dental, skin & hair clinic in Chennai focused on advanced treatments, hygiene, and personalized care. Meet our story, mission, and facilities.',
   keywords:
     'Dental Clinic in Perumbakkam, Best Dental Clinic in Perumbakkam, Cosmetic Dentist Chennai, Dentist Near Me, Skin Clinic Perumbakkam, Hair Clinic Perumbakkam',
-  canonical: 'https://capillaclinic.com/about',
+  canonical: 'https://capillaaesthetic.com/about',
 };
 
 export const aboutIntro = {
