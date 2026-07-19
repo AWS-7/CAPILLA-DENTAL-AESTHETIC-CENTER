@@ -160,24 +160,17 @@ export const hairTestimonials = [
 export const hairBeforeAfter = [
   {
     id: 1,
-    title: 'PRP Density Improve',
-    category: 'PRP',
-    before: imgHair2,
-    after: imgHair,
+    title: 'Hair Regrowth Result',
+    category: 'PRP / GFC',
+    before: '/gallery/before-after/ba-hair-1-before.webp',
+    after: '/gallery/before-after/ba-hair-1-after.webp',
   },
   {
     id: 2,
-    title: 'FUE Hairline Restore',
-    category: 'Transplant',
-    before: imgHair3,
-    after: imgCare,
-  },
-  {
-    id: 3,
-    title: 'Regrowth Journey',
-    category: 'Regrowth',
-    before: imgHair2,
-    after: imgHair,
+    title: 'Density Restoration',
+    category: 'Hair Regrowth',
+    before: '/gallery/before-after/ba-hair-2-before.webp',
+    after: '/gallery/before-after/ba-hair-2-after.webp',
   },
 ];
 

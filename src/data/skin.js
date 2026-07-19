@@ -346,24 +346,17 @@ export const skinTestimonials = [
 export const skinBeforeAfter = [
   {
     id: 1,
-    title: 'Hydrafacial Glow',
-    category: 'Hydrafacial',
-    before: imgGlow,
-    after: imgFacial,
+    title: 'Acne Clearance',
+    category: 'Acne Correction',
+    before: '/gallery/before-after/ba-skin-1-before.webp',
+    after: '/gallery/before-after/ba-skin-1-after.webp',
   },
   {
     id: 2,
-    title: 'Peel Clarity',
-    category: 'Chemical Peel',
-    before: imgAcne,
-    after: imgPeel,
-  },
-  {
-    id: 3,
-    title: 'Glass Skin Finish',
-    category: 'Facial',
-    before: imgSkin,
-    after: imgFacial,
+    title: 'Pigmentation Reduction',
+    category: 'Melasma Treatment',
+    before: '/gallery/before-after/ba-skin-2-before.webp',
+    after: '/gallery/before-after/ba-skin-2-after.webp',
   },
 ];
 

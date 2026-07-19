@@ -206,24 +206,17 @@ export const dentalTestimonials = [
 export const dentalBeforeAfter = [
   {
     id: 1,
-    title: 'Implant Restoration',
-    category: 'Implants',
-    before: placeholders.dental,
-    after: placeholders.smile,
+    title: 'Teeth Alignment',
+    category: 'Braces & Aligners',
+    before: '/gallery/before-after/ba-dental-1-before.webp',
+    after: '/gallery/before-after/ba-dental-1-after.webp',
   },
   {
     id: 2,
-    title: 'Smile Whitening',
-    category: 'Whitening',
-    before: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=70',
-    after: placeholders.smile,
-  },
-  {
-    id: 3,
-    title: 'Alignment Makeover',
-    category: 'Orthodontics',
-    before: placeholders.treatment,
-    after: placeholders.smile,
+    title: 'Smile Makeover',
+    category: 'Smile Design',
+    before: '/gallery/before-after/ba-dental-2-before.webp',
+    after: '/gallery/before-after/ba-dental-2-after.webp',
   },
 ];
 
