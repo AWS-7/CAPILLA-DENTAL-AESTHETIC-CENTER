@@ -54,7 +54,7 @@ export default function PromoPopup() {
           transition={{ duration: 0.3 }}
         >
           <div
-            className="absolute inset-0 bg-primary-black/75 backdrop-blur-sm"
+            className="absolute inset-0 bg-primary-black/80"
             onClick={close}
             aria-hidden="true"
           />
