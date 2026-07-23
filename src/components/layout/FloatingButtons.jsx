@@ -37,7 +37,7 @@ const buttons = [
 export default function FloatingButtons() {
   return (
     <div
-      className="hidden md:flex fixed z-40 flex-col items-end gap-3 bottom-8 right-8"
+      className="hidden md:flex fixed z-40 flex-col items-end gap-3 top-1/2 right-8 -translate-y-1/2"
       role="complementary"
       aria-label="Quick contact actions"
     >
