@@ -16,7 +16,7 @@ export default function GlobalCTA() {
   const { openBooking } = useBookingModal();
 
   return (
-    <div className="flex flex-row items-stretch gap-5 md:gap-4 sm:flex-col sm:gap-3">
+    <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
       <PrimaryButton
         onClick={openBooking}
         variant="gold"

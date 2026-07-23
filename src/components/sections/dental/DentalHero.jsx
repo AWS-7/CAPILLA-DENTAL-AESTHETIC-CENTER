@@ -21,8 +21,13 @@ export default function DentalHero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(200,164,93,0.2),transparent_50%)]" />
       </div>
 
-      <div className="relative z-10 container-premium flex min-h-[70vh] md:min-h-[78vh] flex-col justify-end pb-14 md:pb-20 pt-32 md:pt-40">
-        <motion.div variants={slideInLeft} initial="hidden" animate="visible" className="max-w-3xl">
+      <div className="relative z-10 container-premium flex min-h-[70vh] md:min-h-[78vh] flex-col justify-center pb-12 pt-[calc(var(--header-height)+2rem)] md:pb-16 md:pt-[calc(var(--header-height)+3rem)]">
+        <motion.div
+          variants={slideInLeft}
+          initial="hidden"
+          animate="visible"
+          className="flex w-full max-w-[640px] flex-col items-start md:max-w-[680px] lg:max-w-[45%] xl:max-w-[42%]"
+        >
           <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold">
             <Sparkles size={14} />
             Dental Clinic in Perumbakkam
@@ -30,9 +35,12 @@ export default function DentalHero() {
           <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe">
             {dentalHero.title}
           </h1>
-          <div className="mt-4 sm:mt-5 space-y-1 font-display text-xl sm:text-2xl md:text-3xl text-primary-white/90">
+          <div className="mt-5 space-y-2 font-display text-xl leading-[1.18] sm:text-2xl md:text-3xl md:leading-[1.18] text-primary-white/90">
             {dentalHero.lines.map((line) => (
-              <p key={line} className={line.includes('Confident') ? 'text-gold-light' : undefined}>
+              <p
+                key={line}
+                className={line.includes('Confident') ? 'text-gold-light' : undefined}
+              >
                 {line}
               </p>
             ))}
@@ -41,12 +49,17 @@ export default function DentalHero() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="mt-6 max-w-xl text-base md:text-lg font-light text-primary-white/65"
+            className="mt-6 max-w-[600px] text-base leading-[1.75] md:text-lg font-light text-primary-white/65"
           >
             {dentalHero.subtitle}
           </motion.p>
-            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 md:flex-row md:flex-nowrap md:items-center md:gap-5">
+            <PrimaryButton
+              to="/contact"
+              variant="gold"
+              size="lg"
+              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
+            >
               Book Appointment
             </PrimaryButton>
             <SecondaryButton
@@ -54,7 +67,7 @@ export default function DentalHero() {
               external
               variant="light"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
             >
               <MessageCircle size={18} />
               WhatsApp Consultation
@@ -62,10 +75,10 @@ export default function DentalHero() {
             <SecondaryButton
               href={clinicInfo.phoneHref}
               variant="light"
-              size="md"
-              className="w-full sm:w-auto"
+              size="lg"
+              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
             >
-              <Phone size={16} />
+              <Phone size={18} />
               Call Now
             </SecondaryButton>
           </div>

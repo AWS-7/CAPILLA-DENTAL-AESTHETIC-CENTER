@@ -10,6 +10,7 @@ import AboutFacilities from '../components/sections/about/AboutFacilities';
 import AboutPhilosophy from '../components/sections/about/AboutPhilosophy';
 import AboutAchievements from '../components/sections/about/AboutAchievements';
 import AboutGalleryPreview from '../components/sections/about/AboutGalleryPreview';
+import AboutLocations from '../components/sections/about/AboutLocations';
 import PageConsultCTA from '../components/sections/shared/PageConsultCTA';
 import { aboutSeo, aboutIntro } from '../data/about';
 import { placeholders } from '../data/content';
@@ -41,6 +42,7 @@ export default function About() {
       <AboutPhilosophy />
       <AboutAchievements />
       <AboutGalleryPreview />
+      <AboutLocations />
       <PageConsultCTA
         title="Book Your Consultation Today"
         description="Experience Capilla — the premium dental, skin & hair clinic in Perumbakkam trusted for advanced care and personalised consultations."

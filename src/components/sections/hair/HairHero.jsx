@@ -19,7 +19,12 @@ export default function HairHero() {
       </div>
 
       <div className="relative z-10 container-premium flex min-h-[70vh] md:min-h-[78vh] flex-col justify-end pb-14 md:pb-20 pt-32 md:pt-40">
-        <motion.div variants={slideInLeft} initial="hidden" animate="visible" className="max-w-3xl">
+        <motion.div
+          variants={slideInLeft}
+          initial="hidden"
+          animate="visible"
+          className="flex w-full max-w-3xl flex-col items-start"
+        >
           <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold">
             <Sparkles size={14} />
             Hair Clinic in Perumbakkam
@@ -42,7 +47,7 @@ export default function HairHero() {
           >
             {hairHero.subtitle}
           </motion.p>
-          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
               Book Appointment
             </PrimaryButton>
@@ -59,7 +64,7 @@ export default function HairHero() {
             <SecondaryButton
               href={clinicInfo.phoneHref}
               variant="light"
-              size="md"
+              size="lg"
               className="w-full sm:w-auto"
             >
               <Phone size={16} />
