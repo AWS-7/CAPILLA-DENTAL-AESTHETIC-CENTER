@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Calendar } from 'lucide-react';
+import { Phone, MessageCircle, Calendar, Instagram } from 'lucide-react';
 import { clinicInfo } from '../../data/clinic';
 import { trackingEvents } from '../../utils/analytics';
 
@@ -15,13 +15,13 @@ const buttons = [
     onTrack: trackingEvents.whatsappClick,
   },
   {
-    id: 'call',
-    label: 'Call Capilla clinic',
-    href: clinicInfo.phoneHref,
-    external: false,
-    icon: Phone,
-    className: 'bg-primary-black text-primary-white hover:bg-gold',
-    onTrack: trackingEvents.phoneClick,
+    id: 'instagram',
+    label: 'Follow on Instagram',
+    href: clinicInfo.social.instagram,
+    external: true,
+    icon: Instagram,
+    className: 'bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-primary-white border border-white/20',
+    onTrack: null,
   },
   {
     id: 'book',

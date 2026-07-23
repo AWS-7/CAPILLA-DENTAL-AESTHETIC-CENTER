@@ -12,7 +12,7 @@ export default function FloatingInstagram() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Follow Capilla on Instagram"
-      className="fixed right-3 sm:right-4 top-1/2 z-[44] -translate-y-1/2 md:right-5"
+      className="fixed right-3 sm:right-4 top-1/2 z-[44] translate-y-44 md:right-5 md:translate-y-48"
     >
       <motion.span
         className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-primary-white shadow-[0_8px_28px_rgba(238,42,123,0.35)] transition-[filter,transform] hover:brightness-110 sm:h-[52px] sm:w-[52px]"
