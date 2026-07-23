@@ -4,6 +4,7 @@ import {
   ShieldCheck,
   Clock,
   Stethoscope,
+  Phone,
 } from 'lucide-react';
 import { Container, GlobalCTA } from '../common';
 import { clinicInfo } from '../../data/clinic';

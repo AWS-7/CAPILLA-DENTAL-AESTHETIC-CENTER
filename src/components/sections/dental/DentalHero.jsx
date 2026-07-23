@@ -32,14 +32,14 @@ export default function DentalHero() {
             <Sparkles size={14} />
             Dental Clinic in Perumbakkam
           </p>
-          <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe">
+          <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe lg:whitespace-nowrap">
             {dentalHero.title}
           </h1>
-          <div className="mt-5 space-y-2 font-display text-xl leading-[1.18] sm:text-2xl md:text-3xl md:leading-[1.18] text-primary-white/90">
+          <div className="mt-5 flex flex-col gap-2 font-display text-xl leading-[1.18] sm:text-2xl md:flex-row md:flex-wrap md:items-center md:gap-4 md:text-3xl md:leading-[1.18] lg:flex-nowrap lg:gap-5 text-primary-white/90">
             {dentalHero.lines.map((line) => (
               <p
                 key={line}
-                className={line.includes('Confident') ? 'text-gold-light' : undefined}
+                className={line.includes('Confident') ? 'md:whitespace-nowrap text-gold-light' : 'md:whitespace-nowrap'}
               >
                 {line}
               </p>
@@ -53,12 +53,12 @@ export default function DentalHero() {
           >
             {dentalHero.subtitle}
           </motion.p>
-          <div className="mt-8 flex w-full flex-col items-stretch gap-3 md:flex-row md:flex-nowrap md:items-center md:gap-5">
+          <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             <PrimaryButton
               to="/contact"
               variant="gold"
               size="lg"
-              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
+              className="w-full justify-center whitespace-nowrap"
             >
               Book Appointment
             </PrimaryButton>
@@ -67,19 +67,19 @@ export default function DentalHero() {
               external
               variant="light"
               size="lg"
-              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
+              className="w-full justify-center whitespace-nowrap"
             >
               <MessageCircle size={18} />
-              WhatsApp Consultation
+              WhatsApp
             </SecondaryButton>
             <SecondaryButton
               href={clinicInfo.phoneHref}
               variant="light"
               size="lg"
-              className="w-full whitespace-nowrap md:w-auto md:shrink-0"
+              className="w-full justify-center whitespace-nowrap"
             >
               <Phone size={18} />
-              Call Now
+              Call
             </SecondaryButton>
           </div>
         </motion.div>

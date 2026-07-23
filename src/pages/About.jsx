@@ -35,6 +35,7 @@ export default function About() {
         breadcrumb={<Breadcrumb items={[{ label: 'About Us' }]} />}
       />
 
+      <AboutLocations />
       <AboutWhoWeAre />
       <AboutMissionVision />
       <AboutTrust />
@@ -42,7 +43,6 @@ export default function About() {
       <AboutPhilosophy />
       <AboutAchievements />
       <AboutGalleryPreview />
-      <AboutLocations />
       <PageConsultCTA
         title="Book Your Consultation Today"
         description="Experience Capilla — the premium dental, skin & hair clinic in Perumbakkam trusted for advanced care and personalised consultations."

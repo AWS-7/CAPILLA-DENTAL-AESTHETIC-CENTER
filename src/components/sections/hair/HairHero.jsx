@@ -18,23 +18,23 @@ export default function HairHero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_25%,rgba(200,164,93,0.22),transparent_55%)]" />
       </div>
 
-      <div className="relative z-10 container-premium flex min-h-[70vh] md:min-h-[78vh] flex-col justify-end pb-14 md:pb-20 pt-32 md:pt-40">
+      <div className="relative z-10 container-premium flex min-h-[70vh] md:min-h-[78vh] flex-col justify-center pb-12 pt-[calc(var(--header-height)+2rem)] md:pb-16 md:pt-[calc(var(--header-height)+3rem)]">
         <motion.div
           variants={slideInLeft}
           initial="hidden"
           animate="visible"
-          className="flex w-full max-w-3xl flex-col items-start"
+          className="flex w-full max-w-[640px] flex-col items-start md:max-w-[680px] lg:max-w-[45%] xl:max-w-[42%]"
         >
           <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold">
             <Sparkles size={14} />
             Hair Clinic in Perumbakkam
           </p>
-          <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe">
+          <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-display-md lg:text-display-lg text-primary-white break-safe lg:whitespace-nowrap">
             {hairHero.title}
           </h1>
-          <div className="mt-4 sm:mt-5 space-y-1 font-display text-xl sm:text-2xl md:text-3xl text-primary-white/90">
+          <div className="mt-5 flex flex-col gap-2 font-display text-xl leading-[1.18] sm:text-2xl md:flex-row md:flex-wrap md:items-center md:gap-4 md:text-3xl md:leading-[1.18] lg:flex-nowrap lg:gap-5 text-primary-white/90">
             {hairHero.lines.map((line) => (
-              <p key={line} className={line.includes('Natural') ? 'text-gold-light' : undefined}>
+              <p key={line} className={line.includes('Natural') ? 'md:whitespace-nowrap text-gold-light' : 'md:whitespace-nowrap'}>
                 {line}
               </p>
             ))}
@@ -43,12 +43,17 @@ export default function HairHero() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="mt-6 max-w-xl text-base md:text-lg font-light text-primary-white/65"
+            className="mt-6 max-w-[600px] text-base leading-[1.75] md:text-lg font-light text-primary-white/65"
           >
             {hairHero.subtitle}
           </motion.p>
-          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
+          <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+            <PrimaryButton
+              to="/contact"
+              variant="gold"
+              size="lg"
+              className="w-full justify-center whitespace-nowrap"
+            >
               Book Appointment
             </PrimaryButton>
             <SecondaryButton
@@ -56,19 +61,19 @@ export default function HairHero() {
               external
               variant="light"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full justify-center whitespace-nowrap"
             >
               <MessageCircle size={18} />
-              WhatsApp Consultation
+              WhatsApp
             </SecondaryButton>
             <SecondaryButton
               href={clinicInfo.phoneHref}
               variant="light"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full justify-center whitespace-nowrap"
             >
-              <Phone size={16} />
-              Call Now
+              <Phone size={18} />
+              Call
             </SecondaryButton>
           </div>
         </motion.div>

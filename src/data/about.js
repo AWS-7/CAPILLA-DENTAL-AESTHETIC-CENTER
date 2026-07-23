@@ -125,10 +125,10 @@ export const achievements = [
 ];
 
 export const aboutGallery = [
-  { id: 1, title: 'Reception Lounge', image: placeholders.clinic, category: 'Clinic' },
-  { id: 2, title: 'Treatment Suite', image: placeholders.clinicInterior, category: 'Clinic' },
-  { id: 3, title: 'Dental Care', image: placeholders.dental, category: 'Dental' },
-  { id: 4, title: 'Skin Studio', image: placeholders.skin, category: 'Skin' },
-  { id: 5, title: 'Hair Suite', image: placeholders.hair, category: 'Hair' },
-  { id: 6, title: 'Smile Studio', image: placeholders.smile, category: 'Dental' },
+  { id: 1, title: 'Reception & Front Desk', image: '/gallery/clinic-reception-desk.webp', category: 'Interiors' },
+  { id: 2, title: 'Patient Waiting Lounge', image: '/gallery/clinic-lounge.webp', category: 'Interiors' },
+  { id: 3, title: 'Skin Treatment Suite', image: '/gallery/clinic-treatment-suite.webp', category: 'Treatment Rooms' },
+  { id: 4, title: 'Laser & Facial Therapy Room', image: '/gallery/clinic-laser-room.webp', category: 'Treatment Rooms' },
+  { id: 5, title: 'Doctor Consultation Room', image: '/gallery/clinic-consultation-room.webp', category: 'Treatment Rooms' },
+  { id: 6, title: 'Advanced Aesthetic Technology', image: '/gallery/clinic-equipment.webp', category: 'Technology' },
 ];
