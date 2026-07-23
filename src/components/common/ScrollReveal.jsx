@@ -9,7 +9,7 @@ export default function ScrollReveal({
   className = '',
   delay = 0,
   once = true,
-  amount = 0.2,
+  amount = 0.1,
   as: Component = motion.div,
 }) {
   const { ref, inView } = useInView({ triggerOnce: once, threshold: amount });
