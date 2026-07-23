@@ -6,7 +6,7 @@ import { buildAppointmentWhatsAppLink } from '../../utils/whatsapp';
 import { trackingEvents } from '../../utils/analytics';
 import { cn } from '../../utils/helpers';
 
-const EMPTY = { name: '', phone: '', treatment: '', date: '', time: '' };
+const EMPTY = { name: '', phone: '', email: '', department: '', treatment: '', date: '', time: '', message: '' };
 const TODAY = new Date().toISOString().split('T')[0];
 
 const inputBase =
@@ -17,6 +17,9 @@ function validate(form) {
   if (form.name.trim().length < 2) errors.name = 'Please enter your name.';
   if (form.phone.replace(/\D/g, '').length < 10)
     errors.phone = 'Enter a valid phone number.';
+  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+    errors.email = 'Enter a valid email address.';
+  if (!form.department) errors.department = 'Please select a department.';
   if (!form.treatment) errors.treatment = 'Please select a treatment.';
   if (form.date && form.date < TODAY) errors.date = 'Date cannot be in the past.';
   return errors;
@@ -138,7 +141,7 @@ export default function BookingModal({ open, onClose }) {
                     name="name"
                     value={form.name}
                     onChange={onChange}
-                    placeholder="Full Name"
+                    placeholder="Full Name *"
                     aria-label="Full name"
                     className={fieldClass('name')}
                   />
@@ -156,14 +159,53 @@ export default function BookingModal({ open, onClose }) {
                     type="tel"
                     value={form.phone}
                     onChange={onChange}
-                    placeholder="Phone Number"
-                    aria-label="Phone number"
+                    placeholder="Mobile Number *"
+                    aria-label="Mobile number"
                     className={fieldClass('phone')}
                   />
                   {errors.phone && (
                     <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
                       <AlertCircle size={13} />
                       {errors.phone}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={onChange}
+                    placeholder="Email Address"
+                    aria-label="Email address"
+                    className={fieldClass('email')}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
+                      <AlertCircle size={13} />
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <select
+                    name="department"
+                    value={form.department}
+                    onChange={onChange}
+                    aria-label="Department"
+                    className={fieldClass('department')}
+                  >
+                    <option value="">Select Department</option>
+                    <option value="Dental">Dental</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Hair">Hair</option>
+                  </select>
+                  {errors.department && (
+                    <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
+                      <AlertCircle size={13} />
+                      {errors.department}
                     </p>
                   )}
                 </div>
@@ -176,7 +218,7 @@ export default function BookingModal({ open, onClose }) {
                     aria-label="Treatment"
                     className={fieldClass('treatment')}
                   >
-                    <option value="">Select a treatment</option>
+                    <option value="">Select Treatment</option>
                     {contactTreatments.map((t) => (
                       <option key={t} value={t}>
                         {t}
@@ -221,16 +263,34 @@ export default function BookingModal({ open, onClose }) {
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold-gradient py-3.5 text-base font-semibold text-primary-black shadow-gold transition-transform active:scale-[0.98]"
-                >
-                  <Calendar size={18} />
-                  Book via WhatsApp
-                </button>
-                <p className="text-center text-[11px] font-light text-dark-bg/45">
-                  We&apos;ll open WhatsApp with your details ready to send.
-                </p>
+                <div>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={onChange}
+                    placeholder="Message"
+                    aria-label="Message"
+                    rows={3}
+                    className={cn(inputBase, 'resize-none border-border focus:border-gold')}
+                  />
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold-gradient py-3.5 text-base font-semibold text-primary-black shadow-gold transition-transform active:scale-[0.98]"
+                  >
+                    <Calendar size={18} />
+                    Book Appointment
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-light-bg py-3.5 text-base font-semibold text-primary-black transition-colors hover:bg-primary-white"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </form>
           </motion.div>
         </motion.div>

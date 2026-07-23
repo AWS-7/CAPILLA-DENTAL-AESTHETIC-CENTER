@@ -1,11 +1,10 @@
-import { Star, Phone, MessageCircle, Sparkles } from 'lucide-react';
-import { PrimaryButton, SecondaryButton, AnimatedCounter } from '../../common';
-import { clinicInfo } from '../../../data/clinic';
+import { Star, Sparkles } from 'lucide-react';
+import { GlobalCTA, AnimatedCounter } from '../../common';
 import { placeholders } from '../../../data/content';
 import HeroBackground from './HeroBackground';
 
 const DESCRIPTION =
-  'A luxury multi-specialty clinic in Perumbakkam offering advanced dentistry, medical-grade skin therapies, and hair restoration — delivered with clinical precision and refined care.';
+  'Advanced dentistry, medical-grade skin therapies and hair restoration in Perumbakkam.';
 
 /**
  * HeroTablet (768–1023px) — dedicated two-column layout.
@@ -14,11 +13,10 @@ const DESCRIPTION =
 export default function HeroTablet() {
   return (
     <section id="hero" data-hero className="relative w-full overflow-hidden">
-      {/* Rotating clinic photo background */}
+      {/* Static hero background */}
       <HeroBackground />
-      {/* Readability overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(200,164,93,0.1),transparent_50%)]" />
+      {/* Readability overlay - light gradient for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
 
       <div className="relative z-10 mx-auto grid min-h-[80vh] w-full max-w-[960px] grid-cols-2 items-center gap-8 px-8 pb-12 pt-[calc(var(--header-height)+24px)]">
         <div className="flex max-w-[400px] flex-col items-start text-left">
@@ -46,29 +44,8 @@ export default function HeroTablet() {
             {DESCRIPTION}
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            <PrimaryButton to="/contact" variant="gold" size="md" className="min-h-11">
-              Book Appointment
-            </PrimaryButton>
-            <SecondaryButton
-              href={clinicInfo.whatsappHref}
-              external
-              variant="light"
-              size="md"
-              className="min-h-11"
-            >
-              <MessageCircle size={16} />
-              WhatsApp
-            </SecondaryButton>
-            <SecondaryButton
-              href={clinicInfo.phoneHref}
-              variant="light"
-              size="md"
-              className="min-h-11 border-primary-white/25"
-            >
-              <Phone size={15} />
-              Call
-            </SecondaryButton>
+          <div className="mt-5">
+            <GlobalCTA />
           </div>
 
           <div className="mt-5 grid w-full grid-cols-2 gap-2.5">

@@ -84,12 +84,12 @@
     max-width: 100%;
   }
 
-  /* Keep form controls at ≥16px to avoid iOS auto-zoom */
+  /* Keep form controls at ≥18px to avoid iOS auto-zoom */
   input,
   select,
   textarea,
   button {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   ::selection {

@@ -1,14 +1,11 @@
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle } from 'lucide-react';
-import { PrimaryButton, SecondaryButton } from '../../common';
-import { clinicInfo } from '../../../data/clinic';
+import { GlobalCTA } from '../../common';
 import { slideInLeft } from '../../../utils/animations';
 
 export default function PageCtaHero({
   title,
   subtitle,
   image,
-  showCall = false,
   eyebrow = 'Capilla Dental & Aesthetic Center',
 }) {
   return (
@@ -37,31 +34,8 @@ export default function PageCtaHero({
               {subtitle}
             </p>
           )}
-          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
-            <PrimaryButton to="/contact" variant="gold" size="lg" className="w-full sm:w-auto">
-              Book Appointment
-            </PrimaryButton>
-            <SecondaryButton
-              href={clinicInfo.whatsappHref}
-              external
-              variant="light"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </SecondaryButton>
-            {showCall && (
-              <SecondaryButton
-                href={clinicInfo.phoneHref}
-                variant="light"
-                size="md"
-                className="w-full sm:w-auto"
-              >
-                <Phone size={16} />
-                Call Now
-              </SecondaryButton>
-            )}
+          <div className="mt-7 sm:mt-8">
+            <GlobalCTA />
           </div>
         </motion.div>
       </div>

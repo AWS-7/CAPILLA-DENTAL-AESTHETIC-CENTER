@@ -31,6 +31,15 @@ const buttons = [
     className: 'bg-gold text-primary-white hover:bg-gold-dark shadow-gold',
     onTrack: trackingEvents.bookAppointmentClick,
   },
+  {
+    id: 'call',
+    label: 'Call Capilla clinic',
+    href: clinicInfo.phoneHref,
+    external: false,
+    icon: Phone,
+    className: 'bg-primary-black text-primary-white hover:bg-gold',
+    onTrack: trackingEvents.phoneClick,
+  },
 ];
 
 /** Desktop / tablet floating CTAs — hidden on phones (MobileBottomBar used instead). */

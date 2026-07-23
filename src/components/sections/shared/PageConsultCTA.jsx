@@ -1,11 +1,5 @@
-import { Phone, MessageCircle, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
-import {
-  Container,
-  PrimaryButton,
-  SecondaryButton,
-} from '../../common';
-import { clinicInfo } from '../../../data/clinic';
+import { Container, GlobalCTA } from '../../common';
 import { fadeUp } from '../../../utils/animations';
 import { cn } from '../../../utils/helpers';
 
@@ -38,24 +32,8 @@ export default function PageConsultCTA({
                 {description}
               </p>
             )}
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <PrimaryButton to="/contact" variant="gold" size="lg">
-                <Calendar size={18} />
-                Book Appointment
-              </PrimaryButton>
-              <SecondaryButton
-                href={clinicInfo.whatsappHref}
-                external
-                variant="light"
-                size="lg"
-              >
-                <MessageCircle size={18} />
-                WhatsApp
-              </SecondaryButton>
-              <SecondaryButton href={clinicInfo.phoneHref} variant="light" size="lg">
-                <Phone size={18} />
-                Call Now
-              </SecondaryButton>
+            <div className="mt-9 flex w-full items-center justify-center">
+              <GlobalCTA />
             </div>
           </div>
         </motion.div>

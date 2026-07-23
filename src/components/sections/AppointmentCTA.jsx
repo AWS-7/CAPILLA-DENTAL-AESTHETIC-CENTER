@@ -1,14 +1,11 @@
 import { motion } from 'framer-motion';
 import {
-  Phone,
-  MessageCircle,
-  Calendar,
   Sparkles,
   ShieldCheck,
   Clock,
   Stethoscope,
 } from 'lucide-react';
-import { Container, PrimaryButton, SecondaryButton } from '../common';
+import { Container, GlobalCTA } from '../common';
 import { clinicInfo } from '../../data/clinic';
 import { fadeUp } from '../../utils/animations';
 
@@ -85,35 +82,8 @@ export default function AppointmentCTA() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-10 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              <PrimaryButton
-                to="/contact"
-                variant="gold"
-                size="lg"
-                className="w-full max-w-[320px] sm:w-auto"
-              >
-                <Calendar size={18} />
-                Book Appointment
-              </PrimaryButton>
-              <SecondaryButton
-                href={clinicInfo.whatsappHref}
-                external
-                variant="light"
-                size="lg"
-                className="w-full max-w-[320px] sm:w-auto"
-              >
-                <MessageCircle size={18} />
-                WhatsApp
-              </SecondaryButton>
-              <SecondaryButton
-                href={clinicInfo.phoneHref}
-                variant="light"
-                size="lg"
-                className="w-full max-w-[320px] sm:w-auto"
-              >
-                <Phone size={18} />
-                Call Now
-              </SecondaryButton>
+            <div className="mt-10 flex w-full items-center justify-center">
+              <GlobalCTA />
             </div>
 
             {/* Branch phone numbers */}

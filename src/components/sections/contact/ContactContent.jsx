@@ -31,7 +31,6 @@ const baseInputClass =
 const EMPTY_FORM = {
   name: '',
   phone: '',
-  email: '',
   treatment: '',
   date: '',
   time: '',
@@ -49,9 +48,6 @@ function validate(form) {
   const digits = form.phone.replace(/\D/g, '');
   if (digits.length < 10) {
     errors.phone = 'Enter a valid phone number (min 10 digits).';
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-    errors.email = 'Enter a valid email address.';
   }
   if (!form.treatment) {
     errors.treatment = 'Please select a treatment.';
@@ -72,7 +68,6 @@ function buildWhatsAppLink(form) {
     '*New Appointment Request*',
     `Name: ${form.name}`,
     `Phone: ${form.phone}`,
-    `Email: ${form.email}`,
     `Treatment: ${form.treatment}`,
     `Preferred Date: ${form.date}`,
     `Preferred Time: ${form.time}`,
@@ -345,7 +340,7 @@ export default function ContactContent() {
                       />
                       <ErrorText name="name" />
                     </div>
-                    <div>
+                    <div className="sm:col-span-2">
                       <label htmlFor="phone" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Phone Number
                       </label>
@@ -360,22 +355,6 @@ export default function ContactContent() {
                         placeholder="+91"
                       />
                       <ErrorText name="phone" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={onChange}
-                        aria-invalid={Boolean(errors.email)}
-                        className={fieldClass('email')}
-                        placeholder="you@email.com"
-                      />
-                      <ErrorText name="email" />
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="treatment" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
