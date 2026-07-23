@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import HairHero from '../components/sections/hair/HairHero';
 import HairTreatmentOverview from '../components/sections/hair/HairTreatmentOverview';
@@ -19,11 +18,10 @@ export default function Hair() {
         description={hairSeo.description}
         canonical={hairSeo.canonical}
         image={placeholders.hair}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={hairSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <HairHero />
       <HairTreatmentOverview />

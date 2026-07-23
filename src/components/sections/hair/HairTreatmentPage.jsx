@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO, PageHero, Breadcrumb } from '../../common';
 import PageConsultCTA from '../shared/PageConsultCTA';
 import DentalBeforeAfter from '../dental/DentalBeforeAfter';
@@ -27,11 +26,10 @@ export default function HairTreatmentPage({ data }) {
         description={data.seo.description}
         canonical={data.seo.canonical}
         image={data.image || placeholders.hair}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={data.seo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageHero
         title={data.heroTitle}

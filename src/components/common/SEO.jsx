@@ -14,6 +14,7 @@ export default function SEO({
   type = 'website',
   keywords,
   author,
+  children,
 }) {
   const pageTitle = title
     ? title.includes(seoDefaults.siteName)
@@ -59,6 +60,7 @@ export default function SEO({
       {seoDefaults.twitterHandle && (
         <meta name="twitter:site" content={seoDefaults.twitterHandle} />
       )}
+      {children}
     </Helmet>
   );
 }

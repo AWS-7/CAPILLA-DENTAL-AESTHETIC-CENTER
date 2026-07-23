@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import PageCtaHero from '../components/sections/shared/PageCtaHero';
 import { BlogFeatured, BlogListing } from '../components/sections/blog/BlogSections';
@@ -13,11 +12,10 @@ export default function Blog() {
         description={blogSeo.description}
         canonical={blogSeo.canonical}
         image={blogHero.image}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={blogSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageCtaHero
         title={blogHero.title}

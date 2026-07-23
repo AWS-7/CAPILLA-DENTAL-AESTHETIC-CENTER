@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import {
   SEO,
   PageHero,
@@ -23,11 +22,10 @@ export default function About() {
         description={aboutSeo.description}
         canonical={aboutSeo.canonical}
         image={placeholders.clinicInterior}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={aboutSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageHero
         title={aboutIntro.headline}

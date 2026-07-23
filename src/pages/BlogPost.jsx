@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { useParams, Navigate } from 'react-router-dom';
 import { SEO, PageHero, Breadcrumb } from '../components/common';
 import BlogArticleBody from '../components/sections/blog/BlogArticleBody';
@@ -21,12 +20,11 @@ export default function BlogPost() {
         canonical={`https://capillaaesthetic.com/blog/${article.slug}`}
         image={article.image}
         type="article"
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={`${article.category}, Dental Blog Chennai, Skin Care Blog Chennai, Hair Care Blog Chennai`} />
         <meta property="og:locale" content="en_IN" />
         <meta name="author" content={article.author} />
-      </Helmet>
+      </SEO>
 
       <PageHero
         title={article.title}

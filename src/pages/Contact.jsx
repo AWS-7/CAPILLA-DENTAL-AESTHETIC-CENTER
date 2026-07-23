@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import PageCtaHero from '../components/sections/shared/PageCtaHero';
 import ContactContent from '../components/sections/contact/ContactContent';
@@ -15,11 +14,10 @@ export default function Contact() {
         description={contactSeo.description}
         canonical={contactSeo.canonical}
         image={placeholders.clinicInterior}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={contactSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageCtaHero
         title={contactHero.title}

@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import {
   HeroBanner,
@@ -29,11 +28,10 @@ export default function Home() {
         description={homeSeo.description}
         canonical={homeSeo.canonical}
         image={placeholders.clinic}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={homeSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <HeroBanner />
       <WhyChoose />

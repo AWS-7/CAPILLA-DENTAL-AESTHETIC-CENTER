@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import PageCtaHero from '../components/sections/shared/PageCtaHero';
 import GalleryGrid from '../components/sections/gallery/GalleryGrid';
@@ -14,11 +13,10 @@ export default function Gallery() {
         description={gallerySeo.description}
         canonical={gallerySeo.canonical}
         image={galleryHero.image}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={gallerySeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageCtaHero
         title={galleryHero.title}

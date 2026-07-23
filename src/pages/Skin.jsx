@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import SkinHero from '../components/sections/skin/SkinHero';
 import SkinTreatmentOverview from '../components/sections/skin/SkinTreatmentOverview';
@@ -19,11 +18,10 @@ export default function Skin() {
         description={skinSeo.description}
         canonical={skinSeo.canonical}
         image={placeholders.skin}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={skinSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <SkinHero />
       <SkinTreatmentOverview />

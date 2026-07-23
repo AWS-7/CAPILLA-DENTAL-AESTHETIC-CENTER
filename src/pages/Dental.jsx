@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import DentalHero from '../components/sections/dental/DentalHero';
 import DentalTreatmentOverview from '../components/sections/dental/DentalTreatmentOverview';
@@ -19,11 +18,10 @@ export default function Dental() {
         description={dentalSeo.description}
         canonical={dentalSeo.canonical}
         image={placeholders.dental}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={dentalSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <DentalHero />
       <DentalTreatmentOverview />

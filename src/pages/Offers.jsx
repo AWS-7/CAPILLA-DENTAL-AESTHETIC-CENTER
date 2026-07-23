@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common';
 import PageCtaHero from '../components/sections/shared/PageCtaHero';
 import {
@@ -17,11 +16,10 @@ export default function Offers() {
         description={offersSeo.description}
         canonical={offersSeo.canonical}
         image={offersHero.image}
-      />
-      <Helmet>
+      >
         <meta name="keywords" content={offersSeo.keywords} />
         <meta property="og:locale" content="en_IN" />
-      </Helmet>
+      </SEO>
 
       <PageCtaHero
         title={offersHero.title}
