@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Calendar, AlertCircle } from 'lucide-react';
 import { contactTreatments } from '../../data/contactPage';
@@ -32,29 +32,40 @@ function validate(form) {
 export default function BookingModal({ open, onClose }) {
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
+  const handleClose = useCallback(() => {
+    onClose?.();
+  }, [onClose]);
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
     if (open) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
       // Reset shortly after close so the modal is fresh next time
       const t = setTimeout(() => {
         setForm(EMPTY);
         setErrors({});
       }, 300);
-      return () => clearTimeout(t);
+      return () => {
+        clearTimeout(t);
+        document.body.style.overflow = previousOverflow;
+      };
     }
-    return undefined;
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [open]);
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape') onClose?.();
+      if (e.key === 'Escape') handleClose();
     };
-    if (open) window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
+    if (open) document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open, handleClose]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -79,7 +90,7 @@ export default function BookingModal({ open, onClose }) {
     trackingEvents.whatsappClick();
     window.open(link, '_blank', 'noopener,noreferrer');
     // Message sent to WhatsApp — close the form automatically.
-    onClose?.();
+    handleClose();
   };
 
   const fieldClass = (name) =>
@@ -102,7 +113,7 @@ export default function BookingModal({ open, onClose }) {
         >
           <div
             className="absolute inset-0 bg-primary-black/70 backdrop-blur-sm"
-            onClick={onClose}
+            onClick={handleClose}
             aria-hidden="true"
           />
 
@@ -114,16 +125,17 @@ export default function BookingModal({ open, onClose }) {
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 60, opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-md overflow-hidden rounded-t-3xl bg-primary-white shadow-premium sm:rounded-3xl"
+            className="relative z-10 flex max-h-[88vh] w-full max-w-[560px] flex-col overflow-hidden rounded-t-3xl bg-primary-white shadow-premium sm:rounded-3xl"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="relative bg-[#0B0B0B] px-6 py-5">
+            <div className="relative shrink-0 bg-[#0B0B0B] px-6 py-4">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(212,175,90,0.18),transparent_60%)]" />
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 aria-label="Close"
-                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-primary-white/15 text-primary-white/70 transition-colors hover:text-primary-white"
+                className="absolute right-4 top-4 z-20 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-primary-white/15 text-primary-white/70 pointer-events-auto transition-colors hover:text-primary-white"
               >
                 <X size={18} />
               </button>
@@ -135,8 +147,10 @@ export default function BookingModal({ open, onClose }) {
               </h3>
             </div>
 
-            <form onSubmit={onSubmit} noValidate className="space-y-3.5 px-6 py-6">
-                <div>
+            <form onSubmit={onSubmit} noValidate className="flex min-h-0 flex-1 flex-col">
+              <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
+                <div className="space-y-4">
+                  <div>
                   <input
                     name="name"
                     value={form.name}
@@ -151,9 +165,9 @@ export default function BookingModal({ open, onClose }) {
                       {errors.name}
                     </p>
                   )}
-                </div>
+                  </div>
 
-                <div>
+                  <div>
                   <input
                     name="phone"
                     type="tel"
@@ -169,9 +183,9 @@ export default function BookingModal({ open, onClose }) {
                       {errors.phone}
                     </p>
                   )}
-                </div>
+                  </div>
 
-                <div>
+                  <div>
                   <input
                     name="email"
                     type="email"
@@ -187,9 +201,9 @@ export default function BookingModal({ open, onClose }) {
                       {errors.email}
                     </p>
                   )}
-                </div>
+                  </div>
 
-                <div>
+                  <div>
                   <select
                     name="department"
                     value={form.department}
@@ -208,9 +222,9 @@ export default function BookingModal({ open, onClose }) {
                       {errors.department}
                     </p>
                   )}
-                </div>
+                  </div>
 
-                <div>
+                  <div>
                   <select
                     name="treatment"
                     value={form.treatment}
@@ -231,67 +245,74 @@ export default function BookingModal({ open, onClose }) {
                       {errors.treatment}
                     </p>
                   )}
-                </div>
-
-                <div className="flex gap-3">
-                  <div className="flex-1">
-                    <input
-                      name="date"
-                      type="date"
-                      min={TODAY}
-                      value={form.date}
-                      onChange={onChange}
-                      aria-label="Preferred date"
-                      className={fieldClass('date')}
-                    />
-                    {errors.date && (
-                      <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
-                        <AlertCircle size={13} />
-                        {errors.date}
-                      </p>
-                    )}
                   </div>
-                  <div className="flex-1">
-                    <input
-                      name="time"
-                      type="time"
-                      value={form.time}
+
+                  <div className="flex gap-4">
+                    <div className="flex-1">
+                      <input
+                        name="date"
+                        type="date"
+                        min={TODAY}
+                        value={form.date}
+                        onChange={onChange}
+                        aria-label="Preferred date"
+                        className={fieldClass('date')}
+                      />
+                      {errors.date && (
+                        <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
+                          <AlertCircle size={13} />
+                          {errors.date}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <input
+                        name="time"
+                        type="time"
+                        value={form.time}
+                        onChange={onChange}
+                        aria-label="Preferred time"
+                        className={cn(inputBase, 'border-border focus:border-gold')}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <textarea
+                      name="message"
+                      value={form.message}
                       onChange={onChange}
-                      aria-label="Preferred time"
-                      className={cn(inputBase, 'border-border focus:border-gold')}
+                      placeholder="Message"
+                      aria-label="Message"
+                      rows={4}
+                      className={cn(inputBase, 'h-24 resize-none border-border focus:border-gold')}
                     />
                   </div>
                 </div>
+              </div>
 
-                <div>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={onChange}
-                    placeholder="Message"
-                    aria-label="Message"
-                    rows={3}
-                    className={cn(inputBase, 'resize-none border-border focus:border-gold')}
-                  />
-                </div>
-
-                <div className="flex gap-3">
-                  <button
-                    type="submit"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold-gradient py-3.5 text-base font-semibold text-primary-black shadow-gold transition-transform active:scale-[0.98]"
-                  >
-                    <Calendar size={18} />
-                    Book Appointment
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-light-bg py-3.5 text-base font-semibold text-primary-black transition-colors hover:bg-primary-white"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+              <div className="flex shrink-0 gap-4 px-6 pb-5 pt-4">
+                <button
+                  type="submit"
+                  className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl bg-gold-gradient px-4 text-base font-semibold text-primary-black shadow-gold transition-transform active:scale-[0.98]"
+                >
+                  <span className="inline-flex items-center justify-center gap-2 leading-none">
+                    <Calendar size={18} className="shrink-0" />
+                    <span>Book Appointment</span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border border-border bg-light-bg px-4 text-base font-semibold text-primary-black transition-colors hover:bg-primary-white"
+                >
+                  <span className="inline-flex items-center justify-center gap-2 leading-none">
+                    <span className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+                    <span>Cancel</span>
+                  </span>
+                </button>
+              </div>
+            </form>
           </motion.div>
         </motion.div>
       )}

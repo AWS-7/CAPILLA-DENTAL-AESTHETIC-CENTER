@@ -6,6 +6,9 @@ import { skinHero } from '../../../data/skin';
 import { slideInLeft, fadeUp } from '../../../utils/animations';
 
 export default function SkinHero() {
+  const heroCtaClassName =
+    'w-full min-h-[56px] justify-center rounded-full px-7 py-4 text-base font-semibold leading-none whitespace-nowrap';
+
   return (
     <section className="relative min-h-[70vh] md:min-h-[78vh] w-full overflow-hidden bg-dark-bg">
       <motion.div
@@ -28,7 +31,7 @@ export default function SkinHero() {
           variants={slideInLeft}
           initial="hidden"
           animate="visible"
-          className="flex w-full max-w-[640px] flex-col items-start md:max-w-[680px] lg:max-w-[45%] xl:max-w-[42%]"
+          className="flex w-full max-w-[640px] flex-col items-start md:max-w-[680px] lg:max-w-[760px] xl:max-w-[800px]"
         >
           <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold">
             <Sparkles size={14} />
@@ -52,12 +55,12 @@ export default function SkinHero() {
           >
             {skinHero.subtitle}
           </motion.p>
-          <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+          <div className="mt-8 grid w-full max-w-[760px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <PrimaryButton
               to="/contact"
               variant="gold"
               size="lg"
-              className="w-full justify-center whitespace-nowrap"
+              className={heroCtaClassName}
             >
               Book Appointment
             </PrimaryButton>
@@ -66,19 +69,19 @@ export default function SkinHero() {
               external
               variant="light"
               size="lg"
-              className="w-full justify-center whitespace-nowrap"
+              className={heroCtaClassName}
             >
               <MessageCircle size={18} />
-              WhatsApp
+              WhatsApp Consultation
             </SecondaryButton>
             <SecondaryButton
               href={clinicInfo.phoneHref}
               variant="light"
               size="lg"
-              className="w-full justify-center whitespace-nowrap"
+              className={heroCtaClassName}
             >
               <Phone size={18} />
-              Call
+              Call Now
             </SecondaryButton>
           </div>
         </motion.div>

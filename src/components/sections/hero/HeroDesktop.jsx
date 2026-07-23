@@ -19,7 +19,7 @@ export default function HeroDesktop() {
       {/* Static hero background */}
       <HeroBackground />
       {/* Left-side gradient for text readability only */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.48) 25%, rgba(0,0,0,0.30) 45%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0) 75%)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.68) 22%, rgba(0,0,0,0.46) 42%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0) 76%)' }} />
 
       <div className="relative z-10 flex min-h-[96vh] w-full flex-col items-start justify-center pl-[8%] pr-6 pb-16 pt-[calc(var(--header-height)+2rem)] text-left xl:min-h-screen xl:pb-20" style={{ maxWidth: '45%' }}>
         <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>

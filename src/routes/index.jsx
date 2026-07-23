@@ -20,7 +20,6 @@ const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy'));
 const Terms = lazy(() => import('../pages/Terms'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 const TreatmentDetail = lazy(() => import('../pages/treatments/TreatmentDetail'));
-const InvoiceGenerator = lazy(() => import('../pages/InvoiceGenerator'));
 
 function PageLoader() {
   return (
@@ -54,7 +53,6 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        <Route path="invoice-generator" element={<InvoiceGenerator />} />
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
