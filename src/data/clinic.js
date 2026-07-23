@@ -65,6 +65,14 @@ export const navLinks = [
   { label: 'About Us', path: '/about' },
   { label: 'Meet Doctors', path: '/doctors' },
   {
+    label: 'Skin Treatments',
+    path: '/skin',
+    children: [
+      { label: 'HydraFacial', path: '/treatments/hydrafacial' },
+      { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
+    ],
+  },
+  {
     label: 'Dental Treatments',
     path: '/dental',
     children: [
@@ -73,14 +81,6 @@ export const navLinks = [
       { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
       { label: 'Smile Design', path: '/treatments/smile-design' },
       { label: 'Braces & Aligners', path: '/treatments/braces-aligners' },
-    ],
-  },
-  {
-    label: 'Skin Treatments',
-    path: '/skin',
-    children: [
-      { label: 'HydraFacial', path: '/treatments/hydrafacial' },
-      { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
     ],
   },
   {
@@ -111,12 +111,13 @@ export const footerQuickLinks = [
 ];
 
 export const footerTreatments = [
+  { label: 'HydraFacial', path: '/treatments/hydrafacial' },
+  { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
   { label: 'Dental Implants', path: '/treatments/dental-implants' },
   { label: 'Smile Design', path: '/treatments/smile-design' },
-  { label: 'HydraFacial', path: '/treatments/hydrafacial' },
+  { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
   { label: 'PRP Hair Treatment', path: '/treatments/prp-hair-treatment' },
   { label: 'Hair Transplant', path: '/treatments/hair-transplant' },
-  { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
 ];
 
 export const legalLinks = [

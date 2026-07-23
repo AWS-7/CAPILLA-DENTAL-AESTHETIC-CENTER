@@ -6,6 +6,7 @@ import Footer from './Footer';
 import ScrollProgress from './ScrollProgress';
 import BackToTop from './BackToTop';
 import FloatingButtons from './FloatingButtons';
+import FloatingInstagram from './FloatingInstagram';
 import MobileBottomBar from './MobileBottomBar';
 import SiteWideSeo from '../seo/SiteWideSeo';
 import useScrollToTop from '../../hooks/useScrollToTop';
@@ -71,6 +72,7 @@ export default function MainLayout() {
 
       <Footer />
       <FloatingButtons />
+      <FloatingInstagram />
       <MobileBottomBar visible={showBottomBar} />
       <BackToTop />
     </div>

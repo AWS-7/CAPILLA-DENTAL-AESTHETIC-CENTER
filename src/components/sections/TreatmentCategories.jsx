@@ -55,7 +55,7 @@ export default function TreatmentCategories() {
         <SectionTitle
           eyebrow="Our Specialties"
           title="Treatment Categories"
-          description="Three pillars of care under one luxury roof — dental, skin, and hair — each delivered with specialist precision."
+          description="Three pillars of care under one luxury roof — skin, dental, and hair — each delivered with specialist precision."
         />
 
         <div className="md:hidden -mx-1">

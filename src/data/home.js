@@ -63,20 +63,20 @@ export const whyChooseItems = [
 
 export const treatmentCategories = [
   {
-    id: 'dental',
-    title: 'Dental Treatments',
-    description:
-      'From implants to smile design — advanced dentistry for healthier teeth and lasting confidence.',
-    image: placeholders.dental,
-    path: '/dental',
-  },
-  {
     id: 'skin',
     title: 'Skin Treatments',
     description:
       'Medical-grade facial therapies for luminous, refined, camera-ready skin.',
     image: placeholders.skin,
     path: '/skin',
+  },
+  {
+    id: 'dental',
+    title: 'Dental Treatments',
+    description:
+      'From implants to smile design — advanced dentistry for healthier teeth and lasting confidence.',
+    image: placeholders.dental,
+    path: '/dental',
   },
   {
     id: 'hair',
