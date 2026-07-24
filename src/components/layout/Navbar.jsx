@@ -7,7 +7,7 @@ import { clinicInfo, navLinks } from '../../data/clinic';
 import useScrolled from '../../hooks/useScrolled';
 import PrimaryButton from '../common/PrimaryButton';
 import SecondaryButton from '../common/SecondaryButton';
-import { ServicesMegaMenu, ServicesMobileAccordion } from './ServicesMenu';
+import { ServicesMegaMenu } from './ServicesMenu';
 import { cn } from '../../utils/helpers';
 
 function Logo({ onNavigate, compact = false }) {
@@ -33,76 +33,10 @@ function Logo({ onNavigate, compact = false }) {
   );
 }
 
-function DesktopDropdown({ link, light }) {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!open) return undefined;
-
-    const handlePointerDown = (event) => {
-      if (event.target instanceof Node && event.target.closest('[data-services-menu-root]')) {
-        return;
-      }
-
-      setOpen(false);
-    };
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [open]);
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        onClick={(event) => {
-          event.preventDefault();
-          setOpen((prev) => !prev);
-        }}
-        className={cn(
-          'inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
-          light
-            ? 'text-primary-white/85 hover:text-gold'
-            : 'text-dark-bg/75 hover:text-gold'
-        )}
-      >
-        {link.label}
-        <ChevronDown
-          size={14}
-          className={cn('transition-transform duration-300', open && 'rotate-180')}
-        />
-      </button>
-
-      <ServicesMegaMenu
-        open={open}
-        groups={link.menuGroups}
-        onClose={() => setOpen(false)}
-        onSelect={() => setOpen(false)}
-        light={light}
-      />
-    </div>
-  );
-}
-
 export default function Navbar() {
   const scrolled = useScrolled(24);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState(null);
+  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
   const transparent = isHome && !scrolled && !mobileOpen;
@@ -110,7 +44,7 @@ export default function Navbar() {
 
   const closeMobile = () => {
     setMobileOpen(false);
-    setOpenAccordion(null);
+    setServicesMenuOpen(false);
   };
 
   useEffect(() => {
@@ -188,42 +122,17 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <div key={link.path}>
                   {link.megaMenu ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setOpenAccordion((prev) =>
-                            prev === link.path ? null : link.path
-                          )
-                        }
-                        className="flex w-full min-h-12 items-center justify-between py-3 text-base font-medium text-primary-black"
-                      >
-                        {link.label}
-                        <ChevronDown
-                          size={18}
-                          className={cn(
-                            'transition-transform',
-                            openAccordion === link.path && 'rotate-180'
-                          )}
-                        />
-                      </button>
-                      <AnimatePresence>
-                        {openAccordion === link.path && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden pb-2"
-                          >
-                            <ServicesMobileAccordion
-                              groups={link.menuGroups}
-                              onSelect={closeMobile}
-                              onClose={closeMobile}
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setServicesMenuOpen(true);
+                      }}
+                      className="flex w-full min-h-12 items-center justify-between py-3 text-base font-medium text-primary-black"
+                    >
+                      {link.label}
+                      <ChevronDown size={18} className="transition-transform" />
+                    </button>
                   ) : (
                     <NavLink
                       to={link.path}
@@ -289,7 +198,23 @@ export default function Navbar() {
           <nav className="hidden xl:flex items-center gap-0.5">
             {navLinks.map((link) =>
               link.megaMenu ? (
-                <DesktopDropdown key={link.path} link={link} light={transparent} />
+                <button
+                  key={link.path}
+                  type="button"
+                  onClick={() => setServicesMenuOpen((prev) => !prev)}
+                  className={cn(
+                    'inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
+                    transparent
+                      ? 'text-primary-white/85 hover:text-gold'
+                      : 'text-dark-bg/75 hover:text-gold'
+                  )}
+                >
+                  {link.label}
+                  <ChevronDown
+                    size={14}
+                    className={cn('transition-transform duration-300', servicesMenuOpen && 'rotate-180')}
+                  />
+                </button>
               ) : (
                 <NavLink
                   key={link.path}
@@ -345,6 +270,14 @@ export default function Navbar() {
           </div>
         </div>
       </header>
+
+      <ServicesMegaMenu
+        open={servicesMenuOpen}
+        groups={navLinks.find((link) => link.megaMenu)?.menuGroups}
+        onClose={() => setServicesMenuOpen(false)}
+        onSelect={() => setServicesMenuOpen(false)}
+        light={transparent}
+      />
 
       {typeof document !== 'undefined' && createPortal(drawer, document.body)}
     </>

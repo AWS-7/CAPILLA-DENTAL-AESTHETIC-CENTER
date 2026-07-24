@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronRight, Sparkles, X } from 'lucide-react';
 import { cn } from '../../utils/helpers';
 
 const SERVICE_IMAGE_MAP = {
@@ -30,23 +31,65 @@ export function ServicesMegaMenu({
     }
   }, [activeCategory, orderedGroups]);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose?.();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, onClose]);
+
   const activeGroup =
     orderedGroups?.find((group) => group.id === activeCategory) ?? orderedGroups?.[0] ?? null;
 
-  return (
+  if (!open) return null;
+
+  const content = (
     <AnimatePresence>
-      {open && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 z-[220] bg-black/45 backdrop-blur-sm"
+        onClick={onClose}
+        data-services-menu-root="true"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 24, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 24, scale: 0.98 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-1/2 top-full z-[60] mt-4 w-[min(94vw,1280px)] -translate-x-1/2"
-          data-services-menu-root="true"
+          className="flex h-full w-full items-end justify-center p-0 sm:items-center sm:p-4 lg:p-6"
+          onClick={(event) => event.stopPropagation()}
         >
-          <div className="overflow-hidden rounded-[30px] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(246,242,232,0.95))] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
-            <div className="grid gap-4 xl:grid-cols-[minmax(280px,0.92fr)_minmax(0,1.08fr)]">
-              <div className="flex min-h-[360px] flex-col justify-center rounded-[24px] border border-[#D4AF5A]/20 bg-[#0B0B0B] p-5 text-[#fdf8ed] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-6">
+          <div className="relative flex w-full max-w-[1400px] max-h-[94dvh] flex-col overflow-hidden rounded-t-[28px] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(246,242,232,0.95))] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:max-h-[85vh] sm:w-[90vw] sm:rounded-[30px] sm:p-4 lg:p-5">
+            <button
+              type="button"
+              aria-label="Close services menu"
+              onClick={onClose}
+              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF5A]/20 bg-primary-white/85 text-primary-black shadow-soft transition-colors hover:border-[#D4AF5A] hover:text-gold"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="flex min-h-0 flex-1 flex-col gap-4 lg:flex-row">
+              <div className="flex min-h-[240px] flex-col justify-center rounded-[24px] border border-[#D4AF5A]/20 bg-[#0B0B0B] p-5 text-[#fdf8ed] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-6 lg:min-h-0 lg:flex-[0_0_320px]">
                 <div className="flex flex-1 flex-col justify-center space-y-4">
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#D4AF5A]/25 bg-[#D4AF5A]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D4AF5A]">
                     <Sparkles size={12} />
@@ -92,15 +135,15 @@ export function ServicesMegaMenu({
                 </div>
               </div>
 
-              <div className="flex min-h-0 flex-col gap-4">
-                <div className="max-h-[470px] overflow-y-auto overflow-x-hidden pr-1 scroll-smooth">
-                  <div className="grid gap-3 md:grid-cols-1 xl:grid-cols-3">
+              <div className="flex min-h-0 flex-1 flex-col gap-4">
+                <div className="max-h-[calc(100dvh-320px)] overflow-y-auto overflow-x-hidden pr-1 scroll-smooth sm:max-h-[calc(85vh-300px)]">
+                  <div className="grid gap-3 sm:grid-cols-1 lg:grid-cols-3">
                     {orderedGroups?.map((group) => (
                       <div
                         key={group.id}
                         onMouseEnter={() => setActiveCategory(group.id)}
                         className={cn(
-                          'flex h-full min-h-[230px] flex-col rounded-[22px] border p-4 transition-all duration-200 sm:p-5',
+                          'flex h-full min-h-[220px] flex-col rounded-[22px] border p-4 transition-all duration-200 sm:p-5',
                           activeCategory === group.id
                             ? 'border-[#D4AF5A]/35 bg-[#fff7e8] shadow-[0_12px_30px_rgba(212,175,90,0.12)]'
                             : 'border-border/70 bg-white/80 hover:border-[#D4AF5A]/25 hover:bg-[#fffdf8]'
@@ -168,71 +211,9 @@ export function ServicesMegaMenu({
             </div>
           </div>
         </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
   );
-}
 
-export function ServicesMobileAccordion({ groups, onSelect, onClose }) {
-  const orderedGroups = [...(groups ?? [])].sort((a, b) => {
-    const order = ['skin', 'dental', 'hair'];
-    return order.indexOf(a.id) - order.indexOf(b.id);
-  });
-  const [openId, setOpenId] = useState(orderedGroups?.[0]?.id ?? 'dental');
-
-  return (
-    <div className="mt-3 space-y-2">
-      {orderedGroups?.map((group) => {
-        const isOpen = openId === group.id;
-        return (
-          <div
-            key={group.id}
-            className="overflow-hidden rounded-[18px] border border-border/70 bg-primary-white/70"
-          >
-            <button
-              type="button"
-              onClick={() => setOpenId((prev) => (prev === group.id ? null : group.id))}
-              className="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-semibold text-primary-black"
-            >
-              <span>{group.label}</span>
-              <ChevronRight
-                size={16}
-                className={cn('transition-transform duration-200', isOpen && 'rotate-90')}
-              />
-            </button>
-
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden border-t border-border/70 bg-[#fcfaf4]"
-                >
-                  <ul className="space-y-1 px-3 py-2">
-                    {group.items.map((item) => (
-                      <li key={item.path}>
-                        <Link
-                          to={item.path}
-                          onClick={() => {
-                            onSelect?.(item.path);
-                            onClose?.();
-                          }}
-                          className="flex items-center justify-between rounded-xl px-2.5 py-2.5 text-sm text-dark-bg/70 transition-colors hover:bg-white hover:text-gold"
-                        >
-                          <span>{item.label}</span>
-                          <ArrowRight size={13} className="text-[#D4AF5A]" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </div>
-  );
+  return createPortal(content, document.body);
 }
