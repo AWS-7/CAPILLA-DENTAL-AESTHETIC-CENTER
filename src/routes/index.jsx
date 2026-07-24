@@ -58,8 +58,11 @@ export default function AppRoutes() {
           <Route path="about" element={<About />} />
           <Route path="doctors" element={<Doctors />} />
           <Route path="dental" element={<Dental />} />
+          <Route path="dental-treatments" element={<Dental />} />
           <Route path="skin" element={<Skin />} />
+          <Route path="skin-treatments" element={<Skin />} />
           <Route path="hair" element={<Hair />} />
+          <Route path="hair-treatments" element={<Hair />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="offers" element={<Offers />} />

@@ -120,7 +120,7 @@ export default function Navbar() {
 
             <nav className="flex-1 overflow-y-auto overscroll-contain px-5 py-4 space-y-1">
               {navLinks.map((link) => (
-                <div key={link.path}>
+                <div key={link.id ?? link.path}>
                   {link.megaMenu ? (
                     <button
                       type="button"
@@ -199,7 +199,7 @@ export default function Navbar() {
             {navLinks.map((link) =>
               link.megaMenu ? (
                 <button
-                  key={link.path}
+                  key={link.id ?? link.path}
                   type="button"
                   onClick={() => setServicesMenuOpen((prev) => !prev)}
                   className={cn(
@@ -217,7 +217,7 @@ export default function Navbar() {
                 </button>
               ) : (
                 <NavLink
-                  key={link.path}
+                  key={link.id ?? link.path}
                   to={link.path}
                   end={link.path === '/'}
                   className={({ isActive }) =>

@@ -297,6 +297,24 @@
     display: none;
   }
 
+  .services-menu-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 175, 90, 0.55) transparent;
+  }
+
+  .services-menu-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .services-menu-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .services-menu-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 90, 0.55);
+    border-radius: 9999px;
+  }
+
   .break-safe {
     overflow-wrap: anywhere;
     word-break: break-word;

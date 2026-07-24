@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useBookingModal } from '../../context/BookingModalProvider';
 import { cn } from '../../utils/helpers';
 
 const base =
@@ -33,6 +34,8 @@ export default function PrimaryButton({
   external = false,
   ...props
 }) {
+  const { openBooking } = useBookingModal();
+  const isBookAppointment = typeof children === 'string' && children.trim() === 'Book Appointment';
   const classes = cn(base, variants[variant], sizes[size], 'max-sm:w-full', className);
   const motionProps = {
     whileHover: { y: -2 },
@@ -43,10 +46,22 @@ export default function PrimaryButton({
     className.includes('w-full') && 'w-full'
   );
 
+  const handleClick = (event) => {
+    if (isBookAppointment) {
+      event.preventDefault?.();
+      event.stopPropagation?.();
+      onClick?.(event);
+      openBooking();
+      return;
+    }
+
+    onClick?.(event);
+  };
+
   if (to) {
     return (
       <motion.div {...motionProps} className={wrapperClass}>
-        <Link to={to} className={classes} onClick={onClick} {...props}>
+        <Link to={to} className={classes} onClick={handleClick} {...props}>
           {children}
         </Link>
       </motion.div>
@@ -61,7 +76,7 @@ export default function PrimaryButton({
           className={classes}
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
-          onClick={onClick}
+          onClick={handleClick}
           {...props}
         >
           {children}
@@ -73,7 +88,7 @@ export default function PrimaryButton({
   return (
     <motion.button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       className={classes}
       {...motionProps}
       {...props}

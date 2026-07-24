@@ -20,7 +20,7 @@ export const aboutIntro = {
     'From digital smile design to medical-grade skin therapies and hair restoration, every consultation is personalized. We combine international treatment standards, rigorous hygiene protocols, and transparent guidance so you always feel informed and cared for.',
     'Located in Perumbakkam, Capilla serves patients seeking a dentist near them who values both outcomes and hospitality — a boutique medical destination built on trust.',
   ],
-  image: placeholders.clinicInterior,
+  image: '/gallery/clinic-lounge.webp',
 };
 
 export const missionVisionValues = [

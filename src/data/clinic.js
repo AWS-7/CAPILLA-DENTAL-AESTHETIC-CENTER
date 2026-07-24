@@ -115,21 +115,22 @@ export const servicesMegaMenu = [
 ];
 
 export const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Meet Doctors', path: '/doctors' },
+  { id: 'home', label: 'Home', path: '/' },
+  { id: 'about', label: 'About Us', path: '/about' },
+  { id: 'doctors', label: 'Meet Doctors', path: '/doctors' },
   {
+    id: 'services',
     label: 'Services',
     path: '/services',
     megaMenu: true,
     menuGroups: servicesMegaMenu,
   },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Google Reviews', path: '/reviews' },
-  { label: 'Offers', path: '/offers' },
-  { label: 'Blog', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-  { label: 'Book Appointment', path: '/contact', isCta: true },
+  { id: 'gallery', label: 'Gallery', path: '/gallery' },
+  { id: 'reviews', label: 'Google Reviews', path: '/reviews' },
+  { id: 'offers', label: 'Offers', path: '/offers' },
+  { id: 'blog', label: 'Blog', path: '/blog' },
+  { id: 'contact', label: 'Contact', path: '/contact' },
+  { id: 'book-appointment', label: 'Book Appointment', path: '/contact', isCta: true },
 ];
 
 export const footerQuickLinks = [
