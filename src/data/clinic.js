@@ -60,43 +60,76 @@ export const clinicInfo = {
   },
 };
 
+export const servicesMegaMenu = [
+  {
+    id: 'dental',
+    label: 'Dental',
+    buttonLabel: 'Dental Treatments',
+    path: '/dental',
+    image: '/gallery/clinic-treatment-suite.webp',
+    items: [
+      { label: 'Dental Implants', path: '/treatments/dental-implants' },
+      { label: 'Root Canal Treatment', path: '/treatments/root-canal-treatment' },
+      { label: 'Smile Design', path: '/treatments/smile-design' },
+      { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
+      { label: 'Braces & Aligners', path: '/treatments/braces-aligners' },
+      { label: 'Dental Veneers', path: '/treatments/dental-veneers' },
+      { label: 'Wisdom Tooth Extraction', path: '/treatments/wisdom-tooth-extraction' },
+      { label: 'Pediatric Dentistry', path: '/treatments/pediatric-dentistry' },
+    ],
+  },
+  {
+    id: 'skin',
+    label: 'Skin',
+    buttonLabel: 'Skin Treatments',
+    path: '/skin',
+    image: '/gallery/clinic-laser-room.webp',
+    items: [
+      { label: 'Hydra Facial', path: '/treatments/hydrafacial' },
+      { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
+      { label: 'Acne Treatment', path: '/treatments/acne-treatment' },
+      { label: 'Acne Scar Treatment', path: '/treatments/acne-scar-treatment' },
+      { label: 'Pigmentation', path: '/treatments/pigmentation' },
+      { label: 'Skin Brightening', path: '/treatments/skin-brightening' },
+      { label: 'Glass Skin', path: '/treatments/glass-skin' },
+      { label: 'Anti Ageing', path: '/treatments/anti-ageing' },
+    ],
+  },
+  {
+    id: 'hair',
+    label: 'Hair',
+    buttonLabel: 'Hair Treatments',
+    path: '/hair',
+    image: '/gallery/clinic-brand-wall.webp',
+    items: [
+      { label: 'PRP Hair Therapy', path: '/treatments/prp-hair-treatment' },
+      { label: 'GFC Therapy', path: '/treatments/gfc-hair-treatment' },
+      { label: 'Hair Transplant', path: '/treatments/hair-transplant' },
+      { label: 'Hair Loss Treatment', path: '/treatments/hair-loss-treatment' },
+      { label: 'Scalp Analysis', path: '/treatments/scalp-analysis' },
+      { label: 'Low Level Laser Therapy', path: '/treatments/low-level-laser-therapy' },
+      { label: 'Dandruff Treatment', path: '/treatments/dandruff-treatment' },
+      { label: 'Hair Regrowth', path: '/treatments/hair-regrowth' },
+    ],
+  },
+];
+
 export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
   { label: 'Meet Doctors', path: '/doctors' },
   {
-    label: 'Skin Treatments',
-    path: '/skin',
-    children: [
-      { label: 'HydraFacial', path: '/treatments/hydrafacial' },
-      { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
-    ],
-  },
-  {
-    label: 'Dental Treatments',
-    path: '/dental',
-    children: [
-      { label: 'Dental Implants', path: '/treatments/dental-implants' },
-      { label: 'Root Canal Treatment', path: '/treatments/root-canal-treatment' },
-      { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
-      { label: 'Smile Design', path: '/treatments/smile-design' },
-      { label: 'Braces & Aligners', path: '/treatments/braces-aligners' },
-    ],
-  },
-  {
-    label: 'Hair Treatments',
-    path: '/hair',
-    children: [
-      { label: 'PRP Hair Treatment', path: '/treatments/prp-hair-treatment' },
-      { label: 'GFC Hair Treatment', path: '/treatments/gfc-hair-treatment' },
-      { label: 'Hair Transplant', path: '/treatments/hair-transplant' },
-    ],
+    label: 'Services',
+    path: '/services',
+    megaMenu: true,
+    menuGroups: servicesMegaMenu,
   },
   { label: 'Gallery', path: '/gallery' },
   { label: 'Google Reviews', path: '/reviews' },
   { label: 'Offers', path: '/offers' },
   { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
+  { label: 'Book Appointment', path: '/contact', isCta: true },
 ];
 
 export const footerQuickLinks = [

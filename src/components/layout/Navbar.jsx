@@ -7,6 +7,7 @@ import { clinicInfo, navLinks } from '../../data/clinic';
 import useScrolled from '../../hooks/useScrolled';
 import PrimaryButton from '../common/PrimaryButton';
 import SecondaryButton from '../common/SecondaryButton';
+import { ServicesMegaMenu, ServicesMobileAccordion } from './ServicesMenu';
 import { cn } from '../../utils/helpers';
 
 function Logo({ onNavigate, compact = false }) {
@@ -35,57 +36,65 @@ function Logo({ onNavigate, compact = false }) {
 function DesktopDropdown({ link, light }) {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (event.target instanceof Node && event.target.closest('[data-services-menu-root]')) {
+        return;
+      }
+
+      setOpen(false);
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
+
   return (
     <div
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <NavLink
-        to={link.path}
-        className={({ isActive }) =>
-          cn(
-            'inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
-            light
-              ? isActive
-                ? 'text-gold'
-                : 'text-primary-white/85 hover:text-gold'
-              : isActive
-                ? 'text-gold'
-                : 'text-dark-bg/75 hover:text-gold'
-          )
-        }
+      <button
+        type="button"
+        onClick={(event) => {
+          event.preventDefault();
+          setOpen((prev) => !prev);
+        }}
+        className={cn(
+          'inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
+          light
+            ? 'text-primary-white/85 hover:text-gold'
+            : 'text-dark-bg/75 hover:text-gold'
+        )}
       >
         {link.label}
         <ChevronDown
           size={14}
           className={cn('transition-transform duration-300', open && 'rotate-180')}
         />
-      </NavLink>
+      </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 z-50 min-w-[240px] pt-3"
-          >
-            <div className="rounded-2xl border border-border bg-primary-white shadow-premium overflow-hidden py-2">
-              {link.children.map((child) => (
-                <Link
-                  key={child.path}
-                  to={child.path}
-                  className="block px-5 py-2.5 text-sm text-dark-bg/70 transition-colors hover:bg-light-gray hover:text-gold"
-                >
-                  {child.label}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ServicesMegaMenu
+        open={open}
+        groups={link.menuGroups}
+        onClose={() => setOpen(false)}
+        onSelect={() => setOpen(false)}
+        light={light}
+      />
     </div>
   );
 }
@@ -178,7 +187,7 @@ export default function Navbar() {
             <nav className="flex-1 overflow-y-auto overscroll-contain px-5 py-4 space-y-1">
               {navLinks.map((link) => (
                 <div key={link.path}>
-                  {link.children ? (
+                  {link.megaMenu ? (
                     <>
                       <button
                         type="button"
@@ -204,25 +213,13 @@ export default function Navbar() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden pl-3 pb-2"
+                            className="overflow-hidden pb-2"
                           >
-                            <Link
-                              to={link.path}
-                              onClick={closeMobile}
-                              className="block py-2.5 text-sm text-gold font-medium"
-                            >
-                              View All
-                            </Link>
-                            {link.children.map((child) => (
-                              <Link
-                                key={child.path}
-                                to={child.path}
-                                onClick={closeMobile}
-                                className="block py-2.5 text-sm text-dark-bg/65 hover:text-gold"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
+                            <ServicesMobileAccordion
+                              groups={link.menuGroups}
+                              onSelect={closeMobile}
+                              onClose={closeMobile}
+                            />
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -235,7 +232,8 @@ export default function Navbar() {
                       className={({ isActive }) =>
                         cn(
                           'flex min-h-12 items-center py-3 text-base font-medium transition-colors',
-                          isActive ? 'text-gold' : 'text-primary-black'
+                          isActive ? 'text-gold' : 'text-primary-black',
+                          link.isCta && 'rounded-full bg-gold-gradient px-3 text-primary-black shadow-gold'
                         )
                       }
                     >
@@ -290,7 +288,7 @@ export default function Navbar() {
 
           <nav className="hidden xl:flex items-center gap-0.5">
             {navLinks.map((link) =>
-              link.children ? (
+              link.megaMenu ? (
                 <DesktopDropdown key={link.path} link={link} light={transparent} />
               ) : (
                 <NavLink
@@ -300,13 +298,15 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     cn(
                       'px-2.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
-                      transparent
-                        ? isActive
-                          ? 'text-gold'
-                          : 'text-primary-white/85 hover:text-gold'
-                        : isActive
-                          ? 'text-gold'
-                          : 'text-dark-bg/75 hover:text-gold'
+                      link.isCta
+                        ? 'rounded-full bg-gold-gradient px-3.5 py-2 text-primary-black shadow-gold'
+                        : transparent
+                          ? isActive
+                            ? 'text-gold'
+                            : 'text-primary-white/85 hover:text-gold'
+                          : isActive
+                            ? 'text-gold'
+                            : 'text-dark-bg/75 hover:text-gold'
                     )
                   }
                 >
@@ -327,16 +327,6 @@ export default function Navbar() {
               <Phone size={16} className="text-gold" />
               {clinicInfo.phone}
             </a>
-
-            <div className="hidden md:block">
-              <PrimaryButton
-                to="/contact"
-                size="sm"
-                variant={transparent ? 'gold' : 'primary'}
-              >
-                Book Appointment
-              </PrimaryButton>
-            </div>
 
             <button
               type="button"
