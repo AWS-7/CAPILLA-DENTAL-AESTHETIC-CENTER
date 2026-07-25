@@ -9,6 +9,7 @@ import FloatingButtons from './FloatingButtons';
 import FloatingInstagram from './FloatingInstagram';
 import MobileBottomBar from './MobileBottomBar';
 import SiteWideSeo from '../seo/SiteWideSeo';
+import PageTransitionLoader from '../common/PageTransitionLoader';
 import useScrollToTop from '../../hooks/useScrollToTop';
 import { pageTransition } from '../../utils/animations';
 import { cn } from '../../utils/helpers';
@@ -16,10 +17,18 @@ import { cn } from '../../utils/helpers';
 export default function MainLayout() {
   const location = useLocation();
   useScrollToTop();
+  const [isLoading, setIsLoading] = useState(false);
 
   // Hide the mobile bottom bar while the Hero section is in view; reveal it
   // once the user scrolls past the Hero. On pages without a Hero, keep it shown.
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  // Show loading animation on route change
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   useEffect(() => {
     const hero = document.getElementById('hero');
@@ -53,6 +62,7 @@ export default function MainLayout() {
       </a>
       <SiteWideSeo />
       <ScrollProgress />
+      <PageTransitionLoader isLoading={isLoading} />
       <Navbar />
 
       <AnimatePresence mode="wait">

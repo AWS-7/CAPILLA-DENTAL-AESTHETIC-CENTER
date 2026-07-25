@@ -13,8 +13,6 @@ const Hair = lazy(() => import('../pages/Hair'));
 const Gallery = lazy(() => import('../pages/Gallery'));
 const Reviews = lazy(() => import('../pages/Reviews'));
 const Offers = lazy(() => import('../pages/Offers'));
-const Blog = lazy(() => import('../pages/Blog'));
-const BlogPost = lazy(() => import('../pages/BlogPost'));
 const Contact = lazy(() => import('../pages/Contact'));
 const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy'));
 const Terms = lazy(() => import('../pages/Terms'));
@@ -66,8 +64,6 @@ export default function AppRoutes() {
           <Route path="gallery" element={<Gallery />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="offers" element={<Offers />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/:slug" element={<BlogPost />} />
           <Route path="contact" element={<Contact />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="terms-and-conditions" element={<Terms />} />

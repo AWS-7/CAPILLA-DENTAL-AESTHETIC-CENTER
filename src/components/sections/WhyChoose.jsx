@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -10,7 +11,6 @@ import {
 } from 'lucide-react';
 import { Container, SectionTitle } from '../common';
 import { whyChooseItems } from '../../data/home';
-import { placeholders } from '../../data/content';
 
 const tileBase =
   'group relative overflow-hidden rounded-[1.75rem] border border-border bg-light-bg transition-all duration-500 hover:border-gold/40 hover:bg-primary-white hover:shadow-premium';
@@ -20,9 +20,49 @@ const tileMotion = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } },
 };
 
+const clinicImages = [
+  '/gallery/clinic-lounge.webp',
+  '/gallery/clinic-reception-desk.webp',
+  '/gallery/clinic-consultation-room.webp',
+  '/gallery/clinic-treatment-suite.webp',
+  '/gallery/clinic-therapy-room.webp',
+  '/gallery/clinic-laser-room.webp',
+  '/gallery/clinic-equipment.webp',
+  '/gallery/clinic-wash-area.webp',
+];
+
 function GlowCorner() {
   return (
     <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gold/10 blur-3xl transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
+  );
+}
+
+function ClinicImageSlideshow() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % clinicImages.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      {clinicImages.map((image, index) => (
+        <motion.img
+          key={image}
+          src={image}
+          alt={`Capilla clinic ${index + 1}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: index === currentIndex ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+    </>
   );
 }
 
@@ -52,13 +92,7 @@ export default function WhyChoose() {
             variants={tileMotion}
             className={`${tileBase} col-span-2 row-span-2 min-h-[340px] md:min-h-[420px]`}
           >
-            <img
-              src={placeholders.clinicInterior}
-              alt="Capilla clinic interior"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
+            <ClinicImageSlideshow />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/40 to-transparent" />
             <div className="relative flex h-full flex-col justify-end p-6 md:p-8">
               <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-gold/30 bg-[#0B0B0B]/60 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold backdrop-blur-md">

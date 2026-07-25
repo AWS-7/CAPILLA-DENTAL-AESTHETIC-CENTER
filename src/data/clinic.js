@@ -128,7 +128,6 @@ export const navLinks = [
   { id: 'gallery', label: 'Gallery', path: '/gallery' },
   { id: 'reviews', label: 'Google Reviews', path: '/reviews' },
   { id: 'offers', label: 'Offers', path: '/offers' },
-  { id: 'blog', label: 'Blog', path: '/blog' },
   { id: 'contact', label: 'Contact', path: '/contact' },
   { id: 'book-appointment', label: 'Book Appointment', path: '/contact', isCta: true },
 ];
@@ -139,7 +138,6 @@ export const footerQuickLinks = [
   { label: 'Gallery', path: '/gallery' },
   { label: 'Google Reviews', path: '/reviews' },
   { label: 'Offers', path: '/offers' },
-  { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
   { label: 'Book Appointment', path: '/contact' },
 ];

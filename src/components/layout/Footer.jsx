@@ -27,11 +27,11 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center shrink-0" aria-label="Capilla Dental & Aesthetic Center">
               <img
-                src="/logo.png"
+                src="/logo-new.png"
                 alt="Capilla Dental & Aesthetic Center"
                 width={220}
                 height={110}
-                className="h-20 sm:h-24 w-auto object-contain object-left"
+                className="h-20 sm:h-24 w-auto object-contain object-left rounded-full"
                 decoding="async"
               />
             </Link>

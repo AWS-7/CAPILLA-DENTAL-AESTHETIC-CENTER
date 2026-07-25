@@ -19,12 +19,12 @@ function Logo({ onNavigate, compact = false }) {
       aria-label="Capilla Dental & Aesthetic Center"
     >
       <img
-        src="/logo.png"
+        src="/logo-new.png"
         alt="Capilla Dental & Aesthetic Center"
         width={180}
         height={80}
         className={cn(
-          'w-auto object-contain object-left',
+          'w-auto object-contain object-left rounded-full',
           compact ? 'h-14 sm:h-16 lg:h-[72px]' : 'h-16 sm:h-20'
         )}
         decoding="async"

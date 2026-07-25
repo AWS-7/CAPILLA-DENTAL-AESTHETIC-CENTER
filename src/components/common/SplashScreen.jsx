@@ -50,7 +50,7 @@ export default function SplashScreen() {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.img
-            src="/splash-logo.png"
+            src="/logo-new.png"
             alt="Capilla Dental & Aesthetic Center"
             width={160}
             height={160}
