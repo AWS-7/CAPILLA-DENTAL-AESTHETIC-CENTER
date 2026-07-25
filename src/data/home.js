@@ -67,7 +67,8 @@ export const treatmentCategories = [
     title: 'Skin Treatments',
     description:
       'Medical-grade facial therapies for luminous, refined, camera-ready skin.',
-    image: placeholders.skin,
+    image:
+      'https://i.pinimg.com/736x/2d/e2/a3/2de2a3940b7a271e9c19436185002b4d.jpg',
     path: '/skin',
   },
   {
@@ -75,7 +76,8 @@ export const treatmentCategories = [
     title: 'Dental Treatments',
     description:
       'From implants to smile design — advanced dentistry for healthier teeth and lasting confidence.',
-    image: placeholders.dental,
+    image:
+      'https://i.pinimg.com/1200x/13/55/72/13557279342000e44a45d42bf45b8d40.jpg',
     path: '/dental',
   },
   {
@@ -83,7 +85,8 @@ export const treatmentCategories = [
     title: 'Hair Treatments',
     description:
       'Restorative hair therapies designed for denser growth and natural density.',
-    image: placeholders.hair,
+    image:
+      'https://i.pinimg.com/736x/ca/90/0c/ca900cb87e00eb412bf14172b14d9dc6.jpg',
     path: '/hair',
   },
 ];
