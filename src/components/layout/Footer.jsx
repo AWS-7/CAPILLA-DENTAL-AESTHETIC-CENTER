@@ -184,9 +184,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-primary-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div className="mt-14 pt-8 border-t border-primary-white/10 flex flex-col items-center justify-center gap-4 text-center">
           <p className="text-xs text-primary-white/40 break-safe px-2">
-            © {year} {clinicInfo.name}. All rights reserved.
+            © {year} {clinicInfo.name}. All rights reserved. Developed by AWS-Agni Web Solutions - 9080700642
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             {legalLinks.map((link) => (
