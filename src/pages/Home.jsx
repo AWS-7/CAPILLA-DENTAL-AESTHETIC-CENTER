@@ -4,7 +4,6 @@ import {
   WhyChoose,
   TreatmentCategories,
   FeaturedTreatments,
-  DoctorsPreview,
   BeforeAfterPreview,
   GoogleReviewsSection,
   AppointmentCTA,
@@ -60,7 +59,6 @@ export default function Home() {
         viewAllLabel="View All Hair Treatments"
         tone="light"
       />
-      <DoctorsPreview />
       <BeforeAfterPreview />
       <GoogleReviewsSection />
       <AppointmentCTA />
