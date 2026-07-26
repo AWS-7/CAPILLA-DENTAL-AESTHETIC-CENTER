@@ -25,7 +25,7 @@ export default function SiteWideSeo() {
         <meta name="geo.position" content={seoDefaults.geo.position} />
         <meta name="ICBM" content={seoDefaults.geo.icbm} />
         <meta name="format-detection" content="telephone=yes" />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        {import.meta.env.PROD && <link rel="manifest" href="/manifest.webmanifest" />}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Capilla" />

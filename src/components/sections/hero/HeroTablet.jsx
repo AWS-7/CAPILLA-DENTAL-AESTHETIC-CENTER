@@ -16,7 +16,7 @@ export default function HeroTablet() {
       {/* Static hero background */}
       <HeroBackground />
       {/* Readability overlay - light gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%)' }} />
 
       <div className="relative z-10 mx-auto grid min-h-[80vh] w-full max-w-[960px] grid-cols-2 items-center gap-8 px-8 pb-12 pt-[calc(var(--header-height)+24px)]">
         <div className="flex max-w-[400px] flex-col items-start text-left">
@@ -49,7 +49,7 @@ export default function HeroTablet() {
           </div>
 
           <div className="mt-5 grid w-full grid-cols-2 gap-2.5">
-            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
+            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
               <div className="flex items-center gap-0.5 text-gold">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={10} className="fill-gold text-gold" />
@@ -59,7 +59,7 @@ export default function HeroTablet() {
                 Google Rated
               </p>
             </div>
-            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
+            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
               <AnimatedCounter
                 end={200}
                 suffix="+"
@@ -67,7 +67,7 @@ export default function HeroTablet() {
                 className="text-left [&>p:first-child]:text-lg [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
               />
             </div>
-            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
+            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
               <AnimatedCounter
                 end={3}
                 suffix="+"
@@ -75,7 +75,7 @@ export default function HeroTablet() {
                 className="text-left [&>p:first-child]:text-lg [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-left [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
               />
             </div>
-            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left backdrop-blur-sm">
+            <div className="rounded-xl border border-primary-white/12 bg-primary-white/[0.06] px-3 py-2.5 text-left" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
               <p className="font-display text-lg leading-none text-primary-white">
                 Modern
               </p>

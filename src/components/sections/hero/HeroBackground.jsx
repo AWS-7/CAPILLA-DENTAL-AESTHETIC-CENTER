@@ -12,6 +12,14 @@ export default function HeroBackground() {
         className="absolute inset-0 h-full w-full object-cover"
         loading="eager"
         decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          height: '100%',
+          width: '100%',
+          objectFit: 'cover',
+          WebkitObjectFit: 'cover',
+        }}
       />
     </div>
   );

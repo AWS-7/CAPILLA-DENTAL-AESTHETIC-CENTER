@@ -19,7 +19,7 @@ export default function HeroDesktop() {
       {/* Static hero background */}
       <HeroBackground />
       {/* Left-side gradient for text readability only */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.68) 22%, rgba(0,0,0,0.46) 42%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0) 76%)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.68) 22%, rgba(0,0,0,0.46) 42%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0) 76%)' }} />
 
       <div className="relative z-10 flex min-h-[96vh] w-full flex-col items-start justify-center pl-[8%] pr-6 pb-16 pt-[calc(var(--header-height)+2rem)] text-left xl:min-h-screen xl:pb-20" style={{ maxWidth: '45%' }}>
         <p className="mb-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.25)' }}>
@@ -45,7 +45,7 @@ export default function HeroDesktop() {
         </div>
 
         <div className="mt-10 grid w-full max-w-[720px] grid-cols-2 gap-3 sm:grid-cols-4">
-          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
             <div className="flex items-center justify-center gap-0.5 text-gold">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} size={11} className="fill-gold text-gold" />
@@ -55,7 +55,7 @@ export default function HeroDesktop() {
               Google Rated
             </p>
           </div>
-          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
             <AnimatedCounter
               end={200}
               suffix="+"
@@ -63,7 +63,7 @@ export default function HeroDesktop() {
               className="[&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
             />
           </div>
-          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
             <AnimatedCounter
               end={3}
               suffix="+"
@@ -71,7 +71,7 @@ export default function HeroDesktop() {
               className="[&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"
             />
           </div>
-          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft backdrop-blur-sm">
+          <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
             <p className="font-display text-xl leading-none text-primary-white">
               Modern
             </p>
