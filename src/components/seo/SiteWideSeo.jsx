@@ -25,13 +25,7 @@ export default function SiteWideSeo() {
         <meta name="geo.position" content={seoDefaults.geo.position} />
         <meta name="ICBM" content={seoDefaults.geo.icbm} />
         <meta name="format-detection" content="telephone=yes" />
-        {import.meta.env.PROD && <link rel="manifest" href="/manifest.webmanifest" />}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="Capilla" />
-        <meta name="application-name" content="Capilla Clinic" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#C8A45D" />
       </Helmet>
 
       <JsonLd data={schemas} />
