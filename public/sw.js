@@ -1,10 +1,10 @@
 /* Capilla PWA service worker — offline shell + smart runtime caching */
-const VERSION = 'capilla-v3';
+const VERSION = 'capilla-v4';
 const APP_SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const OFFLINE_URL = '/';
 
-const PRECACHE = ['/', '/manifest.webmanifest'];
+const PRECACHE = ['/'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -43,6 +43,9 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
+          if (!response || response.status !== 200) {
+            throw new Error('Invalid response');
+          }
           const copy = response.clone();
           caches.open(APP_SHELL).then((cache) => cache.put(OFFLINE_URL, copy));
           return response;
@@ -52,12 +55,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets (images, css, js, fonts) → stale-while-revalidate
+  // Static assets (images, css, js, fonts) → network-first with cache fallback
   if (/\.(?:js|css|png|jpg|jpeg|webp|svg|gif|woff2?|ttf)$/i.test(new URL(request.url).pathname)) {
     event.respondWith(
       caches.open(RUNTIME).then((cache) =>
         cache.match(request).then((cached) => {
-          const network = fetch(request)
+          return fetch(request)
             .then((response) => {
               if (response && response.status === 200) {
                 cache.put(request, response.clone());
@@ -65,7 +68,6 @@ self.addEventListener('fetch', (event) => {
               return response;
             })
             .catch(() => cached);
-          return cached || network;
         })
       )
     );
