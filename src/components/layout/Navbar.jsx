@@ -154,14 +154,6 @@ export default function Navbar() {
             </nav>
 
             <div className="border-t border-border/70 px-5 py-5 space-y-3 shrink-0 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
-              <PrimaryButton
-                to="/contact"
-                className="w-full"
-                variant="gold"
-                onClick={closeMobile}
-              >
-                Book Appointment
-              </PrimaryButton>
               <SecondaryButton
                 href={clinicInfo.whatsappHref}
                 external
