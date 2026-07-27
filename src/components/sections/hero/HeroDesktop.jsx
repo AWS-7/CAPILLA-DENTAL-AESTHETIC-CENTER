@@ -1,6 +1,7 @@
 import { Star, Sparkles } from 'lucide-react';
 import { GlobalCTA, AnimatedCounter } from '../../common';
 import HeroBackground from './HeroBackground';
+import { clinicInfo } from '../../../data/clinic';
 
 const DESCRIPTION =
   'Advanced dentistry, medical-grade skin therapies and hair restoration in Perumbakkam.';
@@ -65,7 +66,7 @@ export default function HeroDesktop() {
           </div>
           <div className="min-w-0 rounded-2xl border border-primary-white/[0.12] bg-primary-white/[0.06] px-3 py-3 text-center shadow-soft" style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}>
             <AnimatedCounter
-              end={3}
+              end={clinicInfo.yearsOfExperience}
               suffix="+"
               label="Years Experience"
               className="[&>p:first-child]:text-xl [&>p:first-child]:leading-none [&>p:first-child]:text-primary-white [&>p:last-child]:mt-1 [&>p:last-child]:text-[10px] [&>p:last-child]:text-primary-white/50"

@@ -46,7 +46,7 @@ const stagger = (delay = 0) => ({
 
 const trustStats = [
   { value: '200+', label: 'Happy Customers' },
-  { value: '3+', label: 'Years Exp.' },
+  { value: `${clinicInfo.yearsOfExperience}+`, label: 'Years Exp.' },
   { value: '5.0★', label: 'Google Rated' },
 ];
 

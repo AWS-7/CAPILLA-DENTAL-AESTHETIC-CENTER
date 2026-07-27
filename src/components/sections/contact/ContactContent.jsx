@@ -24,6 +24,8 @@ import { contactTreatments } from '../../../data/contactPage';
 import { fadeUp, slideInLeft, slideInRight } from '../../../utils/animations';
 import { trackingEvents } from '../../../utils/analytics';
 import { cn } from '../../../utils/helpers';
+import { BRANCH_CONTACTS, DEFAULT_BRANCH } from '../../../config/contact';
+import { DEPARTMENT_OPTIONS, BRANCH_OPTIONS } from '../../../utils/appointmentForm';
 
 const baseInputClass =
   'w-full min-h-12 rounded-2xl border bg-light-bg px-4 py-3.5 text-base outline-none transition-colors focus:bg-primary-white';
@@ -31,6 +33,9 @@ const baseInputClass =
 const EMPTY_FORM = {
   name: '',
   phone: '',
+  email: '',
+  branch: DEFAULT_BRANCH,
+  department: '',
   treatment: '',
   date: '',
   time: '',
@@ -38,7 +43,6 @@ const EMPTY_FORM = {
 };
 
 const TODAY = new Date().toISOString().split('T')[0];
-const WA_NUMBER = clinicInfo.whatsapp.replace(/\D/g, '');
 
 function validate(form) {
   const errors = {};
@@ -48,6 +52,15 @@ function validate(form) {
   const digits = form.phone.replace(/\D/g, '');
   if (digits.length < 10) {
     errors.phone = 'Enter a valid phone number (min 10 digits).';
+  }
+  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    errors.email = 'Enter a valid email address.';
+  }
+  if (!form.branch) {
+    errors.branch = 'Please select a branch.';
+  }
+  if (!form.department) {
+    errors.department = 'Please select a department.';
   }
   if (!form.treatment) {
     errors.treatment = 'Please select a treatment.';
@@ -64,10 +77,15 @@ function validate(form) {
 }
 
 function buildWhatsAppLink(form) {
+  const branchKey = form.branch || DEFAULT_BRANCH;
+  const branchInfo = BRANCH_CONTACTS[branchKey] || BRANCH_CONTACTS[DEFAULT_BRANCH];
   const lines = [
     '*New Appointment Request*',
     `Name: ${form.name}`,
     `Phone: ${form.phone}`,
+    form.email ? `Email: ${form.email}` : null,
+    `Branch: ${branchInfo.label}`,
+    form.department ? `Department: ${form.department}` : null,
     `Treatment: ${form.treatment}`,
     `Preferred Date: ${form.date}`,
     `Preferred Time: ${form.time}`,
@@ -75,7 +93,7 @@ function buildWhatsAppLink(form) {
   ]
     .filter(Boolean)
     .join('\n');
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines)}`;
+  return `https://wa.me/${branchInfo.number}?text=${encodeURIComponent(lines)}`;
 }
 
 export default function ContactContent() {
@@ -355,6 +373,63 @@ export default function ContactContent() {
                         placeholder="+91"
                       />
                       <ErrorText name="phone" />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label htmlFor="email" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                        Email (Optional)
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={onChange}
+                        aria-invalid={Boolean(errors.email)}
+                        className={fieldClass('email')}
+                        placeholder="your@email.com"
+                      />
+                      <ErrorText name="email" />
+                    </div>
+                    <div>
+                      <label htmlFor="branch" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                        Branch
+                      </label>
+                      <select
+                        id="branch"
+                        name="branch"
+                        value={form.branch}
+                        onChange={onChange}
+                        aria-invalid={Boolean(errors.branch)}
+                        className={fieldClass('branch')}
+                      >
+                        {BRANCH_OPTIONS.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ErrorText name="branch" />
+                    </div>
+                    <div>
+                      <label htmlFor="department" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
+                        Department
+                      </label>
+                      <select
+                        id="department"
+                        name="department"
+                        value={form.department}
+                        onChange={onChange}
+                        aria-invalid={Boolean(errors.department)}
+                        className={fieldClass('department')}
+                      >
+                        <option value="">Select department</option>
+                        {DEPARTMENT_OPTIONS.map((dept) => (
+                          <option key={dept} value={dept}>
+                            {dept}
+                          </option>
+                        ))}
+                      </select>
+                      <ErrorText name="department" />
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="treatment" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">

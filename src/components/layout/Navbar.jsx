@@ -10,7 +10,7 @@ import SecondaryButton from '../common/SecondaryButton';
 import { ServicesMegaMenu } from './ServicesMenu';
 import { cn } from '../../utils/helpers';
 
-function Logo({ onNavigate, compact = false }) {
+function Logo({ onNavigate, compact = false, showText = false }) {
   return (
     <Link
       to="/"
@@ -29,6 +29,11 @@ function Logo({ onNavigate, compact = false }) {
         )}
         decoding="async"
       />
+      {showText && (
+        <span className="ml-2 font-display text-sm sm:text-base font-semibold text-primary-black leading-tight">
+          Capilla Dental & Aesthetic Center
+        </span>
+      )}
     </Link>
   );
 }
@@ -107,7 +112,7 @@ export default function Navbar() {
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between border-b border-border/70 px-5 py-4 shrink-0">
-              <Logo onNavigate={closeMobile} />
+              <Logo onNavigate={closeMobile} showText={true} />
               <button
                 type="button"
                 aria-label="Close menu"

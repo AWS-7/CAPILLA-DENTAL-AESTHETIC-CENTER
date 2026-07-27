@@ -1,9 +1,12 @@
+import { TREATMENT_OPTIONS } from '../utils/appointmentForm';
+
 export const clinicInfo = {
   name: 'Capilla Dental & Aesthetic Center',
   shortName: 'Capilla',
   tagline: 'Where Science Meets Aesthetic Excellence',
   description:
     'A premium multi-specialty clinic offering advanced dental, skin, and hair treatments with a focus on precision, comfort, and lasting results.',
+  yearsOfExperience: 3,
   phone: '+91 98942 99017',
   phoneHref: 'tel:+919894299017',
   whatsapp: '+919894299017',
@@ -60,6 +63,33 @@ export const clinicInfo = {
   },
 };
 
+const TREATMENT_PATHS = {
+  'Dental Implants': '/treatments/dental-implants',
+  'Root Canal Treatment': '/treatments/root-canal-treatment',
+  'Smile Design': '/treatments/smile-design',
+  'Teeth Whitening': '/treatments/teeth-whitening',
+  'Braces & Aligners': '/treatments/braces-aligners',
+  'Dental Veneers': '/treatments/dental-veneers',
+  'Wisdom Tooth Extraction': '/treatments/wisdom-tooth-extraction',
+  'Pediatric Dentistry': '/treatments/pediatric-dentistry',
+  'Hydra Facial': '/treatments/hydrafacial',
+  'Chemical Peel': '/treatments/chemical-peel',
+  'Acne Treatment': '/treatments/acne-treatment',
+  'Acne Scar Treatment': '/treatments/acne-scar-treatment',
+  'Pigmentation': '/treatments/pigmentation',
+  'Skin Brightening': '/treatments/skin-brightening',
+  'Glass Skin': '/treatments/glass-skin',
+  'Anti Ageing': '/treatments/anti-ageing',
+  'PRP Hair Therapy': '/treatments/prp-hair-treatment',
+  'GFC Therapy': '/treatments/gfc-hair-treatment',
+  'Hair Transplant': '/treatments/hair-transplant',
+  'Hair Loss Treatment': '/treatments/hair-loss-treatment',
+  'Scalp Analysis': '/treatments/scalp-analysis',
+  'Low Level Laser Therapy': '/treatments/low-level-laser-therapy',
+  'Dandruff Treatment': '/treatments/dandruff-treatment',
+  'Hair Regrowth': '/treatments/hair-regrowth',
+};
+
 export const servicesMegaMenu = [
   {
     id: 'dental',
@@ -67,16 +97,10 @@ export const servicesMegaMenu = [
     buttonLabel: 'Dental Treatments',
     path: '/dental',
     image: '/gallery/clinic-treatment-suite.webp',
-    items: [
-      { label: 'Dental Implants', path: '/treatments/dental-implants' },
-      { label: 'Root Canal Treatment', path: '/treatments/root-canal-treatment' },
-      { label: 'Smile Design', path: '/treatments/smile-design' },
-      { label: 'Teeth Whitening', path: '/treatments/teeth-whitening' },
-      { label: 'Braces & Aligners', path: '/treatments/braces-aligners' },
-      { label: 'Dental Veneers', path: '/treatments/dental-veneers' },
-      { label: 'Wisdom Tooth Extraction', path: '/treatments/wisdom-tooth-extraction' },
-      { label: 'Pediatric Dentistry', path: '/treatments/pediatric-dentistry' },
-    ],
+    items: TREATMENT_OPTIONS.Dental.map((treatment) => ({
+      label: treatment,
+      path: TREATMENT_PATHS[treatment] || `/treatments/${treatment.toLowerCase().replace(/\s+/g, '-')}`,
+    })),
   },
   {
     id: 'skin',
@@ -84,16 +108,10 @@ export const servicesMegaMenu = [
     buttonLabel: 'Skin Treatments',
     path: '/skin',
     image: '/gallery/clinic-laser-room.webp',
-    items: [
-      { label: 'Hydra Facial', path: '/treatments/hydrafacial' },
-      { label: 'Chemical Peel', path: '/treatments/chemical-peel' },
-      { label: 'Acne Treatment', path: '/treatments/acne-treatment' },
-      { label: 'Acne Scar Treatment', path: '/treatments/acne-scar-treatment' },
-      { label: 'Pigmentation', path: '/treatments/pigmentation' },
-      { label: 'Skin Brightening', path: '/treatments/skin-brightening' },
-      { label: 'Glass Skin', path: '/treatments/glass-skin' },
-      { label: 'Anti Ageing', path: '/treatments/anti-ageing' },
-    ],
+    items: TREATMENT_OPTIONS.Skin.map((treatment) => ({
+      label: treatment,
+      path: TREATMENT_PATHS[treatment] || `/treatments/${treatment.toLowerCase().replace(/\s+/g, '-')}`,
+    })),
   },
   {
     id: 'hair',
@@ -101,16 +119,10 @@ export const servicesMegaMenu = [
     buttonLabel: 'Hair Treatments',
     path: '/hair',
     image: '/gallery/clinic-brand-wall.webp',
-    items: [
-      { label: 'PRP Hair Therapy', path: '/treatments/prp-hair-treatment' },
-      { label: 'GFC Therapy', path: '/treatments/gfc-hair-treatment' },
-      { label: 'Hair Transplant', path: '/treatments/hair-transplant' },
-      { label: 'Hair Loss Treatment', path: '/treatments/hair-loss-treatment' },
-      { label: 'Scalp Analysis', path: '/treatments/scalp-analysis' },
-      { label: 'Low Level Laser Therapy', path: '/treatments/low-level-laser-therapy' },
-      { label: 'Dandruff Treatment', path: '/treatments/dandruff-treatment' },
-      { label: 'Hair Regrowth', path: '/treatments/hair-regrowth' },
-    ],
+    items: TREATMENT_OPTIONS.Hair.map((treatment) => ({
+      label: treatment,
+      path: TREATMENT_PATHS[treatment] || `/treatments/${treatment.toLowerCase().replace(/\s+/g, '-')}`,
+    })),
   },
 ];
 
