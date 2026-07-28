@@ -88,18 +88,18 @@ export default function AppointmentCTA() {
             </div>
 
             {/* Branch phone numbers */}
-            <div className="mt-8 flex flex-col items-center gap-2 text-sm text-primary-white/55 sm:flex-row sm:gap-6">
+            <div className="mt-8 grid grid-cols-1 gap-3 text-sm text-primary-white/55 sm:grid-cols-2 sm:gap-6">
               {clinicInfo.locations.map((loc) => (
                 <a
                   key={loc.id}
                   href={loc.phoneHref}
-                  className="inline-flex items-center gap-2 transition-colors hover:text-gold"
+                  className="flex items-center justify-center gap-2 transition-colors hover:text-gold sm:justify-start"
                 >
-                  <Phone size={14} className="text-gold" />
+                  <Phone size={14} className="text-gold shrink-0" />
                   <span className="font-medium text-primary-white/80">
                     {loc.label}:
                   </span>
-                  {loc.phone}
+                  <span className="text-primary-white/70">{loc.phone}</span>
                 </a>
               ))}
             </div>
