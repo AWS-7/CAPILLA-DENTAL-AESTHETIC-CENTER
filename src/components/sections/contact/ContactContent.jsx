@@ -25,7 +25,7 @@ import { fadeUp, slideInLeft, slideInRight } from '../../../utils/animations';
 import { trackingEvents } from '../../../utils/analytics';
 import { cn } from '../../../utils/helpers';
 import { BRANCH_CONTACTS, DEFAULT_BRANCH } from '../../../config/contact';
-import { DEPARTMENT_OPTIONS, BRANCH_OPTIONS } from '../../../utils/appointmentForm';
+import { DEPARTMENT_OPTIONS, BRANCH_OPTIONS, TREATMENT_OPTIONS, getTreatmentOptions } from '../../../utils/appointmentForm';
 
 const baseInputClass =
   'w-full min-h-12 rounded-2xl border bg-light-bg px-4 py-3.5 text-base outline-none transition-colors focus:bg-primary-white';
@@ -104,7 +104,14 @@ export default function ContactContent() {
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
+    setForm((f) => {
+      const updated = { ...f, [name]: value };
+      // Reset treatment when department changes
+      if (name === 'department') {
+        updated.treatment = '';
+      }
+      return updated;
+    });
     setErrors((prev) => {
       if (!prev[name]) return prev;
       const next = { ...prev };
@@ -442,9 +449,12 @@ export default function ContactContent() {
                         onChange={onChange}
                         aria-invalid={Boolean(errors.treatment)}
                         className={fieldClass('treatment')}
+                        disabled={!form.department}
                       >
-                        <option value="">Select a treatment</option>
-                        {contactTreatments.map((t) => (
+                        <option value="">
+                          {form.department ? 'Select a treatment' : 'Select department first'}
+                        </option>
+                        {form.department && getTreatmentOptions(form.department).map((t) => (
                           <option key={t} value={t}>
                             {t}
                           </option>

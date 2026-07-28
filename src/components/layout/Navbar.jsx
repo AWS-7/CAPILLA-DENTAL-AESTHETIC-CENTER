@@ -4,7 +4,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, MessageCircle } from 'lucide-react';
 import { clinicInfo, navLinks } from '../../data/clinic';
-import useScrolled from '../../hooks/useScrolled';
 import PrimaryButton from '../common/PrimaryButton';
 import SecondaryButton from '../common/SecondaryButton';
 import { ServicesMegaMenu } from './ServicesMenu';
@@ -39,12 +38,9 @@ function Logo({ onNavigate, compact = false, showText = false }) {
 }
 
 export default function Navbar() {
-  const scrolled = useScrolled(24);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
-  const transparent = isHome && !scrolled && !mobileOpen;
   const scrollLockY = useRef(0);
 
   const closeMobile = () => {
@@ -112,7 +108,10 @@ export default function Navbar() {
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between border-b border-border/70 px-5 py-4 shrink-0">
-              <Logo onNavigate={closeMobile} showText={true} />
+              <Logo onNavigate={closeMobile} />
+              <span className="font-display text-sm font-semibold text-gold leading-tight">
+                Capilla Dental & Aesthetic Center
+              </span>
               <button
                 type="button"
                 aria-label="Close menu"
@@ -179,18 +178,19 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={cn(
-          'fixed top-0 left-0 right-0 z-[100] site-header',
-          'transform-gpu will-change-[background-color,backdrop-filter]',
-          'transition-[background-color,backdrop-filter,box-shadow,border-color] duration-400 ease-out',
-          'border-b',
-          transparent
-            ? 'border-transparent bg-transparent shadow-none'
-            : 'border-border/50 bg-primary-white/80 shadow-soft backdrop-blur-glass supports-[backdrop-filter]:bg-primary-white/75'
-        )}
+        className="fixed top-0 left-0 right-0 z-[100] site-header bg-white border-b shadow-sm"
+        style={{
+          borderBottomColor: 'rgba(212,175,55,0.15)',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+        }}
       >
         <div className="container-premium flex h-[var(--header-height)] items-center justify-between gap-3 sm:gap-4">
-          <Logo compact />
+          <img
+            src="/logo-mobile-new.png"
+            alt="Capilla Dental & Aesthetic Center"
+            className="h-20 w-auto object-contain"
+            decoding="async"
+          />
 
           <nav className="hidden xl:flex items-center gap-0.5">
             {navLinks.map((link) =>
@@ -199,12 +199,7 @@ export default function Navbar() {
                   key={link.id ?? link.path}
                   type="button"
                   onClick={() => setServicesMenuOpen((prev) => !prev)}
-                  className={cn(
-                    'inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
-                    transparent
-                      ? 'text-primary-white/85 hover:text-gold'
-                      : 'text-dark-bg/75 hover:text-gold'
-                  )}
+                  className="inline-flex items-center gap-1 px-2 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 text-dark-bg/75 hover:text-gold"
                 >
                   {link.label}
                   <ChevronDown
@@ -222,13 +217,9 @@ export default function Navbar() {
                       'px-2.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300',
                       link.isCta
                         ? 'rounded-full bg-gold-gradient px-3.5 py-2 text-primary-black shadow-gold'
-                        : transparent
-                          ? isActive
-                            ? 'text-gold'
-                            : 'text-primary-white/85 hover:text-gold'
-                          : isActive
-                            ? 'text-gold'
-                            : 'text-dark-bg/75 hover:text-gold'
+                        : isActive
+                          ? 'text-gold'
+                          : 'text-dark-bg/75 hover:text-gold'
                     )
                   }
                 >
@@ -241,29 +232,23 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href={clinicInfo.phoneHref}
-              className={cn(
-                'hidden lg:inline-flex items-center gap-2 text-sm font-medium transition-colors',
-                transparent ? 'text-primary-white hover:text-gold' : 'text-dark-bg hover:text-gold'
-              )}
+              className="hidden lg:inline-flex items-center gap-2 text-sm font-medium transition-colors text-dark-bg hover:text-gold"
             >
               <Phone size={16} className="text-gold" />
               {clinicInfo.phone}
             </a>
 
-            <button
-              type="button"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((v) => !v)}
-              className={cn(
-                'xl:hidden flex h-[52px] w-[52px] md:h-11 md:w-11 items-center justify-center rounded-full border transition-colors',
-                transparent
-                  ? 'border-white/[0.12] bg-white/[0.08] text-primary-white backdrop-blur-md md:border-primary-white/30 md:bg-transparent md:backdrop-blur-none'
-                  : 'border-border text-primary-black'
-              )}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <div className="xl:hidden flex items-center gap-3">
+              <button
+                type="button"
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
+                onClick={() => setMobileOpen((v) => !v)}
+                className="flex h-[52px] w-[52px] md:h-11 md:w-11 items-center justify-center rounded-full border transition-colors shrink-0 ml-auto border-border text-primary-black"
+              >
+                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -273,7 +258,7 @@ export default function Navbar() {
         groups={navLinks.find((link) => link.megaMenu)?.menuGroups}
         onClose={() => setServicesMenuOpen(false)}
         onSelect={() => setServicesMenuOpen(false)}
-        light={transparent}
+        light={false}
       />
 
       {typeof document !== 'undefined' && createPortal(drawer, document.body)}
