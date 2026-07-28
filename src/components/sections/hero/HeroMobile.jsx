@@ -46,7 +46,7 @@ const stagger = (delay = 0) => ({
 
 const trustStats = [
   { value: '200+', label: 'Happy Customers' },
-  { value: `${clinicInfo.yearsOfExperience}+`, label: 'Years Exp.' },
+  { value: '3+', label: 'Years Exp.' },
   { value: '5.0★', label: 'Google Rated' },
 ];
 
@@ -67,8 +67,8 @@ export default function HeroMobile() {
         <HeroBackground />
       </div>
       {/* Readability scrim */}
-      <div className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.42) 50%, rgba(11,11,11,0.8) 100%)' }} />
-      <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 8%, rgba(212,175,90,0.12) 0%, transparent 60%)' }} />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/55 via-[#0B0B0B]/42 to-[#0B0B0B]/80" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_8%,rgba(212,175,90,0.12),transparent_60%)]" />
 
       <div className="relative z-10 flex w-full flex-col items-center px-5 pt-[calc(var(--header-height)+16px)] pb-10 text-center">
         {/* ── Eyebrow pill ── */}
@@ -76,8 +76,8 @@ export default function HeroMobile() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="inline-flex items-center gap-2 rounded-full border border-[#D4AF5A]/30 bg-white/[0.08] px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#D4AF5A]"
-          style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', fontFamily: "'Poppins', sans-serif" }}
+          className="inline-flex items-center gap-2 rounded-full border border-[#D4AF5A]/30 bg-white/[0.08] px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#D4AF5A] backdrop-blur-md"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           <Sparkles size={12} />
           Premium Multi-Specialty Clinic
@@ -182,8 +182,8 @@ export default function HeroMobile() {
 
           {/* Floating Google rating badge */}
           <div
-            className="absolute right-3 top-3 z-30 flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0B0B0B]/75 px-2.5 py-1.5 shadow-soft"
-            style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', fontFamily: "'Poppins', sans-serif" }}
+            className="absolute right-3 top-3 z-30 flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#0B0B0B]/75 px-2.5 py-1.5 shadow-soft backdrop-blur-md"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             <div className="flex items-center gap-0.5 text-[#D4AF5A]">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -241,16 +241,14 @@ export default function HeroMobile() {
             href={clinicInfo.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-[48px] flex-1 items-center justify-center gap-2 rounded-[16px] border border-white/20 bg-white/[0.06] text-[15px] font-semibold text-white transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
-            style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
+            className="flex h-[48px] flex-1 items-center justify-center gap-2 rounded-[16px] border border-white/20 bg-white/[0.06] text-[15px] font-semibold text-white backdrop-blur-sm transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
           >
             <MessageCircle size={17} className="text-[#25D366]" />
             WhatsApp
           </a>
           <a
             href={clinicInfo.phoneHref}
-            className="flex h-[48px] flex-1 items-center justify-center gap-2 rounded-[16px] border border-white/20 bg-white/[0.06] text-[15px] font-semibold text-white transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
-            style={{ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
+            className="flex h-[48px] flex-1 items-center justify-center gap-2 rounded-[16px] border border-white/20 bg-white/[0.06] text-[15px] font-semibold text-white backdrop-blur-sm transition-colors duration-200 active:scale-[0.97] active:border-[#D4AF5A]"
           >
             <Phone size={16} className="text-[#D4AF5A]" />
             Call Now
@@ -263,8 +261,8 @@ export default function HeroMobile() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.68 }}
-          className="mt-6 grid w-full grid-cols-3 divide-x divide-white/10 rounded-[16px] border border-white/[0.1] bg-white/[0.06] py-3.5"
-          style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', fontFamily: "'Poppins', sans-serif" }}
+          className="mt-6 grid w-full grid-cols-3 divide-x divide-white/10 rounded-[16px] border border-white/[0.1] bg-white/[0.06] py-3.5 backdrop-blur-md"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           {trustStats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center px-1">

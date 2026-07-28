@@ -106,6 +106,12 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
     <div className="hidden lg:flex lg:min-h-[560px] lg:flex-row">
       <div className="flex w-[34%] flex-col justify-between rounded-[24px] border border-[#D4AF5A]/20 bg-[#0B0B0B] p-6 text-[#fdf8ed] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
         <div className="space-y-4">
+          <img
+            src="/logo-mobile-new.png"
+            alt="Capilla Dental & Aesthetic Center"
+            className="h-16 w-auto object-contain"
+            decoding="async"
+          />
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#D4AF5A]/25 bg-[#D4AF5A]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D4AF5A]">
             <Sparkles size={12} />
             Luxury Care
@@ -242,13 +248,21 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
   const mobileContent = (
     <div className="flex h-full flex-col lg:hidden">
       <div className="flex items-center justify-between border-b border-border/70 px-4 py-4">
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D4AF5A]">
-            Services
-          </p>
-          <h3 className="mt-1 font-display text-[20px] font-semibold text-primary-black">
-            Treatments
-          </h3>
+        <div className="flex items-center gap-3">
+          <img
+            src="/logo-mobile-new.png"
+            alt="Capilla Dental & Aesthetic Center"
+            className="h-14 w-auto object-contain"
+            decoding="async"
+          />
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D4AF5A]">
+              Services
+            </p>
+            <h3 className="mt-1 font-display text-[20px] font-semibold text-primary-black">
+              Treatments
+            </h3>
+          </div>
         </div>
         <button
           type="button"

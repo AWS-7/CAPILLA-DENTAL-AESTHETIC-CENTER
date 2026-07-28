@@ -186,7 +186,7 @@ export default function Navbar() {
           boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
         }}
       >
-        <div className="flex h-[var(--header-height)] items-center justify-between gap-3 sm:gap-4 px-6 lg:px-12">
+        <div className="flex h-[var(--header-height)] items-center justify-between gap-2 sm:gap-3 px-6 lg:px-12">
           <img
             src="/logo-mobile-new.png"
             alt="Capilla Dental & Aesthetic Center"
