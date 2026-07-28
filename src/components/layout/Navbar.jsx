@@ -108,10 +108,12 @@ export default function Navbar() {
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between border-b border-border/70 px-5 py-4 shrink-0">
-              <Logo onNavigate={closeMobile} />
-              <span className="font-display text-sm font-semibold text-gold leading-tight">
-                Capilla Dental & Aesthetic Center
-              </span>
+              <img
+                src="/logo-mobile-new.png"
+                alt="Capilla Dental & Aesthetic Center"
+                className="h-16 w-auto object-contain"
+                decoding="async"
+              />
               <button
                 type="button"
                 aria-label="Close menu"
@@ -184,7 +186,7 @@ export default function Navbar() {
           boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
         }}
       >
-        <div className="container-premium flex h-[var(--header-height)] items-center justify-between gap-3 sm:gap-4">
+        <div className="flex h-[var(--header-height)] items-center justify-between gap-3 sm:gap-4 px-6 lg:px-12">
           <img
             src="/logo-mobile-new.png"
             alt="Capilla Dental & Aesthetic Center"
