@@ -16,6 +16,8 @@ export default function PageCtaHero({
             src={image}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-black via-primary-black/80 to-primary-black/50" />

@@ -18,6 +18,8 @@ export default function DentalHero() {
         <img
           src={dentalHero.image}
           alt="Advanced dental treatments at Capilla Perumbakkam"
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover opacity-45"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-black via-primary-black/85 to-primary-black/40" />

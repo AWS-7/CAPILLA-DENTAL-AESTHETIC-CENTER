@@ -58,9 +58,9 @@ function ArticleRow({ post, index }) {
           <img
             src={post.image}
             alt={post.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
             decoding="async"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-primary-black/10 transition-opacity duration-300 group-hover:opacity-0" />
           <span className="absolute right-2.5 top-2.5 flex h-8 w-8 items-center justify-center rounded-full bg-primary-white/90 text-primary-black opacity-0 shadow-soft backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">

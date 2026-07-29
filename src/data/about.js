@@ -20,7 +20,8 @@ export const aboutIntro = {
     'From digital smile design to medical-grade skin therapies and hair restoration, every consultation is personalized. We combine international treatment standards, rigorous hygiene protocols, and transparent guidance so you always feel informed and cared for.',
     'Located in Perumbakkam, Capilla serves patients seeking a dentist near them who values both outcomes and hospitality — a boutique medical destination built on trust.',
   ],
-  image: '/gallery/clinic-lounge.webp',
+  image: '/gallery/about-section-bg.png',
+  storyImage: '/gallery/who-we-are-original.png',
 };
 
 export const missionVisionValues = [
@@ -120,7 +121,7 @@ export const philosophy = {
 export const achievements = [
   { id: 1, end: 200, suffix: '+', label: 'Happy Customers' },
   { id: 2, end: 500, suffix: '+', label: 'Successful Treatments' },
-  { id: 3, end: 3, suffix: '+', label: 'Years of Experience' },
+  { id: 3, end: 8, suffix: '+', label: 'Years of Experience' },
   { id: 4, end: 150, suffix: '+', label: 'Positive Reviews' },
 ];
 
@@ -131,4 +132,32 @@ export const aboutGallery = [
   { id: 4, title: 'Laser & Facial Therapy Room', image: '/gallery/clinic-laser-room.webp', category: 'Treatment Rooms' },
   { id: 5, title: 'Doctor Consultation Room', image: '/gallery/clinic-consultation-room.webp', category: 'Treatment Rooms' },
   { id: 6, title: 'Advanced Aesthetic Technology', image: '/gallery/clinic-equipment.webp', category: 'Technology' },
+];
+
+export const aboutFAQs = [
+  {
+    id: 1,
+    question: 'What makes Capilla different from other clinics?',
+    answer: 'Capilla combines advanced dental, skin, and hair treatments under one roof with international standards, hospital-grade sterilization, and personalized care. Our multi-specialty approach ensures comprehensive aesthetic solutions tailored to your unique needs.',
+  },
+  {
+    id: 2,
+    question: 'What are the key benefits of choosing Capilla?',
+    answer: 'Key benefits include: 8+ years of experience, experienced specialists across all domains, advanced technology for precise results, transparent pricing with no hidden costs, personalized treatment plans, and a comfortable, hygienic environment.',
+  },
+  {
+    id: 3,
+    question: 'Do you offer consultations for all treatments?',
+    answer: 'Yes, we offer detailed consultations for dental, skin, and hair treatments. Our specialists assess your condition, discuss goals, and create personalized treatment plans with clear timelines and pricing.',
+  },
+  {
+    id: 4,
+    question: 'What safety and hygiene standards do you follow?',
+    answer: 'We maintain hospital-grade sterilization protocols, use disposable materials where possible, and follow strict infection control measures. Our equipment is regularly calibrated and sanitized to ensure patient safety.',
+  },
+  {
+    id: 5,
+    question: 'Are your treatments suitable for all age groups?',
+    answer: 'Yes, we offer treatments suitable for various age groups. From pediatric dentistry for children to anti-aging treatments for adults, our specialists customize approaches based on individual needs and health conditions.',
+  },
 ];

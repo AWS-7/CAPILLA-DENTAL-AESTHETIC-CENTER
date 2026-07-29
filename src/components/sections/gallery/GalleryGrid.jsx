@@ -99,6 +99,8 @@ function Lightbox({ photo, onClose, onPrev, onNext }) {
           <img
             src={photo.src}
             alt={photo.title}
+            loading="lazy"
+            decoding="async"
             className="max-h-[78vh] w-auto max-w-full rounded-2xl object-contain shadow-premium"
           />
           <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">

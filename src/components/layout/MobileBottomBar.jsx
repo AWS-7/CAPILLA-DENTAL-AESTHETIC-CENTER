@@ -97,7 +97,7 @@ export default function MobileBottomBar({ visible = false }) {
             className={cn(
               'mobile-bottom-bar',
               'border-t border-primary-white/10',
-              'bg-primary-black/75 backdrop-blur-2xl',
+              'bg-primary-black/75 backdrop-blur-md',
               'supports-[backdrop-filter]:bg-primary-black/65',
               'shadow-[0_-12px_40px_rgba(0,0,0,0.4)]',
               'rounded-t-[24px]',

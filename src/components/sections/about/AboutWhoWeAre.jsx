@@ -25,7 +25,7 @@ export default function AboutWhoWeAre() {
                 transition={{ duration: 0.7 }}
               >
                 <LazyLoadImage
-                  src={aboutIntro.image}
+                  src={aboutIntro.storyImage}
                   alt="Capilla Dental & Aesthetic Center clinic interior"
                   effect="blur"
                   className="h-full w-full object-cover"

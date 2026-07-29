@@ -26,7 +26,7 @@ export default function MainLayout() {
   // Show loading animation on route change
   useEffect(() => {
     setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 300);
+    const timer = setTimeout(() => setIsLoading(false), 150);
     return () => clearTimeout(timer);
   }, [location.pathname]);
 

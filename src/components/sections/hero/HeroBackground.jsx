@@ -1,4 +1,4 @@
-const HERO_BG_IMAGE = '/gallery/hero-desktop-bg.png';
+const HERO_BG_IMAGE = '/gallery/hero-desktop-bg.webp';
 
 /**
  * Static hero background image for the Hero section.

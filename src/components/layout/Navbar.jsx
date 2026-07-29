@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -43,10 +43,10 @@ export default function Navbar() {
   const location = useLocation();
   const scrollLockY = useRef(0);
 
-  const closeMobile = () => {
+  const closeMobile = useCallback(() => {
     setMobileOpen(false);
     setServicesMenuOpen(false);
-  };
+  }, []);
 
   useEffect(() => {
     closeMobile();
@@ -102,7 +102,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
-            className="xl:hidden fixed top-0 right-0 z-[120] flex h-[100dvh] w-[min(88vw,340px)] flex-col border-l border-primary-white/40 bg-primary-white/80 shadow-premium backdrop-blur-2xl supports-[backdrop-filter]:bg-primary-white/70"
+            className="xl:hidden fixed top-0 right-0 z-[120] flex h-[100dvh] w-[min(88vw,340px)] flex-col border-l border-primary-white/40 bg-primary-white/80 shadow-premium backdrop-blur-md supports-[backdrop-filter]:bg-primary-white/70"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -91,14 +91,14 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
     return activeGroup.items.filter((item) => item.label.toLowerCase().includes(query));
   }, [activeGroup, mobileSearch]);
 
-  const handleNavigateToCategory = (path) => {
+  const handleNavigateToCategory = useCallback((path) => {
     onSelect?.(path);
     onClose?.();
     navigate(path);
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     });
-  };
+  }, [onSelect, onClose, navigate]);
 
   if (!open) return null;
 

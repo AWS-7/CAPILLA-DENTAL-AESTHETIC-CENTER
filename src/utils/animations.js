@@ -2,9 +2,9 @@ export const fadeIn = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
-  exit: { opacity: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 export const fadeUp = {
@@ -12,7 +12,7 @@ export const fadeUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -21,7 +21,7 @@ export const fadeDown = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -30,7 +30,7 @@ export const slideInLeft = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -39,7 +39,7 @@ export const slideInRight = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -48,7 +48,7 @@ export const scaleIn = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -57,8 +57,8 @@ export const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.08,
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
     },
   },
 };
@@ -68,7 +68,7 @@ export const staggerItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -77,22 +77,22 @@ export const pageTransition = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     opacity: 0,
     y: -8,
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 export const hoverScale = {
   whileHover: { scale: 1.03 },
   whileTap: { scale: 0.98 },
-  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
 };
 
 export const imageZoom = {
   whileHover: { scale: 1.08 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
 };

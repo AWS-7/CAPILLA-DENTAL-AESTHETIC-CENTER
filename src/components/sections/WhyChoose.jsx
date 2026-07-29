@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -31,19 +32,19 @@ const clinicImages = [
   '/gallery/clinic-wash-area.webp',
 ];
 
-function GlowCorner() {
+const GlowCorner = React.memo(function GlowCorner() {
   return (
     <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gold/10 blur-3xl transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
   );
-}
+});
 
-function ClinicImageSlideshow() {
+const ClinicImageSlideshow = React.memo(function ClinicImageSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % clinicImages.length);
-    }, 1000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -64,9 +65,9 @@ function ClinicImageSlideshow() {
       ))}
     </>
   );
-}
+});
 
-export default function WhyChoose() {
+export default React.memo(function WhyChoose() {
   return (
     <section className="section-padding relative overflow-hidden bg-primary-white">
       {/* Ambient glows */}
@@ -271,4 +272,4 @@ export default function WhyChoose() {
       </motion.div>
     </section>
   );
-}
+});

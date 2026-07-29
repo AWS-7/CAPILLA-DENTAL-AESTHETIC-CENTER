@@ -6,7 +6,7 @@ export const clinicInfo = {
   tagline: 'Where Science Meets Aesthetic Excellence',
   description:
     'A premium multi-specialty clinic offering advanced dental, skin, and hair treatments with a focus on precision, comfort, and lasting results.',
-  yearsOfExperience: 3,
+  yearsOfExperience: 8,
   phone: '+91 98942 99017',
   phoneHref: 'tel:+919894299017',
   whatsapp: '+919894299017',

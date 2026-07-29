@@ -203,15 +203,6 @@ export default function HairTreatmentPage({ data }) {
         items={data.equipment}
       />
 
-      {data.beforeAfter?.length > 0 && (
-        <DentalBeforeAfter
-          items={data.beforeAfter}
-          title={`${data.title} Before & After`}
-          description="Illustrative transformations — your personal results are planned during consultation."
-          showGalleryButton
-        />
-      )}
-
       <DentalFAQ
         faqs={data.faqs}
         title={`${data.title} FAQs`}

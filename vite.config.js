@@ -15,14 +15,30 @@ export default defineConfig({
     cssCodeSplit: true,
     sourcemap: false,
     minify: 'esbuild',
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-swiper': ['swiper'],
-          'vendor-seo': ['react-helmet-async'],
+        manualChunks: (id) => {
+          // React core
+          if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+            return 'vendor-react';
+          }
+          // Animation library
+          if (id.includes('framer-motion')) {
+            return 'vendor-motion';
+          }
+          // Swiper
+          if (id.includes('swiper')) {
+            return 'vendor-swiper';
+          }
+          // SEO
+          if (id.includes('react-helmet')) {
+            return 'vendor-seo';
+          }
+          // Icons
+          if (id.includes('lucide-react')) {
+            return 'vendor-icons';
+          }
         },
       },
     },
