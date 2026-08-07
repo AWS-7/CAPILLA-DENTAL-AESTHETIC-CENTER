@@ -21,6 +21,7 @@ export const aboutIntro = {
     'Located in Perumbakkam, Capilla serves patients seeking a dentist near them who values both outcomes and hospitality — a boutique medical destination built on trust.',
   ],
   image: '/gallery/about-hero-capilla-2026.png',
+  storyBackground: '/gallery/about-section-custom-bg.png',
   storyImage: '/gallery/our-story-capilla-2026.png',
 };
 

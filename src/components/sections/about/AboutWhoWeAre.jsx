@@ -7,8 +7,17 @@ import { slideInLeft, slideInRight } from '../../../utils/animations';
 
 export default function AboutWhoWeAre() {
   return (
-    <section className="section-padding bg-primary-white">
-      <Container>
+    <section
+      className="section-padding relative overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(rgba(17, 17, 17, 0.78), rgba(17, 17, 17, 0.72)), url(${aboutIntro.storyBackground})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,164,93,0.2),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_28%)]" />
+      <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             variants={slideInLeft}
@@ -44,14 +53,14 @@ export default function AboutWhoWeAre() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-gold mb-4">
               Our Story
             </p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-black">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-white">
               {aboutIntro.storyTitle}
             </h2>
             <div className="mt-6 space-y-4">
               {aboutIntro.story.map((para) => (
                 <p
                   key={para.slice(0, 32)}
-                  className="text-base md:text-lg font-light leading-relaxed text-dark-bg/60"
+                  className="text-base md:text-lg font-light leading-relaxed text-primary-white/85"
                 >
                   {para}
                 </p>
