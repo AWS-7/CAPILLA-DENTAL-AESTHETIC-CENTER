@@ -28,7 +28,7 @@ export default function AboutWhoWeAre() {
                   src={aboutIntro.storyImage}
                   alt="Capilla Dental & Aesthetic Center clinic interior"
                   effect="blur"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top md:object-center"
                   wrapperClassName="h-full w-full"
                 />
               </motion.div>
