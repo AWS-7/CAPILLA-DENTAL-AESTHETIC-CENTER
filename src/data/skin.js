@@ -456,18 +456,35 @@ export const skinTreatmentPages = {
         question: 'How often should I get a Hydrafacial?',
         answer:
           'Many clients prefer monthly sessions for maintenance. Your specialist may recommend a series based on skin goals.',
+        image: '/treatments/skin/hydrafacial.webp',
+        showBeforeAfter: true,
+        features: ['Monthly Maintenance', 'Custom Plan', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/chemical-peel.webp', title: 'Chemical Peel', description: 'Skin Renewal', path: '/treatments/chemical-peel' },
+          { image: '/treatments/skin/korean-glass-skin-facial.webp', title: 'Korean Glass Skin', description: 'Glass Glow', path: '/treatments/korean-glass-skin-facial' },
+        ],
       },
       {
         id: 2,
         question: 'Is Hydrafacial suitable for sensitive skin?',
         answer:
           'Often yes — protocols can be customised. We assess sensitivity during consultation before proceeding.',
+        image: '/treatments/skin/hydrafacial.webp',
+        features: ['Gentle Protocol', 'Sensitive Skin Safe', 'Customised Care'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Gentle Care', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Where can I get the best Hydrafacial in Perumbakkam?',
         answer:
           'Capilla offers doctor-supervised Hydrafacial with premium protocols for patients across Perumbakkam, Medavakkam, and Sholinganallur.',
+        image: '/treatments/skin/hydrafacial.webp',
+        features: ['Doctor Supervised', 'Premium Protocol', 'Luxury Experience'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/skin-rejuvenation.webp', title: 'Skin Rejuvenation', description: 'Anti-ageing', path: '/treatments/skin-rejuvenation' },
+        ],
       },
     ],
     beforeAfter: [
@@ -551,18 +568,35 @@ export const skinTreatmentPages = {
         question: 'How many peels will I need?',
         answer:
           'Often a series of sessions spaced weeks apart delivers the best cumulative results. We customise after analysis.',
+        image: '/treatments/skin/chemical-peel.webp',
+        showBeforeAfter: true,
+        features: ['Custom Series', 'Cumulative Results', 'Expert Planning'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Instant Glow', path: '/treatments/hydrafacial' },
+          { image: '/treatments/skin/acne-scar-treatment.webp', title: 'Acne Scar Treatment', description: 'Scar Correction', path: '/treatments/acne-scar-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'Can I wear makeup after a peel?',
         answer:
           'Usually avoid makeup until the next day or as advised. Mineral options may be allowed depending on peel depth.',
+        image: '/treatments/skin/chemical-peel.webp',
+        features: ['Safe Recovery', 'Expert Guidance', 'Minimal Downtime'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Gentle Care', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Is chemical peel safe for Indian skin tones?',
         answer:
           'When correctly selected and supervised, yes. We prioritise peel choice and sun protection to minimise pigment risk.',
+        image: '/treatments/skin/chemical-peel.webp',
+        features: ['Skin Tone Safe', 'Expert Selection', 'Sun Protection'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/pigmentation-treatment.webp', title: 'Pigmentation Treatment', description: 'Tone Correction', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Tone Refresh', before: imgAcne, after: imgPeel }],
@@ -649,18 +683,35 @@ export const skinTreatmentPages = {
         question: 'Can acne scars disappear completely?',
         answer:
           'Most scars improve significantly but may not vanish entirely. We set honest goals and aim for visible, confidence-building refinement.',
+        image: '/treatments/skin/acne-scar-treatment.webp',
+        showBeforeAfter: true,
+        features: ['Realistic Goals', 'Visible Improvement', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/chemical-peel.webp', title: 'Chemical Peel', description: 'Skin Renewal', path: '/treatments/chemical-peel' },
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Deep Cleanse', path: '/treatments/hydrafacial' },
+        ],
       },
       {
         id: 2,
         question: 'How many sessions are required?',
         answer:
           'Typically a series spanning several weeks to months. Exact numbers depend on scar depth and type.',
+        image: '/treatments/skin/acne-scar-treatment.webp',
+        features: ['Custom Plan', 'Gradual Results', 'Expert Tracking'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Maintenance', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Should active acne be treated first?',
         answer:
           'Yes — controlling active breakouts first usually improves scar treatment outcomes. We guide sequencing at consultation.',
+        image: '/treatments/skin/acne-scar-treatment.webp',
+        features: ['Proper Sequencing', 'Expert Guidance', 'Effective Results'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/laser-skin-therapy.webp', title: 'Laser Therapy', description: 'Acne Control', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Texture Refinement', before: imgAcne, after: imgSkin }],
@@ -729,18 +780,35 @@ export const skinTreatmentPages = {
         question: 'Is skin whitening the same as bleaching?',
         answer:
           'No. Capilla focuses on clinical brightening and tone correction with safety — not harsh bleaching practices.',
+        image: '/treatments/skin/skin-whitening-treatment.webp',
+        showBeforeAfter: true,
+        features: ['Safe Approach', 'Clinical Brightening', 'Expert Supervision'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Deep Cleanse', path: '/treatments/hydrafacial' },
+          { image: '/treatments/skin/chemical-peel.webp', title: 'Chemical Peel', description: 'Skin Renewal', path: '/treatments/chemical-peel' },
+        ],
       },
       {
         id: 2,
         question: 'How soon will I see results?',
         answer:
           'Some glow appears early; meaningful tone evening usually builds across multiple sessions and disciplined SPF use.',
+        image: '/treatments/skin/skin-whitening-treatment.webp',
+        features: ['Gradual Results', 'Consistent Care', 'SPF Protection'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/korean-glass-skin-facial.webp', title: 'Korean Glass Skin', description: 'Glass Glow', path: '/treatments/korean-glass-skin-facial' },
+        ],
       },
       {
         id: 3,
         question: 'Can I combine whitening with Hydrafacial?',
         answer:
           'Often yes. Sequencing is planned so treatments complement rather than irritate the skin barrier.',
+        image: '/treatments/skin/skin-whitening-treatment.webp',
+        features: ['Combination Safe', 'Custom Plan', 'Expert Sequencing'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Maintenance', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Brightening Journey', before: imgGlow, after: imgFacial }],
@@ -814,18 +882,35 @@ export const skinTreatmentPages = {
         question: 'Is glass skin only for young skin?',
         answer:
           'No. Hydration and barrier care benefit many ages. We adapt intensity to your skin’s needs.',
+        image: '/treatments/skin/korean-glass-skin-facial.webp',
+        showBeforeAfter: true,
+        features: ['All Ages', 'Hydration Focus', 'Custom Intensity'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Deep Cleanse', path: '/treatments/hydrafacial' },
+          { image: '/treatments/skin/skin-whitening-treatment.webp', title: 'Skin Whitening', description: 'Brightening', path: '/treatments/skin-whitening-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'How is this different from Hydrafacial?',
         answer:
           'Hydrafacial focuses on hydradermabrasion technology; glass skin facials emphasise layered hydration aesthetics. Many clients enjoy both in a plan.',
+        image: '/treatments/skin/korean-glass-skin-facial.webp',
+        features: ['Layered Hydration', 'Aesthetic Focus', 'Complementary'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Technology-based', path: '/treatments/hydrafacial' },
+        ],
       },
       {
         id: 3,
         question: 'Will my skin look oily?',
         answer:
           'The goal is hydrated luminosity, not grease. Products and finish are matched to oily, dry, or combination types.',
+        image: '/treatments/skin/korean-glass-skin-facial.webp',
+        features: ['Dewy Finish', 'Not Oily', 'Custom Match'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Balanced Care', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Glass Skin Glow', before: imgSkin, after: imgFacial }],
@@ -906,18 +991,35 @@ export const skinTreatmentPages = {
         question: 'At what age should I start anti-ageing treatments?',
         answer:
           'Preventive care can begin in the late 20s or whenever concerns appear. We tailor intensity to your skin stage.',
+        image: '/treatments/skin/anti-ageing-treatment.webp',
+        showBeforeAfter: true,
+        features: ['Preventive Care', 'Custom Intensity', 'Age-Appropriate'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/hydrafacial.webp', title: 'Hydrafacial', description: 'Preventive Care', path: '/treatments/hydrafacial' },
+          { image: '/treatments/skin/chemical-peel.webp', title: 'Chemical Peel', description: 'Skin Renewal', path: '/treatments/chemical-peel' },
+        ],
       },
       {
         id: 2,
         question: 'Will I look “done” or frozen?',
         answer:
           'No. Capilla’s philosophy is subtle refinement — healthy, luminous skin that still looks like you.',
+        image: '/treatments/skin/anti-ageing-treatment.webp',
+        features: ['Subtle Refinement', 'Natural Look', 'Expert Philosophy'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/korean-glass-skin-facial.webp', title: 'Korean Glass Skin', description: 'Natural Glow', path: '/treatments/korean-glass-skin-facial' },
+        ],
       },
       {
         id: 3,
         question: 'How often are maintenance sessions needed?',
         answer:
           'Many plans use monthly or seasonal visits plus home care. Frequency is personalised after your first review.',
+        image: '/treatments/skin/anti-ageing-treatment.webp',
+        features: ['Personalised Schedule', 'Home Care', 'Long-term Results'],
+        recommendedTreatments: [
+          { image: '/treatments/skin/facial-treatments.webp', title: 'Medical Facial', description: 'Maintenance', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Rejuvenated Glow', before: imgAntiAge, after: imgFacial }],

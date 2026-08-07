@@ -273,18 +273,36 @@ export const hairTreatmentPages = {
         question: 'How many PRP sessions will I need?',
         answer:
           'Most plans use an initial series followed by maintenance. Exact numbers depend on pattern and response, confirmed after analysis.',
+        image: '/treatments/hair/prp-hair-treatment.webp',
+        showBeforeAfter: true,
+        features: ['Custom Plan', 'Progressive Results', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Advanced Care', path: '/treatments/gfc-hair-treatment' },
+          { image: '/treatments/hair/hair-regrowth-treatment.webp', title: 'Hair Regrowth', description: 'Medical Treatment', path: '/treatments/hair-regrowth-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'Is PRP painful?',
         answer:
           'Discomfort is usually mild and short-lived. We use comfort-focused techniques throughout the session.',
+        image: '/treatments/hair/prp-hair-treatment.webp',
+        features: ['Comfortable Process', 'Expert Technique', 'Minimal Downtime'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/scalp-analysis-consultation.webp', title: 'Scalp Analysis', description: 'Diagnosis', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Can PRP replace a hair transplant?',
         answer:
           'PRP supports follicles and density but cannot recreate a hairline where follicles are absent. Transplant may be better for advanced loss.',
+        image: '/treatments/hair/hair-transplant.webp',
+        features: ['Realistic Expectations', 'Expert Assessment', 'Custom Solution'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-transplant.webp', title: 'Hair Transplant', description: 'Permanent Solution', path: '/treatments/hair-transplant' },
+          { image: '/treatments/hair/hair-loss-treatment.webp', title: 'Hair Loss Treatment', description: 'Comprehensive Care', path: '/treatments/hair-loss-treatment' },
+        ],
       },
     ],
     beforeAfter: [
@@ -365,18 +383,34 @@ export const hairTreatmentPages = {
         question: 'How is GFC different from PRP?',
         answer:
           'Both are autologous regenerative approaches. Processing and concentrate profiles differ; we recommend based on clinical assessment rather than trends alone.',
+        image: '/treatments/hair/gfc-hair-treatment.webp',
+        features: ['Advanced Therapy', 'Clinical Assessment', 'Custom Plan'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/prp-hair-treatment.webp', title: 'PRP Therapy', description: 'Hair Growth', path: '/treatments/prp-hair-treatment' },
+          { image: '/treatments/hair/hair-regrowth-treatment.webp', title: 'Hair Regrowth', description: 'Medical Treatment', path: '/treatments/hair-regrowth-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'When will I notice changes?',
         answer:
           'Hair growth cycles are slow. Improvements often become clearer across months rather than days.',
+        image: '/treatments/hair/gfc-hair-treatment.webp',
+        features: ['Gradual Results', 'Long-term Solution', 'Consistent Care'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-loss-treatment.webp', title: 'Hair Loss Treatment', description: 'Comprehensive Care', path: '/treatments/hair-loss-treatment' },
+        ],
       },
       {
         id: 3,
         question: 'Is GFC suitable for women?',
         answer:
           'Often yes, depending on diagnosis. Female pattern thinning is evaluated carefully before recommending any regenerative plan.',
+        image: '/treatments/hair/gfc-hair-treatment.webp',
+        features: ['Gender-Specific', 'Expert Evaluation', 'Safe Procedure'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/scalp-analysis-consultation.webp', title: 'Scalp Analysis', description: 'Diagnosis', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'GFC Response', before: imgHair2, after: imgHair }],
@@ -461,18 +495,35 @@ export const hairTreatmentPages = {
         question: 'Is FUE better than strip methods?',
         answer:
           'FUE is preferred by many patients for scar-minimal recovery and lifestyle comfort. Suitability depends on individual case factors discussed in consultation.',
+        image: '/treatments/hair/hair-transplant.webp',
+        showBeforeAfter: true,
+        features: ['Scar-minimal', 'Natural Results', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/prp-hair-treatment.webp', title: 'PRP Therapy', description: 'Hair Growth', path: '/treatments/prp-hair-treatment' },
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Regeneration', path: '/treatments/gfc-hair-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'When will transplanted hair grow?',
         answer:
           'Early shedding is common. New growth usually becomes more visible over subsequent months as cycles progress.',
+        image: '/treatments/hair/hair-transplant.webp',
+        features: ['Natural Growth', 'Gradual Results', 'Long-term Solution'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-regrowth-treatment.webp', title: 'Hair Regrowth', description: 'Medical Treatment', path: '/treatments/hair-regrowth-treatment' },
+        ],
       },
       {
         id: 3,
         question: 'Will I need PRP after transplant?',
         answer:
           'Some plans include supportive therapies. Recommendations are personalised after healing milestones.',
+        image: '/treatments/hair/prp-hair-treatment.webp',
+        features: ['Supportive Care', 'Personalised Plan', 'Expert Guidance'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Advanced Care', path: '/treatments/gfc-hair-treatment' },
+        ],
       },
     ],
     beforeAfter: [
@@ -564,18 +615,34 @@ export const hairTreatmentPages = {
         question: 'Can all hair loss be reversed?',
         answer:
           'Not all patterns reverse fully. Early stages generally respond better. We set honest goals after diagnosis.',
+        image: '/treatments/hair/hair-regrowth-treatment.webp',
+        features: ['Realistic Goals', 'Expert Diagnosis', 'Custom Plan'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/prp-hair-treatment.webp', title: 'PRP Therapy', description: 'Hair Growth', path: '/treatments/prp-hair-treatment' },
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Regeneration', path: '/treatments/gfc-hair-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'How long before I see regrowth?',
         answer:
           'Hair cycles take time — meaningful change often spans months. Consistency is essential.',
+        image: '/treatments/hair/hair-regrowth-treatment.webp',
+        features: ['Gradual Results', 'Consistent Care', 'Long-term Solution'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-transplant.webp', title: 'Hair Transplant', description: 'Permanent Solution', path: '/treatments/hair-transplant' },
+        ],
       },
       {
         id: 3,
         question: 'Do I still need a transplant later?',
         answer:
           'Some patients remain non-surgical; others eventually choose FUE for hairline goals. Analysis guides that decision.',
+        image: '/treatments/hair/hair-transplant.webp',
+        features: ['Flexible Options', 'Expert Guidance', 'Personalised Care'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/scalp-analysis-consultation.webp', title: 'Scalp Analysis', description: 'Diagnosis', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Regrowth Progress', before: imgHair2, after: imgHair }],
@@ -676,18 +743,34 @@ export const hairTreatmentPages = {
         question: 'Should I wait before treating hair loss?',
         answer:
           'Earlier care usually protects more follicles. Waiting can limit non-surgical options later.',
+        image: '/treatments/hair/hair-loss-treatment.webp',
+        features: ['Early Intervention', 'Expert Care', 'Custom Plan'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-regrowth-treatment.webp', title: 'Hair Regrowth', description: 'Medical Treatment', path: '/treatments/hair-regrowth-treatment' },
+          { image: '/treatments/hair/prp-hair-treatment.webp', title: 'PRP Therapy', description: 'Regeneration', path: '/treatments/prp-hair-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'Are oil massages enough?',
         answer:
           'Oils may soothe scalp feel but rarely reverse patterned loss alone. Medical assessment remains essential.',
+        image: '/treatments/hair/hair-loss-treatment.webp',
+        features: ['Medical Assessment', 'Root Cause', 'Expert Diagnosis'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/scalp-analysis-consultation.webp', title: 'Scalp Analysis', description: 'Diagnosis', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Do women receive the same treatments as men?',
         answer:
           'Protocols differ. Female hair loss needs tailored diagnosis and carefully selected therapies.',
+        image: '/treatments/hair/hair-loss-treatment.webp',
+        features: ['Tailored Care', 'Gender-Specific', 'Expert Planning'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Advanced Care', path: '/treatments/gfc-hair-treatment' },
+        ],
       },
     ],
     beforeAfter: [{ id: 1, title: 'Loss Stabilisation Path', before: imgHair2, after: imgHair }],
@@ -780,18 +863,34 @@ export const hairTreatmentPages = {
         question: 'How long is a scalp analysis consultation?',
         answer:
           'Typically 20–40 minutes depending on complexity, allowing time for exam and clear recommendations.',
+        image: '/treatments/hair/scalp-analysis.webp',
+        features: ['Quick Assessment', 'Expert Analysis', 'Clear Recommendations'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-regrowth-treatment.webp', title: 'Hair Regrowth', description: 'Medical Treatment', path: '/treatments/hair-regrowth-treatment' },
+          { image: '/treatments/hair/prp-hair-treatment.webp', title: 'PRP Therapy', description: 'Regeneration', path: '/treatments/prp-hair-treatment' },
+        ],
       },
       {
         id: 2,
         question: 'Will I be pushed into a transplant?',
         answer:
           'No. We recommend what fits your stage and goals — including non-surgical options when appropriate.',
+        image: '/treatments/hair/scalp-analysis.webp',
+        features: ['Honest Advice', 'Non-Surgical Options', 'Custom Plan'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/hair-loss-treatment.webp', title: 'Hair Loss Treatment', description: 'Medical Care', path: '/treatments/hair-loss-treatment' },
+        ],
       },
       {
         id: 3,
         question: 'Can I start treatment the same day?',
         answer:
           'Sometimes for selected therapies after clearance. More often, planning and scheduling follow the consultation.',
+        image: '/treatments/hair/scalp-analysis.webp',
+        features: ['Flexible Scheduling', 'Expert Planning', 'Quick Start'],
+        recommendedTreatments: [
+          { image: '/treatments/hair/gfc-hair-treatment.webp', title: 'GFC Therapy', description: 'Advanced Care', path: '/treatments/gfc-hair-treatment' },
+        ],
       },
     ],
     beforeAfter: [],

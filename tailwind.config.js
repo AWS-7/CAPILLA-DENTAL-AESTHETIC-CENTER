@@ -101,7 +101,22 @@ export default {
         container: '1280px',
         narrow: '720px',
       },
+      paddingBottom: {
+        'safe-area-bottom': 'env(safe-area-inset-bottom)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    },
+  ],
 };

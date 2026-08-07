@@ -82,6 +82,7 @@ export default function MainLayout() {
 
       <Footer />
       <FloatingButtons />
+      <FloatingInstagram />
       <MobileBottomBar visible={showBottomBar} />
       <BackToTop />
     </div>

@@ -1,0 +1,9 @@
+export { default as TreatmentHero } from './TreatmentHero';
+export { default as ConcernCard } from './ConcernCard';
+export { default as BenefitsCard } from './BenefitsCard';
+export { default as TreatmentJourney } from './TreatmentJourney';
+export { default as PremiumFAQ } from './PremiumFAQ';
+export { default as RelatedTreatmentSlider } from './RelatedTreatmentSlider';
+export { default as ServiceCategorySelector } from './ServiceCategorySelector';
+export { default as AppointmentSupport } from './AppointmentSupport';
+export { default as StickyBottomCTA } from './StickyBottomCTA';

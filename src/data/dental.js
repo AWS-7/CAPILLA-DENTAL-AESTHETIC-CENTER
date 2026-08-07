@@ -315,18 +315,39 @@ export const dentalTreatmentPages = {
         question: 'How long do dental implants last?',
         answer:
           'With proper hygiene and reviews, implants can last many years and often decades. Longevity depends on bone health, bite forces, and maintenance.',
+        image: '/treatments/dental/dental-implants.webp',
+        showBeforeAfter: true,
+        features: ['Safe', 'Clinically Approved', 'Quick Recovery'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/root-canal-treatment.webp', title: 'Root Canal', description: 'Tooth Preservation', path: '/treatments/root-canal-treatment' },
+          { image: '/treatments/dental/smile-makeover.webp', title: 'Smile Design', description: 'Aesthetic Enhancement', path: '/treatments/smile-design' },
+          { image: '/treatments/dental/teeth-whitening.webp', title: 'Teeth Whitening', description: 'Bright Smile', path: '/treatments/teeth-whitening' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Crowns', description: 'Restoration', path: '/contact' },
+        ],
       },
       {
         id: 2,
         question: 'Is implant surgery painful?',
         answer:
           'The procedure is performed under anaesthesia. Most patients report manageable discomfort afterward, well-controlled with standard care.',
+        image: '/treatments/dental/dental-implants.webp',
+        features: ['Painless Procedure', 'Expert Care', 'Fast Healing'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-cleaning.webp', title: 'Dental Cleaning', description: 'Preventive Care', path: '/contact' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Cosmetic Dentistry', description: 'Aesthetic Solutions', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Am I a candidate for dental implants in Chennai?',
         answer:
           'Most healthy adults with missing teeth are candidates. We assess bone, gums, and medical history during consultation at our Perumbakkam clinic.',
+        image: '/treatments/dental/dental-implants.webp',
+        features: ['Expert Consultation', 'Custom Planning', 'Safe Procedure'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/dental-bridges.webp', title: 'Dental Bridges', description: 'Gap Filling', path: '/contact' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Crowns', description: 'Tooth Restoration', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [
@@ -403,18 +424,35 @@ export const dentalTreatmentPages = {
         question: 'Is root canal treatment painful?',
         answer:
           'With modern anaesthesia, RCT is typically comfortable. Many patients say it feels similar to getting a routine filling.',
+        image: '/treatments/dental/root-canal-treatment.webp',
+        features: ['Painless Procedure', 'Modern Technology', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/dental-implants.webp', title: 'Dental Implants', description: 'Tooth Replacement', path: '/treatments/dental-implants' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Crowns', description: 'Tooth Protection', path: '/contact' },
+        ],
       },
       {
         id: 2,
         question: 'How many sittings will I need?',
         answer:
           'Depending on infection severity, RCT may be completed in one or two visits. We confirm your plan after diagnosis.',
+        image: '/treatments/dental/root-canal-treatment.webp',
+        features: ['Single Visit Option', 'Quick Recovery', 'Efficient Process'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-cleaning.webp', title: 'Dental Cleaning', description: 'Preventive Care', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Do I need a crown after RCT?',
         answer:
           'Often yes — especially for back teeth — to protect the tooth from fracture and restore full chewing strength.',
+        image: '/treatments/dental/cosmetic-dentistry.webp',
+        features: ['Tooth Protection', 'Durable Solution', 'Natural Look'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/smile-makeover.webp', title: 'Smile Design', description: 'Aesthetic Enhancement', path: '/treatments/smile-design' },
+          { image: '/treatments/dental/teeth-whitening.webp', title: 'Teeth Whitening', description: 'Bright Smile', path: '/treatments/teeth-whitening' },
+        ],
       },
     ],
     beforeAfter: [
@@ -487,18 +525,36 @@ export const dentalTreatmentPages = {
         question: 'How long does whitening last?',
         answer:
           'Results vary with diet and habits. Many patients enjoy brighter smiles for months; occasional maintenance keeps results fresh.',
+        image: '/treatments/dental/teeth-whitening.webp',
+        showBeforeAfter: true,
+        features: ['Long-lasting Results', 'Safe Procedure', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/smile-makeover.webp', title: 'Smile Design', description: 'Complete Makeover', path: '/treatments/smile-design' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Veneers', description: 'Aesthetic Solution', path: '/contact' },
+        ],
       },
       {
         id: 2,
         question: 'Will whitening make my teeth sensitive?',
         answer:
           'Temporary sensitivity can occur. We use enamel-friendly protocols and advise desensitising care when needed.',
+        image: '/treatments/dental/teeth-whitening.webp',
+        features: ['Enamel Safe', 'Minimal Sensitivity', 'Comfortable Process'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-cleaning.webp', title: 'Dental Cleaning', description: 'Preventive Care', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'Can everyone get teeth whitening?',
         answer:
           'Whitening works best on natural enamel. Crowns and veneers do not bleach the same way — we assess suitability at consultation.',
+        image: '/treatments/dental/teeth-whitening.webp',
+        features: ['Custom Assessment', 'Safe for Enamel', 'Expert Evaluation'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/smile-makeover.webp', title: 'Smile Design', description: 'Aesthetic Enhancement', path: '/treatments/smile-design' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Cosmetic Dentistry', description: 'Comprehensive Care', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [
@@ -575,18 +631,36 @@ export const dentalTreatmentPages = {
         question: 'How long does a smile makeover take?',
         answer:
           'Timelines vary — from a few visits for whitening and bonding to several weeks for veneers or combined orthodontics. We map a clear schedule after analysis.',
+        image: '/treatments/dental/smile-design.webp',
+        showBeforeAfter: true,
+        features: ['Custom Timeline', 'Digital Planning', 'Natural Results'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-whitening.webp', title: 'Teeth Whitening', description: 'Bright Smile', path: '/treatments/teeth-whitening' },
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Veneers', description: 'Aesthetic Solution', path: '/contact' },
+          { image: '/treatments/dental/braces-aligners.webp', title: 'Braces & Aligners', description: 'Alignment', path: '/treatments/braces-aligners' },
+        ],
       },
       {
         id: 2,
         question: 'Will my smile look artificial?',
         answer:
           'Our design philosophy favours natural translucency, proportion, and facial harmony — never a one-size-fits-all white strip look.',
+        image: '/treatments/dental/smile-design.webp',
+        features: ['Natural Look', 'Facial Harmony', 'Custom Design'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/dental-implants.webp', title: 'Dental Implants', description: 'Tooth Replacement', path: '/treatments/dental-implants' },
+        ],
       },
       {
         id: 3,
         question: 'Is smile design only for celebrities?',
         answer:
           'Not at all. Smile design helps everyday patients who want refined, confident smiles with clinical integrity.',
+        image: '/treatments/dental/smile-design.webp',
+        features: ['For Everyone', 'Affordable Options', 'Expert Care'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-cleaning.webp', title: 'Dental Cleaning', description: 'Preventive Care', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [
@@ -672,18 +746,35 @@ export const dentalTreatmentPages = {
         question: 'Are clear aligners as effective as braces?',
         answer:
           'For suitable cases, yes. Complex movements may still benefit from braces. We recommend the best system after assessment.',
+        image: '/treatments/dental/braces-aligners.webp',
+        showBeforeAfter: true,
+        features: ['Effective Results', 'Custom Options', 'Expert Assessment'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/smile-design.webp', title: 'Smile Design', description: 'Aesthetic Planning', path: '/treatments/smile-design' },
+          { image: '/treatments/dental/teeth-whitening.webp', title: 'Teeth Whitening', description: 'Bright Smile', path: '/treatments/teeth-whitening' },
+        ],
       },
       {
         id: 2,
         question: 'Do braces hurt?',
         answer:
           'Mild pressure after adjustments is normal and temporary. We share comfort tips and schedule reviews thoughtfully.',
+        image: '/treatments/dental/braces-aligners.webp',
+        features: ['Comfortable Process', 'Expert Care', 'Gentle Adjustments'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/teeth-cleaning.webp', title: 'Dental Cleaning', description: 'Preventive Care', path: '/contact' },
+        ],
       },
       {
         id: 3,
         question: 'How often are follow-up visits?',
         answer:
           'Typically every few weeks for braces, or as guided for aligner changes. Your plan is confirmed at the start.',
+        image: '/treatments/dental/braces-aligners.webp',
+        features: ['Regular Check-ups', 'Clear Schedule', 'Progress Tracking'],
+        recommendedTreatments: [
+          { image: '/treatments/dental/cosmetic-dentistry.webp', title: 'Cosmetic Dentistry', description: 'Comprehensive Care', path: '/contact' },
+        ],
       },
     ],
     beforeAfter: [
