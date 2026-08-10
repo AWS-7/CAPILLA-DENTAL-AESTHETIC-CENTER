@@ -82,7 +82,7 @@ export default function MainLayout() {
 
       <Footer />
       <FloatingButtons />
-      <FloatingInstagram />
+      {location.pathname === '/' ? <FloatingInstagram /> : null}
       <MobileBottomBar visible={showBottomBar} />
       <BackToTop />
     </div>

@@ -85,13 +85,11 @@ export function validateAppointmentForm(form, today = new Date().toISOString().s
 
   if (form.name?.trim().length < 2) errors.name = 'Please enter your name.';
   if (form.phone?.replace(/\D/g, '').length < 10) errors.phone = 'Enter a valid phone number.';
-  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Enter a valid email address.';
   if (!form.branch) errors.branch = 'Please select a branch.';
   if (!form.department) errors.department = 'Please select a department.';
   if (!form.treatment) errors.treatment = 'Please select a treatment.';
   if (!form.date) errors.date = 'Please select a preferred date.';
   if (form.date && form.date < today) errors.date = 'Date cannot be in the past.';
-  if (!form.time) errors.time = 'Please select a preferred time.';
 
   return errors;
 }
@@ -107,7 +105,6 @@ export function buildAppointmentWhatsAppLink(form = {}) {
     form.department ? `Department: ${form.department}` : null,
     form.treatment ? `Treatment: ${form.treatment}` : null,
     form.date ? `Preferred Date: ${form.date}` : null,
-    form.time ? `Preferred Time: ${form.time}` : null,
     form.message ? `Message: ${form.message}` : null,
   ]
     .filter(Boolean)

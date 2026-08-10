@@ -33,12 +33,10 @@ const baseInputClass =
 const EMPTY_FORM = {
   name: '',
   phone: '',
-  email: '',
   branch: DEFAULT_BRANCH,
   department: '',
   treatment: '',
   date: '',
-  time: '',
   message: '',
 };
 
@@ -52,9 +50,6 @@ function validate(form) {
   const digits = form.phone.replace(/\D/g, '');
   if (digits.length < 10) {
     errors.phone = 'Enter a valid phone number (min 10 digits).';
-  }
-  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    errors.email = 'Enter a valid email address.';
   }
   if (!form.branch) {
     errors.branch = 'Please select a branch.';
@@ -70,9 +65,6 @@ function validate(form) {
   } else if (form.date < TODAY) {
     errors.date = 'Date cannot be in the past.';
   }
-  if (!form.time) {
-    errors.time = 'Please choose a preferred time.';
-  }
   return errors;
 }
 
@@ -83,12 +75,10 @@ function buildWhatsAppLink(form) {
     '*New Appointment Request*',
     `Name: ${form.name}`,
     `Phone: ${form.phone}`,
-    form.email ? `Email: ${form.email}` : null,
     `Branch: ${branchInfo.label}`,
     form.department ? `Department: ${form.department}` : null,
     `Treatment: ${form.treatment}`,
     `Preferred Date: ${form.date}`,
-    `Preferred Time: ${form.time}`,
     form.message ? `Message: ${form.message}` : null,
   ]
     .filter(Boolean)
@@ -381,22 +371,6 @@ export default function ContactContent() {
                       />
                       <ErrorText name="phone" />
                     </div>
-                    <div className="sm:col-span-2">
-                      <label htmlFor="email" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
-                        Email (Optional)
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={onChange}
-                        aria-invalid={Boolean(errors.email)}
-                        className={fieldClass('email')}
-                        placeholder="your@email.com"
-                      />
-                      <ErrorText name="email" />
-                    </div>
                     <div>
                       <label htmlFor="branch" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
                         Branch
@@ -477,21 +451,6 @@ export default function ContactContent() {
                         className={fieldClass('date')}
                       />
                       <ErrorText name="date" />
-                    </div>
-                    <div>
-                      <label htmlFor="time" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">
-                        Preferred Time
-                      </label>
-                      <input
-                        id="time"
-                        name="time"
-                        type="time"
-                        value={form.time}
-                        onChange={onChange}
-                        aria-invalid={Boolean(errors.time)}
-                        className={fieldClass('time')}
-                      />
-                      <ErrorText name="time" />
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="message" className="mb-1.5 block text-xs uppercase tracking-wider text-dark-bg/45">

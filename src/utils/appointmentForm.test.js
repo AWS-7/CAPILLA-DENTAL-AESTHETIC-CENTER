@@ -16,7 +16,7 @@ test('returns department-specific treatments', () => {
   ]);
 });
 
-test('validates required booking fields', () => {
+test('validates required booking fields without email or time', () => {
   const errors = validateAppointmentForm({
     name: 'A',
     phone: '123',
@@ -24,7 +24,6 @@ test('validates required booking fields', () => {
     department: '',
     treatment: '',
     date: '',
-    time: '',
     message: '',
   }, '2026-07-24');
 
@@ -34,7 +33,8 @@ test('validates required booking fields', () => {
   assert.match(errors.department, /department/i);
   assert.match(errors.treatment, /treatment/i);
   assert.match(errors.date, /date/i);
-  assert.match(errors.time, /time/i);
+  assert.equal(errors.email, undefined);
+  assert.equal(errors.time, undefined);
 });
 
 test('builds a WhatsApp link using the correct branch number', () => {

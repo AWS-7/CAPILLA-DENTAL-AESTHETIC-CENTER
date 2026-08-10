@@ -14,12 +14,10 @@ import { cn } from '../../utils/helpers';
 const EMPTY = {
   name: '',
   phone: '',
-  email: '',
   branch: '',
   department: '',
   treatment: '',
   date: '',
-  time: '',
   message: '',
 };
 const TODAY = new Date().toISOString().split('T')[0];
@@ -254,25 +252,6 @@ export default function BookingModal({ open, onClose }) {
                   </div>
 
                   <div>
-                    <input
-                      autoComplete="email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={onChange}
-                      placeholder="Email Address"
-                      aria-label="Email address"
-                      className={fieldClass('email')}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
-                        <AlertCircle size={13} />
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
                     <select
                       name="branch"
                       value={form.branch}
@@ -341,40 +320,22 @@ export default function BookingModal({ open, onClose }) {
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-4 sm:flex-row">
-                    <div className="flex-1">
-                      <input
-                        name="date"
-                        type="date"
-                        min={TODAY}
-                        value={form.date}
-                        onChange={onChange}
-                        aria-label="Preferred date"
-                        className={fieldClass('date')}
-                      />
-                      {errors.date && (
-                        <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
-                          <AlertCircle size={13} />
-                          {errors.date}
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <input
-                        name="time"
-                        type="time"
-                        value={form.time}
-                        onChange={onChange}
-                        aria-label="Preferred time"
-                        className={cn(inputBase, errors.time ? 'border-red-400 focus:border-red-500' : 'border-border focus:border-gold')}
-                      />
-                      {errors.time && (
-                        <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
-                          <AlertCircle size={13} />
-                          {errors.time}
-                        </p>
-                      )}
-                    </div>
+                  <div>
+                    <input
+                      name="date"
+                      type="date"
+                      min={TODAY}
+                      value={form.date}
+                      onChange={onChange}
+                      aria-label="Preferred date"
+                      className={fieldClass('date')}
+                    />
+                    {errors.date && (
+                      <p className="mt-1 flex items-center gap-1.5 text-xs text-red-500">
+                        <AlertCircle size={13} />
+                        {errors.date}
+                      </p>
+                    )}
                   </div>
 
                   <div>

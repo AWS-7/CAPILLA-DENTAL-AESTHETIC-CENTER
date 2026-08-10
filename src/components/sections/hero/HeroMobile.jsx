@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, A11y, EffectFade } from 'swiper/modules';
@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { clinicInfo } from '../../../data/clinic';
 import { heroCarouselSlides } from '../../../data/home';
-import HeroBackground from './HeroBackground';
 
 const GOLD = '#D4AF5A';
 const EASE = [0.25, 0.46, 0.45, 0.94];
@@ -60,14 +59,8 @@ export default function HeroMobile() {
     <section
       id="hero"
       data-hero
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#0B0B0B]"
     >
-      {/* Rotating clinic photo background */}
-      <div className="absolute inset-0">
-        <HeroBackground />
-      </div>
-      {/* Readability scrim */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/55 via-[#0B0B0B]/42 to-[#0B0B0B]/80" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_8%,rgba(212,175,90,0.12),transparent_60%)]" />
 
       <div className="relative z-10 flex w-full flex-col items-center px-5 pt-[calc(var(--header-height)+16px)] pb-10 text-center">

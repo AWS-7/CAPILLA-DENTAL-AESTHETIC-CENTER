@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Calendar } from 'lucide-react';
+import { Phone, MessageCircle, Calendar, Instagram } from 'lucide-react';
 import { PrimaryButton, SecondaryButton } from './index';
 import { clinicInfo } from '../../data/clinic';
 import { useBookingModal } from '../../context/BookingModalProvider';
@@ -44,6 +44,16 @@ export default function GlobalCTA() {
       >
         <Phone size={16} />
         Call
+      </SecondaryButton>
+      <SecondaryButton
+        href={clinicInfo.social.instagram}
+        external
+        variant="light"
+        size="lg"
+        className="min-h-12 flex items-center justify-center gap-2 border-primary-white/25"
+      >
+        <Instagram size={16} />
+        Instagram
       </SecondaryButton>
     </div>
   );

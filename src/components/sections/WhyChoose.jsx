@@ -128,11 +128,11 @@ export default React.memo(function WhyChoose() {
           >
             <GlowCorner />
             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-dark-bg/40">
-              Since 2014
+              Since 2019
             </span>
             <div>
               <p className="font-display text-5xl leading-none text-gold md:text-6xl">
-                3+
+                8+
               </p>
               <p className="mt-2 text-xs font-light text-dark-bg/55 md:text-sm">
                 Years of clinical excellence
