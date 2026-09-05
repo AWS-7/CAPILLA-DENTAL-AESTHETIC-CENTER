@@ -174,7 +174,7 @@ export default function HeroMobile() {
           Advanced dentistry, medical-grade skin therapies and hair restoration in Perumbakkam.
         </motion.p>
 
-        {/* ── Primary CTAs: Book Appointment & View Services ── */}
+        {/* ── Primary CTA: Book Appointment ── */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -182,28 +182,17 @@ export default function HeroMobile() {
           transition={{ delay: 0.65 }}
           className="mt-7 w-full"
         >
-          <div className="flex gap-3">
-            <Link
-              to="/contact"
-              className="flex h-[58px] flex-1 items-center justify-center gap-2 rounded-[20px] text-[15px] font-semibold text-[#0B0B0B] shadow-gold transition-all duration-300 active:scale-[0.96]"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                background: `linear-gradient(135deg, ${GOLD} 0%, #E2C27B 50%, #C09A45 100%)`,
-              }}
-            >
-              <Calendar size={17} />
-              Book Appointment
-            </Link>
-            <button
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="flex h-[58px] flex-1 items-center justify-center gap-2 rounded-[20px] border-2 border-[#D4AF5A] bg-white/[0.08] text-[15px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96]"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              <Sparkles size={17} className="text-[#D4AF5A]" />
-              View Services
-              <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
-            </button>
-          </div>
+          <Link
+            to="/contact"
+            className="flex h-[58px] w-full items-center justify-center gap-3 rounded-[20px] text-[16.5px] font-semibold text-[#0B0B0B] shadow-gold transition-all duration-300 active:scale-[0.96]"
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              background: `linear-gradient(135deg, ${GOLD} 0%, #E2C27B 50%, #C09A45 100%)`,
+            }}
+          >
+            <Calendar size={19} />
+            Book Appointment
+          </Link>
         </motion.div>
 
         {/* ── Services Dropdown ── */}
@@ -233,7 +222,7 @@ export default function HeroMobile() {
           )}
         </AnimatePresence>
 
-        {/* ── Secondary CTAs: WhatsApp & Call Now ── */}
+        {/* ── Secondary CTAs: WhatsApp & View Services ── */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -251,13 +240,14 @@ export default function HeroMobile() {
             <MessageCircle size={17} className="text-[#25D366]" />
             WhatsApp
           </a>
-          <a
-            href={clinicInfo.phoneHref}
-            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border border-white/25 bg-white/[0.07] text-[14px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96] active:border-[#D4AF5A] active:bg-white/[0.12]"
+          <button
+            onClick={() => setServicesOpen(!servicesOpen)}
+            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border-2 border-[#D4AF5A] bg-white/[0.08] text-[14px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96]"
           >
-            <Phone size={16} className="text-[#D4AF5A]" />
-            Call Now
-          </a>
+            <Sparkles size={16} className="text-[#D4AF5A]" />
+            View Services
+            <ChevronDown size={15} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+          </button>
         </motion.div>
 
         {/* ── Address / hours line ── */}
