@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone,
   MessageCircle,
   Calendar,
   Sparkles,
   Star,
+  ChevronDown,
+  X,
 } from 'lucide-react';
 import { clinicInfo } from '../../../data/clinic';
 
@@ -31,11 +34,24 @@ const stagger = (delay = 0) => ({
   visible: { transition: { staggerChildren: 0.08, delayChildren: delay } },
 });
 
+const SERVICE_CATEGORIES = [
+  { id: 'dental', label: 'Dental', path: '/dental-treatments' },
+  { id: 'skin', label: 'Skin', path: '/skin-treatments' },
+  { id: 'hair', label: 'Hair', path: '/hair-treatments' },
+];
+
 /**
  * HeroMobile — clean, premium mobile hero (320–767px)
  * Layout: badge → rating → headline → taglines → specialties → description → CTAs
  */
 export default function HeroMobile() {
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleServiceSelect = (path) => {
+    setServicesOpen(false);
+    navigate(path);
+  };
   return (
     <section
       id="hero"
@@ -158,7 +174,7 @@ export default function HeroMobile() {
           Advanced dentistry, medical-grade skin therapies and hair restoration in Perumbakkam.
         </motion.p>
 
-        {/* ── Primary CTA: Book Appointment ── */}
+        {/* ── Primary CTAs: Book Appointment & View Services ── */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -166,18 +182,56 @@ export default function HeroMobile() {
           transition={{ delay: 0.65 }}
           className="mt-7 w-full"
         >
-          <Link
-            to="/contact"
-            className="flex h-[58px] w-full items-center justify-center gap-3 rounded-[20px] text-[16.5px] font-semibold text-[#0B0B0B] shadow-gold transition-all duration-300 active:scale-[0.96]"
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              background: `linear-gradient(135deg, ${GOLD} 0%, #E2C27B 50%, #C09A45 100%)`,
-            }}
-          >
-            <Calendar size={19} />
-            Book Appointment
-          </Link>
+          <div className="flex gap-3">
+            <Link
+              to="/contact"
+              className="flex h-[58px] flex-1 items-center justify-center gap-2 rounded-[20px] text-[15px] font-semibold text-[#0B0B0B] shadow-gold transition-all duration-300 active:scale-[0.96]"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                background: `linear-gradient(135deg, ${GOLD} 0%, #E2C27B 50%, #C09A45 100%)`,
+              }}
+            >
+              <Calendar size={17} />
+              Book Appointment
+            </Link>
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="flex h-[58px] flex-1 items-center justify-center gap-2 rounded-[20px] border-2 border-[#D4AF5A] bg-white/[0.08] text-[15px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96]"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <Sparkles size={17} className="text-[#D4AF5A]" />
+              View Services
+              <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
         </motion.div>
+
+        {/* ── Services Dropdown ── */}
+        <AnimatePresence>
+          {servicesOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="mt-3 w-full overflow-hidden"
+            >
+              <div className="rounded-2xl border border-white/20 bg-black/60 backdrop-blur-xl p-2">
+                {SERVICE_CATEGORIES.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleServiceSelect(category.path)}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left transition-all duration-200 hover:bg-white/[0.08] active:bg-white/[0.12]"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                  >
+                    <span className="text-[15px] font-medium text-white">{category.label} Treatments</span>
+                    <ChevronDown size={16} className="text-[#D4AF5A] rotate-[-90deg]" />
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ── Secondary CTAs: WhatsApp & Call Now ── */}
         <motion.div
