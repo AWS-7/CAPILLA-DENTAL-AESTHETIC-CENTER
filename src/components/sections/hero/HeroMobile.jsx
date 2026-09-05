@@ -82,7 +82,7 @@ export default function HeroMobile() {
         >
           <motion.span
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-[#D4AF5A]/40 bg-white/[0.10] px-4 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#D4AF5A] backdrop-blur-md"
+            className="inline-flex items-center gap-2 rounded-full border border-[#D4AF5A]/40 bg-black/40 px-4 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#D4AF5A]"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             <Sparkles size={11} />
@@ -111,7 +111,7 @@ export default function HeroMobile() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.15 }}
-          className="mt-5 rounded-2xl border border-white/10 bg-black/30 px-6 py-4 backdrop-blur-xl"
+          className="mt-5 rounded-2xl border border-white/10 bg-black/50 px-6 py-4"
         >
           <h1
             className="text-[clamp(22px,6.5vw,28px)] font-bold leading-[1.25] tracking-[-0.5px] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.8)]"
@@ -154,7 +154,7 @@ export default function HeroMobile() {
           {['SKIN', 'DENTAL', 'HAIR'].map((item, i) => (
             <span
               key={item}
-              className="rounded-full border border-white/20 bg-white/[0.06] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/85 backdrop-blur-sm"
+              className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/85"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {item}
@@ -205,7 +205,7 @@ export default function HeroMobile() {
               transition={{ duration: 0.3, ease: EASE }}
               className="mt-3 w-full overflow-hidden"
             >
-              <div className="rounded-2xl border border-white/20 bg-black/60 backdrop-blur-xl p-2">
+              <div className="rounded-2xl border border-white/20 bg-black/70 p-2">
                 {SERVICE_CATEGORIES.map((category) => (
                   <button
                     key={category.id}
@@ -235,14 +235,14 @@ export default function HeroMobile() {
             href={clinicInfo.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border border-white/25 bg-white/[0.07] text-[14px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96] active:border-[#D4AF5A] active:bg-white/[0.12]"
+            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border border-white/25 bg-black/30 text-[14px] font-semibold text-white transition-all duration-300 active:scale-[0.96] active:border-[#D4AF5A] active:bg-black/50"
           >
             <MessageCircle size={17} className="text-[#25D366]" />
             WhatsApp
           </a>
           <button
             onClick={() => setServicesOpen(!servicesOpen)}
-            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border-2 border-[#D4AF5A] bg-white/[0.08] text-[14px] font-semibold text-white backdrop-blur-sm transition-all duration-300 active:scale-[0.96]"
+            className="flex h-[50px] flex-1 items-center justify-center gap-2 rounded-[18px] border-2 border-[#D4AF5A] bg-black/30 text-[14px] font-semibold text-white transition-all duration-300 active:scale-[0.96]"
           >
             <Sparkles size={16} className="text-[#D4AF5A]" />
             View Services
@@ -268,7 +268,7 @@ export default function HeroMobile() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.9 }}
-          className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl"
+          className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 bg-black/60"
         >
           <div className="relative flex w-full py-3">
             <motion.div

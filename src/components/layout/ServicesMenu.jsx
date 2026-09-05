@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useEffect, useMemo, useState, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -38,7 +38,7 @@ const VIEW_ALL_PATHS = {
   hair: '/hair-treatments',
 };
 
-export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
+function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
   const navigate = useNavigate();
   const { openBooking } = useBookingModal();
   const orderedGroups = useMemo(() => {
@@ -389,7 +389,7 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-[220] bg-black/45 backdrop-blur-sm"
+        className="fixed inset-0 z-[220] bg-black/60"
         onClick={onClose}
         data-services-menu-root="true"
       >
@@ -401,7 +401,7 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
           className="flex h-full w-full items-end justify-center p-0 sm:items-center sm:justify-center sm:p-4 lg:p-6"
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="relative flex h-[95dvh] w-full max-w-[1200px] flex-col overflow-hidden rounded-t-[28px] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(246,242,232,0.95))] shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:h-auto sm:max-h-[92dvh] sm:w-[min(92vw,1200px)] sm:rounded-[28px]">
+          <div className="relative flex h-[95dvh] w-full max-w-[1200px] flex-col overflow-hidden rounded-t-[28px] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(246,242,232,0.97))] shadow-[0_30px_90px_rgba(0,0,0,0.2)] sm:h-auto sm:max-h-[92dvh] sm:w-[min(92vw,1200px)] sm:rounded-[28px]">
             <button
               type="button"
               aria-label="Close services menu"
@@ -421,3 +421,5 @@ export function ServicesMegaMenu({ open, groups, onClose, onSelect }) {
 
   return createPortal(content, document.body);
 }
+
+export default memo(ServicesMegaMenu);

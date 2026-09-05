@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown, Phone, MessageCircle } from 'lucide-react';
 import { clinicInfo, navLinks } from '../../data/clinic';
 import PrimaryButton from '../common/PrimaryButton';
 import SecondaryButton from '../common/SecondaryButton';
-import { ServicesMegaMenu } from './ServicesMenu';
+import ServicesMegaMenu from './ServicesMenu';
 import { cn } from '../../utils/helpers';
 
 function Logo({ onNavigate, compact = false, showText = false }) {
@@ -37,7 +37,7 @@ function Logo({ onNavigate, compact = false, showText = false }) {
   );
 }
 
-export default function Navbar() {
+function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const location = useLocation();
@@ -93,7 +93,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="xl:hidden fixed inset-0 z-[110] bg-primary-black/50 backdrop-blur-[3px]"
+            className="xl:hidden fixed inset-0 z-[110] bg-primary-black/70"
             onClick={closeMobile}
           />
 
@@ -102,7 +102,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
-            className="xl:hidden fixed top-0 right-0 z-[120] flex h-[100dvh] w-[min(88vw,340px)] flex-col border-l border-primary-white/40 bg-primary-white/80 shadow-premium backdrop-blur-md supports-[backdrop-filter]:bg-primary-white/70"
+            className="xl:hidden fixed top-0 right-0 z-[120] flex h-[100dvh] w-[min(88vw,340px)] flex-col border-l border-primary-white/40 bg-primary-white/95 shadow-premium"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
@@ -267,3 +267,5 @@ export default function Navbar() {
     </>
   );
 }
+
+export default memo(Navbar);
