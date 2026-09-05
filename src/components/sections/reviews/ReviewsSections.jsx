@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Star, ExternalLink, Play } from 'lucide-react';
+import { Star, ExternalLink } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
@@ -14,7 +14,6 @@ import {
 import {
   reviewsStats,
   googleReviewsList,
-  videoTestimonials,
 } from '../../../data/reviewsPage';
 import { clinicInfo } from '../../../data/clinic';
 import { staggerContainer, staggerItem } from '../../../utils/animations';
@@ -127,44 +126,6 @@ export function ReviewsCards() {
             </motion.div>
           ))}
         </motion.div>
-      </Container>
-    </section>
-  );
-}
-
-export function ReviewsVideoPlaceholders() {
-  return (
-    <section className="section-padding bg-primary-white">
-      <Container>
-        <SectionTitle
-          eyebrow="Watch"
-          title="Video Testimonials"
-          description="Premium video story placeholders — replace with real patient videos when ready."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {videoTestimonials.map((video) => (
-            <motion.article
-              key={video.id}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-3xl border border-border shadow-soft aspect-video"
-            >
-              <LazyLoadImage
-                src={video.thumbnail}
-                alt={video.title}
-                effect="blur"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                wrapperClassName="h-full w-full"
-              />
-              <div className="absolute inset-0 bg-primary-black/45 flex flex-col items-center justify-center text-center p-6">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold text-primary-white shadow-gold mb-4">
-                  <Play size={22} fill="currentColor" />
-                </span>
-                <p className="text-xs uppercase tracking-widest text-gold-light">{video.label}</p>
-                <h3 className="mt-2 font-display text-xl text-primary-white">{video.title}</h3>
-              </div>
-            </motion.article>
-          ))}
-        </div>
       </Container>
     </section>
   );

@@ -3,7 +3,6 @@ import PageCtaHero from '../components/sections/shared/PageCtaHero';
 import {
   ReviewsRatingBoard,
   ReviewsCards,
-  ReviewsVideoPlaceholders,
   ReviewsWriteCta,
 } from '../components/sections/reviews/ReviewsSections';
 import PageConsultCTA from '../components/sections/shared/PageConsultCTA';
@@ -32,8 +31,7 @@ export default function Reviews() {
       <ReviewsRatingBoard />
       <ReviewsCards />
       <ReviewsVideoPlaceholders />
-      <ReviewsWriteCta />
-      <PageConsultCTA
+      <ReviewssultCTA
         title="Join Our Happy Patients"
         description="Book your consultation at Capilla — the trusted dental, skin & hair clinic in Perumbakkam."
       />
