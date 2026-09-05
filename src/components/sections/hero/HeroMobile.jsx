@@ -11,7 +11,7 @@ import { clinicInfo } from '../../../data/clinic';
 
 const GOLD = '#D4AF5A';
 // ⚠️ Use a CLEAN photo (no baked-in text/logo on it) for best results
-const HERO_BG_IMAGE = '/gallery/hero-desktop-bg.webp';
+const HERO_BG_IMAGE = '/gallery/hero-mobile-bg.png';
 const EASE = [0.25, 0.46, 0.45, 0.94];
 
 const fadeUp = {
@@ -217,6 +217,36 @@ export default function HeroMobile() {
         >
           Indra Priyadarshini Nagar, Perumbakkam, Chennai — Open until 8 PM
         </motion.p>
+
+        {/* ── Marquee Text Animation ── */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.9 }}
+          className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl"
+        >
+          <div className="relative flex w-full py-3">
+            <motion.div
+              animate={{
+                x: [0, -1000],
+              }}
+              transition={{
+                x: {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: 'linear',
+                },
+              }}
+              className="flex whitespace-nowrap"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <span className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#D4AF5A]/90">
+                DENTAL CARE • SKIN CARE • HAIR CARE • PREMIUM CLINIC • DENTAL CARE • SKIN CARE • HAIR CARE • PREMIUM CLINIC • DENTAL CARE • SKIN CARE • HAIR CARE • PREMIUM CLINIC •
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Seam into next section */}

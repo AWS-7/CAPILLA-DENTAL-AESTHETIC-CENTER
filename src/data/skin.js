@@ -295,6 +295,14 @@ export const skinTreatmentsList = [
     path: '/contact',
     benefits: ['Natural look', 'Quick procedure', 'Personalised placement'],
   },
+  {
+    id: 'mole-creation',
+    title: 'Mole Creation',
+    description: 'Cosmetic procedure to create beauty marks for aesthetic enhancement.',
+    image: '/treatments/skin/facial-treatments.webp',
+    path: '/contact',
+    benefits: ['Natural appearance', 'Custom placement', 'Quick procedure'],
+  },
 ];
 
 export const skinWhyChoose = [
